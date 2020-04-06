@@ -1,0 +1,113 @@
+# GENERAL UI/UX
+NSGlobalDomain:
+  # Enable subpixel font rendering on non-Apple LCDs
+  AppleFontSmoothing: 2
+
+  # Always show scrollbars (Possible values: `WhenScrolling`, `Automatic` and `Always`)
+  AppleShowScrollBars: "Always"
+
+  # initial key repeat
+  InitialKeyRepeat: 15
+
+  # keyrepeat
+  KeyRepeat: 1
+
+  # Disable automatic capitalization as it’s annoying when typing code
+  NSAutomaticCapitalizationEnabled: false
+
+  # Disable smart dashes as they’re annoying when typing code
+  NSAutomaticDashSubstitutionEnabled: false
+
+  # Disable automatic period substitution as it’s annoying when typing code
+  NSAutomaticPeriodSubstitutionEnabled: false
+
+  # Disable smart quotes as they’re annoying when typing code
+  NSAutomaticQuoteSubstitutionEnabled: false
+
+  # Disable auto-correct
+  NSAutomaticSpellingCorrectionEnabled: false
+
+# DOCK
+com.apple.dock:
+  # Automatically hide and show the Dock
+  autohide: true
+
+  # Remove the auto-hiding Dock delay
+  autohide-delay: 0
+
+  # Remove the animation when hiding/showing the Dock
+  autohide-time-modifier: 0
+
+  # Don’t animate opening applications from the Dock
+  launchanim: false
+
+  # Change minimize/maximize window effect
+  mineffect: "scale"
+
+  # Minimize windows into their application’s icon
+  minimize-to-application: true
+
+  # Enable highlight hover effect for the grid view of a stack (Dock)
+  mouse-over-hilite-stack: true
+
+  # move dock orientation (options are left, bottom, right)
+  orientation: "bottom"
+
+  # Reset Launchpad
+  ResetLaunchPad: true
+
+  # Don’t show recent applications in Dock
+  show-recents: false
+
+  # Set the icon size of Dock items to 36 pixels
+  tilesize: 36
+
+  # When switching to an application, switch to a space with open windows for the application, -boolean YES
+  workspaces-auto-swoosh: YES
+
+# FINDER
+com.apple.finder:
+  # Finder: show hidden files by default
+  AppleShowAllFiles: true
+
+  # Finder: disable window animations and Get Info animations
+  DisableAllAnimations: true
+
+  # Finder: allow quitting via ⌘ + Q; doing so will also hide desktop icons
+  QuitMenuItem: false
+
+# MESSAGES
+com.apple.messageshelper.MessageController:
+  # Disable automatic emoji substitution (i.e. use plain text smileys)
+  SOInputLineSettings: "automaticEmojiSubstitutionEnablediMessage" -bool false
+
+  # Disable smart quotes as it’s annoying for messages that contain code
+  SOInputLineSettings: "automaticQuoteSubstitutionEnabled" -bool false
+
+# SAFARI
+com.apple.Safari:
+  # Set Safari’s home page to `about:blank` for faster loading
+  HomePage: "about:blank"
+
+  # Enable the Develop menu in Safari
+  IncludeDevelopMenu: true
+
+  # Show Safari’s bookmarks bar by default
+  ShowFavoritesBar-v2: true
+
+  # Hide Safari’s sidebar in Top Sites
+  ShowSidebarInTopSites: false
+
+  # Enable the Web Inspector in Safari
+  WebKitDeveloperExtrasEnabledPreferenceKey: true
+
+# SCREENSHOTS
+com.apple.screencapture:
+  # Disable shadow in screenshots
+  disable-shadow: true
+
+  # Save screenshots to the Pictures/Screenshots
+  location: "${XDG_DATA_HOME}/screenshots"
+
+  # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
+  type: "png"
