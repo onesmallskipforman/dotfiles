@@ -65,6 +65,14 @@ com.apple.dock:
   # When switching to an application, switch to a space with open windows for the application, -boolean YES
   workspaces-auto-swoosh: YES
 
+# DESKTOP SERVICES
+com.apple.desktopservices:
+  # Avoid creating .DS_Store files on network
+  DSDontWriteNetworkStores: true
+
+  # Avoid creating .DS_Store files on USB volumes
+  DSDontWriteUSBStores: true
+
 # FINDER
 com.apple.finder:
   # Finder: show hidden files by default

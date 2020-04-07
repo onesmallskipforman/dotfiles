@@ -9,6 +9,9 @@
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
+# docker env setup (a little slow)
+eval $(docker-machine env default)
+
 #===============================================================================
 # PROCESS INITIAL COMMAND
 #===============================================================================
@@ -26,6 +29,7 @@ fi
 # aliases
 # [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 alias icat="kitty +kitten icat"
+alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 
 #===============================================================================
 # PROMPT
