@@ -4,6 +4,7 @@
 
 # extraneous nonconfig files
 .config/termpdf.py/cache
+.config/packages/brewfile.lock.json
 
 # private data files
 .local/share

@@ -5,6 +5,10 @@
 # autojump - jump to directories with j or jc for child or jo to open in file manager
 # zsh-autosuggestions - Suggestions based on your history
 
+# path vars for coreutils
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+
 #===============================================================================
 # PROCESS INITIAL COMMAND
 #===============================================================================
