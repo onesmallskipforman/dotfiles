@@ -166,7 +166,7 @@ function focus_window() {
 function superkitty () {
   prelen="$(yabai -m query --windows | jq '. | map(select(.app == "kitty")) | length')"
   spaceindex="$(yabai -m query --spaces --space | jq .index)"
-  /Applications/kitty.app/Contents/MacOS/kitty -o allow_remote_control=yes --single-instance -d ~ zsh -c "$1" # --title "$title"
+  /Applications/kitty.app/Contents/MacOS/kitty -1 -d ~ zsh -c "$1" &
   postlen="$(yabai -m query --windows | jq '. | map(select(.app == "kitty")) | length')"
   while [ $prelen -ge $postlen ]
   do

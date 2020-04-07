@@ -12,6 +12,7 @@ export XDG_CACHE_HOME="$HOME/.cache"
 
 # ~/ Clean-up:
 export CARGO_HOME="$XDG_DATA_HOME"/cargo                    # Rust Cargo
+export RUSTUP_HOME="$XDG_DATA_HOME"/rustup                  # Rustup
 export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker              # docker
 export MACHINE_STORAGE_PATH="$XDG_DATA_HOME"/docker-machine # docker-machine
 # export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"                # gnupg

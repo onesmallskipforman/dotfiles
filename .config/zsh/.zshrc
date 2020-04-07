@@ -12,6 +12,10 @@ export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 # docker env setup (a little slow)
 eval $(docker-machine env default)
 
+# rust env setup
+export PATH="/Users/skipper/.local/share/cargo/bin:$PATH"
+# source $CARGO_HOME/env
+
 #===============================================================================
 # PROCESS INITIAL COMMAND
 #===============================================================================
@@ -34,6 +38,17 @@ alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 #===============================================================================
 # PROMPT
 #===============================================================================
+
+# # Load version control information
+# autoload -Uz vcs_info
+# precmd () { vcs_info }
+
+# # Format the vcs_info_msg_0_ variable
+# zstyle ':vcs_info:git:*' formats ' - %b'
+
+# # allow for prompt variable substitution
+# setopt prompt_subst
+# export PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%1~\$vcs_info_msg_0_%{$fg[red]%}]%{$reset_color%}$%b "
 
 # prompt management
 autoload -U colors && colors
