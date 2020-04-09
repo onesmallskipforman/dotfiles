@@ -7,7 +7,9 @@
 
 # path vars for coreutils
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+export EDITOR="nvim"
 
 # docker env setup (a little slow)
 eval $(docker-machine env default)
@@ -26,6 +28,10 @@ then
 set --
 fi
 
+function kssh() {
+  [ "$TERM" = "xterm-kitty" ] && kitty +kitten ssh $@ || ssh $@
+}
+
 #===============================================================================
 # ALIASES, SHORTCUTS, INPUTS
 #===============================================================================
@@ -34,6 +40,7 @@ fi
 # [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 alias icat="kitty +kitten icat"
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
+alias ssh='kssh'
 
 #===============================================================================
 # PROMPT

@@ -26,7 +26,7 @@ export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/pass             # pass
 # export PLATFORMIO_CORE_DIR="$XDG_CONFIG_HOME/platformio" # platformio
 export PLATFORMIO_CORE_DIR="$XDG_DATA_HOME/platformio"      # platformio
 export PYLINTHOME="$XDG_CACHE_HOME/pylint"                  # pylint
-export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority             # xquarts/x11
+export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority             # xquarts/x11 (not working atm)
 # export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"             # wget (don't use unless you have actual wgetrc)
 export ZDOTDIR="$HOME/.config/zsh"                          # zsh
 
