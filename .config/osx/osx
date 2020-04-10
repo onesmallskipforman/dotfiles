@@ -75,7 +75,7 @@ defaults write com.apple.dock show-recents -bool false
 defaults write com.apple.dock tilesize -int 36
 
 # When switching to an application, switch to a space with open windows for the application
-defaults write com.apple.dock workspaces-auto-swoosh -boolean YES
+defaults write com.apple.dock workspaces-auto-swoosh -boolean NO
 
 #===============================================================================
 # FINDER

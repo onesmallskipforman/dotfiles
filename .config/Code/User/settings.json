@@ -335,7 +335,7 @@
   // alternate regex that prevents comment-less scopes from triggering TODOs
   // unfortunately it also keeps multi-line comments from working
   // "todo-tree.regex.regex": "((\\(\\*|%|//|#|<!--|;|/\\*)\\s*($TAGS)|^\\s*- \\[ \\])",
-  "todo-tree.tree.showScanModeButton": true,
+  "todo-tree.tree.showScanModeButton": false,
 
   // Wolfram Language
   "wolfram.installationDirectory": "/Appplications/Mathematica.app"

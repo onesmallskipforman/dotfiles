@@ -11,3 +11,4 @@
 
 # private data files
 .local/share
+.local/state

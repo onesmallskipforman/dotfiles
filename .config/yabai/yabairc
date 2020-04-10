@@ -48,6 +48,11 @@ yabai -m config window_gap                   10
 # float system preferences
 yabai -m rule --add app="^System Preferences$" manage=off
 
+
+
+yabai -m signal --add event=mission_control_enter action="skhd -k \"ctrl - m\""
+yabai -m signal --add event=mission_control_exit action="skhd -k \"ctrl - n\""
+
 echo "yabai configuration loaded.."
 
 
