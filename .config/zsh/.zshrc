@@ -12,7 +12,7 @@ export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 export EDITOR="nvim"
 
 # docker env setup (a little slow)
-eval $(docker-machine env default)
+# eval $(docker-machine env default)
 
 # rust env setup
 export PATH="/Users/skipper/.local/share/cargo/bin:$PATH"

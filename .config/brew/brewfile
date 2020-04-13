@@ -66,6 +66,7 @@ brew "pycodestyle" # required by autopep8
 brew "pylint"
 brew "jupyter"
 brew "mupdf-tools" # required by termpdf
+brew "redshift"
 
 cask "alacritty"
 cask "bitwarden"
@@ -95,7 +96,7 @@ cask "virtualbox" # required for docker
 cask "visual-studio-code"
 cask "xctu"
 cask "xquartz"
-cask "dmenu"
+cask "dmenu-mac"
 
 mas "Dark Reader for Safari", id: 1438243180
 mas "Dynamo", id: 1445910651
