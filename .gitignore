@@ -11,3 +11,4 @@
 
 # other data files
 .local/state
+.local/share
