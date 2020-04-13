@@ -1,0 +1,4 @@
+[submodule ".local/share"]
+	path = .local/share
+	url = https://github.com/onesmallskipforman/userdata
+  update = merge

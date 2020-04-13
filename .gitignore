@@ -9,6 +9,5 @@
 .config/termpdf.py/cache
 .config/packages/brewfile.lock.json
 
-# private data files
-.local/share
+# other data files
 .local/state
