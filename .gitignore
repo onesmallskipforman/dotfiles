@@ -7,7 +7,7 @@
 
 # extraneous nonconfig files
 .config/termpdf.py/cache
-.config/packages/brewfile.lock.json
+.config/brew/brewfile.lock.json
 
 # other data files
 .local/state
