@@ -106,9 +106,9 @@ alt + shift - n     : source launch.sh; newspace_focus # create new space and fo
 :: MC
 
 # mode transitions
-default     < alt + shift - u ; DM
+default     < alt + shift - a ; DM
 default     < ctrl - m        ; MC
-DM          < alt + shift - u ; default
+DM          < alt + shift - a ; default
 MC          < ctrl - m        ; default
 MC, default < alt  - m        : source launch.sh; mission_control
 

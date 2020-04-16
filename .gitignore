@@ -8,6 +8,7 @@
 # extraneous nonconfig files
 .config/termpdf.py/cache
 .config/brew/brewfile.lock.json
+.config/nvim/plugged
 
 # other data files
 .local/state

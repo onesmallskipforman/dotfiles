@@ -97,6 +97,7 @@ cask "visual-studio-code"
 cask "xctu"
 cask "xquartz"
 cask "dmenu-mac"
+cask "ubersicht"
 
 mas "Dark Reader for Safari", id: 1438243180
 mas "Dynamo", id: 1445910651
