@@ -1,10 +1,76 @@
 #!/bin/sh
 
 #===============================================================================
-# FLASHY FUNCTIONS
+# CONFIGURING YABAI/SKHD
 #===============================================================================
 
-function safecmd () {
+function displaymode() {
+  if [ "$1" = "on" ]; then
+    yabai -m config active_window_border_color 0xffa89984
+    yabai -m config normal_window_border_color 0xffa89984
+    yabai -m config insert_window_border_color 0xffa89984
+    yabai -m config active_window_opacity 0.9
+    yabai -m config normal_window_opacity 0.9
+  elif [ "$1" = "off" ]; then
+    yabai -m config active_window_border_color 0xffa89984
+    yabai -m config normal_window_border_color 0xff3c3836
+    yabai -m config insert_window_border_color   0xffd75f5f
+    yabai -m config active_window_opacity 1.0
+    yabai -m config normal_window_opacity 0.9
+  fi
+}
+
+function reset() {
+  launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai" && skhd --reload
+}
+
+#===============================================================================
+# LAUNCHING PROGRAMS
+#===============================================================================
+
+function launch_instance() {
+  # test script
+  # from https://github.com/noperator/dotfiles/blob/master/.config/kitty/launch_instance.sh
+
+  FOCUSED_WINDOW=$(yabai -m query --windows --window)
+
+  # If launching _from_ a focused kitty window, open the new kitty window with the same working directory. The socket is required to use control messages to grab the working directory of the focused kitty window; more details in kitty's [documentation](https://sw.kovidgoyal.net/kitty/invocation.html?highlight=socket#cmdoption-kitty-listen-on).
+  FOCUSED_WINDOW_APP=$(jq '.app' -r <<< "$FOCUSED_WINDOW")
+  # if [[ "$FOCUSED_WINDOW_APP" == 'kitty' ]]; then
+  #     DIR=$(/Applications/Kitty.app/Contents/MacOS/kitty @ --to unix:/tmp/mykitty ls | jq '.[] | select(.is_focused==true) | .tabs[] | select(.is_focused==true) | .windows[] | .cwd' -r)
+  # else
+  #     DIR="$HOME"
+  # fi
+
+
+  # Adapted a few changes from yanzhang0219's [script](https://github.com/koekeishiya/yabai/issues/413#issuecomment-604072616) to leverage yabai [signals](https://github.com/koekeishiya/yabai/wiki/Commands#automation-with-rules-and-signals) to move the new kitty window to the focused display, rather than the display the first kitty window was launched from.
+  FOCUSED_WINDOW_DISPLAY=$(echo "$FOCUSED_WINDOW" | jq .display)
+  FOCUSED_WINDOW_ID=$(echo "$FOCUSED_WINDOW" | jq .id)
+  yabai -m signal --add \
+      action="yabai -m signal --remove temp_move_kitty;
+              YABAI_WINDOW_DISPLAY=\$(yabai -m query --windows --window $YABAI_WINDOW_ID | jq .display);
+              if ! [[ \$YABAI_WINDOW_DISPLAY == $FOCUSED_WINDOW_DISPLAY ]]; then
+                  yabai -m window \$YABAI_WINDOW_ID --warp $FOCUSED_WINDOW_ID;
+                  yabai -m window --focus \$YABAI_WINDOW_ID;
+              fi" \
+      app=Alacritty \
+      event=window_created \
+      label=temp_move_kitty
+
+  # Launch new kitty window; the temporary signal above will move it to the focused display.
+  # /Applications/Kitty.app/Contents/MacOS/kitty --listen-on unix:/tmp/mykitty --single-instance --directory "$DIR" "$@"
+  # /Applications/Kitty.app/Contents/MacOS/kitty --listen-on unix:/tmp/mykitty --hold --single-instance --directory ~ $@ &
+  open -na /Applications/kitty.app/ --args -1 -d ~ $@
+  # open -na /Applications/Alacritty.app --args -e $@
+}
+
+function mission_control() {
+  # activate mission control
+  last=$(cliclick p); cliclick m:0,0; yabai -m space --toggle mission-control; cliclick m:$last
+}
+
+function safecmd() {
+  # open window for app and wait for window to appear
   # echo "${@:2}"
   prelen="$(yabai -m query --windows | jq --arg APP "$1" '. | map(select(.app == $APP)) | length')"
   eval "${@:2}"
@@ -16,10 +82,37 @@ function safecmd () {
 }
 
 function superterm() {
-  safecmd kitty bash launch_instance.sh "$@"
+  safecmd kitty launch_instance "$@"
 }
 
-function showoff () {
+function brave_google_search() {
+
+  function urlencode() {
+    # from https://gist.github.com/cdown/1163649
+    # urlencode <string>
+    old_lc_collate=$LC_COLLATE
+    LC_COLLATE=C
+
+    local length="${#1}"
+    for (( i=0; i<length; i++ )); do
+        local c="${1:$i:1}"
+        case $c in
+            [a-zA-Z0-9.~_-]) printf "$c" ;;
+            *) printf '%%%02X' "'$c" ;;
+        esac
+    done
+
+    LC_COLLATE=$old_lc_collate
+  }
+
+  open -na Brave\ Browser --new-window "http://google.com/search?q=$(urlencode $1)"
+}
+
+#===============================================================================
+# FLASHY FUNCTIONS
+#===============================================================================
+
+function showoff() {
 
   [ ! -z "$(yabai -m query --spaces --display 3 | jq '.[-1].windows[]')" ] && \
     yabai -m space --create && yabai -m space --focus last || \
@@ -98,335 +191,53 @@ function battlestation() {
 
 }
 
-function displaymode() {
-  if [ "$1" = "on" ]; then
-    yabai -m config active_window_border_color 0xffa89984
-    yabai -m config normal_window_border_color 0xffa89984
-    yabai -m config insert_window_border_color 0xffa89984
-    yabai -m config active_window_opacity 0.9
-    yabai -m config normal_window_opacity 0.9
-  elif [ "$1" = "off" ]; then
-    yabai -m config active_window_border_color 0xffa89984
-    yabai -m config normal_window_border_color 0xff3c3836
-    yabai -m config insert_window_border_color   0xffd75f5f
-    yabai -m config active_window_opacity 1.0
-    yabai -m config normal_window_opacity 0.9
-  fi
-}
-
 #===============================================================================
 # KEYPRESS SIMULATION
 #===============================================================================
 
-# escape key
 function escape_press() {
+  # escape key
   # skhd -k "escape"
   osascript -e "tell application \"System Events\" to key code 53"
 }
 
 #===============================================================================
-# PROGRAM LAUNCHERS
+# YABAI TRICKS
 #===============================================================================
 
-# activate mission control
-function mission_control() {
-  last=$(cliclick p); cliclick m:0,0; yabai -m space --toggle mission-control; cliclick m:$last
-}
-
-#===============================================================================
-# WINDOW TRAVEL
-#===============================================================================
-
-# focus window (options: prev, next, first, last, recent, mouse, largest, smallest, north, south, east, west, window id)
-function focus_window() {
-  yabai -m window --focus "$1"
-}
-
-# swap window
-function swap_window() {
-  yabai -m window --swap "$1"
-}
-
-# mirror on axis (x-axis, y-axis)
-function mirror() {
-  yabai -m space --mirror "$1"
-}
-
-#===============================================================================
-# EXISTING SPACE MANAGEMENT
-#===============================================================================
-
-# focus space (options: number, next, prev, first, last)
-function focus_space() {
-  # osascript -e 'quit app "Mission Control"'
-  yabai -m space --focus "$1"
-}
-
-# move space
-function move_space() {
-  yabai -m space --move "$1"
-}
-
-# focus space while mission control is open
-function focus_space_mc() {
-  escape_press; sleep 0.3; focus_space "$1"
-}
-
-# move space while mission control is open
-function move_space_mc() {
-  escape_press; sleep 0.3; move_space "$1"
-}
-
-#===============================================================================
-# CREATING AND DESTROYING SPACES
-#===============================================================================
-
-# create new space
-function newspace() {
-  yabai -m space --create
-}
-
-# create new space and focus on new space
-function newspace_focus() {
-  yabai -m space --create
-  index="$(yabai -m query --spaces --display |
-           jq 'map(select(."native-fullscreen" == 0))[-1].index')"
-  yabai -m space --focus "${index}"
-}
-
-# create new space, and move focused window
-function newspace_window() {
-  WIN_ID=$(yabai -m query --windows --window | jq .id)
-  yabai -m space --create
-  index="$(yabai -m query --spaces --display |
-           jq 'map(select(."native-fullscreen" == 0))[-1].index')"
-  yabai -m window "${WIN_ID}" --space "${index}"
-}
-
-# create new space, move focused window, and focus on new space
-function newspace_window_focus() {
-  WIN_ID=$(yabai -m query --windows --window | jq .id)
-  yabai -m space --create
-  index="$(yabai -m query --spaces --display |
-           jq 'map(select(."native-fullscreen" == 0))[-1].index')"
-  yabai -m window "${WIN_ID}" --space "${index}"
-  yabai -m space --focus "${index}"
-}
-
-
-#===============================================================================
-# SPACE TRAVEL
-#===============================================================================
-
-# move focused window to space (options: number, next, prev, first, last)
-function space_window() {
-  WIN_ID=$(yabai -m query --windows --window | jq .id)
-  yabai -m window "${WIN_ID}" --space "$1"
-}
-
-# move focused window, and focus window
-function focus_space_window() {
+function windowToSpace_ff() {
+  # move window to space and follow focus
   WIN_ID=$(yabai -m query --windows --window | jq .id)
   yabai -m window "${WIN_ID}" --space "$1"
   yabai -m space --focus "$1"
   yabai -m widnow "${WIN_ID}" --focus # may not need this line
 }
 
-# In development
-# # move space to space
-# # TODO: add conditions for jumping spaces on different desktops
-# function space_space() {
-#   SP_IND=$(yabai -m query --spaces --space | jq .index)
-#   yabai -m space "${SP_IND}" --move "$1"
-# }
-
-# # move space to space, and focus space
-# function space_space() {
-#   SP_IND=$(yabai -m query --spaces --space | jq .index)
-#   yabai -m space "${SP_IND}" --move "$1"
-#   yabai -m space --focus "$1"
-# }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# swap windows
-
-# change split
-
-# rotate
-
-# in development
-# # focus window directional across all displays
-# alt - h : yabai -m window --focus prev ||\
-#   ((yabai -m display --focus prev || yabai -m display --focus last) && \
-#   yabai -m window --focus last)
-
-# alt - l : yabai -m window --focus next ||\
-#   ((yabai -m display --focus next || yabai -m display --focus first) && \
-#   yabai -m window --focus first)
-
-# focus window directional across all desktops
-
-
-
-
-
-#===============================================================================
-# TODO
-#===============================================================================
-
-# Function to swap spaces on active displays
-
-
-#===============================================================================
-# DISPLAY TRAVEL
-#===============================================================================
-
-# focus space (options: number, next, prev, first, last)
-function focus_display() {
-  # case "$1" in
-  #   "next")
-  #     yabai -m display --focus next || yabai -m display --focus first
-  #     ;;
-  #   "prev")
-  #     yabai -m space --focus prev || yabai -m space --focus last
-  #     ;;
-  #   *)
-  #     yabai -m display --focus "$1"
-  #     ;;
-  # esac
-  yabai -m display --focus "$1"
-}
-
-# move window to display (options: number, next, prev, first, last)
-function display_window() {
-  WIN_ID=$(yabai -m query --windows --window | jq .id)
-  yabai -m window "${WIN_ID}" --display "$1"
-}
-
-# move focused window, and focus space
-function focus_display_window() {
-  WIN_ID=$(yabai -m query --windows --window | jq .id)
-  yabai -m window "${WIN_ID}" --display "$1"
-  yabai -m display --focus "$1"
-}
-
-# In development
-# # move space to display (options: number, next, prev, first, last)
-# function display_space() {
-#   SP_IND=$(yabai -m query --spaces --space | jq .index)
-#   yabai -m space "${SP_IND}" --display "$1"
-#   yabai -m display --focus ${index}
-# }
-
-# # move focused display, and focus space
-# function focus_display_space() {
-#   WIN_ID=$(yabai -m query --windows --window | jq .id)
-#   yabai -m window "${WIN_ID}" --display "$1"
-#   yabai -m display --focus "$1"
-# }
-
-
-
-#===============================================================================
-# LAUNCHERS
-#===============================================================================
-
-
-
-
-
-# TODO: focus back to original display after clearing
-
-function clearemptydesktops () {
-
-  # grab current visible desktops, and currently focused desktop
-  # visibleids="$(yabai -m query --spaces | jq -r '. | map(select(.visible == 1).id) | .[]')"
-  currentid="$(yabai -m query --spaces --space | jq .id)"
-
-  # delete spaces
-  yabai -m query --spaces | jq -c '. | map(select(.windows == []).id) | .[]' | while read clearid; do
-    clearindex="$(yabai -m query --spaces | jq --argjson clearid $clearid '. | map(select(.id==$clearid))[-1].index')"
-    destroydesktop "${clearindex}"
-  done
-
-  # find desktops of old visible ids, and focus
-
-  # focus on original id
-  index="$(yabai -m query --spaces | jq --argjson currentid $currentid '. | map(select(.id==$currentid))[-1].index')"
+function newspace_focus() {
+  # create new space and focus on new space
+  yabai -m space --create
+  index="$(yabai -m query --spaces --display |
+           jq 'map(select(."native-fullscreen" == 0))[-1].index')"
   yabai -m space --focus "${index}"
 }
 
-function destroydesktop () {
-  if [ ! -z "$1" ]; then
-    yabai -m space --focus "$1"
-    current="$(yabai -m query --spaces --space | jq '.index')"
+function focus_space_mc() {
+  # focus space while mission control is open
+  escape_press; sleep 0.3; yabai -m space --focus "$1"
+}
 
-    while [ "$current" -ne "$1" ]; do
-      current="$(yabai -m query --spaces --space | jq '.index')"
-    done
-  fi
-
-  prelen="$(yabai -m query --spaces | jq '. | length')"
-  yabai -m space --destroy
-  postlen="$(yabai -m query --spaces | jq '. | length')"
-
-  while [ $prelen -le $postlen ]
-  do
-    postlen="$(yabai -m query --windows | jq '. | map(select(.app == "kitty")) | length')"
+function clearEmptySpaces () {
+  # delete spaces, go in reverse order to avoid shifting space numbers
+  yabai -m query --spaces | jq '. | map(select(.windows == []).index) | reverse | .[]' | while read index; do
+    yabai -m space "$index" --destroy
   done
 }
 
-
-
-
-#===============================================================================
-# Google Search
-#===============================================================================
-
-# from https://gist.github.com/cdown/1163649
-function urlencode() {
-    # urlencode <string>
-    old_lc_collate=$LC_COLLATE
-    LC_COLLATE=C
-
-    local length="${#1}"
-    for (( i=0; i<length; i++ )); do
-        local c="${1:$i:1}"
-        case $c in
-            [a-zA-Z0-9.~_-]) printf "$c" ;;
-            *) printf '%%%02X' "'$c" ;;
-        esac
-    done
-
-    LC_COLLATE=$old_lc_collate
-}
-
-# from https://gist.github.com/cdown/1163649
-function urldecode() {
-    # urldecode <string>
-
-    local url_encoded="${1//+/ }"
-    printf '%b' "${url_encoded//%/\\x}"
-}
-
-function google() {
-  open -na Brave\ Browser --new-window "http://google.com/search?q=$(urlencode $1)"
+function destroyCurrentSpace() {
+  # destroy current space and focus on the previous
+  # note that windows in a destroyed space go to the first space on a display
+  index=$(yabai -m query --spaces --space | jq '.index - 1')
+  mindex=$(yabai -m query --spaces --display | jq '.[0].index - 1')
+  yabai -m space --destroy
+  [ ! "$index" = "$mindex" ] && yabai -m space --focus "${index}"
 }
