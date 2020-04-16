@@ -28,4 +28,4 @@ yabai -m signal --add \
     label=temp_move_kitty
 
 # Launch new kitty window; the temporary signal above will move it to the focused display.
-/Applications/Kitty.app/Contents/MacOS/kitty --listen-on unix:/tmp/mykitty --single-instance --directory "$DIR"
+/Applications/Kitty.app/Contents/MacOS/kitty --listen-on unix:/tmp/mykitty --single-instance --directory "$DIR" "$@"

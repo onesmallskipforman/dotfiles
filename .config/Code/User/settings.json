@@ -91,7 +91,7 @@
     // "terminal.background" : "#383737"
   },
   "workbench.iconTheme": "vscode-icons",
-  "workbench.colorTheme": "Monokai Pro (Filter Octagon)",
+  "workbench.colorTheme": "Gruvbox Dark Soft",
   "workbench.statusBar.visible": true,
   "workbench.activityBar.visible": true,
 

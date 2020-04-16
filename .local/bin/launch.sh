@@ -1,11 +1,85 @@
 #!/bin/sh
 
 #===============================================================================
+# FLASHY FUNCTIONS
+#===============================================================================
+
+function superkitty() {
+  bash launch_instance.sh "$@"
+}
+
+function showoff () {
+  skhd -k "alt + shift - u"
+  yabai -m space --create
+  yabai -m space --focus last
+  superkitty zsh -is eval neofetch --kitty ~/.local/share/wallpapers/sunman.jpeg --size 300px \&\& figlet Hello, Skipper
+  superkitty zsh -is eval gotop
+  superkitty zsh -is eval asciiquarium
+  superkitty zsh -is eval tty-clock -ct
+  superkitty zsh -is eval pipes.sh
+
+  yabai -m window first --insert south
+  superkitty zsh -is eval lf
+
+  # feh ~/.local/share/wallpapers/sunman.jpeg
+}
+
+function battlestation() {
+
+  yabai -m signal --add event=window_created app="kitty" label=bskitty \
+    action="yabai -m window \$YABAI_WINDOW_ID --display 3"
+
+  yabai -m signal --add event=window_created app="Code" label=bscode \
+    action="yabai -m window \$YABAI_WINDOW_ID --display 2"
+
+  yabai -m signal --add event=window_created app="Brave Browser" label=bsbrave \
+    action="yabai -m window \$YABAI_WINDOW_ID --display 1"
+
+  last3="$(yabai -m query --displays --display 3 | jq '.spaces[-1]')"
+  last2="$(yabai -m query --displays --display 2 | jq '.spaces[-1]')"
+  last1="$(yabai -m query --displays --display 1 | jq '.spaces[-1]')"
+
+  [ ! -z "$(yabai -m query --spaces --display 3 | jq '.[-1].windows[]')" ] && \
+    yabai -m space "${last3}" --create && yabai -m space --focus "$(( $last3 + 1 ))" || \
+    yabai -m space --focus "$last3"
+  [ ! -z "$(yabai -m query --spaces --display 2 | jq '.[-1].windows[]')" ] && \
+    yabai -m space "${last2}" --create && yabai -m space --focus "$(( $last2 + 1 ))" || \
+    yabai -m space --focus "$last2"
+  [ ! -z "$(yabai -m query --spaces --display 1 | jq '.[-1].windows[]')" ] && \
+    yabai -m space "${last1}" --create && yabai -m space --focus "$(( $last1 + 1 ))" || \
+    yabai -m space --focus "$last1"
+
+  code -n
+  open -na Brave\ Browser
+  /Applications/kitty.app/Contents/MacOS/kitty -1 -d ~ zsh -i
+
+  # yabai -m signal --remove bskitty
+  # yabai -m signal --remove bsbrave
+  # yabai -m signal --remove bscode
+
+}
+
+function displaymode() {
+  if [ "$1" = "on" ]; then
+    yabai -m config active_window_border_color 0xffa89984
+    yabai -m config normal_window_border_color 0xffa89984
+    yabai -m config active_window_opacity 0.9
+    yabai -m config normal_window_opacity 0.9
+  elif [ "$1" = "off" ]; then
+    yabai -m config active_window_border_color 0xffa89984
+    yabai -m config normal_window_border_color 0xff3c3836
+    yabai -m config active_window_opacity 1.0
+    yabai -m config normal_window_opacity 0.9
+  fi
+}
+
+#===============================================================================
 # KEYPRESS SIMULATION
 #===============================================================================
 
 # escape key
 function escape_press() {
+  # skhd -k "escape"
   osascript -e "tell application \"System Events\" to key code 53"
 }
 
@@ -15,7 +89,7 @@ function escape_press() {
 
 # activate mission control
 function mission_control() {
-  last=$(cliclick p); cliclick m:0,0; open -a Mission\ Control; cliclick m:$last
+  last=$(cliclick p); cliclick m:0,0; yabai -m space --toggle mission-control; cliclick m:$last
 }
 
 #===============================================================================
@@ -103,19 +177,18 @@ function newspace_window_focus() {
 # SPACE TRAVEL
 #===============================================================================
 
-
-
-# move window to space (options: number, next, prev, first, last)
+# move focused window to space (options: number, next, prev, first, last)
 function space_window() {
   WIN_ID=$(yabai -m query --windows --window | jq .id)
   yabai -m window "${WIN_ID}" --space "$1"
 }
 
-# move focused window, and focus space
+# move focused window, and focus window
 function focus_space_window() {
   WIN_ID=$(yabai -m query --windows --window | jq .id)
   yabai -m window "${WIN_ID}" --space "$1"
   yabai -m space --focus "$1"
+  yabai -m widnow "${WIN_ID}" --focus # may not need this line
 }
 
 # In development
@@ -235,258 +308,8 @@ function focus_display_window() {
 # LAUNCHERS
 #===============================================================================
 
-# use env variable
 
-# if none of the apps on current window are kitty, warp to last
 
-# TODO: make version that supports supplying your own space index
-function safelaunch() {
-  # really only for commands that open new windows
-
-  # grab all ids of app and current space index
-  IDS1=$(yabai -m query --windows | jq -r --arg APP "$1" '. | map(select(.app == $APP).id)')
-  spaceindex="$(yabai -m query --spaces --space | jq .index)"
-
-  # track number of app windows before and after running command
-  prelen="$(yabai -m query --windows | jq --arg APP "$1" '. | map(select(.app == $APP)) | length')"
-
-  # echo "${@:2}"
-  eval "${@:2}" &
-
-  postlen="$(yabai -m query --windows | jq --arg APP "$1" '. | map(select(.app == $APP)) | length')"
-  while [ $prelen -ge $postlen ]; do
-    postlen="$(yabai -m query --windows | jq --arg APP "$1" '. | map(select(.app == $APP)) | length')"
-  done
-
-  # find id of the new window
-  IDS2=$(yabai -m query --windows | jq -r --arg APP "$1" '. | map(select(.app == $APP).id)')
-  NEWID=$(jq -n --argjson i1 "$IDS1" --argjson i2 "$IDS2" '$i2 | map(select(. | IN($i1 | .[]) | not ))[0]')
-
-  # move new window to focused space and focus back on space
-  yabai -m window "$NEWID" --space "${spaceindex}"
-  yabai -m window --focus "$NEWID"
-
-  # id="$(yabai -m query --windows --window | jq .id)"
-  # yabai -m window --focus "${id}"
-
-  # work in progress
-  # grab current window id
-  # grap new window id
-  # warp new into current if not already a direct child
-  # currentindex="$(yabai -m query --spaces --space | jq .index)"
-  # if [ $spaceindex != currentindex ]
-  # then
-  #   yabai -m window --warp last
-  # fi
-
-}
-
-
-function superkitty () {
-  # echo $1
-  safelaunch "kitty" /Applications/kitty.app/Contents/MacOS/kitty -1 -d ~ zsh -c \"$@\"
-
-  # this version allows for listening
-  # /Applications/kitty.app/Contents/MacOS/kitty -1 -d ~ --listen-on unix:/tmp/mykitty zsh -c \"$@\"
-}
-
-function supercode () {
-  safelaunch "Code" code -n "$1"
-}
-
-function superff () {
-  safelaunch "Firefox" open -na Firefox --args '--new-window' "$1" &
-}
-
-# buggy atm. I think it's due to space in the app name
-# function superbrave () {
-#   safelaunch "Brave\ Browser" open -na "/Applications/Brave\ Browser.app/" &
-# }
-
-function safelaunch_s() {
-  # really only for commands that open new windows
-
-  # grab all ids of app and current space index
-  IDS1=$(yabai -m query --windows | jq -r --arg APP "$2" '. | map(select(.app == $APP).id)')
-
-  echo "$1"
-  spaceindex="$1"
-
-  # track number of app windows before and after running command
-  prelen="$(yabai -m query --windows | jq --arg APP "$2" '. | map(select(.app == $APP)) | length')"
-
-  eval "${@:3}" &
-
-  postlen="$(yabai -m query --windows | jq --arg APP "$2" '. | map(select(.app == $APP)) | length')"
-  while [ $prelen -ge $postlen ]; do
-    postlen="$(yabai -m query --windows | jq --arg APP "$2" '. | map(select(.app == $APP)) | length')"
-  done
-
-  # find id of the new window
-  IDS2=$(yabai -m query --windows | jq -r --arg APP "$2" '. | map(select(.app == $APP).id)')
-  NEWID=$(jq -n --argjson i1 "$IDS1" --argjson i2 "$IDS2" '$i2 | map(select(. | IN($i1 | .[]) | not ))[0]')
-
-  # move new window to focused space and focus back on space
-  yabai -m window "$NEWID" --space "${spaceindex}"
-  # yabai -m window --focus "$NEWID"
-
-  # id="$(yabai -m query --windows --window | jq .id)"
-  # yabai -m window --focus "${id}"
-
-  # work in progress
-  # grab current window id
-  # grap new window id
-  # warp new into current if not already a direct child
-  # currentindex="$(yabai -m query --spaces --space | jq .index)"
-  # if [ $spaceindex != currentindex ]
-  # then
-  #   yabai -m window --warp last
-  # fi
-
-}
-
-function superkitty_s () {
-  # echo $1
-  safelaunch_s "$1" "kitty" /Applications/kitty.app/Contents/MacOS/kitty -1 -d ~ zsh -c \""${@:2}"\"
-}
-
-function supercode_s () {
-  safelaunch_s "$1" "Code" code -n "$2"
-}
-
-function superff_s () {
-  safelaunch_s "$1" "Firefox" open -na Firefox --args '--new-window' "$2" &
-}
-
-
-
-
-
-
-function showoff () {
-  yabai -m space --create
-  yabai -m space --focus last
-  superkitty zsh -is eval '\"neofetch --kitty ~/Projects/Dotfiles/sunman.jpeg --size 300px; figlet Hello, Skipper\"'
-  superkitty zsh -is eval gotop
-  superkitty zsh -is eval asciiquarium
-  superkitty zsh -is eval tty-clock -ct
-  superkitty zsh -is eval pipes.sh
-
-  yabai -m window --focus first
-  superkitty zsh -is eval lf
-  # sleep 1
-
-  # feh ~/Desktop/sunman.jpeg
-}
-
-function battlestation () {
-
-  # new desktops on all displays
-  # ndisplays=$(yabai -m query --displays | jq '. | length')
-
-  # yabai -m space --create
-  # yabai -m space --create
-  # yabai -m space --create
-
-  yabai -m display --focus 1
-
-  current="$(yabai -m query --displays --display | jq '.index')"
-  while [ "$current" -ne 1 ]; do
-    current="$(yabai -m query --displays --display | jq '.index')"
-  done
-
-  yabai -m space --create
-  last="$(yabai -m query --displays | jq '.[] | select(.index == 1).spaces[-1]')"
-  yabai -m space --focus "${last}"
-
-  current="$(yabai -m query --spaces --space | jq '.index')"
-  while [ "$current" -ne "$last" ]; do
-    current="$(yabai -m query --spaces --space | jq '.index')"
-  done
-
-  superkitty "zsh -i"
-
-  yabai -m display --focus 2
-
-  current="$(yabai -m query --displays --display | jq '.index')"
-  while [ "$current" -ne 2 ]; do
-    current="$(yabai -m query --displays --display | jq '.index')"
-  done
-
-  yabai -m space --create
-  last="$(yabai -m query --displays | jq '.[] | select(.index == 2).spaces[-1]')"
-  yabai -m space --focus "${last}"
-
-  current="$(yabai -m query --spaces --space | jq '.index')"
-  while [ "$current" -ne "$last" ]; do
-    current="$(yabai -m query --spaces --space | jq '.index')"
-  done
-
-  superff
-
-  yabai -m display --focus 3
-
-  current="$(yabai -m query --displays --display | jq '.index')"
-  while [ "$current" -ne 2 ]; do
-    current="$(yabai -m query --displays --display | jq '.index')"
-  done
-
-  yabai -m space --create
-  last="$(yabai -m query --displays | jq '.[] | select(.index == 3).spaces[-1]')"
-  yabai -m space --focus "${last}"
-
-  current="$(yabai -m query --spaces --space | jq '.index')"
-  while [ "$current" -ne "$last" ]; do
-    current="$(yabai -m query --spaces --space | jq '.index')"
-  done
-
-  # supercode
-
-}
-
-
-
-function battlestation_s () {
-
-  # new desktops on all displays
-  # ndisplays=$(yabai -m query --displays | jq '. | length')
-
-  # yabai -m space --create
-  # yabai -m space --create
-  # yabai -m space --create
-
-  orig="$(yabai -m query --displays --display | jq '.index')"
-
-  max="$(yabai -m query --displays --space | jq '.spaces | max')"
-  yabai -m space --create
-  yabai -m space --create
-  yabai -m space --create
-
-  superff_s "$(( $max+1 ))"
-  supercode_s "$(( $max+2 ))"
-  # superkitty_s "$(( $max+2 ))" "zsh -i eval nvim"
-  superkitty_s "$(( $max+3 ))" "zsh -i"
-
-
-  yabai -m space "$(( $max+1 ))" --display 1
-  yabai -m space "$(( $max+2 ))" --display 2
-  yabai -m space "$(( $max+3 ))" --display 3
-
-  yabai -m space --focus "$(yabai -m query --displays | jq --argjson o "$orig" '.[] | select(.index == $o) | .spaces | max')"
-
-  # last="$(yabai -m query --displays | jq '.[] | select(.index == 1).spaces[-1]')"
-  # superkitty_s "$last" "zsh -i"
-
-  # last="$(yabai -m query --displays | jq '.[] | select(.index == 1).spaces[-1]')"
-  # superkitty_s "$last" "zsh -i"
-
-  # last="$(yabai -m query --displays | jq '.[] | select(.index == 2).spaces[-1]')"
-  # superff_s "$last"
-
-
-  # supercode
-
-}
 
 
 # TODO: focus back to original display after clearing
@@ -531,68 +354,6 @@ function destroydesktop () {
 }
 
 
-
-
-
-# make kitty window, return id
-# loop: make kitty window as child of id, return id
-
-
-# the behavior is the same everywhere. we will just make sure we can warp to current space (display) when we insert a terminal, since terminal insertion is so common
-# extend to a keybinding for quickly opening a safari window (command n and send)
-
-
-# if child of parent window already, dont warp; else warp
-# YOU NEED THIS TO WORK IN ALL EDGE CASES
-# FOR NOW FILL IN GAPS WITH EASY WINDOW MOVEMENT
-
-# come up with some fixed yabai hierarchy for work/coding setup
-
-
-
-
-
-# function kittylaunch_i () {
-#   # relearn how to insert variables into titles
-#   prelen="$(yabai -m query --windows | jq '. | map(select(.title == "kitty")) | length')"
-#   parentid="$(yabai -m query --windows --window | jq .id)"
-#   # displayindex="$(yabai -m query --displays --display | jq .index)"
-#   # kitty --single-instance zsh -is eval "$1" # with zshrc setup
-#   # /Applications/kitty.app/Contents/MacOS/kitty -o allow_remote_control=yes --single-instance -d ~ "$1" &
-#   /Applications/kitty.app/Contents/MacOS/kitty -o allow_remote_control=yes --single-instance -d ~ "$1" &
-
-#   postlen="$(yabai -m query --windows | jq '. | map(select(.title == "kitty")) | length')"
-#   yabai -m --focus "${index}"
-#   while [ $prelen -ge $postlen ]
-#   do
-#     postlen="$(yabai -m query --windows | jq '. | map(select(.title == "kitty")) | length')"
-#     yabai -m --focus "${index}"
-#   done
-#   yabai -m window --warp "${parentid}"
-# }
-
-# yabai -m query --spaces --space | jq .index
-
-# function kittylaunch_i () {
-#   prelen="$(yabai -m query --spaces --window | jq '.[].windows | length')"
-#   index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')"
-#   # kitty --single-instance zsh -is eval "$1" # with zshrc setup
-#   /Applications/kitty.app/Contents/MacOS/kitty -o allow_remote_control=yes --single-instance -d ~ zsh -c "$1; zsh -i" &
-#   postlen="$(yabai -m query --spaces --window | jq '.[].windows | length')"
-#   yabai -m --focus "${index}"
-#   while [ $prelen -ge $postlen ]
-#   do
-#     postlen="$(yabai -m query --spaces --window | jq '.[].windows | length')"
-#     yabai -m --focus "${index}"
-#   done
-# }
-
-
-# # add in mechanism to focus to last launched kitty between these to prevent clicking elsewhere from being a problem
-# kittylaunch_i asciiquarium
-# kittylaunch_i gotop
-# kittylaunch_i "tty-clock -ct"
-# kittylaunch_i pipes.sh
 
 
 #===============================================================================

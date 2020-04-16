@@ -16,20 +16,20 @@ yabai -m config status_bar_space_icon_strip  I II III IV V VI VII VIII IX X
 yabai -m config mouse_follows_focus          off
 yabai -m config focus_follows_mouse          off
 yabai -m config window_placement             second_child
-yabai -m config window_topmost               off
+yabai -m config window_topmost               on
 yabai -m config window_opacity               on
 yabai -m config window_opacity_duration      0.0
 yabai -m config window_shadow                off
-yabai -m config window_border                off
+yabai -m config window_border                on
 yabai -m config window_border_placement      inset
 yabai -m config window_border_width          4
-yabai -m config window_border_radius         -1.0
-yabai -m config active_window_border_topmost off
-yabai -m config active_window_border_color   0xff775759
-yabai -m config normal_window_border_color   0xff505050
+yabai -m config window_border_radius         0
+yabai -m config active_window_border_topmost on
+yabai -m config active_window_border_color   0xffa89984
+yabai -m config normal_window_border_color   0xff3c3836
 yabai -m config insert_window_border_color   0xffd75f5f
 yabai -m config active_window_opacity        1.0
-yabai -m config normal_window_opacity        1.0
+yabai -m config normal_window_opacity        0.9
 yabai -m config split_ratio                  0.50
 yabai -m config auto_balance                 off
 yabai -m config mouse_modifier               fn
@@ -38,20 +38,23 @@ yabai -m config mouse_action2                resize
 
 # general space settings
 yabai -m config layout                       bsp
-yabai -m config top_padding                  20
-yabai -m config bottom_padding               20
-yabai -m config left_padding                 20
-yabai -m config right_padding                20
+yabai -m config top_padding                  30
+yabai -m config bottom_padding               30
+yabai -m config left_padding                 30
+yabai -m config right_padding                30
 yabai -m config window_gap                   10
 
 
 # float system preferences
 yabai -m rule --add app="^System Preferences$" manage=off
 
+# yabai -m rule --add app="Code" display=2
+# yabai -m rule --add app="kitty" display=3
+# yabai -m rule --add app="Brave Browser" display=1
 
 
 yabai -m signal --add event=mission_control_enter action="skhd -k \"ctrl - m\""
-yabai -m signal --add event=mission_control_exit action="skhd -k \"ctrl - n\""
+yabai -m signal --add event=mission_control_exit action="skhd -k \"ctrl - m\""
 
 echo "yabai configuration loaded.."
 
