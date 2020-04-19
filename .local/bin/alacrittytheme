@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# choose a theme and apply
+ls ~/.local/src/{base16-alacritty/colors,alacritty-theme/themes}/* \
+  | fzf --with-nth -1 -d / \
+  | xargs alacritty-colorscheme -C ~/.config/alacritty/themes -a

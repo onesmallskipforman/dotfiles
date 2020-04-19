@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# setup of docker virtual machine and account login
+docker-machine start default || docker-machine create --driver virtualbox default
+pass docker | xargs -n2 sh -c 'docker login -u "$1" --password-stdin <<< "$2"' sh

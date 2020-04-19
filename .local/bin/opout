@@ -1,0 +1,5 @@
+#!/bin/sh
+
+basename="$(echo "$1" | sed 's/\.[^\/.]*$//')"
+
+open -a Skim "$basename".pdf

@@ -14,7 +14,7 @@ brew "coreutils"
 brew "coreutils"
 brew "docker"
 brew "docker-credential-helper"
-brew "docker-machine", restart_service: true # required for docker
+brew "docker-machine" # , restart_service: true  # required for docker. do not start here as it may tamper with virtualbox updating
 brew "dockutil"
 brew "enscript"
 brew "figlet"
@@ -28,7 +28,7 @@ brew "gpg"
 brew "htop"
 brew "imagemagick"
 brew "jq"
-brew "koekeishiya/formulae/skhd", restart_service: :changed
+brew "koekeishiya/formulae/skhd", restart_service: true
 brew "koekeishiya/formulae/yabai", restart_service: true
 brew "lf"
 brew "libusb"
@@ -65,7 +65,7 @@ brew "flake8"
 brew "pycodestyle" # required by autopep8
 brew "pylint"
 brew "jupyterlab"
-brew "redshift"
+brew "redshift", restart_service: true
 brew "mupdf-tools" # non-pip dependency for termpdf.py
 
 cask "alacritty"
@@ -83,7 +83,7 @@ cask "homebrew/cask-drivers/ftdi-vcp-driver"
 cask "iina"
 cask "keyboardcleantool"
 cask "kitty"
-cask "mactex-no-gui"
+# cask "mactex-no-gui"
 cask "minecraft"
 cask "nordvpn"
 cask "skim"

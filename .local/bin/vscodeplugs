@@ -1,0 +1,9 @@
+#!/bin/zsh
+
+# vscode: install plugins in list that are not already installed
+# the command: ls $HOME/.vscode/extensions | sed 's/-[^-]*$//'
+# is much faster than: code --list-extension
+comm -23 \
+  <(sort "$XDG_CONFIG_HOME/Code/plugins.txt") \
+  <(ls $HOME/.vscode/extensions | sed 's/-[^-]*$//' | sort) \
+  | xargs -n 1 code --install-extension
