@@ -4,6 +4,14 @@
 # GENERAL UI/UX
 #===============================================================================
 
+# Set a custom wallpaper image
+WALLPAPER="$XDG_DATA_HOME/wallpapers/beams.jpeg"
+osascript -e "tell application \"Finder\" to set desktop picture to \"$(realpath "$WALLPAPER")\" as POSIX file"
+osascript -e "tell application \"System Events\" to tell every desktop to set picture to \"$(realpath "$WALLPAPER")\""
+
+# Turn Dark mode on
+defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
+
 # Enable subpixel font rendering on non-Apple LCDs
 defaults write NSGlobalDomain AppleFontSmoothing -int 2
 
@@ -16,16 +24,16 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 15
 # key repear
 defaults write NSGlobalDomain KeyRepeat -int 1
 
-# Disable automatic capitalization as it’s annoying when typing code
+# Disable automatic capitalization
 defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
 
-# Disable smart dashes as they’re annoying when typing code
+# Disable smart dashes
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
-# Disable automatic period substitution as it’s annoying when typing code
+# Disable automatic period substitution
 defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
 
-# Disable smart quotes as they’re annoying when typing code
+# Disable smart quotes
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 
 # Disable auto-correct (none, crashreport)
@@ -97,7 +105,7 @@ defaults write com.apple.finder QuitMenuItem -bool false
 # Disable automatic emoji substitution (i.e. use plain text smileys)
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticEmojiSubstitutionEnablediMessage" -bool false
 
-# Disable smart quotes as it’s annoying for messages that contain code
+# Disable smart quotes
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticQuoteSubstitutionEnabled" -bool false
 
 #===============================================================================
@@ -112,12 +120,6 @@ defaults write com.apple.Safari ShowFavoritesBar-v2 -bool true
 
 # Hide Safari’s sidebar in Top Sites
 defaults write com.apple.Safari ShowSidebarInTopSites -bool false
-
-# Enable the Develop menu in Safari
-defaults write com.apple.Safari IncludeDevelopMenu -bool true
-
-# Enable the Web Inspector in Safari
-defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
 
 #===============================================================================
 # SCREENSHOTS

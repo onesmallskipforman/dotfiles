@@ -29,14 +29,13 @@ render: (output) ->
     </div>
   """
 
-  # font: 14px "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif
-
 
 style: """
   position: relative
   margin-top: 7px
   font-family: menlo
   font-size: 14px
+  /* font: 14px "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif */
   color: #aaa
   font-weight: 700
 

@@ -17,7 +17,11 @@ export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker               # docker
 export MACHINE_STORAGE_PATH="$XDG_DATA_HOME"/docker-machine  # docker-machine
 # export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"                    # gnupg
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"                      # gnupg
+
 export HOMEBREW_BUNDLE_FILE="$XDG_CONFIG_HOME/brew/brewfile" # homebrew
+export HOMEBREW_CASK_OPTS="--no-quarantine"
+export HOMEBREW_BUNDLE_NO_LOCK=1
+
 export IPYTHONDIR="$XDG_CONFIG_HOME"/jupyter                 # ipython
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter         # jupyter
 export LESSHISTFILE="-"                                      # less history

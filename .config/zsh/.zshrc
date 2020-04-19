@@ -11,9 +11,6 @@ export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 export EDITOR="nvim"
 
-# docker env setup (a little slow)
-# eval $(docker-machine env default)
-
 # rust env setup
 export PATH="/Users/skipper/.local/share/cargo/bin:$PATH"
 # source $CARGO_HOME/env
@@ -41,6 +38,9 @@ function kssh() {
 alias icat="kitty +kitten icat"
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 alias ssh='kssh'
+alias docker='docker info &> /dev/null || {docker_setup && eval $(docker-machine env default)} && docker'
+alias code='vscodeplugs; code'
+alias subl='pkgctrl_install; subl'
 
 #===============================================================================
 # PROMPT

@@ -60,7 +60,7 @@ function launch_instance() {
   # Launch new kitty window; the temporary signal above will move it to the focused display.
   # /Applications/Kitty.app/Contents/MacOS/kitty --listen-on unix:/tmp/mykitty --single-instance --directory "$DIR" "$@"
   # /Applications/Kitty.app/Contents/MacOS/kitty --listen-on unix:/tmp/mykitty --hold --single-instance --directory ~ $@ &
-  open -na /Applications/kitty.app/ --args -1 -d ~ $@
+  open -na /Applications/kitty.app/ --args --listen-on unix:/tmp/mykitty -1 -d ~ $@
   # open -na /Applications/Alacritty.app --args -e $@
 }
 

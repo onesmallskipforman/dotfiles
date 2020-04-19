@@ -14,7 +14,7 @@ brew "coreutils"
 brew "coreutils"
 brew "docker"
 brew "docker-credential-helper"
-brew "docker-machine", restart_service: :changed # required for docker
+brew "docker-machine", restart_service: true # required for docker
 brew "dockutil"
 brew "enscript"
 brew "figlet"
@@ -29,7 +29,7 @@ brew "htop"
 brew "imagemagick"
 brew "jq"
 brew "koekeishiya/formulae/skhd", restart_service: :changed
-brew "koekeishiya/formulae/yabai", restart_service: :changed
+brew "koekeishiya/formulae/yabai", restart_service: true
 brew "lf"
 brew "libusb"
 brew "llvm"
@@ -64,9 +64,9 @@ brew "autopep8"
 brew "flake8"
 brew "pycodestyle" # required by autopep8
 brew "pylint"
-brew "jupyter"
-brew "mupdf-tools" # required by termpdf
+brew "jupyterlab"
 brew "redshift"
+brew "mupdf-tools" # non-pip dependency for termpdf.py
 
 cask "alacritty"
 cask "bitwarden"
@@ -98,7 +98,6 @@ cask "xctu"
 cask "xquartz"
 cask "dmenu-mac"
 cask "ubersicht"
+cask "inkscape" # for latex drawings
 
 mas "Dark Reader for Safari", id: 1438243180
-mas "Dynamo", id: 1445910651
-mas "Shazam", id: 897118787
