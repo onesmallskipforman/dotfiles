@@ -8,7 +8,7 @@ alt + shift - r     : source launch.sh; reset
 
 alt - return        : source launch.sh; launch_instance                                              # open terminal
 alt + shift - b     : source launch.sh; battlestation                              # battlestation
-alt + shift - s     : source launch.sh; showoff                                    # showoff
+# alt + shift - s     : source launch.sh; showoff                                    # showoff
 alt - 0x27          : yabai -m window  --insert south && source launch.sh; launch_instance &  # horz split and add terminal (apostrophe)
 alt - 0x2C          : yabai -m window  --insert east  && source launch.sh; launch_instance &  # vert split and add terminal (forward slash)
 

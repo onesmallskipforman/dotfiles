@@ -14,14 +14,14 @@ gaps inner $inner_gaps
 gaps outer $outer_gaps
 
 bar {
-    font pango:mono 10
-    status_command i3blocks
-    position top
-    mode dock
-    modifier None
+  font pango:mono 10
+  status_command i3blocks
+  position top
+  mode dock
+  modifier None
 }
 
-# restart 
+# restart
 bindsym $mod+Shift+r     restart
 
 #===============================================================================
@@ -97,16 +97,16 @@ bindsym $mod+Shift+i     exec --no-startup-id i3resize up
 bindsym $mod+Shift+o     exec --no-startup-id i3resize right
 
 # move window to space and follow focus
-bindsym $mod+Shift+1     move container to workspace 1 ; workspace 1  
-bindsym $mod+Shift+2     move container to workspace 2 ; workspace 2  
-bindsym $mod+Shift+3     move container to workspace 3 ; workspace 3  
-bindsym $mod+Shift+4     move container to workspace 4 ; workspace 4  
-bindsym $mod+Shift+5     move container to workspace 5 ; workspace 5  
-bindsym $mod+Shift+6     move container to workspace 6 ; workspace 6  
-bindsym $mod+Shift+7     move container to workspace 7 ; workspace 7  
-bindsym $mod+Shift+8     move container to workspace 8 ; workspace 8  
-bindsym $mod+Shift+9     move container to workspace 9 ; workspace 9  
-bindsym $mod+Shift+0     move container to workspace 10; workspace 10  
+bindsym $mod+Shift+1     move container to workspace 1 ; workspace 1
+bindsym $mod+Shift+2     move container to workspace 2 ; workspace 2
+bindsym $mod+Shift+3     move container to workspace 3 ; workspace 3
+bindsym $mod+Shift+4     move container to workspace 4 ; workspace 4
+bindsym $mod+Shift+5     move container to workspace 5 ; workspace 5
+bindsym $mod+Shift+6     move container to workspace 6 ; workspace 6
+bindsym $mod+Shift+7     move container to workspace 7 ; workspace 7
+bindsym $mod+Shift+8     move container to workspace 8 ; workspace 8
+bindsym $mod+Shift+9     move container to workspace 9 ; workspace 9
+bindsym $mod+Shift+0     move container to workspace 10; workspace 10
 
 #===============================================================================
 # SPACE MOVEMENT
