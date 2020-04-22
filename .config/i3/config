@@ -1,0 +1,118 @@
+
+# TBD: dmenu/rofi launcher
+
+
+for_window [class="^.*"] border pixel 2
+set $inner_gaps 15
+set $outer_gaps 15
+set $mod Mod1
+set $shutdown sudo -A shutdown -h now
+set $reboot sudo -A reboot
+set $term --no-startup-id alacritty
+
+gaps inner $inner_gaps
+gaps outer $outer_gaps
+
+bar {
+    font pango:mono 10
+    status_command i3blocks
+    position top
+    mode dock
+    modifier None
+}
+
+# restart 
+bindsym $mod+Shift+r     restart
+
+#===============================================================================
+# LAUNCHERS
+#===============================================================================
+
+bindsym $mod+Return      exec $term
+bindsym $mod+apostrophe  split horizontal ;; exec $term
+bindsym $mod+slash       split vertical ;; exec $term
+bindsym $mod+q           [con_id="__focused__" instance="^(?!dropdown_).*$"] kill
+bindsym $mod+b           bar mode toggle
+bindsym $mod+w           exec --no-startup-id firefox
+# bindsym $mod+i           exec $term -e htop
+
+#===============================================================================
+# FOCUS CONTROLS
+#===============================================================================
+
+# focus window direction
+bindsym $mod+h           focus left
+bindsym $mod+l           focus right
+bindsym $mod+j           focus down
+bindsym $mod+k           focus up
+
+# focus space number
+bindsym $mod+1           workspace 1
+bindsym $mod+2           workspace 2
+bindsym $mod+3           workspace 3
+bindsym $mod+4           workspace 4
+bindsym $mod+5           workspace 5
+bindsym $mod+6           workspace 6
+bindsym $mod+7           workspace 7
+bindsym $mod+8           workspace 8
+bindsym $mod+9           workspace 9
+bindsym $mod+0           workspace 10
+
+# focus display number
+bindsym $mod+Ctrl+1      focus output 1
+bindsym $mod+Ctrl+2      focus output 2
+bindsym $mod+Ctrl+3      focus output 3
+
+# focus prev and next space
+bindsym $mod+g           workspace prev
+bindsym $mod+semicolon   workspace next
+
+# toggle focus between tiled and floating
+bindsym $mod+space       focus mode_toggle
+
+#===============================================================================
+# WINDOW MANIPULATION
+#===============================================================================
+
+# swap window direction or move window if floating
+bindsym $mod+Shift+h     move left  30
+bindsym $mod+Shift+j     move down  30
+bindsym $mod+Shift+k     move up    30
+bindsym $mod+Shift+l     move right 30
+
+# space window layout management
+bindsym $mod+s           gaps inner current plus  5 # increase gap size
+bindsym $mod+Shift+s     gaps inner current minus 5 # decrease gap size
+bindsym $mod+z           gaps outer current plus  5 # increase border padding
+bindsym $mod+Shift+z     gaps outer current minus 5 # decrease border padding
+bindsym $mod+f           fullscreen toggle          # make window fullscreen
+bindsym $mod+t           layout toggle split        # layout toggle split
+bindsym $mod+Shift+space floating toggle            # toggle floating for window
+# bindsym $mod+Shift+t     gaps inner current set $inner_gaps; gaps outer current set $outer_gaps
+
+# resize window in direction
+bindsym $mod+Shift+y     exec --no-startup-id i3resize left
+bindsym $mod+Shift+u     exec --no-startup-id i3resize down
+bindsym $mod+Shift+i     exec --no-startup-id i3resize up
+bindsym $mod+Shift+o     exec --no-startup-id i3resize right
+
+# move window to space and follow focus
+bindsym $mod+Shift+1     move container to workspace 1 ; workspace 1  
+bindsym $mod+Shift+2     move container to workspace 2 ; workspace 2  
+bindsym $mod+Shift+3     move container to workspace 3 ; workspace 3  
+bindsym $mod+Shift+4     move container to workspace 4 ; workspace 4  
+bindsym $mod+Shift+5     move container to workspace 5 ; workspace 5  
+bindsym $mod+Shift+6     move container to workspace 6 ; workspace 6  
+bindsym $mod+Shift+7     move container to workspace 7 ; workspace 7  
+bindsym $mod+Shift+8     move container to workspace 8 ; workspace 8  
+bindsym $mod+Shift+9     move container to workspace 9 ; workspace 9  
+bindsym $mod+Shift+0     move container to workspace 10; workspace 10  
+
+#===============================================================================
+# SPACE MOVEMENT
+#===============================================================================
+
+bindsym $mod+Ctrl+h      move workspace to output left  # move space to display
+bindsym $mod+Ctrl+l      move workspace to output right
+bindsym $mod+Ctrl+j      move workspace to output down
+bindsym $mod+Ctrl+k      move workspace to output up
