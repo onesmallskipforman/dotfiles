@@ -67,13 +67,14 @@ brew "pylint"
 brew "jupyterlab"
 brew "redshift", restart_service: true
 brew "mupdf-tools" # non-pip dependency for termpdf.py
+brew "gptfdisk" # crucial for quickly fixing apfs partition hexcode
+brew "openssl" # required for generating crypt(3) passwords
 
 cask "alacritty"
 cask "bitwarden"
 cask "brave-browser"
 cask "coolterm"
 cask "discord"
-cask "edrawmax"
 cask "elsorino/homebrew-elso/macfeh"
 cask "eqmac"
 cask "firefox"
