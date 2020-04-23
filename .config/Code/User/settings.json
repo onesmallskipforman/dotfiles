@@ -34,7 +34,7 @@
   "editor.find.seedSearchStringFromSelection": true,
 
   // Font
-  "editor.fontFamily": "Mono",
+  "editor.fontFamily": "monospace",
   "editor.fontSize": 12,
 
   // Diff Editor
