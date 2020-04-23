@@ -1,7 +1,6 @@
 
 # TBD: dmenu/rofi launcher
 
-
 for_window [class="^.*"] border pixel 2
 set $inner_gaps 15
 set $outer_gaps 15
