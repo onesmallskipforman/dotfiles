@@ -70,13 +70,20 @@ export PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg
 # History in cache directory:
 HISTSIZE=10000
 SAVEHIST=10000
-HISTFILE="$XDG_DATA_HOME/zsh/history"
+
+if [ "$OSTYPE" = "linux-gnu" ]; then
+  export HISTFILE="$XDG_DATA_HOME/zsh/history_ubuntu"
+else
+  export HISTFILE="$XDG_DATA_HOME/zsh/history_osx"
+fi
+
 
 # Basic auto/tab complete:
 autoload -U compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
-compinit -d "$XDG_CACHE_HOME/zsh/zcompdump"
+mkdir -p "$XDG_CACHE_HOME/zsh" && rm -f "$XDG_CONFIG_HOME/zsh/.zcompdump"
+compinit -d "$XDG_CACHE_HOME/zsh/.zcompdump"
 
 # Include hidden files in autocomplete:
 _comp_options+=(globdots)
@@ -151,8 +158,14 @@ bindkey -s '^o' 'lfcd\n'
 #===============================================================================
 
 # Load zsh-syntax-highlighting, zsh-autosuggestions; should be last.
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/local/share/autojump/autojump.zsh
+if [ "$OSTYPE" = "linux-gnu" ]; then
+  source $HOME/.local/src/zsh-autosuggestions/zsh-autosuggestions.zsh
+  source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  source /usr/share/autojump/autojump.zsh
+else
+  source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  source /usr/local/share/autojump/autojump.zsh
+fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
