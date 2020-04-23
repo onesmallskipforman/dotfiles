@@ -1,5 +1,5 @@
 [credential]
-	helper = osxkeychain
+	helper = store
 [user]
 	name = onesmallskipforman
 	email = sgonzalez@g.hmc.edu
