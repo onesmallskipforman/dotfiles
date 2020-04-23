@@ -34,7 +34,7 @@
   "editor.find.seedSearchStringFromSelection": true,
 
   // Font
-  "editor.fontFamily": "Menlo",
+  "editor.fontFamily": "Mono",
   "editor.fontSize": 12,
 
   // Diff Editor
@@ -228,7 +228,7 @@
   "code-runner.enableAppInsights": false,
 
   // Customize UI
-  "customizeUI.titleBar": "frameless",
+  "customizeUI.titleBar": "regular",
   "customizeUI.activityBar": "regular",
 
   // Indent to bracket
