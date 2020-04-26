@@ -28,7 +28,7 @@ brew "gpg"
 brew "htop"
 brew "imagemagick"
 brew "jq"
-brew "koekeishiya/formulae/skhd", restart_service: true
+brew "koekeishiya/formulae/skhd" , restart_service: true
 brew "koekeishiya/formulae/yabai", restart_service: true
 brew "lf"
 brew "libusb"
@@ -65,7 +65,7 @@ brew "flake8"
 brew "pycodestyle" # required by autopep8
 brew "pylint"
 brew "jupyterlab"
-brew "redshift", restart_service: true
+brew "redshift"
 brew "mupdf-tools" # non-pip dependency for termpdf.py
 brew "gptfdisk" # crucial for quickly fixing apfs partition hexcode
 brew "openssl" # required for generating crypt(3) passwords
@@ -99,5 +99,6 @@ cask "xquartz"
 cask "dmenu-mac"
 cask "ubersicht"
 cask "inkscape" # for latex drawings
+cask "librepcb" # for schematics
 
 mas "Dark Reader for Safari", id: 1438243180
