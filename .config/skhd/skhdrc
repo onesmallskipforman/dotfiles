@@ -6,19 +6,22 @@ alt + shift - r     : source launch.sh; reset
 # LAUNCHERS
 #===============================================================================
 
-alt - return        : source launch.sh; launch_instance                                              # open terminal
-alt + shift - b     : source launch.sh; battlestation                              # battlestation
+alt - return        : source launch.sh; launch_instance                                      # open terminal
+# alt + shift - b     : source launch.sh; battlestation                              # battlestation
 # alt + shift - s     : source launch.sh; showoff                                    # showoff
-alt - 0x27          : yabai -m window  --insert south && source launch.sh; launch_instance &  # horz split and add terminal (apostrophe)
-alt - 0x2C          : yabai -m window  --insert east  && source launch.sh; launch_instance &  # vert split and add terminal (forward slash)
+alt - 0x27          : yabai -m window  --insert south && source launch.sh; launch_instance  # horz split and add terminal (apostrophe)
+alt - 0x2C          : yabai -m window  --insert east  && source launch.sh; launch_instance  # vert split and add terminal (forward slash)
+alt - b             : pgrep Übersicht &>/dev/null && killall Übersicht || open -a Übersicht # toggle bar...startup is a little slow
+alt - c             : pgrep redshift  &>/dev/null && killall redshift  || redshift          # toggle color temperature redshift
+alt - w             : open -na Firefox                                                      # open browser
 
 #===============================================================================
 # FOCUS CONTROLS
 #===============================================================================
 
 # focus window direction
-alt - h             : yabai -m window  --focus west
-alt - l             : yabai -m window  --focus east
+alt - h             : yabai -m window  --focus west || (yabai -m display --focus $(yabai -m query --displays --display | jq ".index - 1") && yabai -m window --focus last )
+alt - l             : yabai -m window  --focus east || (yabai -m display --focus $(yabai -m query --displays --display | jq ".index + 1") && yabai -m window --focus first)
 alt - j             : yabai -m window  --focus south
 alt - k             : yabai -m window  --focus north
 

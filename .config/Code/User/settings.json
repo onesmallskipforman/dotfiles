@@ -228,7 +228,7 @@
   "code-runner.enableAppInsights": false,
 
   // Customize UI
-  "customizeUI.titleBar": "regular",
+  "customizeUI.titleBar": "frameless",
   "customizeUI.activityBar": "regular",
 
   // Indent to bracket

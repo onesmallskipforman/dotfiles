@@ -13,8 +13,8 @@ yabai -m config status_bar_space_icon_strip  I II III IV V VI VII VIII IX X
 # yabai -m config status_bar_clock_icon        
 
 # global settings
-yabai -m config mouse_follows_focus          off
-yabai -m config focus_follows_mouse          off
+yabai -m config mouse_follows_focus          off #on
+yabai -m config focus_follows_mouse          off #autoraise
 yabai -m config window_placement             second_child
 yabai -m config window_topmost               on
 yabai -m config window_opacity               on
@@ -52,14 +52,15 @@ yabai -m rule --add app="^System Preferences$" manage=off
 # yabai -m rule --add app="kitty" display=3
 # yabai -m rule --add app="Brave Browser" display=1
 
-
 yabai -m signal --add event=mission_control_enter action="skhd -k \"ctrl - m\""
-yabai -m signal --add event=mission_control_exit action="skhd -k \"ctrl - m\""
+yabai -m signal --add event=mission_control_exit  action="skhd -k \"ctrl - m\""
+
+# ensure dmenu, ubersicht bar, and redshift are running
+pgrep dmenu-mac &>/dev/null || open -a dmenu-mac
+pgrep Übersicht &>/dev/null || open -a Übersicht
+pgrep redshift  &>/dev/null || redshift &
 
 echo "yabai configuration loaded.."
-
-
-
 
 # BIG BIG BIG
 # rule: if app opened, move to display of current focus?

@@ -138,7 +138,7 @@ function battlestation() {
   yabai -m signal --add event=application_activated app="Code" label=bscode \
     action="yabai -m window \$YABAI_WINDOW_ID --display 2"
 
-  yabai -m signal --add event=window_created app="Brave Browser" label=bsbrave \
+  yabai -m signal --add event=window_created app="Firefox" label=bsff \
     action="yabai -m window \$YABAI_WINDOW_ID --display 1"
 
   last3="$(yabai -m query --displays --display 3 | jq '.spaces[-1]')"
@@ -179,14 +179,14 @@ function battlestation() {
 
   # focus lines are not needed here. it's just to make the window opening look nicer
   yabai -m space --focus "$last1"
-  safecmd "Brave Browser" "open -na Brave\ Browser"
+  safecmd "Firefox" "open -na Firefox"
   yabai -m space --focus "$last2"
   safecmd Code            code -n
   yabai -m space --focus "$last3"
   safecmd kitty           open -na /Applications/kitty.app/ --args -1 -d ~
 
   yabai -m signal --remove bskitty
-  yabai -m signal --remove bsbrave
+  yabai -m signal --remove bsff
   yabai -m signal --remove bscode
 
 }
