@@ -12,6 +12,15 @@ set $term --no-startup-id alacritty
 gaps inner $inner_gaps
 gaps outer $outer_gaps
 
+#exec_always --no-startup-id "xrandr --dpi 144 --output eDP-1--mode 2560x1600 --pos 0x0 --output HDMI-1 --mode 1680x1050 --scale 1x1 --pos 2560x0 --panning 0x0 --output HDMI-2 --mode 1600x900 --scale 1x1 --pos 5280x0 --panning 0x0 --fb 8000x1600"
+# xrandr --dpi 96 --output eDP-1 --primary --auto --output HDMI-1 --auto --right-of eDP-1 --output HDMI-2 --auto --right-of HDMI-1
+
+# xrandr --dpi 96 --output eDP-1 --primary --auto --pos 0x0 --output HDMI-1 --auto --pos 2560x-715 --scale 2.812x2.812 --output HDMI-2 --off
+
+exec_always --no-startup-id "killall redshift; redshift -x; redshift"
+
+
+
 bar {
   font pango:mono 10
   status_command i3blocks
@@ -34,6 +43,8 @@ bindsym $mod+q           [con_id="__focused__" instance="^(?!dropdown_).*$"] kil
 bindsym $mod+b           bar mode toggle
 bindsym $mod+w           exec --no-startup-id firefox
 # bindsym $mod+i           exec $term -e htop
+
+bindsym $mod+c           exec --no-startup-id pgrep redshift &>/dev/null && killall redshift || redshift
 
 #===============================================================================
 # FOCUS CONTROLS
