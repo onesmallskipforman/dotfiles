@@ -30,10 +30,14 @@ export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/pass              # pass
 # export PLATFORMIO_CORE_DIR="$XDG_CONFIG_HOME/platformio" # platformio
 export PLATFORMIO_CORE_DIR="$XDG_DATA_HOME/platformio"       # platformio
 export PYLINTHOME="$XDG_CACHE_HOME/pylint"                   # pylint
-export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME"/bundle         # ruby bundling
+export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME"/bundle          # ruby bundling
 export BUNDLE_USER_CACHE="$XDG_CACHE_HOME"/bundle
 export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME"/bundle
-export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority              # xquarts/x11 (not working atm)
+export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc                 # Xorg
+export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
+export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
+
+
 # export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"                 # wget (don't use unless you have actual wgetrc)
 export ZDOTDIR="$HOME/.config/zsh"                           # zsh
 
