@@ -1,4 +1,5 @@
 #!/bin/zsh
 
 # Start graphical server on tty1 if not already running.
-[ "$(tty)" = "/dev/tty1" ] && ! ps -e | grep -qw Xorg && exec startx "$XDG_CONFIG_HOME/X11/xinitrc"
+# exec startx "$XDG_CONFIG_HOME/X11/xinitrc"
+[ "$(tty)" = "/dev/tty1" ] && exec startx "$XDG_CONFIG_HOME/X11/xinitrc"
