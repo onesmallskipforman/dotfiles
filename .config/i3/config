@@ -12,6 +12,7 @@ set $term --no-startup-id alacritty
 gaps inner $inner_gaps
 gaps outer $outer_gaps
 
+# optional redshift reset
 exec_always --no-startup-id "killall redshift; redshift -x; redshift"
 
 
@@ -47,7 +48,14 @@ bindsym $mod+b           bar mode toggle
 bindsym $mod+w           exec --no-startup-id firefox
 # bindsym $mod+i           exec $term -e htop
 
+set $temp 2000
+
+# bindsym $mod+c           exec --no-startup-id pgrep redshift &>/dev/null && killall redshift || redshift
+# bindsym $mod+c exec pkill
+
 bindsym $mod+c           exec --no-startup-id pgrep redshift &>/dev/null && killall redshift || redshift
+
+
 
 #===============================================================================
 # FOCUS CONTROLS
@@ -138,3 +146,24 @@ bindsym $mod+Ctrl+h      move workspace to output left  # move space to display
 bindsym $mod+Ctrl+l      move workspace to output right
 bindsym $mod+Ctrl+j      move workspace to output down
 bindsym $mod+Ctrl+k      move workspace to output up
+
+#===============================================================================
+# OTHER CONTROLS
+#===============================================================================
+
+# volume
+# bindsym XF86AudioMute		              exec --no-startup-id pulsemixer --toggle-mute       && pkill -RTMIN+10 i3blocks
+# bindsym XF86AudioLowerVolume	        exec --no-startup-id pulsemixer --change-volume -5  && pkill -RTMIN+10 i3blocks
+# bindsym Shift+XF86AudioLowerVolume	  exec --no-startup-id pulsemixer --change-volume -10 && pkill -RTMIN+10 i3blocks
+# bindsym Control+XF86AudioLowerVolume	exec --no-startup-id pulsemixer --change-volume -1  && pkill -RTMIN+10 i3blocks
+# bindsym XF86AudioRaiseVolume	        exec --no-startup-id pulsemixer --change-volume +5  && pkill -RTMIN+10 i3blocks
+# bindsym Shift+XF86AudioRaiseVolume	  exec --no-startup-id pulsemixer --change-volume +10 && pkill -RTMIN+10 i3blocks
+# bindsym Control+XF86AudioRaiseVolume	exec --no-startup-id pulsemixer --change-volume +1  && pkill -RTMIN+10 i3blocks
+
+# alternative volume controls (1 is native, 2 is hdmi)
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 1 +5%    # increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 1 -5%    # decrease sound volume
+bindsym XF86AudioMute        exec --no-startup-id pactl    set-sink-mute   1 toggle # mute sound
+
+
+# screen backlight brightness

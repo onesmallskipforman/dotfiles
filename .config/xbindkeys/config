@@ -1,0 +1,19 @@
+# Workaround for immutable firefox keybindings
+
+"cmd.sh f"
+  Mod4+f
+
+"cmd.sh c"
+  Mod4+c
+
+"cmd.sh v"
+  Mod4+v
+
+"cmd.sh a"
+  Mod4+a
+
+# "cmd.sh z"
+#   Mod4+z
+
+# "cmdshift.sh z"
+#   Mod4+Shift+z

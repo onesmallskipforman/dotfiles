@@ -113,6 +113,7 @@
   "window.restoreWindows": "none",
   "window.title": "${activeEditorShort}${separator}${rootName}",
   "window.titleBarStyle": "native",
+  "window.menuBarVisibility": "toggle",
   "window.zoomLevel": 0,
 
   //==========================================================================
