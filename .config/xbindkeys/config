@@ -12,6 +12,15 @@
 "cmd.sh a"
   Mod4+a
 
+"cmd.sh t"
+  Mod4+t
+
+"cmd.sh w"
+  Mod4+w
+
+"cmdshift.sh t"
+  Mod4+Shift+t
+
 # "cmd.sh z"
 #   Mod4+z
 
