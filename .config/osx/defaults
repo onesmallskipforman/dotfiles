@@ -7,11 +7,6 @@
 # GENERAL UI/UX
 #===============================================================================
 
-# Set a custom wallpaper image
-WALLPAPER="$XDG_DATA_HOME/wallpapers/beams.jpeg"
-osascript -e "tell application \"Finder\" to set desktop picture to \"$(realpath "$WALLPAPER")\" as POSIX file"
-osascript -e "tell application \"System Events\" to tell every desktop to set picture to \"$(realpath "$WALLPAPER")\""
-
 # Turn Dark mode on
 defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
 

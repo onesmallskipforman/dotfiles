@@ -1,10 +1,9 @@
-#!/bin/zsh
+#!/bin/sh
 
 # fun little script to sort brewfile
 
 echo "\
-$(grep '^tap'  $PACKAGES_FOLDER/brewfile | sort)\n
-$(grep '^brew' $PACKAGES_FOLDER/brewfile | sort)\n
-$(grep '^cask' $PACKAGES_FOLDER/brewfile | sort)\n
-$(grep '^mas'  $PACKAGES_FOLDER/brewfile | sort)\
-" > $PACKAGES_FOLDER/brewfile
+$(grep '^tap'  $HOMEBREW_BUNDLE_FILE | sort)\n
+$(grep '^brew' $HOMEBREW_BUNDLE_FILE | sort)\n
+$(grep '^cask' $HOMEBREW_BUNDLE_FILE | sort)\
+" > $HOMEBREW_BUNDLE_FILE

@@ -151,19 +151,9 @@ bindsym $mod+Ctrl+k      move workspace to output up
 # OTHER CONTROLS
 #===============================================================================
 
-# volume
-# bindsym XF86AudioMute		              exec --no-startup-id pulsemixer --toggle-mute       && pkill -RTMIN+10 i3blocks
-# bindsym XF86AudioLowerVolume	        exec --no-startup-id pulsemixer --change-volume -5  && pkill -RTMIN+10 i3blocks
-# bindsym Shift+XF86AudioLowerVolume	  exec --no-startup-id pulsemixer --change-volume -10 && pkill -RTMIN+10 i3blocks
-# bindsym Control+XF86AudioLowerVolume	exec --no-startup-id pulsemixer --change-volume -1  && pkill -RTMIN+10 i3blocks
-# bindsym XF86AudioRaiseVolume	        exec --no-startup-id pulsemixer --change-volume +5  && pkill -RTMIN+10 i3blocks
-# bindsym Shift+XF86AudioRaiseVolume	  exec --no-startup-id pulsemixer --change-volume +10 && pkill -RTMIN+10 i3blocks
-# bindsym Control+XF86AudioRaiseVolume	exec --no-startup-id pulsemixer --change-volume +1  && pkill -RTMIN+10 i3blocks
-
 # alternative volume controls (1 is native, 2 is hdmi)
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 1 +5%    # increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 1 -5%    # decrease sound volume
 bindsym XF86AudioMute        exec --no-startup-id pactl    set-sink-mute   1 toggle # mute sound
-
 
 # screen backlight brightness
