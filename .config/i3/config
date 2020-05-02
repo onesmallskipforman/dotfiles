@@ -181,4 +181,9 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 1 +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 1 -5%    # decrease sound volume
 bindsym XF86AudioMute        exec --no-startup-id pactl    set-sink-mute   1 toggle # mute sound
 
-# screen backlight brightness
+# screen and keyboard backlight brightness
+bindsym XF86MonBrightnessUp   exec --no-startup-id light -s "sysfs/backlight/intel_backlight" -A 5
+bindsym XF86MonBrightnessDown exec --no-startup-id light -s "sysfs/backlight/intel_backlight" -U 5
+
+bindsym XF86KbdBrightnessUp   exec --no-startup-id light -s "sysfs/leds/smc::kbd_backlight" -A 5
+bindsym XF86KbdBrightnessDown exec --no-startup-id light -s "sysfs/leds/smc::kbd_backlight" -U 5
