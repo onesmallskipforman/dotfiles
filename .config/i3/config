@@ -1,7 +1,7 @@
 
 # TBD: dmenu/rofi launcher
 
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 5
 set $inner_gaps 15
 set $outer_gaps 15
 set $mod Mod1
@@ -12,18 +12,43 @@ set $term --no-startup-id alacritty
 gaps inner $inner_gaps
 gaps outer $outer_gaps
 
-# optional redshift reset
+# redshift reset
 exec_always --no-startup-id "killall redshift; redshift -x; redshift"
 
+# set wallpaper
+exec_always --no-startup-id "feh --bg-fill $HOME/.local/share/wallpapers/beams.jpeg"
 
+# set compton for window opacity
+exec_always --no-startup-id "killall compton; compton --config $HOME/.config/compton/compton.conf"
+
+# set xbindkeys (xinitrc should also do this)
+exec_always --no-startup-id killall xbindkeys; xbindkeys -f ~/.config/xbindkeys/config
 
 bar {
   font pango:mono 10
   status_command i3blocks
+  i3bar_command i3bar --transparency
   position top
   mode dock
   modifier None
+
+  colors {
+
+    background #00000000
+    statusline #ffffff
+    separator  #666666
+
+    focused_workspace  #a89984 #3c3836 #ffffff
+    active_workspace   #a89984 #3c3836 #ffffff
+    inactive_workspace #a89984 #3c3836 #ffffff
+  }
 }
+
+client.focused          #a89984 #a89984 #ffffff #a89984 #a89984
+client.focused_inactive #3c3836 #3c3836 #ffffff #3c3836 #3c3836
+client.unfocused        #3c3836 #3c3836 #ffffff #3c3836 #3c3836
+
+client.background       #a89984
 
 # restart
 bindsym $mod+Shift+r     restart

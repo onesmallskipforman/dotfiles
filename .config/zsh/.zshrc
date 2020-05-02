@@ -41,6 +41,8 @@ alias ssh='kssh'
 alias docker='docker info &> /dev/null || {docker_setup && eval $(docker-machine env default)} && docker'
 alias code='vscodeplugs; code'
 alias subl='pkgctrl_install; subl'
+alias quartus='/opt/altera/15.0/quartus/bin/quartus --64bin &>/dev/null & disown'
+alias modelsim='/opt/altera/15.0/modelsim_ase/linuxaloem/vsim &>/dev/null & disown'
 
 #===============================================================================
 # PROMPT

@@ -1,6 +1,9 @@
 repo "ppa:dobey/redshift-daily"     #
 repo "ppa:git-core/ppa"             # to get later update of git
 repo "ppa:neovim-ppa/stable"        #
+repo "ppa:monettes/i3wm-gaps"       #
+repo "ppa:dawidd0811/neofetch"      #
+repo "ppa:ytvwld/asciiquarium"      #
 
 apt  "alsa-utils"                   # for audio controls
 apt  "autoconf"                     # i3-gaps dependency
@@ -45,3 +48,15 @@ apt  "xserver-xorg-input-libinput"  # allows for sane trackpad expeirence
 apt  "xutils-dev"                   # i3-gaps dependency
 apt  "zsh"                          #
 apt  "zsh-syntax-highlighting"      #
+apt  "feh"                          #
+apt  "sxiv"                         #
+apt  "i3-wm"                        #
+apt  "compton"                      #
+apt  "neofetch"                     #
+apt  "tty-clock"                    #
+apt  "asciiquarium"                 #
+apt "libc6:i386"                    # modelsim dependency
+apt "libncurses5:i386"              # modelsim dependency
+apt "libstdc++6:i386"               # modelsim dependency
+apt "libxft2:i386"                  # modelsim dependency
+apt "libxext6:i386"                 # modelsim dependency
