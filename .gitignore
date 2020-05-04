@@ -10,6 +10,11 @@
 .config/brew/brewfile.lock.json
 .config/nvim/plugged
 
+# vscode
+.config/Code
+!.config/Code/plugins.txt
+!.config/Code/User
+
 # other data files
 .local/state
 .local/share
