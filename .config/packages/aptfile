@@ -60,3 +60,4 @@ apt "libncurses5:i386"              # modelsim dependency
 apt "libstdc++6:i386"               # modelsim dependency
 apt "libxft2:i386"                  # modelsim dependency
 apt "libxext6:i386"                 # modelsim dependency
+apt "spotify-client"                #
