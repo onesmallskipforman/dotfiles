@@ -14,7 +14,7 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export EDITOR="/usr/local/bin/nvim" # editor
 
 # ~/ Clean-up:
-export PKGDIR="$XDG_CONFIG_HOME/pakcages"
+export PKGDIR="$HOME/Projects/bootstrap/Packages"
 export APT_BUNDLE_FILE="$PKGDIR/aptfile"                    # apt
 export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME"/bundle         # ruby bundling
 export BUNDLE_USER_CACHE="$XDG_CACHE_HOME"/bundle           #
