@@ -6,7 +6,9 @@ alt + shift - r     : source launch.sh; reset
 # LAUNCHERS
 #===============================================================================
 
-alt - return        : source launch.sh; launch_instance                                      # open terminal
+# alt - return        : source launch.sh; launch_instance                                      # open terminal
+alt - return        : open -na Alacritty                                      # open terminal
+
 # alt + shift - b     : source launch.sh; battlestation                              # battlestation
 # alt + shift - s     : source launch.sh; showoff                                    # showoff
 alt - 0x27          : yabai -m window  --insert south && source launch.sh; launch_instance  # horz split and add terminal (apostrophe)
@@ -14,6 +16,7 @@ alt - 0x2C          : yabai -m window  --insert east  && source launch.sh; launc
 alt - b             : pgrep Übersicht &>/dev/null && killall Übersicht || open -a Übersicht # toggle bar...startup is a little slow
 alt - c             : pgrep redshift  &>/dev/null && killall redshift  || redshift          # toggle color temperature redshift
 alt - w             : open -na Firefox                                                      # open browser
+alt - q             : skhd --key "cmd - w"
 
 #===============================================================================
 # FOCUS CONTROLS
