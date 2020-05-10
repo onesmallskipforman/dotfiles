@@ -1,5 +1,5 @@
 [credential]
-	helper = store
+	helper = store --file=$HOME/.local/share/git/git-credentials
 [user]
 	name = onesmallskipforman
 	email = sgonzalez@g.hmc.edu

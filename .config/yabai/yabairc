@@ -1,13 +1,42 @@
 #!/bin/sh
 
+#===============================================================================
+# DESKTOP ENV SETUP
+#===============================================================================
+
+# Set Dock
+function dockset() {
+  dockutil --no-restart --remove all
+  dockutil --no-restart --add "/System/Applications/Mail.app"
+  dockutil --no-restart --add "/System/Applications/Messages.app"
+  dockutil --no-restart --add "/Applications/XCTU.app"
+  dockutil --no-restart --add "/Applications/Visual Studio Code.app"
+  dockutil --no-restart --add "/Applications/Spotify.app"
+  dockutil --no-restart --add "/Applications/Minecraft.app"
+  dockutil --no-restart --add "/Applications/Firefox.app"
+  dockutil --no-restart --add "/Applications/MATLAB_R2019b.app"
+  dockutil --no-restart --add "/Applications/Mathematica.app"
+  dockutil --no-restart --add "/Applications/CoolTerm.app"
+  dockutil --no-restart --add "/Applications/kitty.app"
+  dockutil --no-restart --add "/Applications/Alacritty.app"
+  dockutil --no-restart --add "$HOME/Downloads" --view fan --display stack --sort dateadded
+  killall Dock
+}
+dockset &
+
 # Set a custom wallpaper image
 WALLPAPER="$HOME/.local/share/wallpapers/beams.jpeg"
 osascript -e "tell application \"Finder\" to set desktop picture to \"$(realpath "$WALLPAPER")\" as POSIX file"
 osascript -e "tell application \"System Events\" to tell every desktop to set picture to \"$(realpath "$WALLPAPER")\""
 
-# osx settings
-# yabai -m signal --add event= action="$HOME/.config/osx/defaults"
-# ("$HOME/.config/osx/dock" && killall Dock) &
+# ensure dmenu, ubersicht bar, and redshift are running
+pgrep dmenu-mac &>/dev/null || open -a dmenu-mac
+pgrep Übersicht &>/dev/null || open -a Übersicht
+pgrep redshift  &>/dev/null || redshift &
+
+#===============================================================================
+# WM SETUP
+#===============================================================================
 
 # global settings
 yabai -m config mouse_follows_focus          off #on
@@ -41,25 +70,6 @@ yabai -m config left_padding                 40
 yabai -m config right_padding                40
 yabai -m config window_gap                   10
 
-
-# float system preferences
-yabai -m rule --add app="^System Preferences$" manage=off
-
-# yabai -m rule --add app="Code" display=2
-# yabai -m rule --add app="kitty" display=3
-# yabai -m rule --add app="Brave Browser" display=1
-
+# Special Rules for managing Mission Control with skhd
 yabai -m signal --add event=mission_control_enter action="skhd -k \"ctrl - m\""
 yabai -m signal --add event=mission_control_exit  action="skhd -k \"ctrl - m\""
-
-# ensure dmenu, ubersicht bar, and redshift are running
-pgrep dmenu-mac &>/dev/null || open -a dmenu-mac
-pgrep Übersicht &>/dev/null || open -a Übersicht
-pgrep redshift  &>/dev/null || redshift &
-
-echo "yabai configuration loaded.."
-
-# BIG BIG BIG
-# rule: if app opened, move to display of current focus?
-# rule: on window close, stay on desktop
-# yabai -m signal --add event=window_destroyed action=""

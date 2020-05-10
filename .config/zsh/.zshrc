@@ -16,7 +16,7 @@ export PATH="/Users/skipper/.local/share/cargo/bin:$PATH"
 # source $CARGO_HOME/env
 
 # ROS
-source /opt/ros/kinetic/setup.zsh
+[ -f /opt/ros/kinetic/setup.zsh ] && source /opt/ros/kinetic/setup.zsh
 
 #===============================================================================
 # PROCESS INITIAL COMMAND
