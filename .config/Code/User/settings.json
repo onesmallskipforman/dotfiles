@@ -339,5 +339,6 @@
   "todo-tree.tree.showScanModeButton": false,
 
   // Wolfram Language
-  "wolfram.installationDirectory": "/Appplications/Mathematica.app"
+"wolfram.installationDirectory": "/Appplications/Mathematica.app",
+"python.languageServer": "Microsoft"
 }

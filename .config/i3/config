@@ -73,8 +73,6 @@ bindsym $mod+b           bar mode toggle
 bindsym $mod+w           exec --no-startup-id firefox
 # bindsym $mod+i           exec $term -e htop
 
-set $temp 2000
-
 # bindsym $mod+c           exec --no-startup-id pgrep redshift &>/dev/null && killall redshift || redshift
 # bindsym $mod+c exec pkill
 

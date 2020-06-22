@@ -1,5 +1,9 @@
 # Skipper's .zshenv
 
+# set terminal
+export TERMINAL="alacritty"
+export BROWSER="firefox"
+
 # Set Path Variables
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:/usr/local/sbin"
