@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# redshift reset
+killall redshift; redshift -x; redshift &
+
+# set wallpaper
+feh --bg-fill $HOME/.local/share/wallpapers/beams.jpeg
+
+# set compton for window opacity
+killall compton; compton --config $HOME/.config/compton/compton.conf &
+
+# set xbindkeys
+killall xbindkeys; xbindkeys -f ~/.config/xbindkeys/config
