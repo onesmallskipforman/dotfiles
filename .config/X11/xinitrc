@@ -29,6 +29,5 @@ compton --config $HOME/.config/compton/compton.conf &
 
 # start window manager
 sxhkd &
-alacritty &
 exec bspwm
 # exec i3

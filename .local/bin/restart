@@ -11,3 +11,6 @@ killall compton; compton --config $HOME/.config/compton/compton.conf &
 
 # set xbindkeys
 killall xbindkeys; xbindkeys -f ~/.config/xbindkeys/config
+
+# set mouse
+xsetroot -cursor_name left_ptr
