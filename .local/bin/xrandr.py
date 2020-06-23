@@ -32,7 +32,7 @@ def one():
   runcmd("xrandr --output HDMI-1 --off --fb {}x{}".format(*e1res))
   runcmd("echo \"Xft.dpi: {}\" | xrdb -merge && xrandr --dpi {} --fb {}x{}".format(dpi, dpi, *e1res))
   display("eDP-1" , e1res, 1, (0,0), e1res)
-  runcmd("i3-msg restart")
+  runcmd("$HOME/.local/bin/restart")
 
 def two():
   # tuning parameters
@@ -70,7 +70,7 @@ def two():
   runcmd("xrandr --output HDMI-2 --off --fb {}x{}".format(*fb))
   display("eDP-1" , e1res, scaleE, e1pos, fb)
   display("HDMI-1", h1res, scaleH, h1pos, fb)
-  runcmd("i3-msg restart")
+  runcmd("$HOME/.local/bin/restart")
 
 def three():
   # tuning parameters
@@ -110,7 +110,7 @@ def three():
   display("eDP-1" , e1res, scaleE, e1pos, fb)
   display("HDMI-1", h1res, scaleH, h1pos, fb)
   display("HDMI-2", h1res, scaleH, h2pos, fb)
-  runcmd("i3-msg restart")
+  runcmd("$HOME/.local/bin/restart")
 
 def main():
   num = int(sys.argv[1])

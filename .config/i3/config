@@ -12,17 +12,8 @@ set $term --no-startup-id alacritty
 gaps inner $inner_gaps
 gaps outer $outer_gaps
 
-# redshift reset
-exec_always --no-startup-id "killall redshift; redshift -x; redshift"
-
-# set wallpaper
-exec_always --no-startup-id "feh --bg-fill $HOME/.local/share/wallpapers/beams.jpeg"
-
-# set compton for window opacity
-exec_always --no-startup-id "killall compton; compton --config $HOME/.config/compton/compton.conf"
-
-# set xbindkeys (xinitrc should also do this)
-exec_always --no-startup-id killall xbindkeys; xbindkeys -f ~/.config/xbindkeys/config
+# restart script
+exec_always --no-startup-id "$HOME/.local/bin/restart"
 
 bar {
   font pango:mono 10

@@ -10,10 +10,25 @@
 [ -f ~/.config/xbindkeys/config ] && xbindkeys -f ~/.config/xbindkeys/config
 
 # set key remappings
-# [ -f ~/.config/X11/Xmodmap ] && xmodmap ~/.config/X11/Xmodmap
+[ -f ~/.config/X11/Xmodmap ] && xmodmap ~/.config/X11/Xmodmap
 
 # start redshift
 redshift &
 
+# set cursor
+xsetroot -cursor_name left_ptr &
+
+# set wallpaper
+feh --bg-fill $HOME/.local/share/wallpapers/beams.jpeg &
+
+# set xbindkeys
+xbindkeys -f ~/.config/xbindkeys/config &
+
+# set compton for window opacity
+compton --config $HOME/.config/compton/compton.conf &
+
 # start window manager
-exec i3
+sxhkd &
+alacritty &
+exec bspwm
+# exec i3

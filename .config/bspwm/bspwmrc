@@ -3,15 +3,6 @@
 # If refreshing bspwm, remove all previous rules to prevent doubling up.
 bspc rule -r "*"
 
-# redshift reset
-killall redshift; redshift -x; redshift &
-
-# set wallpaper
-feh --bg-fill $HOME/.local/share/wallpapers/beams.jpeg &
-
-# set xbindkeys (xinitrc should also do this)
-killall xbindkeys; xbindkeys -f ~/.config/xbindkeys/config
-
 # We look for a non-laptop monitor to use for default, but use the laptop
 # screen (LVDS) if there's nothing else. This is because I assume that if you
 # have an extra screen attached to a laptop, you want to use that.
@@ -50,5 +41,5 @@ bspc config top_padding    15
 bspc config bottom_padding 15
 bspc config left_padding   15
 bspc config right_padding  15
-bspc config border_width   15
+bspc config border_width   5
 bspc config window_gap     15
