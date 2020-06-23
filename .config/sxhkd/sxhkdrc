@@ -61,6 +61,10 @@ alt + {_,shift + }f
 alt + {y,u,i,o}
 	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
+# toggle fullscreen
+alt + {_,shift + }f
+	bspc desktop -l next
+
 #===============================================================================
 # OTHER CONTROLS
 #===============================================================================
