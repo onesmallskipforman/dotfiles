@@ -10,7 +10,7 @@
 [ -f ~/.config/xbindkeys/config ] && xbindkeys -f ~/.config/xbindkeys/config
 
 # set key remappings
-[ -f ~/.config/X11/Xmodmap ] && xmodmap ~/.config/X11/Xmodmap
+# [ -f ~/.config/X11/Xmodmap ] && xmodmap ~/.config/X11/Xmodmap
 
 # start redshift
 redshift &
