@@ -25,7 +25,7 @@ feh --bg-fill $HOME/.local/share/wallpapers/beams.jpeg &
 xbindkeys -f ~/.config/xbindkeys/config &
 
 # set compton for window opacity
-compton --config $HOME/.config/compton/compton.conf &
+# compton --config $HOME/.config/compton/compton.conf &
 
 # start window manager
 sxhkd &

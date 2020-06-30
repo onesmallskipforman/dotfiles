@@ -1,5 +1,9 @@
 # Skipper's .zshenv
 
+# set go variables
+export GOROOT=/usr/local/go
+export GOPATH=$XDG_DATA_HOME/go
+
 # set terminal
 export TERMINAL="alacritty"
 export BROWSER="firefox"
@@ -8,6 +12,7 @@ export BROWSER="firefox"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:/usr/local/sbin"
 export PATH="$PATH:/Library/TeX/texbin"
+export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
 
 # set xdg env variables
 export XDG_CONFIG_HOME="$HOME/.config"

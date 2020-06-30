@@ -15,12 +15,12 @@ export EDITOR="nvim"
 export PATH="/Users/skipper/.local/share/cargo/bin:$PATH"
 # source $CARGO_HOME/env
 
-# ROS
-[ -f /opt/ros/kinetic/setup.zsh ] && source /opt/ros/kinetic/setup.zsh
+# # ROS
+# #[ -f /opt/ros/kinetic/setup.zsh ] && source /opt/ros/kinetic/setup.zsh
 
-#===============================================================================
-# PROCESS INITIAL COMMAND
-#===============================================================================
+# #===============================================================================
+# # PROCESS INITIAL COMMAND
+# #===============================================================================
 
 if [[ $1 == eval ]]
 then
@@ -82,16 +82,15 @@ else
   export HISTFILE="$XDG_DATA_HOME/zsh/history_osx"
 fi
 
-
 # Basic auto/tab complete:
 autoload -U compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
-mkdir -p "$XDG_CACHE_HOME/zsh" && rm -f "$XDG_CONFIG_HOME/zsh/.zcompdump"
-compinit -d "$XDG_CACHE_HOME/zsh/.zcompdump"
+compinit
+_comp_options+=(globdots)		# Include hidden files.
 
-# Include hidden files in autocomplete:
-_comp_options+=(globdots)
+# mkdir -p "$XDG_CACHE_HOME/zsh" && rm -f "$XDG_CONFIG_HOME/zsh/.zcompdump"
+# compinit -d "$XDG_CACHE_HOME/zsh/.zcompdump"
 
 #===============================================================================
 # VIM MODE
@@ -105,58 +104,63 @@ export KEYTIMEOUT=1
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
-#===============================================================================
-# KEYMAPPINGS
-#===============================================================================
+# #===============================================================================
+# # KEYMAPPINGS
+# #===============================================================================
 
-# # Change cursor shape for different vi modes.
-# function zle-keymap-select {
-#   if [[ ${KEYMAP} == vicmd ]] ||
-#      [[ $1 = 'block' ]]; then
-#     echo -ne '\e[1 q'
+# Change cursor shape for different vi modes.
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] ||
+     [[ $1 = 'block' ]]; then
+    echo -ne '\e[1 q'
 
-#   elif [[ ${KEYMAP} == main ]] ||
-#        [[ ${KEYMAP} == viins ]] ||
-#        [[ ${KEYMAP} = '' ]] ||
-#        [[ $1 = 'beam' ]]; then
-#     echo -ne '\e[5 q'
-#   fi
-# }
-# zle -N zle-keymap-select
-
-# zle-line-init() {
-#     zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-#     echo -ne "\e[5 q"
-# }
-# zle -N zle-line-init
-
-# # Use beam shape cursor on startup.
-# echo -ne '\e[5 q'
-# # Use beam shape cursor for each new prompt.
-# preexec() { echo -ne '\e[5 q' ;}
-
-# Use lf to switch directories and bind it to ctrl-o
-lfcd () {
-    tmp="$(mktemp)"
-    lf -last-dir-path="$tmp" "$@"
-    if [ -f "$tmp" ]; then
-        dir="$(cat "$tmp")"
-        rm -f "$tmp"
-        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
-    fi
+  elif [[ ${KEYMAP} == main ]] ||
+       [[ ${KEYMAP} == viins ]] ||
+       [[ ${KEYMAP} = '' ]] ||
+       [[ $1 = 'beam' ]]; then
+    echo -ne '\e[5 q'
+  fi
 }
-bindkey -s '^o' 'lfcd\n'
+zle -N zle-keymap-select
+echo -ne '\e[5 q' # Use beam shape cursor on startup.
 
-# turn CTRL+z into a toggle switch (buggy atm)
-# ctrlz() {
-#   if [[ $#BUFFER == 0 ]]; then
-#     fg >/dev/null 2>&1 && zle redisplay
-#   else
-#     zle push-input
-#   fi
+# Fix backspace bug when switching modes
+bindkey "^?" backward-delete-char
+
+
+# # zle-line-init() {
+# #     zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+# #     echo -ne "\e[5 q"
+# # }
+# # zle -N zle-line-init
+
+# # # Use beam shape cursor on startup.
+# # echo -ne '\e[5 q'
+# # # Use beam shape cursor for each new prompt.
+# # preexec() { echo -ne '\e[5 q' ;}
+
+# # Use lf to switch directories and bind it to ctrl-o
+# lfcd () {
+#     tmp="$(mktemp)"
+#     lf -last-dir-path="$tmp" "$@"
+#     if [ -f "$tmp" ]; then
+#         dir="$(cat "$tmp")"
+#         rm -f "$tmp"
+#         [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+#     fi
 # }
-# zle -N ctrlz
-# bindkey '^z' ctrlz
+# bindkey -s '^o' 'lfcd\n'
+
+# # turn CTRL+z into a toggle switch (buggy atm)
+# # ctrlz() {
+# #   if [[ $#BUFFER == 0 ]]; then
+# #     fg >/dev/null 2>&1 && zle redisplay
+# #   else
+# #     zle push-input
+# #   fi
+# # }
+# # zle -N ctrlz
+# # bindkey '^z' ctrlz
 
 #===============================================================================
 # LOAD EXTENSIONS
@@ -166,11 +170,11 @@ bindkey -s '^o' 'lfcd\n'
 if [ "$OSTYPE" = "linux-gnu" ]; then
   source $HOME/.local/src/zsh-autosuggestions/zsh-autosuggestions.zsh
   source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-  source /usr/share/autojump/autojump.zsh
+  # source /usr/share/autojump/autojump.zsh
 else
   source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
   source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-  source /usr/local/share/autojump/autojump.zsh
+  # source /usr/local/share/autojump/autojump.zsh
 fi
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
