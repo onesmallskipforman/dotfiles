@@ -1,9 +1,5 @@
 # Skipper's .zshenv
 
-# set go variables
-export GOROOT=/usr/local/go
-export GOPATH=$XDG_DATA_HOME/go
-
 # set terminal
 export TERMINAL="alacritty"
 export BROWSER="firefox"
@@ -18,6 +14,10 @@ export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
+
+# set go variables
+export GOROOT=/usr/local/go
+export GOPATH=$XDG_DATA_HOME/go
 
 # Designate Tools
 export EDITOR="/usr/local/bin/nvim" # editor

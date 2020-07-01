@@ -69,6 +69,9 @@ alt + {_,shift + }f
 alt + {r,x,y}
   bspc node @focused:/ {--rotate 90,--flip horizontal,--flip vertical}
 
+alt + {_,shift + }r
+  bspc node @focused:/ {--rotate 90,--rotate -90}
+
 #===============================================================================
 # OTHER CONTROLS
 #===============================================================================
