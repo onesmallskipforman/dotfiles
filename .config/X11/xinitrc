@@ -6,9 +6,6 @@
 # set configurations for native display
 [ -f ~/.local/bin/xrandr.py   ] && ~/.local/bin/xrandr.py 1 &>/dev/null
 
-# set keybinding hack for firefox
-[ -f ~/.config/xbindkeys/config ] && xbindkeys -f ~/.config/xbindkeys/config
-
 # set key remappings
 # [ -f ~/.config/X11/Xmodmap ] && xmodmap ~/.config/X11/Xmodmap
 
@@ -20,9 +17,6 @@ xsetroot -cursor_name left_ptr &
 
 # set wallpaper
 feh --bg-fill $HOME/.local/share/wallpapers/beams.jpeg &
-
-# set xbindkeys
-xbindkeys -f ~/.config/xbindkeys/config &
 
 # set compton for window opacity
 # compton --config $HOME/.config/compton/compton.conf &

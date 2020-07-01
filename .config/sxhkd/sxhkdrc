@@ -21,6 +21,9 @@ alt + w
 alt + c
   pgrep redshift &>/dev/null && killall redshift || redshift
 
+ctrl + shift + r
+  ~/.config/bspwm/bspwmrc; killall -q sxhkd; sxhkd
+
 #===============================================================================
 # FOCUS AND SWAP CONTROLS
 #===============================================================================
@@ -89,3 +92,11 @@ XF86MonBrightness{Up,Down}
 
 XF86KbdBrightness{Up,Down}
   light -s "sysfs/leds/smc::kbd_backlight" -{A,U} 5
+
+# Workaround for immutable firefox keybindings
+
+super + {f,c,v,a,t,w}
+  cmd.sh {f,c,v,a,t,w}
+
+super + shift + t
+  cmdshift.sh t
