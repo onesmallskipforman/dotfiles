@@ -1,56 +1,160 @@
 
+" Basics:
+syn on                          " recognize syntax by filename
+set ic                          " ignore case in search pattern
+set scs                         " override ignorecase if pattern has uppercase letters
+set nu rnu                      " line number, relative
+set mouse=a                     " allow for mouse in all modes (except hit enter prompt)
+set enc=utf-8                   " encoding
+set bg=dark                     " background color
+set cb+=unnamedplus             " Use system clipboard
+set is                          " incremental search (higlight while typing pattern)
+set nowrap                      " avoid line wrapping
+set noswf                       " don't use a swapfile
+set nobk                        " don't make file backups
+set udir=~/.config/nvim/undodir " directory for undo files
+set udf                         " automatically save history in undo file
+set bs=indent,eol,start         " set backspace functionality
+set cul                         " highlight cursor line
+set cuc                         " highlight cursor column
+set sb spr                      " have split and vsplit open at bottom and right, respectively
+
+" character limit indicator
+set cc=80                       " highlight column 80
+highlight ColorColumn ctermbg=0 guibg=lightgrey " not sure what this does yet
+
+" Tab
+set ts=2  " number of spaces in one tab
+set sts=2 " number of spaces in one tab in editing operations
+set sw=2  " number of spaces for ashifts and autoindents
+set et    " use spaces instead of tab character
+set si    " smart autoindenting on newlines
+
+" not really sure what these do yet
+" set tgc       " enables 24-bit RGB color
+" set nohls
+" set nosm
+" set wim=longest,list,full " Enable Autocompletion
+" set scrolloff=8
+" set cmdheight=2 " Give more space for displaying messages.
+" set shortmess+=c " Don't pass messages to |ins-completion-menu|.
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+" set updatetime=50
+
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'preservim/nerdtree'
-Plug 'morhetz/gruvbox' "
-Plug 'lervag/vimtex' " vim sync
-Plug 'junegunn/goyo.vim' " distraction-free writing
+  " interface
+  " ----------------------------------------------------------------------------
+    Plug 'vim-airline/vim-airline'                  " statusbar
+    Plug 'vim-airline/vim-airline-themes'           " airline statusbar themes
+    Plug 'junegunn/goyo.vim'                        " distraction-free mode
+    " Plug 'itchyny/lightline.vim'                   " lightline statusbar
+    " Plug 'junegunn/limelight.vim'                  " Hyperfocus on a range
+    " Plug 'preservim/nerdtree'                      " alternative file tree
+    " Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Nerdtree highlight
+    " Plug 'ryanoasis/vim-devicons'                  " Nerdtree Icons
+    " Plug 'voldikss/vim-floaterm'                   " floating builtin terminal
+    " Plug 'terryma/vim-multiple-cursors' " sublime/vscode -like multiple selection
 
-" Plug 'airblade/vim-gitgutter'
-" Plug 'christoomey/vim-tmux-navigator'
+  " colorschemes
+  " ----------------------------------------------------------------------------
+    Plug 'chriskempson/base16-vim' " base16color pack
+    Plug 'flazz/vim-colorschemes'  " color pack
+    Plug 'morhetz/gruvbox'
+    " Plug 'gruvbox-community/gruvbox'
+    " Plug 'sainnhe/gruvbox-material'
+    " Plug 'phanviet/vim-monokai-pro'
+    " Plug 'tomasiser/vim-code-dark'
+    " Plug 'sickill/vim-monokai'
+    " Plug 'erichdongubler/vim-sublime-monokai'
+    " Plug 'haya14busa/vim-keeppad'
+    " Plug 'erichain/vim-monokai-pro'
 
+  " git
+  " ----------------------------------------------------------------------------
+    " Plug 'jreybert/vimagit'       " git workflow in vim
+    " Plug 'tpope/vim-fugitive'     " git workflow in vim
+    " Plug 'airblade/vim-gitgutter' " git gutter info
 
-" Plug 'tpope/vim-fugitive'
-" Plug 'tpope/vim-surround'
-" Plug 'tpope/vim-repeat'
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-" Plug 'airblade/vim-gitgutter'
-" Plug 'tpope/vim-commentary'
+  " language support
+  " ----------------------------------------------------------------------------
+    " Plug 'neoclide/coc.nvim', {'branch': 'release'} " coc
+    " Plug 'sheerun/vim-polyglot'                     " massive language pack
+    " Plug 'vim-python/python-syntax'                 " python (in polyglot)
+    " Plug 'rust-lang/rust.vim'                       " rust (in polyglot)
+    " Plug 'mboughaba/i3config.vim'                   " i3 config (in polyglot)
+    " Plug 'baskerville/vim-sxhkdrc'                  " sxhkd (in polyglot)
+    " Plug 'kovetskiy/sxhkd-vim'                      " sxhkd
+    " Plug 'lervag/vimtex'                            " latex
 
-" Plug 'sickill/vim-monokai'
+  " search/find
+  " ----------------------------------------------------------------------------
+    " Plug 'ctrlpvim/ctrlp.vim' " Fuzzy find files
+    " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " install latest fzf
+    " Plug 'junegunn/fzf.vim' " fzf support
 
-" Plug 'erichdongubler/vim-sublime-monokai'
-" Plug 'itchyny/lightline.vim'
-" Plug 'junegunn/goyo.vim'
-" Plug 'haya14busa/vim-keeppad'
-" Plug 'erichain/vim-monokai-pro'
-" Plug 'phanviet/vim-monokai-pro'
-" Plug '/usr/local/opt/fzf'
+  " navigation
+  " ----------------------------------------------------------------------------
+    " Plug 'vifm/vifm.vim'                  " vifm for file picking
+    " Plug 'rbgrouleff/bclose.vim'          " lf dependency
+    " Plug 'ptzz/lf.vim'                    " lf integration (might not need this, check br dotfiles)
+    " Plug 'justinmk/vim-sneak'             " not really sure what this does
+    " Plug 'easymotion/vim-easymotion'      " not really sure what this does
+    " Plug 'christoomey/vim-tmux-navigator' " move between tmux banes and vim splits
+
+  " bracket management
+  " ----------------------------------------------------------------------------
+    " Plug 'tpope/vim-surround'   " easy tag switching
+    " Plug 'alvan/vim-closetag'   " close (X)HTML tags
+    " Plug 'frazrepo/vim-rainbow' " color brackets
+    " Plug 'luochen1990/rainbow'  " color brackets
+
+  " notetaking
+  " ----------------------------------------------------------------------------
+    " Plug 'vimwiki/vimwiki'      " notetaking
+    " Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} " markdown synced preview with browser
+    " Plug 'suan/vim-instant-markdown', {'for': 'markdown'}" Markdown Preview
+    " Plugin 'vim-pandoc/vim-pandoc' " pandoc integration
+    " Plug 'vim-pandoc/vim-pandoc-syntax' " pandoc syntax support
+
+  " display colors
+  " ----------------------------------------------------------------------------
+    " Plug 'ap/vim-css-color'       " color name highlighter
+    " Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " display colors in file
+
+  " misc
+  " ----------------------------------------------------------------------------
+    " Plug 'dhruvasagar/vim-table-mode' " table formatting
+    " Plug 'tpope/vim-commentary'   " comment stuff out
+    " Plug '/home/mpaulson/personal/vim-be-good' " ThePrimeagen games for vim practice
+    " Plug 'junegunn/vim-emoji'             " vim emojis
+    " Plug 'mbbill/undotree' " visualize undo history
+    " Plug 'vim-utils/vim-man' " view man pages in vim
+
+  " explore later (check links on these pages)
+  " ----------------------------------------------------------------------------
+    " vim-pandoc-after
+    " vim-pad
+    " Plug 'tpope/vim-repeat'
+
 call plug#end()
 
-" Compile document, be it groff/LaTeX/markdown/etc.
-map <leader>c :w! \| !compiler <c-r>%<CR>
-
-" Open corresponding .pdf/.html or preview
-map <leader>p :!opout <c-r>%<CR><CR>
 
 
+" " Compile document, be it groff/LaTeX/markdown/etc.
+" map <leader>c :w! \| !compiler <c-r>%<CR>
 
-nmap <C-n> :NERDTreeToggle<CR>
+" " Open corresponding .pdf/.html or preview
+" map <leader>p :!opout <c-r>%<CR><CR>
+
+
+
+" nmap <C-n> :NERDTreeToggle<CR>
 
 
 
 
 let g:gruvbox_contrast_dark = 'soft'
-set background=dark
+
 colorscheme gruvbox
-
-" colorscheme sublimemonokai
-
-
-
-
-
-set number
-set backspace=indent,eol,start
-" set rtp+=/usr/local/opt/fzf
