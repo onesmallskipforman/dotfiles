@@ -1,2 +1,0 @@
-set previewer ~/.config/lf/pv
-map i $~/.config/lf/pv.sh $f | less -R
