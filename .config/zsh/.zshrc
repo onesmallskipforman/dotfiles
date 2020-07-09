@@ -5,6 +5,12 @@
 # autojump - jump to directories with j or jc for child or jo to open in file manager
 # zsh-autosuggestions - Suggestions based on your history
 
+# base16 shell colors
+# BASE16_SHELL="$HOME/.local/src/base16-shell/"
+# [ -n "$PS1" ] && \
+#     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+#         eval "$("$BASE16_SHELL/profile_helper.sh")"
+
 # path vars for coreutils
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
@@ -14,6 +20,8 @@ export EDITOR="nvim"
 # rust env setup
 export PATH="/Users/skipper/.local/share/cargo/bin:$PATH"
 # source $CARGO_HOME/env
+
+export PATH="$HOME/.local/bin:$PATH"
 
 # # ROS
 # #[ -f /opt/ros/kinetic/setup.zsh ] && source /opt/ros/kinetic/setup.zsh
@@ -178,3 +186,5 @@ else
 fi
 
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+source /Users/skipper/.config/broot/launcher/bash/br

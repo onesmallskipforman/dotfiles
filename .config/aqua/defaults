@@ -120,19 +120,6 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticQuoteSubstitutionEnabled" -bool false
 
 #===============================================================================
-# SAFARI
-#===============================================================================
-
-# Set Safari’s home page to `about:blank` for faster loading
-defaults write com.apple.Safari HomePage -string "about:blank"
-
-# Show Safari’s bookmarks bar by default
-defaults write com.apple.Safari ShowFavoritesBar-v2 -bool true
-
-# Hide Safari’s sidebar in Top Sites
-defaults write com.apple.Safari ShowSidebarInTopSites -bool false
-
-#===============================================================================
 # SCREENSHOTS
 #===============================================================================
 

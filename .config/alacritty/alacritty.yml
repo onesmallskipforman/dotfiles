@@ -109,10 +109,10 @@ font:
     #   - (macOS) Menlo
     #   - (Linux) monospace
     #   - (Windows) Consolas
-    family: DejavuSansMono Nerd Font
+    family: Hack Nerd Font Mono
 
     # The `style` can be specified to pick a specific face.
-    #style: Regular
+    style: Regular
 
   # Bold font face
   #bold:
@@ -137,7 +137,7 @@ font:
     #style: Italic
 
   # Point size
-  size: 12.0
+  size: 13.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -168,49 +168,85 @@ font:
   # effect.
   use_thin_strokes: true
 
-# If `true`, bold text is drawn using the bright color variants.
-# draw_bold_text_with_bright_colors: true
-
-# color_start
-# /Users/skipper/.local/src/base16-alacritty/colors/base16-gruvbox-dark-soft.yml
-# Base16 Gruvbox dark, soft - alacritty color config
-# Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
+# BEGIN ACE
 colors:
-  # Default colors
   primary:
     background: '0x32302f'
     foreground: '0xd5c4a1'
-
-  # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
-    text: '0x32302f'
-    cursor: '0xd5c4a1'
-
-  # Normal colors
+    text:       '0x32302f'
+    cursor:     '0xd5c4a1'
   normal:
-    black:   '0x32302f'
-    red:     '0xfb4934'
-    green:   '0xb8bb26'
-    yellow:  '0xfabd2f'
-    blue:    '0x83a598'
-    magenta: '0xd3869b'
-    cyan:    '0x8ec07c'
-    white:   '0xd5c4a1'
-
-  # Bright colors
+    black:      '0x32302f'
+    red:        '0xfb4934'
+    green:      '0xb8bb26'
+    yellow:     '0xfabd2f'
+    blue:       '0x83a598'
+    magenta:    '0xd3869b'
+    cyan:       '0x8ec07c'
+    white:      '0xd5c4a1'
   bright:
-    black:   '0x665c54'
-    red:     '0xfe8019'
-    green:   '0x3c3836'
-    yellow:  '0x504945'
-    blue:    '0xbdae93'
-    magenta: '0xebdbb2'
-    cyan:    '0xd65d0e'
-    white:   '0xfbf1c7'
+    black:      '0x665c54'
+    red:        '0xfb4934'
+    green:      '0xb8bb26'
+    yellow:     '0xfabd2f'
+    blue:       '0x83a598'
+    magenta:    '0xd3869b'
+    cyan:       '0x8ec07c'
+    white:      '0xfbf1c7'
 
-draw_bold_text_with_bright_colors: false
+# END ACE
+
+
+# color_start
+# # /Users/skipper/.local/src/base16-alacritty/colors/base16-gruvbox-dark-soft-256.yml
+# # Base16 Gruvbox dark, soft 256 - alacritty color config
+# # Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
+# colors:
+#   # Default colors
+#   primary:
+#     background: '0x32302f'
+#     foreground: '0xd5c4a1'
+
+#   # Colors the cursor will use if `custom_cursor_colors` is true
+#   cursor:
+#     text: '0x32302f'
+#     cursor: '0xd5c4a1'
+
+#   # Normal colors
+#   normal:
+#     black:   '0x32302f'
+#     red:     '0xfb4934'
+#     green:   '0xb8bb26'
+#     yellow:  '0xfabd2f'
+#     blue:    '0x83a598'
+#     magenta: '0xd3869b'
+#     cyan:    '0x8ec07c'
+#     white:   '0xd5c4a1'
+
+#   # Bright colors
+#   bright:
+#     black:   '0x665c54'
+#     red:     '0xfb4934'
+#     green:   '0xb8bb26'
+#     yellow:  '0xfabd2f'
+#     blue:    '0x83a598'
+#     magenta: '0xd3869b'
+#     cyan:    '0x8ec07c'
+#     white:   '0xfbf1c7'
+
+#   indexed_colors:
+#     - { index: 16, color: '0xfe8019' }
+#     - { index: 17, color: '0xd65d0e' }
+#     - { index: 18, color: '0x3c3836' }
+#     - { index: 19, color: '0x504945' }
+#     - { index: 20, color: '0xbdae93' }
+#     - { index: 21, color: '0xebdbb2' }
 
 # color_end
+
+# If `true`, bold text is drawn using the bright color variants.
+draw_bold_text_with_bright_colors: false
 
 # Visual Bell
 #

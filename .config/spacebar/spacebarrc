@@ -1,0 +1,21 @@
+#!/bin/sh
+
+source ~/.cache/wal/colors.sh # load pywal environment variables
+
+# get colors from environment variables
+CBACK=$(echo $background | sed 's/#//')
+CFORE=$(echo $foreground | sed 's/#//')
+CACTV=$(echo $color3 | sed 's/#//')
+CNORM=$(echo $color1 | sed 's/#//')
+CINSE=$(echo $foreground | sed 's/#//')
+
+spacebar -m config text_font         "DejaVuSansMono Nerd Font Mono:Bold:12.0"
+spacebar -m config icon_font         "DejaVuSansMono Nerd Font Mono:Book:14.0"
+spacebar -m config background_color  0xff$CBACK
+spacebar -m config foreground_color  0xff$CFORE
+spacebar -m config space_icon_color  0xff$CNORM
+spacebar -m config space_icon_strip  1 2 3 4 5 6 7 8 9 10 # I II III IV V VI VII VIII IX X
+spacebar -m config power_icon_strip   
+spacebar -m config space_icon        
+spacebar -m config clock_icon        
+# spacebar -m config clock_format      "%d/%m/%y %R"

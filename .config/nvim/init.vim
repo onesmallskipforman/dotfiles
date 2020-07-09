@@ -8,18 +8,23 @@
     " Plug 'vim-airline/vim-airline-themes'           " airline statusbar themes
     Plug 'junegunn/goyo.vim'                        " distraction-free mode
     Plug 'itchyny/lightline.vim'                   " lightline statusbar
+    Plug 'mengelbrecht/lightline-bufferline'       " bufferline for lightline
     Plug 'preservim/nerdtree'                      " alternative file tree
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Nerdtree highlight
     Plug 'ryanoasis/vim-devicons'                  " Nerdtree Icons
     " Plug 'junegunn/limelight.vim'                  " Hyperfocus on a range
     " Plug 'voldikss/vim-floaterm'                   " floating builtin terminal
     " Plug 'terryma/vim-multiple-cursors' " sublime/vscode -like multiple selection
+    " Plug 'bling/vim-bufferline' " add buffer list to command bar
   " colorschemes
   " ----------------------------------------------------------------------------
+    Plug 'dylanaraps/wal.vim'
     Plug 'chriskempson/base16-vim' " base16color pack
     Plug 'flazz/vim-colorschemes'  " color pack
     Plug 'morhetz/gruvbox'
+    Plug 'patstockwell/vim-monokai-tasty'
     " Plug 'gruvbox-community/gruvbox'
+    Plug 'deviantfero/wpgtk.vim'
     " Plug 'sainnhe/gruvbox-material'
     " Plug 'phanviet/vim-monokai-pro'
     " Plug 'tomasiser/vim-code-dark'
@@ -98,6 +103,34 @@
 
   call plug#end()
 
+" gruvbox
+set termguicolors
+let g:gruvbox_contrast_dark = 'soft'
+let g:gruvbox_italic = 1
+colorscheme gruvbox
+
+" monokai
+" set termguicolors
+" let g:vim_monokai_tasty_italic = 1
+" colorscheme vim-monokai-tasty
+
+" wpgkt
+" colorscheme wpgtk
+
+" wal
+" colorscheme wal
+
+" theme-independent italics (currently not working)
+" let &t_ZH="\e[3m"
+" let &t_ZR="\e[23m"
+" highlight Comment cterm=italic
+
+" base16-shell setup
+" if filereadable(expand("~/.vimrc_background"))
+"   let base16colorspace=256
+"   source ~/.vimrc_background
+" endif
+
 " SETTINGS
 "==============================================================================
 
@@ -124,7 +157,9 @@
 
   " character limit indicator
   set cc=80                       " highlight column 80
-  highlight ColorColumn ctermbg=0 guibg=lightgrey " not sure what this does yet
+ " highlight ColorColumn ctermbg=8 ctermfg=7
+ " highlight CursorColumn ctermbg=8 ctermfg=7
+ " highlight CursorLine cterm=NONE ctermbg=8 ctermfg=7
 
   " Tab
   set ts=2  " number of spaces in one tab
@@ -170,6 +205,14 @@
   " noremap <C-l> :wincmd l<CR>
 
 
+  " up next;
+  " use numbers to reach tabs
+  " use leader g and leager semicolon to move buffers directional
+  " how do I switch buffer order?
+  " remove extra garbage from nerdtree statusline
+  " keybind to go to nerdtree split (and open it if it's not open)
+  " keybind to open and close nerdtree without focusing on the split
+
 " " Compile document, be it groff/LaTeX/markdown/etc.
 " map <leader>c :w! \| !compiler <c-r>%<CR>
 
@@ -178,13 +221,87 @@
 
 
 
+" set syntax for nonstandard filetypes
+autocmd BufNewFile,BufRead brewfile set syntax=ruby
+autocmd BufNewFile,BufRead aptfile set syntax=sh
+autocmd BufNewFile,BufRead skhdrc set syntax=sh
+autocmd BufNewFile,BufRead spacebarrc set syntax=sh
+
+
+
+
+
 " nmap <C-n> :NERDTreeToggle<CR>
+
+" airline settings
+"---------------------------------------------------
+  " let g:airline#extensions#bufferline#enabled = 1 " enable bufferline
+  " let g:airline#extensions#tabline#enabled = 1 " enable tabline
+  " let g:airline#extensions#tabline#formatter = 'unique_tail'
+  " let g:airline_left_sep=''
+  " let g:airline#extensions#tabline#show_close_button = 1
+
+" lightline settings
+"----------------------------------------------------
+  set noshowmode " no need for show mode with a statusline
+  let g:lightline = {
+    \ 'colorscheme': 'gruvbox',
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified' ] ]
+    \ },
+    \ 'tabline': {
+    \   'left': [ ['buffers'] ],
+    \   'right': [ ['close'] ]
+    \ },
+    \ 'component_expand': {
+    \   'buffers': 'lightline#bufferline#buffers'
+    \ },
+    \ 'component_type': {
+    \   'buffers': 'tabsel'
+    \ }
+    \ }
+
+  " separators
+   let g:lightline.separator = { 'left': "\ue0bc", 'right': "\ue0ba" }
+   let g:lightline.subseparator = { 'left': "\ue0b9", 'right': "\ue0bb" }
+
+  let g:lightline#bufferline#filename_modifier = ':t'
+
+
+  let g:lightline#bufferline#show_number  = 2
+  let g:lightline#bufferline#shorten_path = 0
+  let g:lightline#bufferline#unnamed      = 'untitled' " name for unnamed buffers
+
+
+  let g:lightline#bufferline#unicode_symbols=1 " fancier symbols
+
+
+  set showtabline=2 " always show tabline
+  let g:lightline#bufferline#min_buffer_count=0 " min buffers to show tabline (not sure how this plays with set showtabline)
+
+
+
+
+  let g:lightline#bufferline#enable_devicons=1 " enable devicons
+
+
+
+  " clickable buffer tabs
+  let g:lightline#bufferline#clickable=1
+  let g:lightline.component_raw = {'buffers': 1}
+
+
+
+
 
 
 " nerdtree settings
 "----------------------------------------------------
 let g:NERDTreeShowHidden=1 " show hidden files by default
-let g:NERDTreeMouseMode=3 " single click to open
+let g:NERDTreeMouseMode=3 " click to open
+
+" let g:NERDTreeStatusline = '%#NonText#' " customize status line for nerdtree
+
 
 " autocmd VimEnter */workspace/* NERDTree | wincmd p " when opening vim on a directory, open with nerdtree and go to main window
 " autocmd VimEnter * NERDTree | wincmd p " when opening vim on a directory, open with nerdtree and go to main window
@@ -194,9 +311,14 @@ let g:NERDTreeMouseMode=3 " single click to open
 " autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 " autocmd BufWinEnter * NERDTreeMirror " mirror tree in new buffers (and Im guessing tabs)
 
+let NERDTreeIgnore=['\.git$'] " ignore git folders
+
+
 " close buffer without closing window
 map <silent> <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
 
 
-let g:gruvbox_contrast_dark = 'soft'
-colorscheme gruvbox
+
+" " let base16colorspace=256
+" colorscheme base16-default-dark
+" colorscheme gruvbox
