@@ -3,3 +3,5 @@
 [user]
 	name = onesmallskipforman
 	email = sgonzalez@g.hmc.edu
+[pull]
+	rebase = false
