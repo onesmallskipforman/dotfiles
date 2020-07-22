@@ -126,8 +126,7 @@
 
   // Terminal
   "terminal.external.osxExec": "/Applications/Utilities/Terminal.app",
-  "terminal.integrated.fontFamily": "Menlo",
-  "terminal.integrated.fontWeightBold": "bold",
+  "terminal.integrated.fontWeightBold": "normal",
   "terminal.integrated.shell.osx": "/bin/zsh",
   "terminal.integrated.fontSize": 12,
   "terminal.integrated.cursorBlinking": true,

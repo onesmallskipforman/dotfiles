@@ -1,8 +1,9 @@
 # Skipper's .zshenv
 
-# set terminal
+# Designate Tools
 export TERMINAL="alacritty"
 export BROWSER="firefox"
+export EDITOR="nvim"
 
 # Set Path Variables
 export PATH="$PATH:$HOME/.local/bin"
@@ -18,19 +19,16 @@ export XDG_CACHE_HOME="$HOME/.cache"
 # set go variables
 export GOPATH=$XDG_DATA_HOME/go
 
-# Designate Tools
-export EDITOR="/usr/local/bin/nvim" # editor
+# configure fzf
+export FZF_DEFAULT_COMMAND='rg -uu -g "!*.{git,DS_Store}" --files'
 
 # ~/ Clean-up:
-export PKGDIR="$HOME/Projects/bootstrap/Packages"
-export APT_BUNDLE_FILE="$PKGDIR/aptfile"                    # apt
 export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME"/bundle         # ruby bundling
 export BUNDLE_USER_CACHE="$XDG_CACHE_HOME"/bundle           #
 export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME"/bundle           #
 export CARGO_HOME="$XDG_DATA_HOME"/cargo                    # Rust Cargo
 export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker              # docker
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"                     # gnupg
-export HOMEBREW_BUNDLE_FILE="$PKGDIR/brewfile"              # homebrew bundling
 export HOMEBREW_CASK_OPTS="--no-quarantine"                 #
 export HOMEBREW_BUNDLE_NO_LOCK=1                            #
 export IPYTHONDIR="$XDG_CONFIG_HOME"/jupyter                # ipython

@@ -5,7 +5,7 @@
 	"HttpHeaders": {
 		"User-Agent": "Docker-Client/19.03.8 (darwin)"
 	},
-	"credsStore": "osxkeychain",
+	"credsStore": "pass",
 	"experimental": "disabled",
 	"stackOrchestrator": "swarm"
 }

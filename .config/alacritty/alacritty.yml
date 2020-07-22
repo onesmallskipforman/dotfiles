@@ -137,7 +137,7 @@ font:
     #style: Italic
 
   # Point size
-  size: 13.0
+  size: 13.5
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -166,87 +166,75 @@ font:
   #
   # This is a global setting and will require a log out or restart to take
   # effect.
-  use_thin_strokes: true
+  use_thin_strokes: false
 
 # BEGIN ACE
-colors:
-  primary:
-    background: '0x32302f'
-    foreground: '0xd5c4a1'
-  cursor:
-    text:       '0x32302f'
-    cursor:     '0xd5c4a1'
-  normal:
-    black:      '0x32302f'
-    red:        '0xfb4934'
-    green:      '0xb8bb26'
-    yellow:     '0xfabd2f'
-    blue:       '0x83a598'
-    magenta:    '0xd3869b'
-    cyan:       '0x8ec07c'
-    white:      '0xd5c4a1'
-  bright:
-    black:      '0x665c54'
-    red:        '0xfb4934'
-    green:      '0xb8bb26'
-    yellow:     '0xfabd2f'
-    blue:       '0x83a598'
-    magenta:    '0xd3869b'
-    cyan:       '0x8ec07c'
-    white:      '0xfbf1c7'
+# colors:
+#   primary:
+#     background: '0x32302f'
+#     foreground: '0xd5c4a1'
+#   cursor:
+#     text:       '0x32302f'
+#     cursor:     '0xd5c4a1'
+#   normal:
+#     black:      '0x32302f'
+#     red:        '0xfb4934'
+#     green:      '0xb8bb26'
+#     yellow:     '0xfabd2f'
+#     blue:       '0x83a598'
+#     magenta:    '0xd3869b'
+#     cyan:       '0x8ec07c'
+#     white:      '0xd5c4a1'
+#   bright:
+#     black:      '0x665c54'
+#     red:        '0xfb4934'
+#     green:      '0xb8bb26'
+#     yellow:     '0xfabd2f'
+#     blue:       '0x83a598'
+#     magenta:    '0xd3869b'
+#     cyan:       '0x8ec07c'
+#     white:      '0xfbf1c7'
 
 # END ACE
 
 
 # color_start
-# # /Users/skipper/.local/src/base16-alacritty/colors/base16-gruvbox-dark-soft-256.yml
-# # Base16 Gruvbox dark, soft 256 - alacritty color config
-# # Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
-# colors:
-#   # Default colors
-#   primary:
-#     background: '0x32302f'
-#     foreground: '0xd5c4a1'
+# /Users/skipper/.local/src/alacritty-theme/themes/gruvbox_dark.yaml
+# Colors (Gruvbox dark)
+colors:
+  # Default colors
+  primary:
+    # hard contrast: background = '0x1d2021'
+    # background: '0x282828'
+    background: '0x32302f'
+    # soft contrast: background = '0x32302f'
+    foreground: '0xebdbb2'
 
-#   # Colors the cursor will use if `custom_cursor_colors` is true
-#   cursor:
-#     text: '0x32302f'
-#     cursor: '0xd5c4a1'
+  # Normal colors
+  normal:
+    black:   '0x282828'
+    red:     '0xcc241d'
+    green:   '0x98971a'
+    yellow:  '0xd79921'
+    blue:    '0x458588'
+    magenta: '0xb16286'
+    cyan:    '0x689d6a'
+    white:   '0xa89984'
 
-#   # Normal colors
-#   normal:
-#     black:   '0x32302f'
-#     red:     '0xfb4934'
-#     green:   '0xb8bb26'
-#     yellow:  '0xfabd2f'
-#     blue:    '0x83a598'
-#     magenta: '0xd3869b'
-#     cyan:    '0x8ec07c'
-#     white:   '0xd5c4a1'
-
-#   # Bright colors
-#   bright:
-#     black:   '0x665c54'
-#     red:     '0xfb4934'
-#     green:   '0xb8bb26'
-#     yellow:  '0xfabd2f'
-#     blue:    '0x83a598'
-#     magenta: '0xd3869b'
-#     cyan:    '0x8ec07c'
-#     white:   '0xfbf1c7'
-
-#   indexed_colors:
-#     - { index: 16, color: '0xfe8019' }
-#     - { index: 17, color: '0xd65d0e' }
-#     - { index: 18, color: '0x3c3836' }
-#     - { index: 19, color: '0x504945' }
-#     - { index: 20, color: '0xbdae93' }
-#     - { index: 21, color: '0xebdbb2' }
-
+  # Bright colors
+  bright:
+    black:   '0x928374'
+    red:     '0xfb4934'
+    green:   '0xb8bb26'
+    yellow:  '0xfabd2f'
+    blue:    '0x83a598'
+    magenta: '0xd3869b'
+    cyan:    '0x8ec07c'
+    white:   '0xebdbb2'
 # color_end
 
 # If `true`, bold text is drawn using the bright color variants.
-draw_bold_text_with_bright_colors: false
+draw_bold_text_with_bright_colors: true
 
 # Visual Bell
 #

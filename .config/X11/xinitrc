@@ -7,7 +7,7 @@
 [ -f ~/.local/bin/xrandr.py   ] && ~/.local/bin/xrandr.py 1 &>/dev/null
 
 # set key remappings
-# [ -f ~/.config/X11/Xmodmap ] && xmodmap ~/.config/X11/Xmodmap
+[ -f ~/.config/X11/Xmodmap ] && xmodmap ~/.config/X11/Xmodmap
 
 # start redshift
 redshift &
@@ -23,5 +23,4 @@ feh --bg-fill $HOME/.local/share/wallpapers/beams.jpeg &
 
 # start window manager
 sxhkd &
-exec bspwm
-# exec i3
+exec $XWM

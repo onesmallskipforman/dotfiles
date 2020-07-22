@@ -5,17 +5,12 @@
 # autojump - jump to directories with j or jc for child or jo to open in file manager
 # zsh-autosuggestions - Suggestions based on your history
 
-# base16 shell colors
-# BASE16_SHELL="$HOME/.local/src/base16-shell/"
-# [ -n "$PS1" ] && \
-#     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-#         eval "$("$BASE16_SHELL/profile_helper.sh")"
-
 # path vars for coreutils
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 export EDITOR="nvim"
+export XWM="bspwm" # window manager when using X windowing system
 
 # rust env setup
 export PATH="/Users/skipper/.local/share/cargo/bin:$PATH"
@@ -26,19 +21,15 @@ export PATH="$HOME/.local/bin:$PATH"
 # # ROS
 # #[ -f /opt/ros/kinetic/setup.zsh ] && source /opt/ros/kinetic/setup.zsh
 
-# #===============================================================================
-# # PROCESS INITIAL COMMAND
-# #===============================================================================
+#===============================================================================
+# PROCESS INITIAL COMMAND
+#===============================================================================
 
 if [[ $1 == eval ]]
 then
     "$@"
 set --
 fi
-
-function kssh() {
-  [ "$TERM" = "xterm-kitty" ] && kitty +kitten ssh $@ || ssh $@
-}
 
 #===============================================================================
 # ALIASES, SHORTCUTS, INPUTS
@@ -48,27 +39,16 @@ function kssh() {
 # [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 alias icat="kitty +kitten icat"
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
-alias ssh='kssh'
+alias ssh='kssh() {[ "$TERM" = "xterm-kitty" ] && kitty +kitten ssh $@ || ssh $@}; kssh'
 alias docker='docker info &> /dev/null || {docker_setup && eval $(docker-machine env default)} && docker'
 alias code='vscodeplugs; code'
-alias subl='pkgctrl_install; subl'
 alias quartus='/opt/altera/15.0/quartus/bin/quartus --64bin &>/dev/null & disown'
 alias modelsim='/opt/altera/15.0/modelsim_ase/linuxaloem/vsim &>/dev/null & disown'
-
+alias matlab='matlab -nosplash -nodesktop'
+alias simulink='matlab -r simulink' # start_simulink slLibraryBrowser
 #===============================================================================
 # PROMPT
 #===============================================================================
-
-# # Load version control information
-# autoload -Uz vcs_info
-# precmd () { vcs_info }
-
-# # Format the vcs_info_msg_0_ variable
-# zstyle ':vcs_info:git:*' formats ' - %b'
-
-# # allow for prompt variable substitution
-# setopt prompt_subst
-# export PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%1~\$vcs_info_msg_0_%{$fg[red]%}]%{$reset_color%}$%b "
 
 # prompt management
 autoload -U colors && colors
@@ -184,7 +164,3 @@ else
   source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   # source /usr/local/share/autojump/autojump.zsh
 fi
-
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-source /Users/skipper/.config/broot/launcher/bash/br

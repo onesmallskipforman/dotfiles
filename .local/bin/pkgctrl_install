@@ -1,9 +1,0 @@
-#!/bin/sh
-
-  # Sublime: Install Package Control
-  URL="https://packagecontrol.io/Package%20Control.sublime-package"
-  DIR="$XDG_CONFIG_HOME/sublime-text-3/Installed Packages"
-
-  [ ! -f "$DIR/Package Control.sublime-package" ] &&
-    wget --hsts-file="$XDG_CACHE_HOME/wget-hsts" "$URL" &&\
-    mv "Package Control.sublime-package" "$DIR"

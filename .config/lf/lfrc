@@ -1,0 +1,28 @@
+
+# Basics
+
+set preview true
+set previewer ~/.config/lf/scope
+set hidden true
+set drawbox true
+set icons true
+set ignorecase true
+set shell zsh
+set color256 true
+set period 1
+set scrolloff 10
+
+
+# Custom Functions
+cmd open ${{
+  case $(file --mime-type "$f" -bL) in
+    text/*) $EDITOR $fx;;
+    audio/*|video/*) mpv --audio-display=no $f -quiet &>/dev/null & disown ;;
+    image/*) feh $f ;;
+    application/pdf) zathura $f &>/dev/null & ;;
+  esac
+}}
+
+
+
+cmd mkdir $mkdir -p "$(echo $* | tr ' ' '\ ')"

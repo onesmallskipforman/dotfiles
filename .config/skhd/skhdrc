@@ -1,134 +1,129 @@
 
 # restart
-alt + shift - r     : source launch.sh; reset
+alt + ctrl + shift - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai" && skhd --reload
 
 #===============================================================================
-# LAUNCHERS
+# PROGRAM CONTROLS
 #===============================================================================
 
-# alt - return        : source launch.sh; launch_instance                                      # open terminal
-alt - return        : open -na Alacritty                                      # open terminal
+# opening and closing apps
+alt - return : open -na $TERMINAL
+alt - w : open -na $BROWSER
+alt - q : skhd --key "cmd - w"
 
-# alt + shift - b     : source launch.sh; battlestation                              # battlestation
-# alt + shift - s     : source launch.sh; showoff                                    # showoff
-alt - 0x27          : yabai -m window  --insert south && source launch.sh; launch_instance  # horz split and add terminal (apostrophe)
-alt - 0x2C          : yabai -m window  --insert east  && source launch.sh; launch_instance  # vert split and add terminal (forward slash)
-alt - b             : pgrep Übersicht &>/dev/null && killall Übersicht || open -a Übersicht # toggle bar...startup is a little slow
-alt - c             : pgrep redshift  &>/dev/null && killall redshift  || redshift          # toggle color temperature redshift
-alt - w             : open -na Firefox                                                      # open browser
-alt - q             : skhd --key "cmd - w"
+# insertion points
+alt - 0x27 : yabai -m window --insert south && open -na $TERMINAL # apostrophe
+alt - 0x2C : yabai -m window --insert east  && open -na $TERMINAL # fwd slash
+
+# program toggles
+alt - b : pgrep spacebar &>/dev/null && killall spacebar || spacebar
+alt - c : pgrep redshift &>/dev/null && killall redshift || redshift
+alt - m : last=$(cliclick p); cliclick m:0,0; yabai -m space --toggle mission-control; cliclick m:$last
 
 #===============================================================================
-# FOCUS CONTROLS
+# FOCUS AND SWAP CONTROLS
 #===============================================================================
 
-# focus window direction
-alt - h             : yabai -m window  --focus west || (yabai -m display --focus $(yabai -m query --displays --display | jq ".index - 1") && yabai -m window --focus last )
-alt - l             : yabai -m window  --focus east || (yabai -m display --focus $(yabai -m query --displays --display | jq ".index + 1") && yabai -m window --focus first)
-alt - j             : yabai -m window  --focus south
-alt - k             : yabai -m window  --focus north
+# focus window directional, shift to swap or move (if floating) directional
+alt - h : yabai -m window --focus west || (yabai -m display --focus prev && yabai -m window --focus last )
+alt - l : yabai -m window --focus east || (yabai -m display --focus next && yabai -m window --focus first)
+alt - j : yabai -m window --focus south
+alt - k : yabai -m window --focus north
+alt + shift - h : yabai -m window --swap west  || yabai -m window --move rel:-30:0
+alt + shift - l : yabai -m window --swap east  || yabai -m window --move rel:30:0
+alt + shift - j : yabai -m window --swap south || yabai -m window --move rel:0:30
+alt + shift - k : yabai -m window --swap north || yabai -m window --move rel:0:-30
 
-# focus space number
-alt - 1             : yabai -m space   --focus 1
-alt - 2             : yabai -m space   --focus 2
-alt - 3             : yabai -m space   --focus 3
-alt - 4             : yabai -m space   --focus 4
-alt - 5             : yabai -m space   --focus 5
-alt - 6             : yabai -m space   --focus 6
-alt - 7             : yabai -m space   --focus 7
-alt - 8             : yabai -m space   --focus 8
-alt - 9             : yabai -m space   --focus 9
-alt - 0             : yabai -m space   --focus 10
+# focus space number, shift to swap to space (with follow focus)
+alt - 1 : yabai -m space --focus 1
+alt - 2 : yabai -m space --focus 2
+alt - 3 : yabai -m space --focus 3
+alt - 4 : yabai -m space --focus 4
+alt - 5 : yabai -m space --focus 5
+alt - 6 : yabai -m space --focus 6
+alt - 7 : yabai -m space --focus 7
+alt - 8 : yabai -m space --focus 8
+alt - 9 : yabai -m space --focus 9
+alt - 0 : yabai -m space --focus 10
+alt + shift - 1 : yabai -m window --space 1  && yabai -m space --focus 1
+alt + shift - 2 : yabai -m window --space 2  && yabai -m space --focus 2
+alt + shift - 3 : yabai -m window --space 3  && yabai -m space --focus 3
+alt + shift - 4 : yabai -m window --space 4  && yabai -m space --focus 4
+alt + shift - 5 : yabai -m window --space 5  && yabai -m space --focus 5
+alt + shift - 6 : yabai -m window --space 6  && yabai -m space --focus 6
+alt + shift - 7 : yabai -m window --space 7  && yabai -m space --focus 7
+alt + shift - 8 : yabai -m window --space 8  && yabai -m space --focus 8
+alt + shift - 9 : yabai -m window --space 9  && yabai -m space --focus 9
+alt + shift - 0 : yabai -m window --space 10 && yabai -m space --focus 10
 
-# focus display number
-alt + ctrl - 1      : yabai -m display --focus 1
-alt + ctrl - 2      : yabai -m display --focus 2
-alt + ctrl - 3      : yabai -m display --focus 3
+# focus display number, shift to swap to display
+alt + ctrl - 1 : yabai -m display --focus 1
+alt + ctrl - 2 : yabai -m display --focus 2
+alt + ctrl - 3 : yabai -m display --focus 3
+alt + ctrl + shift - 1  : yabai -m window --displa 1
+alt + ctrl + shift - 2  : yabai -m window --display 2
+alt + ctrl + shift - 3  : yabai -m window --display 3
 
-# focus prev and next (semicolon) space
-alt - g             : yabai -m space   --focus prev
-alt - 0x29          : yabai -m space   --focus next
+# focus desktop directional
+alt - g    : yabai -m space   --focus prev
+alt - 0x29 : yabai -m space   --focus next # semicolon
 
 #===============================================================================
 # WINDOW MANIPULATION
 #===============================================================================
 
-# swap window direction or move window if floating
-alt + shift - h     : yabai -m window --swap west  || yabai -m window --move rel:-30:0
-alt + shift - l     : yabai -m window --swap east  || yabai -m window --move rel:30:0
-alt + shift - j     : yabai -m window --swap south || yabai -m window --move rel:0:30
-alt + shift - k     : yabai -m window --swap north || yabai -m window --move rel:0:-30
+# flip along x, shift for along y
+alt - x : yabai -m space --mirror x-axis
+alt + shift - x : yabai -m space --mirror y-axis
 
-# space window layout management
-alt - x             : yabai -m space  --mirror  x-axis               # flip tree along x
-alt - y             : yabai -m space  --mirror  y-axis               # flip tree along y
-alt - s             : yabai -m space  --gap     rel:20               # increase gap size
-alt + shift - s     : yabai -m space  --gap     rel:-20              # decrease gap size
-alt - z             : yabai -m space  --padding rel:20:20:20:20      # increase border padding
-alt + shift - z     : yabai -m space  --padding rel:-20:-20:-20:-20  # decrease border padding
-alt - f             : yabai -m window --toggle  zoom-fullscreen      # make window fullscreen
-alt - t             : yabai -m window --toggle  split                # toggle split
-alt - r             : yabai -m space  --rotate  90                   # rotate 90 degrees CCW
-alt + shift - space : yabai -m window --toggle  float                # toggle floating for window
+# increase gaps, shift to decrease
+alt - s : yabai -m space --gap rel:20
+alt + shift - s : yabai -m space --gap rel:-20
 
-# resize window in direction
-alt + shift - y     : yabai -m window --resize  left:-20:0  || yabai -m window --resize right:-20:0
-alt + shift - u     : yabai -m window --resize  bottom:0:20 || yabai -m window --resize top:0:20
-alt + shift - i     : yabai -m window --resize  top:0:-20   || yabai -m window --resize bottom:0:-20
-alt + shift - o     : yabai -m window --resize  right:20:0  || yabai -m window --resize left:20:0
+# increase border padding, shift to decrease
+alt - z : yabai -m space --padding rel:20:20:20:20
+alt + shift - z : yabai -m space --padding rel:-20:-20:-20:-20
 
-# move window to space and follow focus
-alt + shift - 1     : source launch.sh; windowToSpace_ff 1
-alt + shift - 2     : source launch.sh; windowToSpace_ff 2
-alt + shift - 3     : source launch.sh; windowToSpace_ff 3
-alt + shift - 4     : source launch.sh; windowToSpace_ff 4
-alt + shift - 5     : source launch.sh; windowToSpace_ff 5
-alt + shift - 6     : source launch.sh; windowToSpace_ff 6
-alt + shift - 7     : source launch.sh; windowToSpace_ff 7
-alt + shift - 8     : source launch.sh; windowToSpace_ff 8
-alt + shift - 9     : source launch.sh; windowToSpace_ff 9
-alt + shift - 0     : source launch.sh; windowToSpace_ff 10
+# rotate ccw 90, shift for cw 90
+alt - r : yabai -m space --rotate  90
+alt + shift - r : yabai -m space --rotate 270
 
-# alt + f : source launch.sh; swap_window first # swap current window with first
+# toggle fullscreen, shift for floating
+alt - f : yabai -m window --toggle zoom-fullscreen
+alt + shift - f : yabai -m window --toggle float
+
+# increase window size in direction, shift to decrease
+alt - y : yabai -m window --resize left:-20:0
+alt - u : yabai -m window --resize bottom:0:20
+alt - i : yabai -m window --resize top:0:-20
+alt - o : yabai -m window --resize right:20:0
+alt + shift - y : yabai -m window --resize right:-20:0
+alt + shift - u : yabai -m window --resize top:0:20
+alt + shift - i : yabai -m window --resize bottom:0:-20
+alt + shift - o : yabai -m window --resize left:20:0
 
 #===============================================================================
 # SPACE MOVEMENT
 #===============================================================================
 
-alt + ctrl - h      : yabai -m space --display prev         # move space to display
-alt + ctrl - l      : yabai -m space --display next
-alt + ctrl - j      : yabai -m space --display last
-alt + ctrl - k      : yabai -m space --display first
-alt - n             : yabai -m space --create               # create new space
-alt + shift - n     : source launch.sh; newspace_focus      # create new space and focus on it
-alt - d             : source launch.sh; destroyCurrentSpace # destroy current space
-alt +shift - d      : source launch.sh; clearEmptySpaces    # destroy current space
+# move space to display
+# alt + ctrl - h : yabai -m space --display prev
+# alt + ctrl - l : yabai -m space --display next
+# alt + ctrl - j : yabai -m space --display last
+# alt + ctrl - k : yabai -m space --display first
 
-#===============================================================================
-# MODES
-#===============================================================================
+# create new space, shift to follow focus
+alt - n : yabai -m space --create
+alt + shift - n : yabai -m space --create; yabai -m space --focus \
+                  "$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')"
 
-# mode definitions
-:: default          : source launch.sh; displaymode off
-:: DM               : source launch.sh; displaymode on
-:: MC
-
-# mode transitions
-alt + shift - a     ; DM
-ctrl - m            ; MC
-DM < alt + shift - a ; default
-MC < ctrl - m       ; default
-MC < alt  - m       : source launch.sh; mission_control
-alt - m             : source launch.sh; mission_control
-
-# go to space number while mission control is open
-MC < 1              : source launch.sh; focus_space_mc 1
-MC < 2              : source launch.sh; focus_space_mc 2
-MC < 3              : source launch.sh; focus_space_mc 3
-MC < 4              : source launch.sh; focus_space_mc 4
-MC < 5              : source launch.sh; focus_space_mc 5
-MC < 6              : source launch.sh; focus_space_mc 6
-MC < 7              : source launch.sh; focus_space_mc 7
-MC < 8              : source launch.sh; focus_space_mc 8
-MC < 9              : source launch.sh; focus_space_mc 9
-MC < 0              : source launch.sh; focus_space_mc 10
+# destroy space, shift for all empty spaces (reverse avoids shifting spaces)
+# note: windows in a destroyed space go to the first space on a display
+# alt - d : index=$(yabai -m query --spaces --space | jq '.index - 1');        \
+#           mindex=$(yabai -m query --spaces --display | jq '.[0].index - 1'); \
+#           yabai -m space --destroy;                                          \
+#           yabai -m space --focus "${index}";                                 \
+#           [ ! "$index" = "$mindex" ] && yabai -m space --focus "${index}"
+ alt + shift - d : yabai -m query --spaces | \
+                   jq 'map(select(.windows == []).index) | reverse | .[]' |\
+                   while read index; do yabai -m space "$index" --destroy; done

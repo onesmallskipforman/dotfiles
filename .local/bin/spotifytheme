@@ -1,7 +1,0 @@
-#!/bin/sh
-
-# choose a theme and apply
-ls ~/spicetify_data/Themes/ \
-  | fzf \
-  | xargs -I{} spicetify config current_theme {} \
-  && spicetify apply

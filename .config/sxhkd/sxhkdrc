@@ -1,3 +1,7 @@
+# restart
+ctrl + shift + r
+  ~/.config/bspwm/bspwmrc; killall -q sxhkd; sxhkd
+
 #===============================================================================
 # MONITORS
 #===============================================================================
@@ -9,34 +13,29 @@ alt + ctrl + shift + {1,2,3}
 # LAUNCHERS
 #===============================================================================
 
-alt + Return
-  $TERMINAL
-
+# opening and closing apps
+alt + {Return,w}
+  {$TERMINAL,$BROWSER}
 alt + {_,shift + }q
 	bspc node -{c,k}
 
-alt + w
-  $BROWSER
-
+# program toggles
 alt + c
   pgrep redshift &>/dev/null && killall redshift || redshift
-
-ctrl + shift + r
-  ~/.config/bspwm/bspwmrc; killall -q sxhkd; sxhkd
 
 #===============================================================================
 # FOCUS AND SWAP CONTROLS
 #===============================================================================
 
-# focus or swap to window direction
+# focus window directional, shift to swap or move (if floating) directional
 alt + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
-# focus or swap to desktop number
+# focus space number, shift to swap to space (with follow focus)
 alt + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} ^{1-9,10}
 
-# focus or swap to monitor number
+# focus display number, shift to swap to display
 alt + ctrl + {_,shift + }{1-3}
   bspc {monitor -f,node -m} ^{1-3}
 
@@ -48,8 +47,12 @@ alt + {g,semicolon}
 # WINDOW MANIPULATION
 #===============================================================================
 
+# flip along x, shift for along y
+alt + {_,shift +}x
+  bspc node @focused:/ {--flip horizontal,--flip vertical}
+
 # Increase/descrease gap size
-alt { ,+ shift }+ z
+alt + {_,shift +}z
 	bspc config window_gap $(($(bspc config window_gap) {+,-} 3))
 
 # set the window state
@@ -68,10 +71,7 @@ alt + {_,shift + }f
 alt + {_,shift + }f
 	bspc desktop -l next
 
-# rotate windows
-alt + {r,x,y}
-  bspc node @focused:/ {--rotate 90,--flip horizontal,--flip vertical}
-
+# rotate ccw 90, shift for cw 90
 alt + {_,shift + }r
   bspc node @focused:/ {--rotate 90,--rotate -90}
 
@@ -94,9 +94,18 @@ XF86KbdBrightness{Up,Down}
   light -s "sysfs/leds/smc::kbd_backlight" -{A,U} 5
 
 # Workaround for immutable firefox keybindings
-
 super + {f,c,v,a,t,w}
-  cmd.sh {f,c,v,a,t,w}
+  key={f,c,v,a,t,w}; \
+  W=$(xdotool getactivewindow); \
+  S1=$(xprop -id ${W} |awk '/WM_CLASS/{print $4}'); \
+  if [ $S1 != '"Firefox"' ] \
+  then xte "keyup ${key}" "keyup Super_L" "keydown Control_L" \
+           "key ${key}"                   "keyup Control_L" "keydown Super_L"; \
+  else xte "keyup ${key}" "keyup Super_L" "keydown Control_L" "keydown Shift_L" \
+           "key ${key}"   "keyup Shift_L" "keyup Control_L" "keydown Super_L"; \
+  fi
 
 super + shift + t
-  cmdshift.sh t
+  key={t}; \
+  xte "keyup ${key}" "keyup Super_L" "keydown Control_L" "key ${key}" \
+      "keyup Control_L" "keydown Super_L"
