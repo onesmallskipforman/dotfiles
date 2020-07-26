@@ -1,6 +1,6 @@
 
 let g:NERDTreeShowHidden=1 " show hidden files by default
-let g:NERDTreeMouseMode=3 " click to open
+let g:NERDTreeMouseMode=3 " signle click to open
 
 " let g:NERDTreeStatusline = '%#NonText#' " customize status line for nerdtree
 
@@ -27,5 +27,3 @@ let NERDTreeIgnore=['\.git$'] " ignore git folders
 
 
 " highlight! link NERDTreeDir
-
-

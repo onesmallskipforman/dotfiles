@@ -7,7 +7,7 @@ alt + ctrl + shift - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 #===============================================================================
 
 # opening and closing apps
-alt - return : open -na $TERMINAL
+cmd - return : open -na $TERMINAL
 alt - w : open -na $BROWSER
 alt - q : skhd --key "cmd - w"
 
@@ -60,7 +60,7 @@ alt + shift - 0 : yabai -m window --space 10 && yabai -m space --focus 10
 alt + ctrl - 1 : yabai -m display --focus 1
 alt + ctrl - 2 : yabai -m display --focus 2
 alt + ctrl - 3 : yabai -m display --focus 3
-alt + ctrl + shift - 1  : yabai -m window --displa 1
+alt + ctrl + shift - 1  : yabai -m window --display 1
 alt + ctrl + shift - 2  : yabai -m window --display 2
 alt + ctrl + shift - 3  : yabai -m window --display 3
 
@@ -90,6 +90,10 @@ alt + shift - r : yabai -m space --rotate 270
 
 # toggle fullscreen, shift for floating
 alt - f : yabai -m window --toggle zoom-fullscreen
+          #&& yabai -m window --toggle border \
+          #&& yabai -m space  --toggle gap && \
+#yabai -m space  --toggle padding
+
 alt + shift - f : yabai -m window --toggle float
 
 # increase window size in direction, shift to decrease

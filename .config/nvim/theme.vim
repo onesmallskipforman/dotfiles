@@ -3,6 +3,9 @@ colorscheme gruvbox
 " colorscheme vim-monokai-tasty
 " colorscheme wpgtk
 " colorscheme wal
+" colorscheme base16-gruvbox-dark-soft
+" colorscheme wal
+
 
 " conditional color settings
 if g:colors_name == "gruvbox"
@@ -17,12 +20,12 @@ if g:colors_name == "vim-monokai-tasty"
   let g:vim_monokai_tasty_italic = 1
 endif
 
-if g:colors_name == "base16-"
-  if filereadable(expand("~/.vimrc_background"))
-    let base16colorspace=256
-    source ~/.vimrc_background
-  endif
-endif
+" if g:colors_name == "base16-"
+"   if filereadable(expand("~/.vimrc_background"))
+"     let base16colorspace=256
+"     source ~/.vimrc_background
+"   endif
+" endif
 
 
 
@@ -30,4 +33,3 @@ endif
 " let &t_ZH="\e[3m"
 " let &t_ZR="\e[23m"
 " highlight Comment cterm=italic
-
