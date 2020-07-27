@@ -151,6 +151,8 @@ bindkey "^?" backward-delete-char
 # # zle -N ctrlz
 # # bindkey '^z' ctrlz
 
+clear; neofetch; figlet -n -w 150 -f roman 'Z-shell'; echo -e '\e[2A\e[K'
+
 #===============================================================================
 # LOAD EXTENSIONS
 #===============================================================================

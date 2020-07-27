@@ -1,6 +1,11 @@
 
 " set leader key
-let mapleader =" "   
+let mapleader =" "
+
+" allow for traversing wrapped lines without breaking vcount
+nnoremap <expr> j v:count ? 'j' : 'gj'
+nnoremap <expr> k v:count ? 'k' : 'gk'
+
 
 " split navigation
 map <silent> <C-h> <C-w>h
@@ -9,10 +14,10 @@ map <silent> <C-k> <C-w>k
 map <silent> <C-l> <C-w>l
 
 " split resize - waiting on fixing wm keybinds
-" nnoremap <silent> <M-h> :resize -2<CR>
-" nnoremap <silent> <M-j> :resize +2<CR>
-" nnoremap <silent> <M-k> :vertical resize -2<CR>
-" nnoremap <silent> <M-l> :vertical resize +2<CR>
+" map <silent> <C-h> :resize -2<CR>
+" map <silent> <C-j> :resize +2<CR>
+" map <silent> <C-k> :vertical resize -2<CR>
+" map <silent> <C-l> :vertical resize +2<CR>
 
 " " Compile document, be it groff/LaTeX/markdown/etc.
 " map <leader>c :w! \| !compiler <c-r>%<CR>
@@ -24,18 +29,18 @@ map <silent> <C-l> <C-w>l
 map <silent> <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
 
 " cycle through buffers
-nnoremap <silent> <TAB> :bnext<CR>
-nnoremap <silent> <S-TAB> :bprevious<CR>
+" nnoremap <silent> <TAB> :bnext<CR>
+" nnoremap <silent> <S-TAB> :bprevious<CR>
 
 " open init.vim
 map <leader>s :e $MYVIMRC<CR>
 
 " plugin-specific
-noremap  <leader>g  :Goyo<CR> 
-map      <leader>n  :NERDTreeToggle<CR> 
+noremap  <leader>g  :Goyo<CR>
+map      <leader>n  :NERDTreeToggle<CR>
 map      <leader>f  :Lines<CR>
 nnoremap <C-S-F>ps  :Rg<SPACE>
-nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR> 
+nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)

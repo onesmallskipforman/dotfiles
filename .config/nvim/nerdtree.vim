@@ -1,19 +1,27 @@
 
+
 let g:NERDTreeShowHidden=1 " show hidden files by default
-let g:NERDTreeMouseMode=3 " signle click to open
+let g:NERDTreeMouseMode=2 " double click to open
+
+" ignore git folders
+let NERDTreeIgnore=['\.git$']
+
 
 " let g:NERDTreeStatusline = '%#NonText#' " customize status line for nerdtree
 
 
-" autocmd VimEnter */workspace/* NERDTree | wincmd p " when opening vim on a directory, open with nerdtree and go to main window
 " autocmd VimEnter * NERDTree | wincmd p " when opening vim on a directory, open with nerdtree and go to main window
 
-" handle opening a directory. see README on nerdtree github
-" autocmd StdinReadPre * let s:std_in=1
-" autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
-" autocmd BufWinEnter * NERDTreeMirror " mirror tree in new buffers (and Im guessing tabs)
+" when running nvim on a directory, prevent NERDTree from hiding when first selecting a file
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | wincmd p | endif
 
-let NERDTreeIgnore=['\.git$'] " ignore git folders
+" TODO: get the above feature to work when opening a directory from vim-startify
+
+
+" quit if nerdtree is last and only buffer
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 
 
 " highlight! link NERDTreeDir NERDTreeFlags " set folder name color to be the same as file name color
@@ -24,6 +32,3 @@ let NERDTreeIgnore=['\.git$'] " ignore git folders
 " let g:NERDTreeDisablePatternMatchHighlight = 1
 " let g:NERDTreeHighlightCursorline = 0
 " let g:NERDTreeSyntaxEnabledExtensions = ['c', 'h', 'cpp', 'py', 'rb', 'sh'] " example
-
-
-" highlight! link NERDTreeDir

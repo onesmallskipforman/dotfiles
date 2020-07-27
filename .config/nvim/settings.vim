@@ -1,6 +1,6 @@
 " basics:
 
-" recognize syntax by filename
+" enable syntax, prevent weird re-sourcing once syntax is already on
 if !exists('g:syntax_on') | syntax enable | endif
 set encoding=utf-8              " encoding
 set background=dark             " background color
@@ -14,9 +14,9 @@ set incsearch                   " incremental search (higlight while typing patt
 
 " editor window
 set number relativenumber       " line number, relative (hybrid)
+set colorcolumn=80              " highlight column 80
 " set cursorline                  " highlight cursor line
 " set cursorcolumn                " highlight cursor column
-" set colorcolumn=80              " highlight column 80
 
 " line wrapping
 set nowrap                      " avoid line wrapping
@@ -25,6 +25,7 @@ set linebreak                   " when wrap is on, wrap at 'breakat' character
 " mouse settings
 " set mouse=a                     " allow for mouse in all modes (except hit enter prompt) " A LITTLE SLOW
 " map                             " use original scrolling
+" set scrolloff=8 sidescrolloff=8 " centering the cursor
 
 " backup media
 set noswapfile                  " don't use a swapfile
@@ -61,9 +62,12 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 
 " attempts to speed things up
-" set lazydraw
+" set lazyredraw
 " set updatetime=300
 
+
+
+" set noshowcmd " no more training wheels
 
 
 
@@ -71,9 +75,10 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " " Languages and Filetypes
 " "==============================================================================
 autocmd FileType text   setlocal wrap            " wrap for textfiles
-autocmd FileType python setlocal ts=2 sts=2 sw=2 " 2-space python tabs
+" autocmd FileType python setlocal ts=2 sts=2 sw=2 " 2-space python tabs
 autocmd TermOpen *      setlocal nonu nornu      " no nums in terminal
 autocmd TermOpen *      start                    " start insert in term
+" autocmd TermOpen *      setlocal termguicolors!  " don't let colorscheme effect terminal
 
 " " set syntax for nonstandard filetypes
 autocmd BufNewFile,BufRead brewfile set syntax=ruby
@@ -90,7 +95,6 @@ autocmd BufNewFile,BufRead lfrc     set syntax=zsh
 " set nohls
 " set nosm
 " set wim=longest,list,full " Enable Autocompletion
-" set scrolloff=8
 " set cmdheight=2 " Give more space for displaying messages.
 " set shortmess+=c " Don't pass messages to |ins-completion-menu|.
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable

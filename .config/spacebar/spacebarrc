@@ -10,7 +10,7 @@ CNORM=$(echo $color1 | sed 's/#//')
 CINSE=$(echo $foreground | sed 's/#//')
 
 spacebar -m config text_font         "Hack Nerd Font Mono:Regular:12.0"
-spacebar -m config icon_font         "Hack Nerd Font Mono:Regular:14.0"
+spacebar -m config icon_font         "Hack Nerd Font:Regular:14.0"
 spacebar -m config background_color  0xff$CBACK
 spacebar -m config foreground_color  0xff$CFORE
 spacebar -m config space_icon_color  0xff$CNORM
