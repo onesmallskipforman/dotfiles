@@ -339,5 +339,6 @@
 
   // Wolfram Language
 "wolfram.installationDirectory": "/Appplications/Mathematica.app",
-"python.languageServer": "Microsoft"
+"python.languageServer": "Microsoft",
+"explorer.confirmDragAndDrop": false
 }

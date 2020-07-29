@@ -1,26 +1,13 @@
-" Source Files
-source $HOME/.config/nvim/plugins.vim
-source $HOME/.config/nvim/theme.vim
-source $HOME/.config/nvim/startify.vim
-source $HOME/.config/nvim/settings.vim
-source $HOME/.config/nvim/lightline.vim
-source $HOME/.config/nvim/mappings.vim
-source $HOME/.config/nvim/devicons.vim
-source $HOME/.config/nvim/nerdtree.vim
-source $HOME/.config/nvim/rainbow.vim
-source $HOME/.config/nvim/coc.vim
-source $HOME/.config/nvim/codi.vim
-source $HOME/.config/nvim/fzf.vim
-" source $HOME/.config/nvim/nerdtree_syntax_highlight.vim " SLOW
-
-
-" start startify and nerdtree
-" autocmd VimEnter *
-"             \   if !argc()
-"             \ |   Startify
-"             \ |   NERDTree
-"             \ |   wincmd w
-"             \ | endif
-
-
-" Note: Something is slowing nvim statup very slightly
+source $HOME/.config/nvim/general/plugins.vim
+source $HOME/.config/nvim/general/theme.vim
+source $HOME/.config/nvim/general/settings.vim
+source $HOME/.config/nvim/general/mappings.vim
+source $HOME/.config/nvim/plugcfg/coc.vim
+source $HOME/.config/nvim/plugcfg/codi.vim
+source $HOME/.config/nvim/plugcfg/devicons.vim
+source $HOME/.config/nvim/plugcfg/fzf.vim
+source $HOME/.config/nvim/plugcfg/lightline.vim
+source $HOME/.config/nvim/plugcfg/nerdtree.vim
+source $HOME/.config/nvim/plugcfg/rainbow.vim
+source $HOME/.config/nvim/plugcfg/startify.vim
+" source $HOME/.config/nvim/plugcfg/nerdtree_syntax_highlight.vim " SLOW

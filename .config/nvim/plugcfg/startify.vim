@@ -56,3 +56,11 @@ let g:startify_custom_header =
 "   \"         `8.`8'          8 8888  ,8'       `8        `8.`8888.  ",
 "   \"          `8.`           8 8888 ,8'         `         `8.`8888. ",
 "   \]
+
+" start startify and nerdtree
+" autocmd VimEnter *
+"             \   if !argc()
+"             \ |   Startify
+"             \ |   NERDTree
+"             \ |   wincmd w
+"             \ | endif
