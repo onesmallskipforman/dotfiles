@@ -7,7 +7,11 @@ let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-vimlsp',
   \ 'coc-spell-checker',
+  \ 'coc-dictionary',
+  \ 'coc-word',
   \ ]
+
+" word and dictionary may be slowing things down
 
 
 " TextEdit might fail if hidden is not set.

@@ -1,0 +1,8 @@
+#!/bin/zsh
+
+msg=${1:-"Test"}
+for f in /usr/local/share/figlet/fonts/*.flf; do
+    font=$f:r:t
+    print "\n$font"
+    figlet -w 100 -f $font $msg
+done

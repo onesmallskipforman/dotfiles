@@ -14,7 +14,10 @@ let g:lightline = {
   \ },
   \ 'tabline': {
   \   'left': [ ['buffers'] ],
-  \   'right': [ [] ]
+  \   'right': [ ['close'] ]
+  \ },
+  \ 'component': {
+  \   'close': '%@LightlineCloseBuffer@ X %',
   \ },
   \ 'component_expand': {
   \   'buffers': 'lightline#bufferline#buffers'
@@ -28,10 +31,21 @@ let g:lightline = {
   \ }
   \ }
 
+" get that close button working
+function! LightlineCloseBuffer(...)
+  try
+    if &mod == 0 | bp | sp | bn | bd | else | bd | endif
+  catch
+    echohl ErrorMsg
+    echom v:exception
+    echohl None
+  endtry
+endfunction
+
 " coloring
-if g:colors_name == 'gruvbox'
+if get(g:, 'colors_name', 'default') == 'gruvbox'
   let g:lightline.colorscheme = 'gruvbox'
-elseif g:colors_name == 'vim-monokai-tasty'
+elseif get(g:, 'colors_name', 'default') == 'vim-monokai-tasty'
   let g:lightline.colorscheme = 'monokai_tasty'
 endif
 

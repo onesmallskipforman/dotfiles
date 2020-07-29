@@ -18,29 +18,27 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'junegunn/fzf.vim'                         " fzf support
   Plug 'mhinz/vim-startify'                       " fancy start screen
   Plug 'luochen1990/rainbow'                      " color brackets
-
-
-
   Plug 'metakirby5/codi.vim'                      " scratchpad
+  Plug 'neoclide/coc.nvim', {'branch': 'release'} " completions
+  Plug 'honza/vim-snippets'                       " snippets collection
+  Plug 'tpope/vim-commentary'                     " comment stuff out
+
+
+  " experimenting:
+
+
 
   " up next:
 
-  " become an IDE
-  Plug 'neoclide/coc.nvim', {'branch': 'release'} " completions
-  Plug 'honza/vim-snippets'                       " snippets collection
-
-
-
-  " comment stuff efficiently
-  " Plug 'tpope/vim-commentary'                     " comment stuff out
 
   " use lf in a floating terminal
   " Plug 'voldikss/vim-floaterm'                    " floating terminal
-
-
   " Plug 'junegunn/vim-easy-align'                  " align stuff
   " Plug 'tiagofumo/vim-nerdtree-syntax-highlight'  " Nerdtree highlight " SLOWS DOWN MOUSE OFF SCROLLING IN NERDTREE
   " Plug 'junegunn/limelight.vim'                   " Hyperfocus on a range
+  " Plug 'TaDaa/vimade'                             " fade inactive buffers - SLOW
+
+
 call plug#end()
 
 " Automatically install missing plugins on startup

@@ -25,14 +25,14 @@ alt - m : last=$(cliclick p); cliclick m:0,0; yabai -m space --toggle mission-co
 #===============================================================================
 
 # focus window directional, shift to swap or move (if floating) directional
-alt - h : yabai -m window --focus west || (yabai -m display --focus prev && yabai -m window --focus last )
-alt - l : yabai -m window --focus east || (yabai -m display --focus next && yabai -m window --focus first)
-alt - j : yabai -m window --focus south
-alt - k : yabai -m window --focus north
-alt + shift - h : yabai -m window --swap west  || yabai -m window --move rel:-30:0
-alt + shift - l : yabai -m window --swap east  || yabai -m window --move rel:30:0
-alt + shift - j : yabai -m window --swap south || yabai -m window --move rel:0:30
-alt + shift - k : yabai -m window --swap north || yabai -m window --move rel:0:-30
+cmd - h : yabai -m window --focus west || (yabai -m display --focus prev && yabai -m window --focus last )
+cmd - l : yabai -m window --focus east || (yabai -m display --focus next && yabai -m window --focus first)
+cmd - j : yabai -m window --focus south
+cmd - k : yabai -m window --focus north
+cmd + shift - h : yabai -m window --swap west  || yabai -m window --move rel:-30:0
+cmd + shift - l : yabai -m window --swap east  || yabai -m window --move rel:30:0
+cmd + shift - j : yabai -m window --swap south || yabai -m window --move rel:0:30
+cmd + shift - k : yabai -m window --swap north || yabai -m window --move rel:0:-30
 
 # focus space number, shift to swap to space (with follow focus)
 alt - 1 : yabai -m space --focus 1

@@ -1,5 +1,5 @@
 
-let g:startify_files_number = 6
+let g:startify_files_number = 5
 " let g:startify_change_to_vcs_root = 1 " inconsistent behavior
 let g:startify_fortune_use_unicode = 1
 
@@ -35,6 +35,9 @@ let g:startify_enable_special = 0
 " color stuff - finnicky atm. requires this file be sourced later
 " hi! link StartifyHeader NONE
 " highlight StartifyHeader  ctermfg=13 guifg=LightPurple
+
+" padding for header
+let g:startify_padding_left = 5
 
 " over-the-top (no pun intended) header
 let g:startify_custom_header =

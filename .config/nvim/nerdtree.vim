@@ -32,3 +32,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " let g:NERDTreeDisablePatternMatchHighlight = 1
 " let g:NERDTreeHighlightCursorline = 0
 " let g:NERDTreeSyntaxEnabledExtensions = ['c', 'h', 'cpp', 'py', 'rb', 'sh'] " example
+
+
+
+" highlight! link NERDTreeFlags NERDTreeDir
