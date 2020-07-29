@@ -20,9 +20,6 @@ let s:white       = "FFFFFF"
 let s:rspec_red   = 'FE405F'
 let s:git_orange  = 'F54D27'
 
-
-
-
 " Color unmatched folder and file icons having the same color as their labels
 " let g:WebDevIconsDisableDefaultFolderSymbolColorFromNERDTreeDir = 1
 " let g:WebDevIconsDisableDefaultFileSymbolColorFromNERDTreeFile = 1

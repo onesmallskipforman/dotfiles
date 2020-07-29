@@ -1,4 +1,3 @@
-
 " set leader key
 let mapleader =" "
 
@@ -53,9 +52,6 @@ nmap <Leader>8 <Plug>lightline#bufferline#go(8)
 nmap <Leader>9 <Plug>lightline#bufferline#go(9)
 nmap <Leader>0 <Plug>lightline#bufferline#go(10)
 
-
-
-
 " use arrow keys in command mode completions
 set wildcharm=<C-Z>
 cnoremap <expr> <up> wildmenumode() ? "\<left>" : "\<up>"
@@ -74,7 +70,6 @@ inoremap <C-k> <C-\><C-N><C-w>k
 inoremap <C-l> <C-\><C-N><C-w>l
 tnoremap <Esc> <C-\><C-n> " TODO: find replacement so you can still use zsh vi mode
 
-
 " comment stuff out with commentary
 nnoremap <silent> <space>/ :Commentary<CR>
 vnoremap <silent> <space>/ :Commentary<CR>gv
@@ -87,7 +82,6 @@ nnoremap <expr> <Down> (v:count == 0 ? 'gj' : '<Down>')
 " finnicky. flickers from quickly switching modes
 inoremap <expr> <Up>   (&wrap ? '<C-o>gk' : '<Up>')
 inoremap <expr> <Down> (&wrap ? '<C-o>gj' : '<Down>')
-
 
 " move text up/down a line
 nnoremap <A-Down> :m .+1<CR>==
@@ -103,10 +97,6 @@ vnoremap <A-Up>   :m '<-2<CR>gv=gv
 " keep visual selection after indent
 vnoremap < <gv
 vnoremap > >gv
-
-
-
-
 
 " " Compile document, be it groff/LaTeX/markdown/etc.
 " map <leader>c :w! \| !compiler <c-r>%<CR>

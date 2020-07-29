@@ -27,12 +27,7 @@ let g:startify_bookmarks = [
 " don't show options for empty buffer and quit (they still work, though)
 let g:startify_enable_special = 0
 
-" I don't know what sessions are/do yet.
-" let g:startify_session_dir = '~/.config/nvim/session'
-" let g:startify_session_delete_buffers = 1
-" let g:startify_session_persistence = 1
-
-" color stuff - finnicky atm. requires this file be sourced later
+" color stuff - requires this file be sourced after colorscheme set
 " hi! link StartifyHeader NONE
 " highlight StartifyHeader  ctermfg=13 guifg=LightPurple
 

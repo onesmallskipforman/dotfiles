@@ -1,6 +1,4 @@
-
-
-" extensions to install (maybe switch to using vim plug)
+" extensions to install
 let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-python',
@@ -10,9 +8,6 @@ let g:coc_global_extensions = [
   \ 'coc-dictionary',
   \ 'coc-word',
   \ ]
-
-" word and dictionary may be slowing things down
-
 
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -168,11 +163,5 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-
-
-
-
-
-
-
+" coc-snippets keymaps
 imap <C-l> <Plug>(coc-snippets-expand)
