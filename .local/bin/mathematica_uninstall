@@ -1,6 +1,6 @@
 #!/bin/sh
 
-rm -rf "/Applications/Mathematica"
+rm -rf "/Applications/Mathematica.app"
 rm -rf ~/"Library/Wolfram/"
 rm -rf ~/"Library/Mathematica/"
 rm -rf ~/"Library/Application Support/Wolfram/"
