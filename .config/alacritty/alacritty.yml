@@ -35,11 +35,11 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 10
-    y: 10
+    x: 5
+    y: 5
 
   # Spread additional padding evenly around the terminal content.
-  dynamic_padding: false
+  dynamic_padding: true
 
   # Window decorations
   #
@@ -76,7 +76,7 @@ scrolling:
 
   # Number of lines the viewport will move for every line scrolled when
   # scrollback is enabled (history > 0).
-  multiplier: 3
+  # multiplier: 1
 
   # Faux Scrolling
   #

@@ -1,8 +1,13 @@
-#!/bin/zsh
+#!/bin/sh
 
 msg=${1:-"Test"}
-for f in /usr/local/share/figlet/fonts/*.flf; do
-    font=$f:r:t
-    print "\n$font"
-    figlet -w 100 -f $font $msg
-done
+# for f in {/usr/local/share/figlet/fonts,$HOME/.local/src/figlet-fonts}/*.flf; do
+#   echo "$f"
+#   figlet -w 100 -f "$f" "$msg"
+# done
+
+ls {/usr/local/share/figlet/fonts,$HOME/.local/src/figlet-fonts}/*.flf \
+  | fzf --with-nth -1 -d / --preview "figlet -w 100 -f {} $msg"
+
+#!/bin/zsh
+# /usr/local/share/figlet/fonts/**/*.flf | fzf --with-nth -1 -d / --preview 'figlet -f {} abc'

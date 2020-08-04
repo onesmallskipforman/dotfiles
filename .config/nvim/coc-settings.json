@@ -1,7 +1,10 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": ["html", "yaml",  "json"],
+  "coc.preferences.formatOnSaveFiletypes": [
+    "html",
+    "yaml",
+    "json"
+  ],
   "coc.preferences.hoverTarget": "float",
-
   // python config
   "python.pythonPath": "/usr/local/bin/python3",
   "python.jediEnabled": false,
@@ -10,11 +13,9 @@
   "python.linting.pylintPath": "/usr/local/bin/pylint",
   "python.formatting.autopep8Path": "/usr/local/bin/autopep8",
   "python.jediPath": "/usr/local/lib/python3.8/site-packages",
-
-  "snippets.ultisnips.directories":
-  [
+  "coc.source.file.ignoreHidden": false,
+  "snippets.ultisnips.directories": [
     "UltiSnips",
     "~/.config/nvim/utils/snips"
   ]
-
 }

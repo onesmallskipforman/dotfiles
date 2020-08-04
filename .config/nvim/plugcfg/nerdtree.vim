@@ -20,3 +20,51 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 
 " quit if nerdtree is last and only buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" ensure files and other buffers no opened on nerdtree split
+
+" prevent buffers opened while focused on NT from populating NT's split
+au BufEnter * :call Nerdbufhandler()
+function! Nerdbufhandler()
+  if bufname('#') =~ 'NERD_tree' && bufname('%') !~ 'NERD_tree' && winnr('$') > 1
+    let l:lastb = bufnr('%') | b#
+    exe "normal! \<c-w>\<c-p>"
+    execute ':b ' l:lastb | endif
+endfunction
+
+" needed for to avoid crashes when calling vim-plug functions while the cursor is on the NERDTree window
+let g:plug_window = 'noautocmd vertical topleft new'
+
+
+
+" " nerdtree_syntax_highlight settings
+
+" " let g:WebDevIconsDisableDefaultFolderSymbolColorFromNERDTreeDir = 1
+" " let g:NERDTreeFileExtensionHighlightFullName = 1
+
+" let s:brown       = "905532"
+" let s:aqua        = "3AFFDB"
+" let s:blue        = "689FB6"
+" let s:darkBlue    = "44788E"
+" let s:purple      = "834F79"
+" let s:lightPurple = "834F79"
+" let s:red         = "AE403F"
+" let s:beige       = "F5C06F"
+" let s:yellow      = "F09F17"
+" let s:orange      = "D4843E"
+" let s:darkOrange  = "F16529"
+" let s:pink        = "CB6F6F"
+" let s:salmon      = "EE6E73"
+" let s:green       = "8FAA54"
+" let s:lightGreen  = "31B53E"
+" let s:white       = "FFFFFF"
+" let s:rspec_red   = 'FE405F'
+" let s:git_orange  = 'F54D27'
+
+" " Color unmatched folder and file icons having the same color as their labels
+" " let g:WebDevIconsDisableDefaultFolderSymbolColorFromNERDTreeDir = 1
+" " let g:WebDevIconsDisableDefaultFileSymbolColorFromNERDTreeFile = 1
+
+" " Disable unmatched folder and file icons having the same color as their labels
+" let g:WebDevIconsDefaultFolderSymbolColor = s:beige
+" let g:WebDevIconsDefaultFileSymbolColor = s:blue

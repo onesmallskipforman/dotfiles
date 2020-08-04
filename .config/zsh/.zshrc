@@ -11,7 +11,6 @@ export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 export EDITOR="nvim"
 export XWM="bspwm" # window manager when using X windowing system
-export COLORTERM="truecolor"
 
 # rust env setup
 export PATH="/Users/skipper/.local/share/cargo/bin:$PATH"

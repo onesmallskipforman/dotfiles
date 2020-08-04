@@ -12,33 +12,74 @@ map <silent> <C-k> <C-w>k
 map <silent> <C-l> <C-w>l
 
 " split resize
-map <silent> <C-Up> :resize -2<CR>
-map <silent> <C-Down> :resize +2<CR>
-map <silent> <C-Left> :vertical resize -2<CR>
+map <silent> <C-Up>    :resize -2<CR>
+map <silent> <C-Down>  :resize +2<CR>
+map <silent> <C-Left>  :vertical resize -2<CR>
 map <silent> <C-Right> :vertical resize +2<CR>
 
-" close buffer without closing window
-map <silent><expr> <leader>qq &mod == 0 ? ':bp<bar>sp<bar>bn<bar>bd<CR>' : ':bd<CR>'
 
 " cycle through buffers
-nnoremap <silent> <TAB> :bnext<CR>
+nnoremap <silent> <TAB>   :bnext<CR>
 nnoremap <silent> <S-TAB> :bprevious<CR>
 
 " open init.vim
 nnoremap <silent> <leader>. :e $MYVIMRC<CR>
 
+
+
+" Terminal window navigation
+tnoremap <C-h> <C-\><C-N><C-w>h
+tnoremap <C-j> <C-\><C-N><C-w>j
+tnoremap <C-k> <C-\><C-N><C-w>k
+tnoremap <C-l> <C-\><C-N><C-w>l
+inoremap <C-h> <C-\><C-N><C-w>h
+inoremap <C-j> <C-\><C-N><C-w>j
+inoremap <C-k> <C-\><C-N><C-w>k
+inoremap <C-l> <C-\><C-N><C-w>l
+tnoremap <Esc> <C-\><C-n>
+" TODO: find replacement so you can still use zsh vi mode
+
+
+
+
+" function for quitting buffer
+function! s:quit()
+  if (&mod == 0)
+    bp | sp | bn | bd
+  else
+    bd
+  endif
+endfunction
+
 " plugin-specific
-noremap  <leader>g  :Goyo<CR>
-map      <leader>n  :NERDTreeToggle<CR>
-map      <leader>f  :Lines<CR>
-nnoremap <C-S-F>ps  :Rg<SPACE>
-nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
+noremap <silent> <leader>g :Goyo<CR>
+noremap <silent> <leader>n :NERDTreeToggle<CR>
+noremap <silent> <leader>l :Lines<CR>
+noremap <silent> <leader>f :Files<CR>
 
-" " Start interactive EasyAlign in visual mode (e.g. vipga)
-" xmap ga <Plug>(EasyAlign)
+nnoremap <leader>w :update<CR>
+" inoremap <C-W> <C-\><C-N>:update<cr>gi
 
-" " Start interactive EasyAlign for a motion/text object (e.g. gaip)
-" nmap ga <Plug>(EasyAlign)
+
+
+
+
+
+
+noremap <silent> <leader>t :Rg<CR>
+noremap <silent> <leader>, :Startify<CR>
+noremap <silent> <leader>q :call <SID>quit()<CR>
+
+
+
+
+noremap <silent> <C-_> :nohlsearch<CR>
+" noremap <silent> <S-?> :let @/ = ""<CR>
+" noremap <silent> <C-_> :let @/ = ""<CR>
+
+
+
+
 
 " navigating buffline
 nmap <Leader>1 <Plug>lightline#bufferline#go(1)
@@ -54,25 +95,15 @@ nmap <Leader>0 <Plug>lightline#bufferline#go(10)
 
 " use arrow keys in command mode completions
 set wildcharm=<C-Z>
-cnoremap <expr> <up> wildmenumode() ? "\<left>" : "\<up>"
-cnoremap <expr> <down> wildmenumode() ? "\<right>" : "\<down>"
-cnoremap <expr> <left> wildmenumode() ? "\<up>" : "\<left>"
+cnoremap <expr> <up>    wildmenumode() ? "\<left>" : "\<up>"
+cnoremap <expr> <down>  wildmenumode() ? "\<right>" : "\<down>"
+cnoremap <expr> <left>  wildmenumode() ? "\<up>" : "\<left>"
 cnoremap <expr> <right> wildmenumode() ? " \<bs>\<C-Z>" : "\<right>"
-
-" Terminal window navigation
-tnoremap <C-h> <C-\><C-N><C-w>h
-tnoremap <C-j> <C-\><C-N><C-w>j
-tnoremap <C-k> <C-\><C-N><C-w>k
-tnoremap <C-l> <C-\><C-N><C-w>l
-inoremap <C-h> <C-\><C-N><C-w>h
-inoremap <C-j> <C-\><C-N><C-w>j
-inoremap <C-k> <C-\><C-N><C-w>k
-inoremap <C-l> <C-\><C-N><C-w>l
-tnoremap <Esc> <C-\><C-n> " TODO: find replacement so you can still use zsh vi mode
 
 " comment stuff out with commentary
 nnoremap <silent> <space>/ :Commentary<CR>
 vnoremap <silent> <space>/ :Commentary<CR>gv
+" noremap  <silent> <M-/> <Esc>:Commentary<CR>gi
 
 " move cursor through soft-wrapped lines
 nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
@@ -103,3 +134,14 @@ vnoremap > >gv
 
 " " Open corresponding .pdf/.html or preview
 " map <leader>p :!opout <c-r>%<CR><CR>
+
+
+" more discreet scrolling - inconsistent on successive scrolls
+" map <ScrollWheelUp> <C-Y>
+
+" " Start interactive EasyAlign in visual mode (e.g. vipga)
+" xmap ga <Plug>(EasyAlign)
+
+" " Start interactive EasyAlign for a motion/text object (e.g. gaip)
+" nmap ga <Plug>(EasyAlign)
+" map <ScrollWheelDown> <C-E>

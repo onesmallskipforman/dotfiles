@@ -2,6 +2,6 @@
 	helper = store --file=$HOME/.local/share/git/git-credentials
 [user]
 	name = onesmallskipforman
-	email = sgonzalez@g.hmc.edu
+	email = skipper.gonzalez@icloud.com
 [pull]
 	rebase = false

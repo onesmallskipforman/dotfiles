@@ -131,3 +131,8 @@ alt + shift - n : yabai -m space --create; yabai -m space --focus \
  alt + shift - d : yabai -m query --spaces | \
                    jq 'map(select(.windows == []).index) | reverse | .[]' |\
                    while read index; do yabai -m space "$index" --destroy; done
+
+
+
+
+

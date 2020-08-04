@@ -3,5 +3,5 @@
 # choose a theme and apply
 ls ~/.local/src/{base16-kitty/colors,kitty-themes/themes}/* \
   | fzf --with-nth -1 -d / \
-  | xargs -I{} cp -f ~/.config/kitty/themes/{} ~/.config/kitty/theme.conf \
-  && kitty @ --to unix:/tmp/mykitty set-colors -a ~/.config/kitty/theme.conf
+  | xargs -I{} cp -f {} ~/.config/kitty/theme.conf \
+  && kitty @ set-colors -a "~/.config/kitty/theme.conf"
