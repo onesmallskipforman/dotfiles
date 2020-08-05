@@ -25,19 +25,10 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'voldikss/vim-floaterm'                        " floating terminal
   Plug 'yuttie/comfortable-motion.vim'                " inertial scrolling
   Plug 'mg979/vim-visual-multi', {'branch': 'master'} " multiple cursors
-
-
-
-
   " Plug 'junegunn/vim-easy-align'                  " align stuff
-  " Plug 'tiagofumo/vim-nerdtree-syntax-highlight'  " Nerdtree highlight - SLOW
   " Plug 'junegunn/limelight.vim'                   " Hyperfocus on a range
+  " Plug 'tiagofumo/vim-nerdtree-syntax-highlight'  " Nerdtree highlight - SLOW
   " Plug 'TaDaa/vimade'                             " fade inactive buffers - SLOW
-
-
-
-
-
   " Plug 'dylanaraps/wal.vim'                       " pywal color scheme
   " Plug 'Yggdroot/indentLine'                          " show indentation marks
   " Plug 'lukas-reineke/indent-blankline.nvim'          " empty line indent mark

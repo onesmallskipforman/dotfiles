@@ -27,5 +27,5 @@ case "$1" in
     #*.7z) 7z l "$1";;
     #*.html|*.xml) w3m -dump "$1";;
     #*.zsh*|*.bash*|*.git*) pistol "$1";;
-    *) bat "$1" --color always --theme "Monokai Extended Origin" # highlight "$1" -O truecolor --force;;
+    *) bat "$1";;
 esac

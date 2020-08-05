@@ -41,9 +41,9 @@ set nobackup                    " don't make file backups
 set udir=~/.config/nvim/undodir " directory for undo files
 set undofile                    " automatically save history in undo file
 set signcolumn=yes              " provide room for lint column
-set cmdheight=2   " Give more space for displaying messages.
-set nowritebackup " Some servers have issues with backup files, see #649.
-set shortmess+=c  " Don't pass messages to |ins-completion-menu|.
+set cmdheight=1                 " Give more space for displaying messages.
+set nowritebackup               " Servers can have backup file issues, coc #649
+set shortmess+=c                " Don't pass messages to |ins-completion-menu|.
 
 " context-specific settings
 autocmd FileType *        setlocal fo-=c fo-=r fo-=o " prevent newline autocomment
