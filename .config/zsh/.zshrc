@@ -1,51 +1,5 @@
 # Skipper's .zshrc
 
-# Dependancies You Need for this Config
-# zsh-syntax-highlighting - syntax highlighting for ZSH in standard repos
-# autojump - jump to directories with j or jc for child or jo to open in file manager
-# zsh-autosuggestions - Suggestions based on your history
-
-# path vars for coreutils
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
-export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-export EDITOR="nvim"
-export XWM="bspwm" # window manager when using X windowing system
-
-# rust env setup
-export PATH="/Users/skipper/.local/share/cargo/bin:$PATH"
-# source $CARGO_HOME/env
-
-export PATH="$HOME/.local/bin:$PATH"
-
-# # ROS
-# #[ -f /opt/ros/kinetic/setup.zsh ] && source /opt/ros/kinetic/setup.zsh
-
-#===============================================================================
-# PROCESS INITIAL COMMAND
-#===============================================================================
-
-if [[ $1 == eval ]]
-then
-    "$@"
-set --
-fi
-
-#===============================================================================
-# ALIASES, SHORTCUTS, INPUTS
-#===============================================================================
-
-# aliases
-# [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
-alias icat="kitty +kitten icat"
-alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
-alias ssh='kssh() {[ "$TERM" = "xterm-kitty" ] && kitty +kitten ssh $@ || ssh $@}; kssh'
-alias docker='docker info &> /dev/null || {docker_setup && eval $(docker-machine env default)} && docker'
-alias code='vscodeplugs; code'
-alias quartus='/opt/altera/15.0/quartus/bin/quartus --64bin &>/dev/null & disown'
-alias modelsim='/opt/altera/15.0/modelsim_ase/linuxaloem/vsim &>/dev/null & disown'
-alias matlab='matlab -nosplash -nodesktop'
-alias simulink='matlab -r simulink' # start_simulink slLibraryBrowser
 #===============================================================================
 # PROMPT
 #===============================================================================
@@ -63,12 +17,7 @@ export PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg
 # History in cache directory:
 HISTSIZE=10000
 SAVEHIST=10000
-
-if [ "$OSTYPE" = "linux-gnu" ]; then
-  export HISTFILE="$XDG_DATA_HOME/zsh/history_ubuntu"
-else
-  export HISTFILE="$XDG_DATA_HOME/zsh/history_osx"
-fi
+HISTFILE=~/.cache/zsh/history
 
 # Basic auto/tab complete:
 autoload -U compinit
@@ -77,11 +26,11 @@ zmodload zsh/complist
 compinit
 _comp_options+=(globdots)		# Include hidden files.
 
-# mkdir -p "$XDG_CACHE_HOME/zsh" && rm -f "$XDG_CONFIG_HOME/zsh/.zcompdump"
-# compinit -d "$XDG_CACHE_HOME/zsh/.zcompdump"
+# Auto complete with case insenstivity
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 #===============================================================================
-# VIM MODE
+# KEYMAPPINGS
 #===============================================================================
 
 # vi mode
@@ -92,16 +41,11 @@ export KEYTIMEOUT=1
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
-# #===============================================================================
-# # KEYMAPPINGS
-# #===============================================================================
-
 # Change cursor shape for different vi modes.
 function zle-keymap-select {
   if [[ ${KEYMAP} == vicmd ]] ||
      [[ $1 = 'block' ]]; then
     echo -ne '\e[1 q'
-
   elif [[ ${KEYMAP} == main ]] ||
        [[ ${KEYMAP} == viins ]] ||
        [[ ${KEYMAP} = '' ]] ||
@@ -115,18 +59,6 @@ echo -ne '\e[5 q' # Use beam shape cursor on startup.
 # Fix backspace bug when switching modes
 bindkey "^?" backward-delete-char
 
-
-# # zle-line-init() {
-# #     zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-# #     echo -ne "\e[5 q"
-# # }
-# # zle -N zle-line-init
-
-# # # Use beam shape cursor on startup.
-# # echo -ne '\e[5 q'
-# # # Use beam shape cursor for each new prompt.
-# # preexec() { echo -ne '\e[5 q' ;}
-
 # # Use lf to switch directories and bind it to ctrl-o
 # lfcd () {
 #     tmp="$(mktemp)"
@@ -139,21 +71,8 @@ bindkey "^?" backward-delete-char
 # }
 # bindkey -s '^o' 'lfcd\n'
 
-# # turn CTRL+z into a toggle switch (buggy atm)
-# # ctrlz() {
-# #   if [[ $#BUFFER == 0 ]]; then
-# #     fg >/dev/null 2>&1 && zle redisplay
-# #   else
-# #     zle push-input
-# #   fi
-# # }
-# # zle -N ctrlz
-# # bindkey '^z' ctrlz
-
-clear; neofetch; figlet -n -w 150 -f roman 'Z-shell'; echo -e '\e[2A\e[K'
-
 #===============================================================================
-# LOAD EXTENSIONS
+# SOURCING FEATURES
 #===============================================================================
 
 # Load zsh-syntax-highlighting, zsh-autosuggestions; should be last.
@@ -166,3 +85,17 @@ else
   source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   # source /usr/local/share/autojump/autojump.zsh
 fi
+
+[ -f $XDG_CONFIG_HOME/fzf/fzf.zsh ] && source $XDG_CONFIG_HOME/fzf/fzf.zsh
+[ -f /opt/ros/kinetic/setup.zsh   ] && source /opt/ros/kinetic/setup.zsh
+[ -f "$XDG_CONFIG_HOME/aliasrc"   ] && source $XDG_CONFIG_HOME/aliasrc
+
+#===============================================================================
+# PROCESS INITIAL COMMANDS
+#===============================================================================
+
+# showoff
+clear; neofetch; figlet -n -w 150 -f roman 'Z-shell'; echo -e '\e[2A\e[K'
+
+# run provided command
+if [[ $1 == eval ]]; then "$@"; set --; fi # [[ $1 == eval ]] && ("$@"; set --)

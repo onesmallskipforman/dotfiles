@@ -5,8 +5,8 @@ source ~/.cache/wal/colors.sh # load pywal environment variables
 # get colors from environment variables
 CBACK=$(echo $background | sed 's/#//')
 CFORE=$(echo $foreground | sed 's/#//')
-CACTV=$(echo $color3 | sed 's/#//')
-CNORM=$(echo $color1 | sed 's/#//')
+CACTV=$(echo $color3     | sed 's/#//')
+CNORM=$(echo $color1     | sed 's/#//')
 CINSE=$(echo $foreground | sed 's/#//')
 
 spacebar -m config text_font         "Hack Nerd Font Mono:Regular:12.0"

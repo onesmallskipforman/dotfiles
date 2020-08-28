@@ -40,7 +40,7 @@ set noswapfile                  " don't use a swapfile
 set nobackup                    " don't make file backups
 set udir=~/.config/nvim/undodir " directory for undo files
 set undofile                    " automatically save history in undo file
-set signcolumn=yes              " provide room for lint column
+set signcolumn=number           " provide room for lint column
 set cmdheight=1                 " Give more space for displaying messages.
 set nowritebackup               " Servers can have backup file issues, coc #649
 set shortmess+=c                " Don't pass messages to |ins-completion-menu|.
