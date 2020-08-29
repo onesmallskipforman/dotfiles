@@ -97,13 +97,16 @@ XF86KbdBrightness{Up,Down}
 super + {f,c,v,a,t,w}
   key={f,c,v,a,t,w}; \
   W=$(xdotool getactivewindow); \
-  S1=$(xprop -id ${W} |awk '/WM_CLASS/{print $4}'); \
-  if [ $S1 != '"Firefox"' ] \
-  then xte "keyup ${key}" "keyup Super_L" "keydown Control_L" \
+  S1='"Alacritty"'; \
+  if [ $S1 = '"Firefox"' ]; \
+  then echo "true" && xte "keyup ${key}" "keyup Super_L" "keydown Control_L" \
            "key ${key}"                   "keyup Control_L" "keydown Super_L"; \
   else xte "keyup ${key}" "keyup Super_L" "keydown Control_L" "keydown Shift_L" \
            "key ${key}"   "keyup Shift_L" "keyup Control_L" "keydown Super_L"; \
   fi
+
+
+#  S1=$(xprop -id ${W} |awk '/WM_CLASS/{print $4}'); \
 
 super + shift + t
   key={t}; \

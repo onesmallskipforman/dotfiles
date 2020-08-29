@@ -25,7 +25,7 @@ def display(id, res, scale, pos, fb):
 def one():
   # tuning parameters
   dpi   = 150 # 227
-  e1res = (1920, 1200) # (2560, 1600)
+  e1res = (2560, 1600) # (1920, 1200)
 
   # run commands
   runcmd("xrandr --output HDMI-2 --off")# --fb {}x{}".format(*e1res))
