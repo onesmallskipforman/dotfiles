@@ -1,13 +1,17 @@
 #!/bin/sh
 
 # load X resources
-[ -f ~/.config/X11/Xresources ] && xrdb -merge -I$HOME ~/.config/X11/Xresources
+#[ -f ~/.config/X11/Xresources ] && xrdb -merge -I$HOME ~/.config/X11/Xresources
 
 # set configurations for native display
-[ -f ~/.local/bin/xrandr.py   ] && ~/.local/bin/xrandr.py 1 &>/dev/null
+#[ -f ~/.local/bin/xrandr.py   ] && ~/.local/bin/xrandr.py 1 &>/dev/null
 
-# set key remappings
-[ -f ~/.config/X11/Xmodmap ] && xmodmap ~/.config/X11/Xmodmap
+# set natural scrolling
+xinput list --id-only | xargs -n1 -I{} xinput --set-prop {} "libinput Natural Scrolling Enabled" 1 &>/dev/null
+
+# set mouse speed and acceleration
+xinput list --id-only | xargs -n1 -I{} xinput --set-prop {} "libinput Accel Speed" -1 &>/dev/null
+xinput list --id-only | xargs -n1 -I{} xinput --set-prop {} "libinput Accel Profile Enabled" 1, 0 &>/dev/null
 
 # start redshift
 redshift &
@@ -23,4 +27,4 @@ feh --bg-fill $HOME/.local/share/wallpapers/beams.jpeg &
 
 # start window manager
 sxhkd &
-exec $XWM
+exec bspwm
