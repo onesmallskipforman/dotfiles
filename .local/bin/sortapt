@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# fun little script to sort brewfile
+
+echo "\
+$(grep '^key'  aptfile | sort)\n
+$(grep '^ppa' aptfile | sort)\n
+$(grep '^apt'  aptfile | sort)\
+" > ${1:-aptfile}
