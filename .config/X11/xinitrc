@@ -13,6 +13,9 @@ xinput list --id-only | xargs -n1 -I{} xinput --set-prop {} "libinput Natural Sc
 xinput list --id-only | xargs -n1 -I{} xinput --set-prop {} "libinput Accel Speed" -1 &>/dev/null
 xinput list --id-only | xargs -n1 -I{} xinput --set-prop {} "libinput Accel Profile Enabled" 1, 0 &>/dev/null
 
+# set key repeat relay (225 ms) and repeat time (30 ms -> ~33/s)
+xset r rate 225 33
+
 # start redshift
 redshift &
 
