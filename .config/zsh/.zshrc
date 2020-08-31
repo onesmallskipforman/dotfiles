@@ -95,7 +95,9 @@ fi
 #===============================================================================
 
 # showoff
-clear; neofetch; figlet -n -w 150 -f roman 'Z-shell'; echo -e '\e[2A\e[K'
+clear; neofetch; figlet -d $HOME/.local/src/figlet-fonts -w 150 -f Roman 'Z-shell'; echo -e '\e[2A\e[K'
 
 # run provided command
 if [[ $1 == eval ]]; then "$@"; set --; fi # [[ $1 == eval ]] && ("$@"; set --)
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

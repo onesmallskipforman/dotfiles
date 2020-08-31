@@ -36,7 +36,7 @@ let g:startify_padding_left = 5
 
 " over-the-top (no pun intended) header
 let g:startify_custom_header =
-  \ startify#pad(split(system('figlet -w 150 -f broadway "Vim"'), '\n'))
+  \ startify#pad(split(system('figlet -d $HOME/.local/src/figlet-fonts -w 150 -f Broadway "Vim"'), '\n'))
 
 " let g:startify_custom_header = [
 "   \"                                          .         .           ",

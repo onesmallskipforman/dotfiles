@@ -1,13 +1,9 @@
 #!/bin/sh
 
-msg=${1:-"Test"}
-# for f in {/usr/local/share/figlet/fonts,$HOME/.local/src/figlet-fonts}/*.flf; do
-#   echo "$f"
-#   figlet -w 100 -f "$f" "$msg"
-# done
+MSG=${1:-"Test"}
+DIR=$HOME/.local/src/figlet-fonts
 
-ls {/usr/local/share/figlet/fonts,$HOME/.local/src/figlet-fonts}/*.flf \
-  | fzf --with-nth -1 -d / --preview "figlet -w 100 -f {} $msg"
+ls $DIR/*.flf | sed 's!.*/!!' | sed 's/\.[^.]*$//' \
+  | fzf --preview "figlet -d $DIR -w 100 -f {} $MSG"
 
-#!/bin/zsh
 # /usr/local/share/figlet/fonts/**/*.flf | fzf --with-nth -1 -d / --preview 'figlet -f {} abc'
