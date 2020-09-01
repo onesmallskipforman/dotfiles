@@ -58,7 +58,8 @@ autocmd TermOpen    * start                          " start insert in term
 autocmd BufWritePre * %s/\s\+$//e                    " remove trailing whitespace
 autocmd BufWritepre * %s/\n\+\%$//e                  " remove trailing newlines
 autocmd BufNewFile,BufRead brewfile set syntax=ruby  " set brewfiles as ruby
-autocmd BufNewFile,BufRead aptfile  set syntax=sh   " use zsh hl for aptfile
+autocmd BufNewFile,BufRead ubuntu   set syntax=sh   " use zsh hl for aptfile
+autocmd BufNewFile,BufRead osx      set syntax=sh   " use zsh hl for aptfile
 autocmd BufNewFile,BufRead skhdrc   set syntax=sh   " use zsh hl for skhdrc
 autocmd BufNewFile,BufRead lfrc     set syntax=sh   " use zsh hl for lfrc
 
