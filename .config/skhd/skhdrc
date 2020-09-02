@@ -7,7 +7,7 @@ alt + ctrl + shift - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 #===============================================================================
 
 # opening and closing apps
-cmd - return : open -na $TERMINAL
+cmd - return : open -na kitty #$TERMINAL
 alt - w : open -na $BROWSER
 alt - q : skhd --key "cmd - w"
 

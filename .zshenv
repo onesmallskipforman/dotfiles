@@ -1,7 +1,7 @@
 # Skipper's .zshenv
 
 # Designate Tools
-export TERMINAL="kitty"
+export TERMINAL="alacritty"
 export BROWSER="firefox"
 export EDITOR="nvim"
 export XWM="bspwm" # window manager when using X windowing system
