@@ -6,13 +6,17 @@
 # set configurations for native display
 #[ -f ~/.local/bin/xrandr.py   ] && ~/.local/bin/xrandr.py 1 &>/dev/null
 
+# set up monitor
+xrandr --output HDMI-2 --mode 3440x1440 --right-of eDP-1
+
 # set natural scrolling
 xinput list --id-only | xargs -n1 -I{} xinput --set-prop {} "libinput Natural Scrolling Enabled" 1 &>/dev/null
 
 # set mouse speed and acceleration
-xinput list --id-only | xargs -n1 -I{} xinput --set-prop {} "libinput Accel Speed" -0.60 &>/dev/null
-xinput list --id-only | xargs -n1 -I{} xinput --set-prop {} "libinput Accel Profile Enabled" 1,0 &>/dev/null
-xset m 3/1 0
+xinput set-prop 'Logitech M510' "libinput Accel Speed" -0.2
+#xinput list --id-only | xargs -n1 -I{} xinput --set-prop {} "libinput Accel Speed" -0.60 &>/dev/null
+#xinput list --id-only | xargs -n1 -I{} xinput --set-prop {} "libinput Accel Profile Enabled" 1,0 &>/dev/null
+#xset m 3/1 0
 
 # set key repeat relay (225 ms) and repeat time (30 ms -> ~33/s)
 xset r rate 225 33
@@ -21,13 +25,17 @@ xset r rate 225 33
 redshift &
 
 # set cursor
-xsetroot -cursor_name left_ptr &
+xsetroot -cursor_name left_ptr
 
 # set wallpaper
-feh --bg-fill $HOME/.local/share/wallpapers/beams.jpeg &
+feh --bg-fill ~/Downloads/torc_robotics_bg_black_1920x1080.v1.png
+#feh --bg-fill $HOME/.local/share/wallpapers/beams.jpeg
 
 # set compton for window opacity
 # compton --config $HOME/.config/compton/compton.conf &
+
+# start polybar
+~/.config/polybar/launch.sh &
 
 # start window manager
 sxhkd &

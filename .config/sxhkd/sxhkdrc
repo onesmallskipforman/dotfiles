@@ -23,6 +23,10 @@ alt + {_,shift + }q
 alt + c
   pgrep redshift &>/dev/null && killall redshift || redshift
 
+# rofi
+alt + d
+	rofi -font "Hack Nerd Font Mono 12" -show run -display-run ""
+
 #===============================================================================
 # FOCUS AND SWAP CONTROLS
 #===============================================================================
@@ -42,6 +46,14 @@ alt + ctrl + {_,shift + }{1-3}
 # focus desktop directional
 alt + {g,semicolon}
 	bspc desktop {prev,next} --focus # bspc desktop {prev,next}.occupied --focus
+
+# make new space
+alt + n
+	bspc monitor -a new
+
+# remove space
+alt + shift + d
+	bspc desktop -r
 
 #===============================================================================
 # WINDOW MANIPULATION
@@ -81,17 +93,17 @@ alt + {_,shift + }r
 
 # audio controls (1 is native, 2 is hdmi)
 XF86Audio{Raise,Lower}Volume
-  pactl -- set-sink-volume 1 {+,-}5%
+  pactl set-sink-volume $(pactl list short sinks | awk 'NR==1\{ print $2 \}') {+,-}5%
 
 XF86AudioMute
-  pactl set-sink-mute 1 toggle
+  pactl set-sink-mute $(pactl list short sinks | awk 'NR==1\{ print $2 \}') toggle
 
 # screen and keyboard backlight brightness
 XF86MonBrightness{Up,Down}
-  light -s "sysfs/backlight/intel_backlight" -{A,U} 5
+  light -{A,U} 5
 
 XF86KbdBrightness{Up,Down}
-  light -s "sysfs/leds/smc::kbd_backlight" -{A,U} 5
+  light -{A,U} 5
 
 # Workaround for immutable firefox keybindings
 #super + {f,c,v,a,t,w}

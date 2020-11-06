@@ -28,9 +28,9 @@ secondary = #e60053
 alert = #bd2c40
 
 [bar/mybar]
-;monitor = ${env:MONITOR:HDMI-1}
+monitor = ${env:MONITOR:}
 width = 100%
-height = 50
+height = 30
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 6.0
@@ -58,7 +58,7 @@ font-3 = Hack Nerd Font Mono:pixelsize=10;1
 
 modules-left = bspwm
 ; modules-cend          Mono
-modules-right = filesystem memory cpu wlan battery temperature date powermenu
+modules-right = pulseaudio filesystem memory cpu battery temperature date powermenu
 ; modules-right = battery temperature date powermenu
 ; xbacklight alsa pulseaudio xkeyboard
 
@@ -80,7 +80,7 @@ tray-padding = 2
 cursor-click = pointer
 cursor-scroll = ns-resize
 
-dpi = 150
+dpi = 96
 
 [module/xwindow]
 type = internal/xwindow
@@ -115,6 +115,8 @@ label-unmounted-foreground = ${colors.foreground-alt}
 [module/bspwm]
 type = internal/bspwm
 
+pin-workspaces = false
+
 label-focused = %index%
 label-focused-background = ${colors.background-alt}
 label-focused-underline= ${colors.primary}
@@ -122,6 +124,7 @@ label-focused-padding = 2
 
 label-occupied = %index%
 label-occupied-padding = 2
+label-occupied-underline = #555555
 
 label-urgent = %index%!
 label-urgent-background = ${colors.alert}
@@ -209,13 +212,13 @@ ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/date]
 type = internal/date
-interval = 5
+interval = 1.0
 
-date =
-date-alt = " %Y-%m-%d"
+date = " %a %b %d"
+date-alt = " %D"
 
-time = %H:%M
-time-alt = %H:%M:%S
+time = " %I:%M %p"
+time-alt = %I:%M:%S %p
 
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
@@ -226,6 +229,10 @@ label = %date% %time%
 [module/pulseaudio]
 type = internal/pulseaudio
 
+; Interval for volume increase/decrease (in percent points)
+; Default: 5
+interval = 5
+
 format-volume = <label-volume> <bar-volume>
 label-volume = VOL %percentage%%
 label-volume-foreground = ${root.foreground}
@@ -233,35 +240,7 @@ label-volume-foreground = ${root.foreground}
 label-muted = 🔇 muted
 label-muted-foreground = #666
 
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
-
-[module/alsa]
-type = internal/alsa
-
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL
-label-volume-foreground = ${root.foreground}
-
-format-muted-prefix = " "
-format-muted-foreground = ${colors.foreground-alt}
-label-muted = sound muted
-
-bar-volume-width = 10
+bar-volume-width = 20
 bar-volume-foreground-0 = #55aa55
 bar-volume-foreground-1 = #55aa55
 bar-volume-foreground-2 = #55aa55
@@ -333,7 +312,7 @@ ramp-foreground = ${colors.foreground-alt}
 [module/powermenu]
 type = custom/menu
 
-expand-right = true
+expand-right = false
 
 format-spacing = 1
 
@@ -344,7 +323,7 @@ label-close-foreground = ${colors.secondary}
 label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
 
-menu-0-0 = reboot
+menu-0-0 = "reboot "
 menu-0-0-exec = menu-open-1
 menu-0-1 = power off
 menu-0-1-exec = menu-open-2

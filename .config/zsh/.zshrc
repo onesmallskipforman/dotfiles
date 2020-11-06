@@ -101,3 +101,8 @@ clear; neofetch; figlet -d $HOME/.local/src/figlet-fonts -w 150 -f Roman 'Z-shel
 if [[ $1 == eval ]]; then "$@"; set --; fi # [[ $1 == eval ]] && ("$@"; set --)
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+source ~/.workrc
+
+export PYTHONDONTWRITEBYTECODE=1
