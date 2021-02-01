@@ -5,6 +5,7 @@ let g:startify_fortune_use_unicode = 1
 
 " get devicons
 function! StartifyEntryFormat()
+  " return lua require'nvim-web-devicons'.get_icon(filename, extension, { default = true })
   return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
 endfunction
 

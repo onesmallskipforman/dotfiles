@@ -21,9 +21,6 @@ let mapleader =" "
 " open init.vim
 nnoremap <silent> <leader>. :e $MYVIMRC<CR>
 
-" cycle through buffers
-nnoremap <silent> <TAB>   :bnext<CR>
-nnoremap <silent> <S-TAB> :bprevious<CR>
 
 " split navigation
 map <silent> <C-h> <C-w>h
@@ -107,6 +104,16 @@ vnoremap > >gv
 
 " PLUGIN MAPPINGS
 "==============================================================================
+
+" cycle through buffers
+nnoremap <silent> <TAB>   :BufferNext<CR>
+nnoremap <silent> <S-TAB> :BufferPrevious<CR>
+let bufferline = {}
+let bufferline.icons = 'both'
+
+
+
+
 noremap <silent> <leader>t :Rg<CR>
 noremap <silent> <leader>, :Startify<CR>
 noremap <silent> <leader>g :Goyo<CR>
@@ -115,16 +122,16 @@ noremap <silent> <leader>l :Lines<CR>
 noremap <silent> <leader>f :Files<CR>
 
 " navigating buffline
-nmap <Leader>1 <Plug>lightline#bufferline#go(1)
-nmap <Leader>2 <Plug>lightline#bufferline#go(2)
-nmap <Leader>3 <Plug>lightline#bufferline#go(3)
-nmap <Leader>4 <Plug>lightline#bufferline#go(4)
-nmap <Leader>5 <Plug>lightline#bufferline#go(5)
-nmap <Leader>6 <Plug>lightline#bufferline#go(6)
-nmap <Leader>7 <Plug>lightline#bufferline#go(7)
-nmap <Leader>8 <Plug>lightline#bufferline#go(8)
-nmap <Leader>9 <Plug>lightline#bufferline#go(9)
-nmap <Leader>0 <Plug>lightline#bufferline#go(10)
+nmap <Leader>1 :BufferGoto 1<CR>
+nmap <Leader>2 :BufferGoto 2<CR>
+nmap <Leader>3 :BufferGoto 3<CR>
+nmap <Leader>4 :BufferGoto 4<CR>
+nmap <Leader>5 :BufferGoto 5<CR>
+nmap <Leader>6 :BufferGoto 6<CR>
+nmap <Leader>7 :BufferGoto 7<CR>
+nmap <Leader>8 :BufferGoto 8<CR>
+nmap <Leader>9 :BufferGoto 9<CR>
+nmap <Leader>0 :BufferGoto 10<CR>
 
 " comment stuff out with commentary
 nnoremap <silent> <space>/ :Commentary<CR>
