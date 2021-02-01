@@ -14,7 +14,7 @@ set expandtab                   " use spaces instead of tab character
 set smartindent                 " smart autoindenting on newlines
 set background=dark             " background color
 set mouse=a                     " allow for mouse in all modes (except hit enter prompt)
-set number relativenumber       " line number, relative (hybrid)
+set number " relativenumber       " line number, relative (hybrid)
 " set cursorline                  " highlight cursor line
 " set cursorcolumn                " highlight cursor column
 set colorcolumn=80              " highlight column 80

@@ -9,10 +9,12 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'morhetz/gruvbox'                              " gruvbox color scheme
   Plug 'patstockwell/vim-monokai-tasty'               " subl monokai color scheme
   Plug 'junegunn/goyo.vim'                            " distraction-free mode
-  Plug 'itchyny/lightline.vim'                        " lightline statusbar
-  Plug 'mengelbrecht/lightline-bufferline'            " bufferline for lightline
+  " Plug 'itchyny/lightline.vim'                        " lightline statusbar
+  " Plug 'mengelbrecht/lightline-bufferline'            " bufferline for lightline
   Plug 'preservim/nerdtree'                           " alternative file tree
-  Plug 'ryanoasis/vim-devicons'                       " Nerdtree Icons
+  " Plug 'ryanoasis/vim-devicons'                       " Nerdtree Icons
+  Plug 'kyazdani42/nvim-web-devicons'                 " Icon Pack
+  Plug 'romgrk/barbar.nvim'                           " Tabline Plugin
   Plug 'sheerun/vim-polyglot'                         " syntax highlight pack
   Plug 'junegunn/fzf', {'do':{-> fzf#install()}}      " install latest fzf
   Plug 'junegunn/fzf.vim'                             " fzf support

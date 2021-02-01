@@ -76,19 +76,14 @@ bindkey "^?" backward-delete-char
 #===============================================================================
 
 # Load zsh-syntax-highlighting, zsh-autosuggestions; should be last.
-if [ "$OSTYPE" = "linux-gnu" ]; then
-  source $HOME/.local/src/zsh-autosuggestions/zsh-autosuggestions.zsh
-  source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-  # source /usr/share/autojump/autojump.zsh
-else
-  source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-  # source /usr/local/share/autojump/autojump.zsh
-fi
+[ "$OSTYPE" = "linux-gnu" ] && DATADIR="/usr/share" || DATADIR="/usr/local/share"
+source $DATADIR/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $DATADIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source $DATADIR/autojump/autojump.zsh
 
-[ -f $XDG_CONFIG_HOME/fzf/fzf.zsh ] && source $XDG_CONFIG_HOME/fzf/fzf.zsh
-[ -f /opt/ros/kinetic/setup.zsh   ] && source /opt/ros/kinetic/setup.zsh
-[ -f "$XDG_CONFIG_HOME/aliasrc"   ] && source $XDG_CONFIG_HOME/aliasrc
+[ -f $XDG_CONFIG_HOME/fzf/fzf.zsh   ] &&  source $XDG_CONFIG_HOME/fzf/fzf.zsh
+[ -f "$XDG_CONFIG_HOME/aliasrc"     ] && source $XDG_CONFIG_HOME/aliasrc
+[ -f /opt/ros/$ROS_DISTRO/setup.zsh ] && source /opt/ros/$ROS_DISTRO/setup.zsh
 
 #===============================================================================
 # PROCESS INITIAL COMMANDS
