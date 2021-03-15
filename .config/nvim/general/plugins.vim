@@ -21,7 +21,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'mhinz/vim-startify'                           " fancy start screen
   Plug 'luochen1990/rainbow'                          " color brackets
   Plug 'metakirby5/codi.vim'                          " scratchpad
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}     " completions
   Plug 'honza/vim-snippets'                           " snippets collection
   Plug 'tpope/vim-commentary'                         " comment stuff out
   Plug 'voldikss/vim-floaterm'                        " floating terminal
