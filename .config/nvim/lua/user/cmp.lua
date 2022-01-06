@@ -105,6 +105,7 @@ cmp.setup {
         luasnip = "[Snippet]",
         buffer = "[Buffer]",
         path = "[Path]",
+        dictionary = "[Dictionary]",
       })[entry.source.name]
       return vim_item
     end,
@@ -114,6 +115,7 @@ cmp.setup {
     { name = "luasnip" },
     { name = "buffer" },
     { name = "path" },
+    { name = "dictionary" },
   },
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,
@@ -127,3 +129,16 @@ cmp.setup {
     native_menu = false,
   },
 }
+
+-- require("cmp_dictionary").setup({
+--     dic = {
+--         ["*"] = "/usr/share/dict/words",
+--         ["markdown"] = { "path/to/mddict", "path/to/mddict2" },
+--         ["javascript,typescript"] = { "path/to/jsdict" },
+--     },
+--     -- The following are default values, so you don't need to write them if you don't want to change them
+--     exact = 2,
+--     async = false,
+--     capacity = 5,
+--     debug = false,
+-- })

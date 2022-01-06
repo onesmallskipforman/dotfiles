@@ -60,6 +60,16 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
+-- remove search highlight
+keymap("", "<S-_>", ":nohlsearch<CR>", {noremap = true, silent = false})
+
+-- use arrow keys in command mode completions
+-- set wildcharm=<C-Z>
+-- cnoremap <expr> <up>    wildmenumode() ? "\<left>"     : "\<up>"
+-- cnoremap <expr> <down>  wildmenumode() ? "\<right>"    : "\<down>"
+-- cnoremap <expr> <left>  wildmenumode() ? "\<up>"       : "\<left>"
+-- cnoremap <expr> <right> wildmenumode() ? "\<bs>\<C-Z>" : "\<right>"
+
 -- Terminal --
 -- Better terminal navigation
 -- keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
