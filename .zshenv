@@ -39,7 +39,7 @@ export PASSWORD_STORE_DIR=$XDG_DATA_HOME/pass             # pass
 export PLATFORMIO_CORE_DIR=$XDG_DATA_HOME/platformio      # platformio
 export PYLINTHOME=$XDG_CACHE_HOME/pylint                  # pylint
 export RUSTUP_HOME=$XDG_DATA_HOME/rustup                  # Rustup
-export XINITRC=$XDG_CONFIG_HOME/X11/xinitrc               # Xorg
+export XINITRC=$XDG_CONFIG_HOME/x11/xinitrc               # Xorg
 export XAUTHORITY=$XDG_RUNTIME_DIR/Xauthority             #
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh                       # zsh
 
@@ -211,3 +211,4 @@ ex=:\
 *.pdf=:\
 *.nix=:\
 "
+. "/Users/skipper/.local/share/cargo/env"
