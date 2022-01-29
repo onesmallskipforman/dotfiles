@@ -244,7 +244,6 @@ colors:
     - {index: 19, color: '0x504945'}
     - {index: 20, color: '0xbdae93'}
     - {index: 21, color: '0xebdbb2'}
-background_opacity: 1.0
 
 # Mouse bindings
 #
