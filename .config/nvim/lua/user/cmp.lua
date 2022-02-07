@@ -112,8 +112,17 @@ cmp.setup {
   },
   sources = {
     { name = "nvim_lsp" },
+    { name = "nvim_lua" },
     { name = "luasnip" },
-    { name = "buffer" },
+    {
+      name = "buffer",
+      option = {
+        -- pull from all open buffers
+        get_bufnrs = function()
+          return vim.api.nvim_list_bufs()
+        end
+      }
+    },
     { name = "path" },
     { name = "dictionary" },
   },
@@ -128,6 +137,7 @@ cmp.setup {
     ghost_text = false,
     native_menu = false,
   },
+
 }
 
 -- require("cmp_dictionary").setup({
@@ -142,3 +152,15 @@ cmp.setup {
 --     capacity = 5,
 --     debug = false,
 -- })
+
+cmp.setup.cmdline('/', {
+  sources = {
+    { name = 'buffer' }
+  }
+})
+
+cmp.setup.cmdline(':', {
+  sources = {
+    { name = 'cmdline' }
+  }
+})

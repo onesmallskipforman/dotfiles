@@ -63,6 +63,9 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 -- remove search highlight
 keymap("", "<S-_>", ":nohlsearch<CR>", {noremap = true, silent = false})
 
+-- Tree --
+keymap("n", "<leader>e", ":Lex 30<cr>", opts)
+
 -- use arrow keys in command mode completions
 -- set wildcharm=<C-Z>
 -- cnoremap <expr> <up>    wildmenumode() ? "\<left>"     : "\<up>"

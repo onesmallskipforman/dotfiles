@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # load X resources
-#[ -f ~/.config/X11/Xresources ] && xrdb -merge -I$HOME ~/.config/X11/Xresources
+#[ -f ~/.config/x11/Xresources ] && xrdb -merge -I$HOME ~/.config/x11/Xresources
 
 # set configurations for native display
 #[ -f ~/.local/bin/xrandr.py   ] && ~/.local/bin/xrandr.py 1 &>/dev/null
