@@ -58,14 +58,15 @@ return packer.startup(function(use)
   -- use "goolord/alpha-nvim"
   -- use "ahmedkhalf/project.nvim"
   -- use "lewis6991/impatient.nvim" -- speed up lua loading times
-  -- use "moll/vim-bbye"
+  use "moll/vim-bbye"
 
   -- Aesthetics
   use "kyazdani42/nvim-web-devicons"
   -- use "lukas-reineke/indent-blankline.nvim"
 
   -- Colorschemes
-  use "gruvbox-community/gruvbox"
+  -- use "gruvbox-community/gruvbox"
+  use "ellisonleao/gruvbox.nvim"
   use "lunarvim/darkplus.nvim"
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
 
@@ -95,11 +96,14 @@ return packer.startup(function(use)
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
   -- Treesitter
-  -- use {
-  --   "nvim-treesitter/nvim-treesitter",
-  --   run = ":TSUpdate",
-  -- }
-  -- use "JoosepAlviste/nvim-ts-context-commentstring"
+  use {
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate",
+  }
+  use "JoosepAlviste/nvim-ts-context-commentstring"
+  use "p00f/nvim-ts-rainbow"
+  -- use "nvim-treesitter/playground"
+  -- use "romgrk/nvim-treesitter-context"
 
   -- Git
   -- use "lewis6991/gitsigns.nvim"
