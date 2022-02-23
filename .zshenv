@@ -211,4 +211,6 @@ ex=:\
 *.pdf=:\
 *.nix=:\
 "
-. "/Users/skipper/.local/share/cargo/env"
+
+# . "/Users/skipper/.local/share/cargo/env"
+source ~/.workrc

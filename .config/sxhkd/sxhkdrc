@@ -1,6 +1,6 @@
 # restart
 ctrl + shift + r
-  ~/.config/bspwm/bspwmrc; killall -q sxhkd; sxhkd
+  ~/.config/bspwm/bspwmrc; pkill -USR1 -x sxhkd
 
 #===============================================================================
 # MONITORS
@@ -21,7 +21,7 @@ alt + {_,shift + }q
 
 # program toggles
 alt + c
-  pgrep redshift &>/dev/null && killall redshift || redshift
+  pkill redshift || redshift
 
 # rofi
 alt + d
@@ -112,19 +112,29 @@ XF86KbdBrightness{Up,Down}
 
 
 # Workaround for immutable firefox keybindings
-super + {f,c,v,a,t,w}
-  key={f,c,v,a,t,w}; \
-  W=$(xdotool getactivewindow); \
-  S1=$(xprop -id ${W} | awk '/WM_CLASS/\{ print $4 \}'); \
-  if [ $S1 = '"Firefox"' ]; then \
-    xte "keyup ${key}" "keyup Super_L" "keydown Control_L" \
-        "key ${key}"                   "keyup Control_L" "keydown Super_L"; \
-  else \
-    xte "keyup ${key}" "keyup Super_L" "keydown Control_L" "keydown Shift_L" \
-        "key ${key}"   "keyup Shift_L" "keyup Control_L" "keydown Super_L"; \
-  fi
+# super + {f,c,v,a,t,w}
+#   key={f,c,v,a,t,w}; \
+#   W=$(xdotool getactivewindow); \
+#   S1=$(xprop -id ${W} | awk '/WM_CLASS/\{ print $4 \}'); \
+#   if [ $S1 = '"Firefox"' ]; then \
+#     xte "keyup ${key}" "keyup Super_L" "keydown Control_L" \
+#         "key ${key}"                   "keyup Control_L" "keydown Super_L"; \
+#   else \
+#     xte "keyup ${key}" "keyup Super_L" "keydown Control_L" "keydown Shift_L" \
+#         "key ${key}"   "keyup Shift_L" "keyup Control_L" "keydown Super_L"; \
+#   fi
 
 super + shift + t
   key={t}; \
   xte "keyup ${key}" "keyup Super_L" "keydown Control_L" "key ${key}" \
       "keyup Control_L" "keydown Super_L"
+
+#===============================================================================
+# VPN
+#===============================================================================
+
+ctrl + shift + o
+  vpndown || vpn
+
+ctrl + shift + a
+  autorandr --change

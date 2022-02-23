@@ -1,0 +1,11 @@
+#!/bin/sh
+
+alias icat="kitty +kitten icat"
+alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
+alias ssh='kssh() {[ "$TERM" = "xterm-kitty" ] && kitty +kitten ssh $@ || ssh $@}; kssh'
+alias docker='docker info &> /dev/null || {docker_setup && eval $(docker-machine env default)} && docker'
+alias quartus='/opt/altera/15.0/quartus/bin/quartus --64bin &>/dev/null & disown'
+alias modelsim='/opt/altera/15.0/modelsim_ase/linuxaloem/vsim &>/dev/null & disown'
+alias matlab='matlab -nosplash -nodesktop'
+alias simulink='matlab -r simulink' # start_simulink slLibraryBrowser
+alias ncdu='ncdu --exclude-firmlinks --si --color dark -x'
