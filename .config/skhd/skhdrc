@@ -7,9 +7,10 @@ alt + ctrl + shift - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 #===============================================================================
 
 # opening and closing apps
-cmd - return : open -na kitty #$TERMINAL
+cmd - return : open -na $TERMINAL
 alt - w : open -na $BROWSER
 alt - q : skhd --key "cmd - w"
+alt - d : open /Applications/dmenu-mac.app
 
 # insertion points
 alt - 0x27 : yabai -m window --insert south && open -na $TERMINAL # apostrophe
@@ -128,6 +129,6 @@ alt + shift - n : yabai -m space --create; yabai -m space --focus \
 #           yabai -m space --destroy;                                          \
 #           yabai -m space --focus "${index}";                                 \
 #           [ ! "$index" = "$mindex" ] && yabai -m space --focus "${index}"
- alt + shift - d : yabai -m query --spaces | \
-                   jq 'map(select(.windows == []).index) | reverse | .[]' |\
-                   while read index; do yabai -m space "$index" --destroy; done
+ alt + shift - d : yabai -m query --spaces |\
+                     jq 'map(select(.windows == [])) | reverse | .[].index' |\
+                     xargs -n1 -I{} yabai -m space {} --destroy
