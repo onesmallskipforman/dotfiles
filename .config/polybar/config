@@ -58,7 +58,7 @@ font-3 = Hack Nerd Font Mono:pixelsize=10;1
 
 modules-left = bspwm
 ; modules-cend          Mono
-modules-right = pulseaudio filesystem memory cpu battery temperature date powermenu
+modules-right = vpn-openconnect-status pulseaudio filesystem memory cpu battery temperature date powermenu
 ; modules-right = battery temperature date powermenu
 ; xbacklight alsa pulseaudio xkeyboard
 
@@ -337,6 +337,13 @@ menu-2-0 = power off
 menu-2-0-exec = poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
+
+[module/vpn-openconnect-status]
+type = custom/script
+exec = printf 'VPN: ' && ( pgrep -a openconnect || echo 'down' ) | cut -d '.' -f 2
+; exec-if = pgrep openconnect
+interval = 5
+; exec = vpn-openvpn-status.sh
 
 [settings]
 screenchange-reload = true
