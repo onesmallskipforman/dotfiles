@@ -129,6 +129,9 @@ alt + shift - n : yabai -m space --create; yabai -m space --focus \
 #           yabai -m space --destroy;                                          \
 #           yabai -m space --focus "${index}";                                 \
 #           [ ! "$index" = "$mindex" ] && yabai -m space --focus "${index}"
- alt + shift - d : yabai -m query --spaces |\
+
+alt + shift - d : yabai -m space --destroy
+
+alt + ctrl - d : yabai -m query --spaces |\
                      jq 'map(select(.windows == [])) | reverse | .[].index' |\
                      xargs -n1 -I{} yabai -m space {} --destroy
