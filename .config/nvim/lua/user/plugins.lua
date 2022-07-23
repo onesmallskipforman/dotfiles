@@ -41,73 +41,74 @@ packer.init {
 -- Install your plugins here
 return packer.startup(function(use)
   -- General Packaging and Lua Helpers
-  use "wbthomason/packer.nvim" -- Have packer manage itself
-  use "nvim-lua/popup.nvim"    -- An implementation of the Popup API from vim in Neovim
-  use "nvim-lua/plenary.nvim"  -- Useful lua functions used ny lots of plugins
+  use "wbthomason/packer.nvim"   -- Have packer manage itself
+  use "nvim-lua/plenary.nvim"    -- Useful lua functions used by lots of plugins
+  -- use "lewis6991/impatient.nvim" -- speed up lua loading times
 
   -- Text Editing
-  use "numToStr/Comment.nvim"  -- Easily comment stuff
-  use "windwp/nvim-autopairs"  -- Autopairs, integrates with both cmp and treesitter
+  use "windwp/nvim-autopairs"    -- Autopairs, integrates with both cmp and treesitter
+  use "numToStr/Comment.nvim"    -- Easily comment stuff
+
+  -- Aesthetics and Theming
+  use "kyazdani42/nvim-web-devicons"        -- Font Icons
+  use "lukas-reineke/indent-blankline.nvim" -- Indent guides
+  use "lunarvim/colorschemes"               -- Multiple colorschemes to try out
+  use "ellisonleao/gruvbox.nvim"            -- Colorscheme
+  use "lunarvim/darkplus.nvim"              -- Colorscheme
 
   -- UI/UX
-  use "akinsho/bufferline.nvim"
-  use "nvim-lualine/lualine.nvim"
-  use "kyazdani42/nvim-tree.lua"
-  use "folke/which-key.nvim"
-  -- use "akinsho/toggleterm.nvim"
-  -- use "goolord/alpha-nvim"
-  -- use "ahmedkhalf/project.nvim"
-  -- use "lewis6991/impatient.nvim" -- speed up lua loading times
-  use "moll/vim-bbye"
+  use "goolord/alpha-nvim"         -- Startpage
+  use "nvim-lualine/lualine.nvim"  -- Statusline
+  use { "akinsho/bufferline.nvim", requires = 'kyazdani42/nvim-web-devicons' }
+  use "moll/vim-bbye"              -- Delete buffers without closing windows/messing up layout
+  use {"kyazdani42/nvim-tree.lua", requires = 'kyazdani42/nvim-web-devicons' }
+  -- use "akinsho/toggleterm.nvim" -- TODO: unchecked
+  use "ahmedkhalf/project.nvim"    -- TODO: turn off setting that goes to project dir automatically
+  -- use "folke/which-key.nvim"       -- TODO: unchecked
 
-  -- Aesthetics
-  use "kyazdani42/nvim-web-devicons"
-  -- use "lukas-reineke/indent-blankline.nvim"
-
-  -- Colorschemes
-  -- use "gruvbox-community/gruvbox"
-  use "ellisonleao/gruvbox.nvim"
-  use "lunarvim/darkplus.nvim"
-  -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
-
-  -- -- Completions (Powered by nvim-cmp)
-  use "hrsh7th/nvim-cmp" -- The completion plugin
-  use "hrsh7th/cmp-buffer" -- buffer completions
-  use "hrsh7th/cmp-path" -- path completions
-  -- use "hrsh7th/cmp-cmdline" -- cmdline completions
+  -- Completions (Powered by nvim-cmp) TODO: figure out how to use tab to selection options in '/' search menu
+  use "hrsh7th/nvim-cmp"         -- The completion plugin; TODO: figure out how to trigger with key so backspace doesn't need to auto-trigger
+  use "hrsh7th/cmp-buffer"       -- buffer completions
+  use "hrsh7th/cmp-path"         -- path completions
+  use "hrsh7th/cmp-cmdline"      -- cmdline completions; TODO: fix overlap with default cmdline completions
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
-  use "hrsh7th/cmp-nvim-lsp"    -- complete from lsp options
-  use "hrsh7th/cmp-nvim-lua"    -- completions for nvim lua config files
-  -- use "uga-rosa/cmp-dictionary"
+  use "hrsh7th/cmp-nvim-lsp"     -- completions from lsp options
+  use "hrsh7th/cmp-nvim-lua"     -- completions for nvim lua config files
+  use "uga-rosa/cmp-dictionary"  -- dictionary completions
 
-  -- -- Snippets
-  use "L3MON4D3/LuaSnip" --snippet engine
+  -- Snippets
+  use "L3MON4D3/LuaSnip"             -- snippet engine
   use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
-  -- -- LSP
-  use "antoinemadec/FixCursorHold.nvim"  -- This is needed to fix lsp doc highlight
-  use "neovim/nvim-lspconfig"            -- enable LSP
-  use "williamboman/nvim-lsp-installer"  -- simple to use language server installer
-  use "tamago324/nlsp-settings.nvim"     -- language server settings defined in json for
-  -- use "jose-elias-alvarez/null-ls.nvim"  -- for formatters and linters
-  use "b0o/SchemaStore.nvim"
+  -- LSP
+  use "neovim/nvim-lspconfig"           -- enable LSP
+  use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+  use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+  -- use "RRethy/vim-illuminate"           -- highlight other uses of word under cursor
+  use "b0o/SchemaStore.nvim"            -- JSON schemas; TODO: see if this is actually useful
+
+
+
+
+
+
+
+
+
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  -- use "tom-anders/telescope-vim-bookmarks.nvim" -- search through vim code bookmarks
+  -- use "lalitmee/browse.nvim" -- special additional browsers
 
   -- Treesitter
-  use {
-    "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
-  }
-  use "JoosepAlviste/nvim-ts-context-commentstring"
-  use "p00f/nvim-ts-rainbow"
-  -- use "nvim-treesitter/playground"
-  -- use "romgrk/nvim-treesitter-context"
+  use "nvim-treesitter/nvim-treesitter"
+  use "JoosepAlviste/nvim-ts-context-commentstring" -- comment recognition for embedded languages
+  use "p00f/nvim-ts-rainbow"                        -- rainbow-colored parentheses
 
   -- Git
-  use "lewis6991/gitsigns.nvim"
+  use "lewis6991/gitsigns.nvim" -- git decorations
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
