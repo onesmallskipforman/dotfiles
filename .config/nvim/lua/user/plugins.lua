@@ -51,7 +51,7 @@ return packer.startup(function(use)
 
   -- Aesthetics and Theming
   use "kyazdani42/nvim-web-devicons"        -- Font Icons
-  use "lukas-reineke/indent-blankline.nvim" -- Indent guides
+  -- use "lukas-reineke/indent-blankline.nvim" -- Indent guides TODO: Not sure if I want this
   use "lunarvim/colorschemes"               -- Multiple colorschemes to try out
   use "ellisonleao/gruvbox.nvim"            -- Colorscheme
   use "lunarvim/darkplus.nvim"              -- Colorscheme
@@ -81,10 +81,11 @@ return packer.startup(function(use)
   use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
   -- LSP
+  -- use "antoinemadec/FixCursorHold.nvim" -- This *may* be needed to fix lsp doc highlight, https://github.com/neovim/neovim/issues/12587
   use "neovim/nvim-lspconfig"           -- enable LSP
   use "williamboman/nvim-lsp-installer" -- simple to use language server installer
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
-  -- use "RRethy/vim-illuminate"           -- highlight other uses of word under cursor
+  use "RRethy/vim-illuminate"           -- highlight other uses of word under cursor
   use "b0o/SchemaStore.nvim"            -- JSON schemas; TODO: see if this is actually useful
 
 

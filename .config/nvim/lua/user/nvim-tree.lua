@@ -28,8 +28,8 @@ nvim_tree.setup {
     "alpha",
   },
   filters = {
-    custom = { ".git" },
-    exclude = { ".gitignore" },
+    custom = { "\\.git" },
+    exclude = { "\\.gitignore" },
   },
   -- auto_close = true,
   -- open_on_tab = false,

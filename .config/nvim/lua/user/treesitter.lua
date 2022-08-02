@@ -15,7 +15,7 @@ configs.setup {
     disable = { "" }, -- list of language that will be disabled
     additional_vim_regex_highlighting = true,
   },
-  indent = { enable = true, disable = { "yaml" } },
+  indent = { enable = true, disable = { "yaml", "python" } },
   context_commentstring = {
     enable = true,
     enable_autocmd = false,
@@ -32,3 +32,9 @@ configs.setup {
   --  enable = true,
   -- },
 }
+
+local status_ok, illuminate_ts = pcall(require, "illuminate.treesitter")
+if not status_ok then
+  return
+end
+illuminate_ts.init()
