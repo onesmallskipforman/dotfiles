@@ -24,7 +24,7 @@ autoload -U compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
-_comp_options+=(globdots)		# Include hidden files.
+_comp_options+=(globdots)   # Include hidden files.
 
 # Auto complete with case insenstivity
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
@@ -97,7 +97,6 @@ if [[ $1 == eval ]]; then "$@"; set --; fi # [[ $1 == eval ]] && ("$@"; set --)
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-
-source ~/.workrc
+[ -f ~/.workrc ] && source ~/.workrc
 
 export PYTHONDONTWRITEBYTECODE=1

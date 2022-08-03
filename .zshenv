@@ -213,4 +213,4 @@ ex=:\
 "
 
 # . "/Users/skipper/.local/share/cargo/env"
-source ~/.workrc
+[ -f ~/.workrc ] && source ~/.workrc
