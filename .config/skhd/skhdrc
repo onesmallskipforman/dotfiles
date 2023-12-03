@@ -7,7 +7,7 @@ alt + ctrl + shift - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 #===============================================================================
 
 # opening and closing apps
-cmd - return : open -na $TERMINAL
+cmd - return : alacritty msg create-window || open -a alacritty
 alt - w : open -na $BROWSER
 alt - q : skhd --key "cmd - w"
 alt - d : open /Applications/dmenu-mac.app
@@ -19,7 +19,9 @@ alt - 0x2C : yabai -m window --insert east  && open -na $TERMINAL # fwd slash
 # program toggles
 alt - b : pgrep spacebar &>/dev/null && killall spacebar || spacebar
 alt - c : pgrep redshift &>/dev/null && killall redshift || redshift
-alt - m : last=$(cliclick p); cliclick m:0,0; yabai -m space --toggle mission-control; cliclick m:$last
+alt + cmd - m : last=$(cliclick p); cliclick m:0,0; yabai -m space --toggle mission-control; cliclick m:$last
+alt - m : open /Applications/Thunderbird.app
+# /Applications/Thunderbird.app/Contents/MacOS/thunderbird-bin
 
 #===============================================================================
 # FOCUS AND SWAP CONTROLS

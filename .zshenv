@@ -14,7 +14,9 @@ export XDG_CACHE_HOME="$HOME/.cache"
 # Set Path Variables
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$PATH:/usr/local/sbin"
-export PATH="$PATH:/Library/TeX/texbin"
+export PATH="$PATH:/Library/TeX/Root/bin/universal-darwin" # alterntively run eval "$(/usr/libexec/path_helper)" to update PATH
+export PATH="/Users/skipper/.local/share/cargo/bin:$PATH"
+export PATH="/Users/skipper/Library/Python/3.11/bin:$PATH"
 
 # paths for coreutils
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"

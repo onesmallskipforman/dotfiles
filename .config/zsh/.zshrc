@@ -60,6 +60,7 @@ function zle-keymap-select {
 }
 zle -N zle-keymap-select
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
+preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 # Fix backspace bug when switching modes
 bindkey "^?" backward-delete-char
@@ -95,7 +96,7 @@ source $DATADIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 #===============================================================================
 
 # showoff
-clear; neofetch; figlet -d $HOME/.local/src/figlet-fonts -w 150 -f Roman 'Z-shell'; echo -e '\e[2A\e[K'
+# clear; neofetch; figlet -d $HOME/.local/src/figlet-fonts -w 150 -f Roman 'Z-shell'; echo -e '\e[2A\e[K'
 
 # run provided command
 if [[ $1 == eval ]]; then "$@"; set --; fi # [[ $1 == eval ]] && ("$@"; set --)
@@ -105,3 +106,5 @@ if [[ $1 == eval ]]; then "$@"; set --; fi # [[ $1 == eval ]] && ("$@"; set --)
 [ -f ~/.workrc ] && source ~/.workrc
 
 export PYTHONDONTWRITEBYTECODE=1
+
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
