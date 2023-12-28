@@ -31,7 +31,6 @@ export CARGO_HOME=$XDG_DATA_HOME/cargo                    # Rust Cargo
 export DOCKER_CONFIG=$XDG_CONFIG_HOME/docker              # docker
 export GNUPGHOME=$XDG_DATA_HOME/gnupg                     # gnupg
 export HOMEBREW_CASK_OPTS="--no-quarantine"               # homebrew
-export HOMEBREW_BUNDLE_NO_LOCK=1                          #
 export IPYTHONDIR=$XDG_CONFIG_HOME/jupyter                # ipython
 export JUPYTER_CONFIG_DIR=$XDG_CONFIG_HOME/jupyter        # jupyter
 export LESSHISTFILE="-"                                   # less history

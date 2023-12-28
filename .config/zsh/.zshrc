@@ -96,7 +96,7 @@ source $DATADIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 #===============================================================================
 
 # showoff
-# clear; neofetch; figlet -d $HOME/.local/src/figlet-fonts -w 150 -f Roman 'Z-shell'; echo -e '\e[2A\e[K'
+clear; fastfetch; figlet -d $HOME/.local/src/figlet-fonts -w 150 -f Roman 'Z-shell'; echo -e '\e[2A\e[K'
 
 # run provided command
 if [[ $1 == eval ]]; then "$@"; set --; fi # [[ $1 == eval ]] && ("$@"; set --)
@@ -107,4 +107,4 @@ if [[ $1 == eval ]]; then "$@"; set --; fi # [[ $1 == eval ]] && ("$@"; set --)
 
 export PYTHONDONTWRITEBYTECODE=1
 
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
+# [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh

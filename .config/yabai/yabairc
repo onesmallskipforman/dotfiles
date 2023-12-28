@@ -13,7 +13,7 @@ sudo yabai --load-sa
 # Set a custom wallpaper image
 WALLPAPER="$HOME/.local/share/wallpapers/beams.jpeg"
 osascript -e "tell application \"Finder\" to set desktop picture to \"$(realpath "$WALLPAPER")\" as POSIX file"
-osascript -e "tell application \"System Events\" to tell every desktop to set picture to \"$(realpath "$WALLPAPER")\""
+osascript -e "tell application \"System Events\" to tell every desktop to set picture to \"$(realpath "$WALLPAPER")\" as POSIX file"
 
 # ensure dmenu, ubersicht bar, and redshift are running
 pgrep dmenu-mac &>/dev/null || open -a dmenu-mac
