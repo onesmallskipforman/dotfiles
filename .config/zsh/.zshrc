@@ -108,3 +108,5 @@ if [[ $1 == eval ]]; then "$@"; set --; fi # [[ $1 == eval ]] && ("$@"; set --)
 export PYTHONDONTWRITEBYTECODE=1
 
 # [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
+
+export PATH="/usr/local/opt/node@20/bin:$PATH"

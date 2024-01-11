@@ -1,6 +1,6 @@
 
 # restart
-alt + ctrl + shift - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai" && skhd --reload
+alt + ctrl + shift - r : yabai --restart-service && skhd --restart-service
 
 #===============================================================================
 # PROGRAM CONTROLS
