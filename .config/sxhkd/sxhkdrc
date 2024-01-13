@@ -29,7 +29,7 @@ alt + c
 
 # rofi
 alt + d
-    rofi -font "Hack Nerd Font Mono 12" -show run -display-run ""
+    rofi -font "Hack Nerd Font Mono 12" -show-icons -show drun -display-drun ""
 
 alt + p
     plotjuggler
@@ -108,11 +108,14 @@ alt + {_,shift + }r
 #===============================================================================
 
 # audio controls (1 is native, 2 is hdmi)
+# TODO: this currently takes the first occurence of running, which isn't the
+# same as default or necessarily the device you want. learn how to config
+# default and then set volume for default
 XF86Audio{Raise,Lower}Volume
-  pactl set-sink-volume $(pactl list short sinks | awk 'NR==1\{ print $2 \}') {+,-}5%
+  pactl set-sink-volume $(pactl list short sinks | grep 'sink' | awk '$7 == "RUNNING" \{ print $2; exit \}') {+,-}5%
 
 XF86AudioMute
-  pactl set-sink-mute $(pactl list short sinks | awk 'NR==1\{ print $2 \}') toggle
+  pactl set-sink-mute $(pactl list short sinks | grep 'sink' | awk '$7 == "RUNNING" \{ print $2; exit \}') toggle
 
 # screen and keyboard backlight brightness
 XF86MonBrightness{Up,Down}
@@ -151,6 +154,12 @@ super + shift + t
 
 ctrl + shift + o
   vpndown || vpn
+  # bspc rule -a \* -o state=floating && $TERMINAL -e $SHELL -c 'vpnToken'
+
 
 ctrl + shift + a
   autorandr --change
+
+
+ctrl + shift + b
+    ~/.config/polybar/launch.sh

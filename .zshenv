@@ -19,7 +19,7 @@ export PATH="$PATH:/Library/TeX/texbin"
 # paths for coreutils
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
-export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+export MANPATH="$HOME/.local/share/man:/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
 # ~/ Clean-up:
 export BUNDLE_USER_CONFIG=$XDG_CONFIG_HOME/bundle         # ruby bundling

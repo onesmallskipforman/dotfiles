@@ -231,6 +231,8 @@ label = %date% %time%
 [module/pulseaudio]
 type = internal/pulseaudio
 
+sink = ${env:SINK:}
+
 ; Interval for volume increase/decrease (in percent points)
 ; Default: 5
 interval = 5

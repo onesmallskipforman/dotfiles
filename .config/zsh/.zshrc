@@ -9,6 +9,7 @@ autoload -U colors && colors
 # export PS1="[ %n %1~ ] ❯ "
 # export PS1="%B%{$fg[red]%}$PS1 %{$reset_color%}"
 export PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%1~%{$fg[red]%}]%{$reset_color%}$%b "
+# export PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n %{$fg[magenta]%}%1~%{$fg[red]%}]%{$reset_color%}$%b "
 
 #===============================================================================
 # COMPLETIONS
@@ -88,14 +89,14 @@ source $DATADIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 [ -f $XDG_CONFIG_HOME/fzf/fzf.zsh   ] &&  source $XDG_CONFIG_HOME/fzf/fzf.zsh
 [ -f "$XDG_CONFIG_HOME/aliasrc"     ] && source $XDG_CONFIG_HOME/aliasrc
-[ -f /opt/ros/$ROS_DISTRO/setup.zsh ] && source /opt/ros/$ROS_DISTRO/setup.zsh
+[ -f /opt/ros/$ROS_DISTRO/setup.zsh ] && source /opt/ros/noetic/setup.zsh
 
 #===============================================================================
 # PROCESS INITIAL COMMANDS
 #===============================================================================
 
 # showoff
-clear; neofetch; figlet -d $HOME/.local/src/figlet-fonts -w 150 -f Roman 'Z-shell'; echo -e '\e[2A\e[K'
+# clear; neofetch; figlet -d $HOME/.local/src/figlet-fonts -w 150 -f Roman 'Z-shell'; echo -e '\e[2A\e[K'
 
 # run provided command
 if [[ $1 == eval ]]; then "$@"; set --; fi # [[ $1 == eval ]] && ("$@"; set --)
@@ -105,3 +106,6 @@ if [[ $1 == eval ]]; then "$@"; set --; fi # [[ $1 == eval ]] && ("$@"; set --)
 [ -f ~/.workrc ] && source ~/.workrc
 
 export PYTHONDONTWRITEBYTECODE=1
+
+
+alias aoc='cd ~/Projects/advent_of_code_2023'
