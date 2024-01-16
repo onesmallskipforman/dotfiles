@@ -1,13 +1,14 @@
 # Setup fzf
 # ---------
-if [[ ! "$PATH" == */usr/local/opt/fzf/bin* ]]; then
-  PATH="${PATH:+${PATH}:}/usr/local/opt/fzf/bin"
+# TODO: generalize user path
+if [[ ! "$PATH" == */home/skipper/.local/src/fzf/bin* ]]; then
+  PATH="${PATH:+${PATH}:}/home/skipper/.local/src/fzf/bin"
 fi
 
 # Auto-completion
 # ---------------
-source "/usr/local/opt/fzf/shell/completion.zsh"
+source "/home/skipper/.local/src/fzf/shell/completion.zsh"
 
 # Key bindings
 # ------------
-source "/usr/local/opt/fzf/shell/key-bindings.zsh"
+source "/home/skipper/.local/src/fzf/shell/key-bindings.zsh"

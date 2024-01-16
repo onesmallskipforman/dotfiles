@@ -140,7 +140,7 @@ program = "/bin/zsh"
 [window]
 decorations = "none"
 dynamic_padding = false
-option_as_alt = "Both"
+# option_as_alt = "Both" # TODO: should be in soon: https://github.com/alacritty/alacritty/pull/7601
 startup_mode = "Windowed"
 
 [window.padding]

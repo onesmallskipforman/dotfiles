@@ -87,7 +87,7 @@ source $DATADIR/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $DATADIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # source $DATADIR/autojump/autojump.zsh
 
-[ -f $XDG_CONFIG_HOME/fzf/fzf.zsh   ] &&  source $XDG_CONFIG_HOME/fzf/fzf.zsh
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
 [ -f "$XDG_CONFIG_HOME/aliasrc"     ] && source $XDG_CONFIG_HOME/aliasrc
 [ -f /opt/ros/$ROS_DISTRO/setup.zsh ] && source /opt/ros/$ROS_DISTRO/setup.zsh
 
@@ -96,17 +96,16 @@ source $DATADIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 #===============================================================================
 
 # showoff
-clear; fastfetch; figlet -d $HOME/.local/src/figlet-fonts -w 150 -f Roman 'Z-shell'; echo -e '\e[2A\e[K'
+{
+    clear;
+    [ -x "$(command -v fastfetch)" ] && fastfetch;
+    [ -x "$(command -v figlet)" ] && figlet -d $HOME/.local/src/figlet-fonts -w 150 -f Roman 'Z-shell' && echo -e '\e[2A\e[K'
+}
 
 # run provided command
 if [[ $1 == eval ]]; then "$@"; set --; fi # [[ $1 == eval ]] && ("$@"; set --)
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 [ -f ~/.workrc ] && source ~/.workrc
 
 export PYTHONDONTWRITEBYTECODE=1
-
-# [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
-
 export PATH="/usr/local/opt/node@20/bin:$PATH"

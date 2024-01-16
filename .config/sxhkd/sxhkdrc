@@ -17,7 +17,11 @@ alt + ctrl + shift + {1,2,3}
 alt + {Return,w}
   {$TERMINAL,$BROWSER}
 alt + {_,shift + }q
-	bspc node -{c,k}
+    bspc node -{c,k}
+
+# open slack
+alt + s
+    slack
 
 # program toggles
 alt + c
@@ -25,7 +29,19 @@ alt + c
 
 # rofi
 alt + d
-	rofi -font "Hack Nerd Font Mono 12" -show run -display-run ""
+    rofi -font "Hack Nerd Font Mono 12" -show-icons -show drun -display-drun ""
+
+alt + p
+    plotjuggler
+
+alt + m
+    thunderbird
+
+alt + t
+    bspc rule -a \* -o state=floating && $TERMINAL -e $SHELL -c 'source select_repo.sh && searchCache'
+
+alt + shift + t
+    bspc rule -a \* -o state=floating && $TERMINAL -e $SHELL -c 'source select_local_repo.sh && selectRepo | xargs -n1 -I{} $TERMINAL --working-directory={}'
 
 #===============================================================================
 # FOCUS AND SWAP CONTROLS
@@ -33,11 +49,11 @@ alt + d
 
 # focus window directional, shift to swap or move (if floating) directional
 alt + {_,shift + }{h,j,k,l}
-	bspc node -{f,s} {west,south,north,east}
+    bspc node -{f,s} {west,south,north,east}
 
 # focus space number, shift to swap to space (with follow focus)
 alt + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} ^{1-9,10}
+    bspc {desktop -f,node -d} ^{1-9,10}
 
 # focus display number, shift to swap to display
 alt + ctrl + {_,shift + }{1-3}
@@ -45,15 +61,15 @@ alt + ctrl + {_,shift + }{1-3}
 
 # focus desktop directional
 alt + {g,semicolon}
-	bspc desktop {prev,next} --focus # bspc desktop {prev,next}.occupied --focus
+    bspc desktop {prev,next} --focus # bspc desktop {prev,next}.occupied --focus
 
 # make new space
 alt + n
-	bspc monitor -a new
+    bspc monitor -a new
 
 # remove space
 alt + shift + d
-	bspc desktop -r
+    bspc desktop -r
 
 #===============================================================================
 # WINDOW MANIPULATION
@@ -65,23 +81,23 @@ alt + {_,shift +}x
 
 # Increase/descrease gap size
 alt + {_,shift +}z
-	bspc config window_gap $(($(bspc config window_gap) {+,-} 3))
+    bspc config window_gap $(($(bspc config window_gap) {+,-} 3))
 
 # set the window state
 alt + shift + space
-	bspc node focused -t \~floating
+    bspc node focused -t \~floating
 
 # alternate between the tiled and monocle layout
 alt + {_,shift + }f
-	bspc {desktop -l next,node -t ~fullscreen}
+    bspc {desktop -l next,node -t ~fullscreen}
 
 # # resize window in direction
 # alt + {y,u,i,o}
-# 	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+#   bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
 # toggle fullscreen
 alt + {_,shift + }f
-	bspc desktop -l next
+    bspc desktop -l next
 
 # rotate ccw 90, shift for cw 90
 alt + {_,shift + }r
@@ -92,11 +108,14 @@ alt + {_,shift + }r
 #===============================================================================
 
 # audio controls (1 is native, 2 is hdmi)
+# TODO: this currently takes the first occurence of running, which isn't the
+# same as default or necessarily the device you want. learn how to config
+# default and then set volume for default
 XF86Audio{Raise,Lower}Volume
-  pactl set-sink-volume $(pactl list short sinks | awk 'NR==1\{ print $2 \}') {+,-}5%
+  pactl set-sink-volume $(pactl list short sinks | grep 'sink' | awk '$7 == "RUNNING" \{ print $2; exit \}') {+,-}5%
 
 XF86AudioMute
-  pactl set-sink-mute $(pactl list short sinks | awk 'NR==1\{ print $2 \}') toggle
+  pactl set-sink-mute $(pactl list short sinks | grep 'sink' | awk '$7 == "RUNNING" \{ print $2; exit \}') toggle
 
 # screen and keyboard backlight brightness
 XF86MonBrightness{Up,Down}
@@ -135,6 +154,12 @@ super + shift + t
 
 ctrl + shift + o
   vpndown || vpn
+  # bspc rule -a \* -o state=floating && $TERMINAL -e $SHELL -c 'vpnToken'
+
 
 ctrl + shift + a
   autorandr --change
+
+
+ctrl + shift + b
+    ~/.config/polybar/launch.sh
