@@ -4,4 +4,4 @@
     branch = master
 [submodule ".local/share"]
     path = .local/share
-    url = https://onesmallskipforman@github.com/onesmallskipforman/userdata.git
+    url = https://github.com/onesmallskipforman/userdata.git
