@@ -105,7 +105,8 @@ source $DATADIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # run provided command
 if [[ $1 == eval ]]; then "$@"; set --; fi # [[ $1 == eval ]] && ("$@"; set --)
 
-[ -f ~/.workrc ] && source ~/.workrc
+WORKRC=~/.config/work/workrc
+[ -f $WORKRC ] && source $WORKRC
 
 export PYTHONDONTWRITEBYTECODE=1
 export PATH="/usr/local/opt/node@20/bin:$PATH"
