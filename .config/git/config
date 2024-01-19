@@ -5,6 +5,10 @@
     rebase = false
 [credential]
     helper = store --file=$HOME/.local/share/git/git-credentials
-    username = onesmallskipforman
-[url "https://onesmallskipforman@github"]
-    insteadOf = "https://github"
+    ; username = onesmallskipforman
+[url "https://onesmallskipforman@github.com"]
+    insteadOf = https://github.com
+[push]
+    autoSetupRemote = true
+[includeIf "gitdir:~/work/"]
+    path = ~/work/.gitconfig
