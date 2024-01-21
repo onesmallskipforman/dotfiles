@@ -1,0 +1,14 @@
+
+/* @theme "/usr/share/rofi/themes/gruvbox-dark-soft.rasi" */
+@theme "~/.local/src/rofi-themes-collection/themes/launchpad.rasi"
+
+
+/*
+configuration {
+    theme: "/usr/share/rofi/themes/Arc-Dark-Punch.rasi";
+    modi: "window,drun,ssh,combi";
+    icon-theme: "Papirus";
+    show-icons: true;
+    combi-modi: "window,drun,ssh";
+}
+*/
