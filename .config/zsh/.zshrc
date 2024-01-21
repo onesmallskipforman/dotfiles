@@ -110,3 +110,4 @@ WORKRC=~/.config/work/workrc
 
 export PYTHONDONTWRITEBYTECODE=1
 export PATH="/usr/local/opt/node@20/bin:$PATH"
+export PATH="/home/skipper/.local/share/nvim/mason/bin:$PATH"

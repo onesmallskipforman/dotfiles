@@ -1,4 +1,6 @@
 
+/* /usr/share/rofi/themes/ */
+/* ~/.local/src/rofi-themes-collection */
 /* @theme "/usr/share/rofi/themes/gruvbox-dark-soft.rasi" */
 @theme "~/.local/src/rofi-themes-collection/themes/launchpad.rasi"
 
