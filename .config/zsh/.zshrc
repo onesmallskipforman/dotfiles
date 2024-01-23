@@ -109,5 +109,8 @@ WORKRC=~/.config/work/workrc
 [ -f $WORKRC ] && source $WORKRC
 
 export PYTHONDONTWRITEBYTECODE=1
+# TODO: only add this on OSX
 export PATH="/usr/local/opt/node@20/bin:$PATH"
+
+# Add path for using LSPs installed by mason
 export PATH="/home/skipper/.local/share/nvim/mason/bin:$PATH"
