@@ -26,7 +26,7 @@ xinput set-prop 'Logitech M510' "libinput Accel Speed" -0.2
 xset r rate 225 33
 
 # start redshift
-redshift &
+[ -x "$(command -v redshift)" ] && redshift &
 
 # set cursor
 xsetroot -cursor_name left_ptr
@@ -39,12 +39,12 @@ xsetroot -cursor_name left_ptr
 feh --bg-fill ~/Projects/userdata/wallpapers/beams.jpeg
 
 # start window compositor
-picom --config ~/.config/picom/picom.conf &
+[ -x "$(command -v picom)" ] && picom --config ~/.config/picom/picom.conf &
 
 sleep 1
 
 # start polybar
-~/.config/polybar/launch.sh &
+[ -x "$(command -v polybar)" ] && ~/.config/polybar/launch.sh &
 
 # start window manager
 sxhkd &
