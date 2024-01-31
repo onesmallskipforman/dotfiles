@@ -1,6 +1,5 @@
 #!/bin/sh
 
-alias icat="kitty +kitten icat"
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 alias ssh='kssh() {[ "$TERM" = "xterm-kitty" ] && kitty +kitten ssh $@ || ssh $@}; kssh'
 # alias docker='docker info &> /dev/null || {docker_setup && eval $(docker-machine env default)} && docker'

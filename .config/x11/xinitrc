@@ -1,5 +1,10 @@
 #!/bin/sh
 
+# TODO: find out if we even need these
+xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --auto
+
+
 # load X resources
 #[ -f ~/.config/x11/Xresources ] && xrdb -merge -I$HOME ~/.config/x11/Xresources
 
@@ -33,15 +38,15 @@ xsetroot -cursor_name left_ptr
 
 # set wallpaper
 # feh --bg-fill ~/Downloads/torc_robotics_bg_black_1920x1080.v1.png
-#feh --bg-fill $HOME/.local/share/wallpapers/beams.jpeg
+feh --bg-fill $HOME/.local/share/wallpapers/beams.jpeg
 
 # feh --bg-fill ~/Documents/whatsapp.jpg
-feh --bg-fill ~/Projects/userdata/wallpapers/beams.jpeg
+# feh --bg-fill ~/Projects/userdata/wallpapers/beams.jpeg
 
 # start window compositor
 [ -x "$(command -v picom)" ] && picom --config ~/.config/picom/picom.conf &
 
-sleep 1
+# sleep 1
 
 # start polybar
 [ -x "$(command -v polybar)" ] && ~/.config/polybar/launch.sh &
