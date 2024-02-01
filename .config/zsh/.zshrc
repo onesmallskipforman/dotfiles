@@ -34,6 +34,8 @@ _comp_options+=(globdots)   # Include hidden files.
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 
+
+
 #===============================================================================
 # KEYMAPPINGS
 #===============================================================================
@@ -64,6 +66,18 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 # Fix backspace bug when switching modes
 bindkey "^?" backward-delete-char
+
+function vi-yank-xclip {
+    # TODO: we can't fun flags in a string variable that's treated as one whole command
+    # need to use 'eval' or just put the whole clip command inside the if-else logic
+    # local CLIP=$( [ $(uname) = "Darwin" ] && echo "pbcopy -i" || echo "xclip -i -selection 'clipboard'" )
+    zle vi-yank
+    print -rn -- "$CUTBUFFER" | xclip -i -selection 'clipboard'
+}
+zle -N vi-yank-xclip
+bindkey -M vicmd 'y' vi-yank-xclip
+
+
 
 # # Use lf to switch directories and bind it to ctrl-o
 # lfcd () {
@@ -97,7 +111,7 @@ source $DATADIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # showoff
 {
-    clear;
+    # clear;
     [ -x "$(command -v fastfetch)" ] && fastfetch;
     [ -x "$(command -v figlet)" ] && figlet -d $HOME/.local/src/figlet-fonts -w 150 -f Roman 'Z-shell' && echo -e '\e[2A\e[K'
 }

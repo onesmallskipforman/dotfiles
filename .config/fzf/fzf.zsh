@@ -6,7 +6,7 @@ fi
 
 # Auto-completion
 # ---------------
-source "$HOME/src/fzf/shell/completion.zsh"
+source "$HOME/.local/src/fzf/shell/completion.zsh"
 
 # Key bindings
 # ------------
