@@ -17,17 +17,45 @@
 ;==========================================================
 
 [colors]
-;background = ${xrdb:color0:#222}
-; background = #222
-background = #1d2021
-background-alt = #444
-;foreground = ${xrdb:color7:#222}
-; foreground = #dfdfdf
-foreground = #ebdbb2
-foreground-alt = #555
-primary = #ffb52a
-secondary = #e60053
-alert = #bd2c40
+; ;background = ${xrdb:color0:#222}
+; ; background = #222
+; background = #1d2021
+; background-alt = #444
+; ;foreground = ${xrdb:color7:#222}
+; ; foreground = #dfdfdf
+; foreground = #ebdbb2
+; foreground-alt = #555
+
+
+
+; foreground = ${xrdb:foreground:#ebdbb2}
+foreground = ${xrdb:XTerm*cursorColor:#ebdbb2}
+background = ${xrdb:background:#1d2021}
+; black = ${colors.background}
+;
+black       = ${xrdb:color0:#1d2021}
+darkred     = ${xrdb:color1:#cc241d}
+darkgreen   = ${xrdb:color2:##0f8548}
+darkyellow  = ${xrdb:color3:#d79921}
+darkblue    = ${xrdb:color4:#255ea1}
+darkmagenta = ${xrdb:color5:#b16286}
+darkcyan    = ${xrdb:color6:#609996}
+grey        = ${xrdb:color7:#59646b}
+lightgray   = ${xrdb:color8:#8f9da6}
+red         = ${xrdb:color9:#e53935}
+green       = ${xrdb:color10:#2cd179}
+yellow      = ${xrdb:color11:#ffc85e}
+blue        = ${xrdb:color12:#5294e2}
+darkpurple  = ${xrdb:color13:#e86ba4}
+cyan        = ${xrdb:color14:#68d4ce}
+white       = ${xrdb:color15:#f3f4f5}
+
+; primary = #ffb52a
+; secondary = #e60053
+; alert = #bd2c40
+primary = ${colors.yellow}
+secondary = ${colors.red}
+alert = ${colors.darkred}
 
 [bar/mybar]
 monitor = ${env:MONITOR:}
@@ -126,14 +154,15 @@ label-focused-padding = 2
 
 label-occupied = %index%
 label-occupied-padding = 2
-label-occupied-underline = #555555
+; label-occupied-underline = #555555
+label-occupied-underline = ${colors.lightgray}
 
 label-urgent = %index%!
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
 label-empty = %index%
-label-empty-foreground = ${colors.foreground-alt}
+label-empty-foreground = ${colors.foreground}
 label-empty-padding = 2
 
 ; Separator in between workspaces
@@ -179,7 +208,8 @@ type = internal/cpu
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #f90000
+; format-underline = #f90000
+format-underline = ${colors.red}
 label = %percentage:2%%
 
 [module/memory]
@@ -187,7 +217,8 @@ type = internal/memory
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #4bffdc
+; format-underline = #4bffdc
+format-underline = ${colors.cyan}
 label = %percentage_used%%
 
 [module/wlan]
@@ -224,7 +255,8 @@ time-alt = %I:%M:%S %p
 
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
+; format-underline = #0a6cf5
+format-underline = ${colors.blue}
 
 label = %date% %time%
 
@@ -266,7 +298,8 @@ adapter = ADP1
 full-at = 98
 
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
+; format-charging-underline = #ffb52a
+format-charging-underline = ${colors.yellow}
 
 format-discharging = <animation-discharging> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
@@ -298,7 +331,8 @@ thermal-zone = 0
 warn-temperature = 60
 
 format = <ramp> <label>
-format-underline = #f50a4d
+; format-underline = #f50a4d
+format-underline = ${colors.red}
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
 

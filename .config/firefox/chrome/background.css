@@ -1,0 +1,32 @@
+/* @namespace url("http://www.w3.org/1999/xhtml"); */
+/* @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); */ /* only needed once*/
+@import "./colors.css"; /* NOTE: have to use relative path without 'url' here */
+
+
+@-moz-document url("about:home"),url("about:blank"),url("about:newtab"),url("about:privatebrowsing"){
+    body{
+        background-color: var(--background) !important;
+        /* background-color: rgba(46,54,69,1.0) !important; */
+        /* --newtab-background-color: red !important; */
+    }
+    #newtab-customize-overlay {
+        background: red !important;
+    }
+}
+/* @-moz-document url("about:privatebrowsing"){ */
+/*   .search-handoff-button{ background-color: rgba(100,100,100,0.1) !important; } */
+/*   .fake-textbox{ color: rgb(200,200,200) !important } */
+/* } */
+
+
+/* @-moz-document url("about:newtab"), url("about:home"), url("about:blank"){ */
+/*   body{ */
+/*     /* This will load image.jpg stored in the same folder as this file */ */
+/*     background-image: url("flowers.png"); */
+/*     background-size: cover; */
+/*     background-repeat: no-repeat; */
+/*     background-attachment: fixed; */
+/*     background-position-x: center; */
+/*     background-position-y: bottom; */
+/*   } */
+/* } */

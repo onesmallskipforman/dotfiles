@@ -2,8 +2,16 @@
 /* /usr/share/rofi/themes/ */
 /* ~/.local/src/rofi-themes-collection */
 /* @theme "/usr/share/rofi/themes/gruvbox-dark-soft.rasi" */
-@theme "~/.local/src/rofi-themes-collection/themes/launchpad.rasi"
 
+
+
+@theme "~/.cache/wal/colors-rofi-dark.rasi"
+/* @theme "~/.local/src/rofi-themes-collection/themes/launchpad.rasi" */
+
+element-text, element-icon {
+    /* background-color: inherit; */
+    text-color:       inherit;
+}
 
 /*
 configuration {
