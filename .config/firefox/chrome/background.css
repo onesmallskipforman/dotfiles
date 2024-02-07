@@ -17,7 +17,10 @@
 /*   .search-handoff-button{ background-color: rgba(100,100,100,0.1) !important; } */
 /*   .fake-textbox{ color: rgb(200,200,200) !important } */
 /* } */
-
+/* ::selection { */
+/*     color: White !important; */
+/*     background: DarkGreen !important; */
+/* } */
 
 /* @-moz-document url("about:newtab"), url("about:home"), url("about:blank"){ */
 /*   body{ */
