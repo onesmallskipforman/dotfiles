@@ -8,17 +8,16 @@
 @theme "~/.cache/wal/colors-rofi-dark.rasi"
 /* @theme "~/.local/src/rofi-themes-collection/themes/launchpad.rasi" */
 
+
 element-text, element-icon {
     /* background-color: inherit; */
     text-color:       inherit;
 }
 
-/*
-configuration {
-    theme: "/usr/share/rofi/themes/Arc-Dark-Punch.rasi";
-    modi: "window,drun,ssh,combi";
-    icon-theme: "Papirus";
-    show-icons: true;
-    combi-modi: "window,drun,ssh";
-}
-*/
+// configuration {
+//     theme: "/usr/share/rofi/themes/Arc-Dark-Punch.rasi";
+//     modi: "window,drun,ssh,combi";
+//     icon-theme: "Papirus";
+//     show-icons: true;
+//     combi-modi: "window,drun,ssh";
+// }

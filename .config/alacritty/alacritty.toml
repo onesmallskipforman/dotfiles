@@ -2,13 +2,28 @@ live_config_reload = true
 working_directory = "None"
 
 import = [
-    "~/.config/alacritty/themes/gruvbox_dark.toml"
-    # "~/.cache/wal/colors.toml"
+    # "~/.config/alacritty/themes/gruvbox_dark.toml"
+
+    "~/.cache/wal/colors.toml"
 ]
 
 [cursor]
-style = {shape = "Beam", blinking = "Off"}
+style = {shape = "Beam", blinking = "Never"}
 unfocused_hollow = true
+
+
+# [cursor.vi_mode_style]
+# shape = "Beam"
+# blinking = "Always"
+# unfocused_hollow = true
+
+
+
+# NOTE: this works too
+# [cursor.style]
+# shape = "Beam"
+# blinking = "Never"
+
 
 # [[colors.indexed_colors]]
 # color = "0xfe8019"

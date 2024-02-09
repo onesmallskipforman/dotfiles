@@ -112,8 +112,8 @@ source $DATADIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # showoff
 {
     # clear;
-    [ -x "$(command -v fastfetch)" ] && fastfetch;
-    [ -x "$(command -v figlet)" ] && figlet -d $HOME/.local/src/figlet-fonts -w 150 -f Roman 'Z-shell' && echo -e '\e[2A\e[K'
+    # [ -x "$(command -v fastfetch)" ] && fastfetch;
+    # [ -x "$(command -v figlet)" ] && figlet -d $HOME/.local/src/figlet-fonts -w 150 -f Roman 'Z-shell' && echo -e '\e[2A\e[K'
 }
 
 # run provided command
@@ -128,3 +128,6 @@ export PATH="/usr/local/opt/node@20/bin:$PATH"
 
 # Add path for using LSPs installed by mason
 export PATH="/home/skipper/.local/share/nvim/mason/bin:$PATH"
+
+
+export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
