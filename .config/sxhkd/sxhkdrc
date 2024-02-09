@@ -108,14 +108,13 @@ alt + {_,shift + }r
 #===============================================================================
 
 # audio controls (1 is native, 2 is hdmi)
-# TODO: this currently takes the first occurence of running, which isn't the
-# same as default or necessarily the device you want. learn how to config
-# default and then set volume for default
 XF86Audio{Raise,Lower}Volume
-  pactl set-sink-volume $(pactl list short sinks | grep 'sink' | awk '$7 == "RUNNING" \{ print $2; exit \}') {+,-}5%
+  pactl set-sink-volume @DEFAULT_SINK@ {+,-}5%
+  # wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%{+,-}
 
 XF86AudioMute
-  pactl set-sink-mute $(pactl list short sinks | grep 'sink' | awk '$7 == "RUNNING" \{ print $2; exit \}') toggle
+  pactl set-sink-mute @DEFAULT_SINK@ toggle
+  # wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
 # screen and keyboard backlight brightness
 XF86MonBrightness{Up,Down}
