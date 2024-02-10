@@ -31,11 +31,12 @@
 ; foreground = ${xrdb:foreground:#ebdbb2}
 foreground = ${xrdb:XTerm*cursorColor:#ebdbb2}
 background = ${xrdb:background:#1d2021}
+; background = #00000000
 ; black = ${colors.background}
 ;
 black       = ${xrdb:color0:#1d2021}
 darkred     = ${xrdb:color1:#cc241d}
-darkgreen   = ${xrdb:color2:##0f8548}
+darkgreen   = ${xrdb:color2:#0f8548}
 darkyellow  = ${xrdb:color3:#d79921}
 darkblue    = ${xrdb:color4:#255ea1}
 darkmagenta = ${xrdb:color5:#b16286}
@@ -59,11 +60,13 @@ alert = ${colors.darkred}
 
 [bar/mybar]
 monitor = ${env:MONITOR:}
-width = 100%
+width = 99.25%
 height = 30
-;offset-x = 1%
-;offset-y = 1%
-radius = 6.0
+offset-x = 0.375%
+offset-y = 0.375%
+; offset-y = 4
+; offset-y = 1%
+radius = 0.0
 fixed-center = false
 
 background = ${colors.background}
@@ -72,7 +75,7 @@ foreground = ${colors.foreground}
 line-size = 3
 line-color = #f00
 
-border-size = 4
+border-size = 0
 border-color = #00000000
 
 padding-left = 0
@@ -88,18 +91,37 @@ font-3 = Hack Nerd Font:pixelsize=10;1
 
 modules-left = bspwm
 ; modules-cend          Mono
-modules-right = vpn-openconnect-status pulseaudio filesystem memory cpu battery temperature date powermenu
+; see https://github.com/polybar/polybar/issues/1070
+modules-right = vpn-openconnect-status pulseaudio filesystem memory cpu battery temperature date tray powermenu
 ; modules-right = battery temperature date powermenu
 ; xbacklight alsa pulseaudio xkeyboard
 
-tray-position = right
-tray-padding = 2
-;tray-background = #0063ff
-
-;wm-restack = bspwm
+; Restack the bar window and put it above the
+; selected window manager's root
+;
+; Fixes the issue where the bar is being drawn
+; on top of fullscreen window's
+;
+; Currently supported values:
+;   generic (Tries the ewmh strategy and falls back
+;            to the bottom strategy.
+;            This is a best-effort strategy and may change and be tweaked in
+;            the future, the individual strategies are available on their own)
+;           (New in version 3.6.0)
+;           (Changed in version 3.7.0: Tries the ewmh strategy instead of just
+;            the bottom strategy)
+;   bspwm   (Moves the bar window above all bspwm root windows)
+;   bottom  (Moves the bar window above the first window in the window stack.
+;            Works in xmonad, may not work on other WMs
+;            New in version 3.7.0)
+;   ewmh    (Moves the bar above the window specified in _NET_SUPPORTING_WM_CHECK,
+;            if it is set
+;            New in version 3.7.0)
+;   i3 (requires `override-redirect = true`)
+wm-restack = bspwm
 ;wm-restack = i3
 
-;override-redirect = true
+override-redirect = false
 
 ;scroll-up = bspwm-desknext
 ;scroll-down = bspwm-deskprev
@@ -111,6 +133,16 @@ cursor-click = pointer
 cursor-scroll = ns-resize
 
 dpi = 96
+
+
+[module/tray]
+type = internal/tray
+
+format-margin = 0px
+tray-spacing = 2px
+tray-size = 70%
+; tray-background = #FFFFFF
+; format-background = #FFFFFF
 
 [module/xwindow]
 type = internal/xwindow
@@ -308,27 +340,35 @@ format-charging = <animation-charging> <label-charging>
 ; format-charging-underline = #ffb52a
 format-charging-underline = ${colors.yellow}
 
-format-discharging = <animation-discharging> <label-discharging>
+format-discharging = <ramp-capacity>  <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
+; format-full-prefix = " "
+; format-full-prefix-foreground = ${colors.foreground-alt}
+
+format-full = <ramp-capacity>  <label-full>
 format-full-underline = ${self.format-charging-underline}
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
 ramp-capacity-foreground = ${colors.foreground-alt}
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
 animation-charging-foreground = ${colors.foreground-alt}
 animation-charging-framerate = 750
 
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-3 = 
+animation-discharging-4 = 
 animation-discharging-foreground = ${colors.foreground-alt}
 animation-discharging-framerate = 750
 
@@ -394,7 +434,7 @@ screenchange-reload = true
 ;compositing-background = screen
 ;compositing-foreground = source
 ;compositing-border = over
-pseudo-transparency = true
+pseudo-transparency = false
 
 [global/wm]
 margin-top = 5
