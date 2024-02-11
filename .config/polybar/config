@@ -28,8 +28,8 @@
 
 
 
-; foreground = ${xrdb:foreground:#ebdbb2}
-foreground = ${xrdb:XTerm*cursorColor:#ebdbb2}
+foreground = ${xrdb:foreground:#ebdbb2}
+; foreground = ${xrdb:XTerm*cursorColor:#ebdbb2}
 background = ${xrdb:background:#1d2021}
 ; background = #00000000
 ; black = ${colors.background}
@@ -44,6 +44,7 @@ darkcyan    = ${xrdb:color6:#609996}
 grey        = ${xrdb:color7:#59646b}
 lightgray   = ${xrdb:color8:#8f9da6}
 red         = ${xrdb:color9:#e53935}
+; NOTE: I really like this green #2cd179
 green       = ${xrdb:color10:#2cd179}
 yellow      = ${xrdb:color11:#ffc85e}
 blue        = ${xrdb:color12:#5294e2}
@@ -60,10 +61,10 @@ alert = ${colors.darkred}
 
 [bar/mybar]
 monitor = ${env:MONITOR:}
-width = 99.25%
-height = 30
-offset-x = 0.375%
-offset-y = 0.375%
+; width = 99.25%
+; offset-x = 0.375%
+; offset-y = 0.375%
+height = 25
 ; offset-y = 4
 ; offset-y = 1%
 radius = 0.0
@@ -72,7 +73,7 @@ fixed-center = false
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 3
+line-size = 1
 line-color = #f00
 
 border-size = 0
@@ -81,12 +82,12 @@ border-color = #00000000
 padding-left = 0
 padding-right = 2
 
-module-margin-left = 1
-module-margin-right = 2
+module-margin-left = 2
+module-margin-right = 1
 
-font-0 = Hack Nerd Font:style=Regular:size=12;1
+font-0 = Hack Nerd Font:style=Regular:size=11;2
 font-1 = Hack Nerd Font:style=Regular:fontformat=truetype:size=8:antialias=false;0
-font-2 = Hack Nerd Font:style=Regular:pixelsize=12;1
+font-2 = Hack Nerd Font:style=Regular:pixelsize=11;1
 font-3 = Hack Nerd Font:pixelsize=10;1
 
 modules-left = bspwm
@@ -238,34 +239,36 @@ card = intel_backlight
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
+; format-prefix = " "
+format-prefix = "CPU "
 format-prefix-foreground = ${colors.foreground-alt}
 ; format-underline = #f90000
 format-underline = ${colors.red}
-label = %percentage:2%%
+label = %percentage:02%%
 
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
+; format-prefix = " "
+format-prefix = "MEM "
 format-prefix-foreground = ${colors.foreground-alt}
 ; format-underline = #4bffdc
 format-underline = ${colors.cyan}
-label = %percentage_used%%
+label = %percentage_used:02%%
 
 [module/wlan]
 type = internal/network
-interface = wlp3s0
+interface = wlp0s20f3
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
 format-connected-underline = #9f78e1
 label-connected = %essid%
 
-format-disconnected =
-;format-disconnected = <label-disconnected>
+; format-disconnected = down
 ;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
+label-disconnected = %ifname% disconnected
+; format-disconnected = <label-disconnected>
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
 ramp-signal-0 = 
@@ -337,7 +340,11 @@ battery = BAT0
 adapter = ADP1
 full-at = 98
 
-format-charging = <animation-charging> <label-charging>
+
+; label-charging = %percentage:03%%
+; label-discharging = %percentage:03%%
+
+format-charging = <animation-charging>  <label-charging>
 ; format-charging-underline = #ffb52a
 format-charging-underline = ${colors.yellow}
 
@@ -378,7 +385,7 @@ type = internal/temperature
 thermal-zone = 0
 warn-temperature = 60
 
-format = <ramp> <label>
+format = <ramp>  <label>
 ; format-underline = #f50a4d
 format-underline = ${colors.red}
 format-warn = <ramp> <label-warn>
@@ -400,34 +407,35 @@ expand-right = false
 
 format-spacing = 1
 
-label-open = 
+label-open = 󰐥
 label-open-foreground = ${colors.secondary}
-label-close =  cancel
+label-close = 󰅖
 label-close-foreground = ${colors.secondary}
 label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
 
-menu-0-0 = "reboot "
+menu-0-0 = reboot
 menu-0-0-exec = menu-open-1
 menu-0-1 = power off
 menu-0-1-exec = menu-open-2
 
-menu-1-0 = cancel
+menu-1-0 = back
 menu-1-0-exec = menu-open-0
 menu-1-1 = reboot
 menu-1-1-exec = reboot
 
 menu-2-0 = power off
 menu-2-0-exec = poweroff
-menu-2-1 = cancel
+menu-2-1 = back
 menu-2-1-exec = menu-open-0
 
 [module/vpn-openconnect-status]
 type = custom/script
-exec = printf 'VPN: ' && ( pgrep -a openconnect || echo 'down' ) | cut -d '.' -f 2
-; exec-if = pgrep openconnect
+; exec = printf 'VPN: ' && ( pgrep -a openconnect || echo 'down' ) | cut -d '.' -f 2
+exec = pgrep -a openconnect > /dev/null && echo '%{u#2cd179}VPN: UP' || echo '%{u#cc241d}VPN: DOWN'
 interval = 5
 ; exec = vpn-openvpn-status.sh
+format-underline = ${colors.green}
 
 [settings]
 screenchange-reload = true
