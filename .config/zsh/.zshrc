@@ -102,7 +102,7 @@ source $DATADIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # source $DATADIR/autojump/autojump.zsh
 
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
-[ -f "$XDG_CONFIG_HOME/aliasrc"     ] && source $XDG_CONFIG_HOME/aliasrc
+[ -f "$XDG_CONFIG_HOME/shell/aliasrc"     ] && source $XDG_CONFIG_HOME/shell/aliasrc
 [ -f /opt/ros/$ROS_DISTRO/setup.zsh ] && source /opt/ros/$ROS_DISTRO/setup.zsh
 
 #===============================================================================
