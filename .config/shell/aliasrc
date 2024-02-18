@@ -9,3 +9,4 @@ alias modelsim='/opt/altera/15.0/modelsim_ase/linuxaloem/vsim &>/dev/null & diso
 alias matlab='matlab -nosplash -nodesktop'
 alias simulink='matlab -r simulink' # start_simulink slLibraryBrowser
 alias ncdu='ncdu --exclude-firmlinks --si --color dark -x'
+alias wal='wal -c && wal --cols16 lighten --backend wal' # --backend haishoku always clear cache or 'lighten' vs 'darken' won't be used

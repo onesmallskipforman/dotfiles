@@ -47,11 +47,11 @@ bspc rule -a Zathura state=tiled
 # Set the border colors.
 # bspc config normal_border_color "$background"
 # bspc config active_border_color "$background"
-bspc config normal_border_color "$foreground"
-bspc config active_border_color "$foreground"
-bspc config focused_border_color "$foreground"
+bspc config normal_border_color "$color7"
+bspc config active_border_color "$color7"
+bspc config focused_border_color "$color7"
 # Use the line below if you are on bspwm >= 0.9.4
-bspc config presel_feedback_color "$color1"
+bspc config presel_feedback_color "$color7"
 
 
 
@@ -66,5 +66,5 @@ bspc config top_padding    15
 bspc config bottom_padding 15
 bspc config left_padding   15
 bspc config right_padding  15
-bspc config border_width   1
+bspc config border_width   2
 bspc config window_gap     15

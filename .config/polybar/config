@@ -28,7 +28,8 @@
 
 
 
-foreground = ${xrdb:foreground:#ebdbb2}
+foreground = ${xrdb:color7:#ebdbb2}
+; foreground = ${xrdb:color8:#ebdbb2}
 ; foreground = ${xrdb:XTerm*cursorColor:#ebdbb2}
 background = ${xrdb:background:#1d2021}
 ; background = #00000000
