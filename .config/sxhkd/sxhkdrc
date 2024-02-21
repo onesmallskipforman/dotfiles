@@ -29,10 +29,10 @@ alt + c
 
 # rofi
 alt + d
-    rofi -font "Hack Nerd Font Mono 12" -show-icons -show drun -display-drun ""
+    rofi -font "Hack Nerd Font 12" -show-icons -show drun -display-drun ""
 
 alt + p
-    plotjuggler
+    pkill picom || picom
 
 alt + m
     thunderbird

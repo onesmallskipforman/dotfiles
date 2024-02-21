@@ -51,6 +51,9 @@ feh --bg-fill $HOME/.local/share/wallpapers/beams.jpeg
 # start polybar
 [ -x "$(command -v polybar)" ] && ~/.config/polybar/launch.sh &
 
+# xset s 300 5
+# xss-lock -n /usr/lib/xsecurelock/dimmer -l -- /home/skipper/xsecurelock.sh
+
 # start window manager
 sxhkd &
 exec bspwm

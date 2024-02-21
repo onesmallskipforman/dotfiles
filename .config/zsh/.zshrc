@@ -131,3 +131,5 @@ export PATH="/home/skipper/.local/share/nvim/mason/bin:$PATH"
 
 
 export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
+
+export PATH=$PATH:/home/skipper/.spicetify

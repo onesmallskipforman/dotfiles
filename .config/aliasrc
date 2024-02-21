@@ -8,3 +8,8 @@ alias modelsim='/opt/altera/15.0/modelsim_ase/linuxaloem/vsim &>/dev/null & diso
 alias matlab='matlab -nosplash -nodesktop'
 alias simulink='matlab -r simulink' # start_simulink slLibraryBrowser
 alias ncdu='ncdu --exclude-firmlinks --si --color dark -x'
+
+
+alias b='cd ~/Projects/bootstrap'
+alias d='cd ~/Projects/bootstrap/dotfiles'
+alias v='cd ~/Projects/bootstrap/dotfiles/.config/nvim'
