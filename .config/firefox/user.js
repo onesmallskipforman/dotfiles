@@ -15,7 +15,8 @@ user_pref("browser.tabs.tabmanager.enabled", false); // remove tab manager butto
 user_pref("browser.startup.page", 3);
 
 
-user_pref("browser.startup.homepage", "about:blank"); // TODO: using about:blank doesn't use usercontent colors for some reason
+// user_pref("browser.startup.homepage", "about:blank"); // TODO: using about:blank doesn't use usercontent colors for some reason
+user_pref("browser.startup.homepage", "about:newtab");
 
 
 

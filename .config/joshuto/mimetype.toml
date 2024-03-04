@@ -1,0 +1,25 @@
+[class]
+image_default   = [ { command = "feh", args = ["--scale-down"], fork = true, silent = true } ]
+    # { command = "krita", fork = true, silent = true } ]
+
+[extension]
+pdf.app_list = [ { command = "zathura", fork = true, silent = true } ]
+
+# inherit from image_default class
+png.inherit  = "image_default"
+jpg.inherit  = "image_default"
+jpeg.inherit = "image_default"
+#
+# # inherit from image_default class
+# # in addition, also add gimp for .jpg files only
+# jpg.app_list    = [
+#     { command = "gimp", fork = true, silent = true } ]
+#
+# mkv.app_list    = [
+#     { command = "mpv", args = [ "--" ] , fork = true, silent = true },
+#     { command = "mediainfo", confirm_exit = true },
+#     { command = "mpv", args = [ "--mute", "on", "--" ], fork = true, silent = true } ]
+# rs.app_list = [
+#     { command = "micro" },
+#     { command = "gedit", fork = true, silent = true },
+#     { command = "bat", confirm_exit = true } ]

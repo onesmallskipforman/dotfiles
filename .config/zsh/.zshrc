@@ -24,7 +24,7 @@ zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.cache/zsh/.zcompcache
 
 # Basic auto/tab complete:
-autoload -U compinit
+autoload -Uz compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit -d ~/.cache/zsh/.zcompdump
@@ -33,8 +33,12 @@ _comp_options+=(globdots)   # Include hidden files.
 # Auto complete with case insenstivity
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
+# bash completions (maybe required for pipx?)
+# autoload -U bashcompinit
+# bashcompinit
 
-
+# pipx completions
+eval "$(register-python-argcomplete pipx)"
 
 #===============================================================================
 # KEYMAPPINGS
