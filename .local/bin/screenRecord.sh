@@ -2,7 +2,8 @@
 
 function screenRecord() {
   # local current_sink=$(wpctl status -n | grep '\*.*sink.*vol' | sed 's/^[^\.]*\. \|\[.*//g').monitor
-  local current_sink=$(wpctl status -n | grep '\*.*sink.*vol' | sed 's/^[^0-9]*\|\..*//g')
+  # local current_sink=$(wpctl status -n | grep '\*.*sink.*vol' | sed 's/^[^0-9]*\|\..*//g')
+  local current_sink=$(wpctl status -n | grep '\*.*alsa_output' | sed 's/^[^0-9]*\|\..*//g')
   local monitor_opts="$1"
   local RES=$1
   local POS=$2
@@ -23,13 +24,12 @@ function screenRecordMonitor() {
     | grep -w connected \
     | sed 's/\([0-9]*x[0-9]*\)+\([0-9]*\)+\([0-9]*\).*/\1 :0.0+\2,\3/g;s/connected \|primary //g' \
     | fzf \
-      --select-1 \
       --height=~100% \
       --header="Please select a Monitor to Record" \
       --cycle \
       --reverse \
       --with-nth=1 \
-      --bind 'esc:abort,enter:become(source screenRecord.sh; screenRecord {2} {3})+abort'
+      --bind 'esc:abort,enter:become(source screenRecord.sh; screenRecord {2} {3})+abort,one:become(source screenRecord.sh; screenRecord {2} {3})+abort'
   # TODO: figure out how to get the esc:abort feature without having to call the next command within fzf
   # i imagine this will be some combination of set -e/set -o pipefail/etc
 }
