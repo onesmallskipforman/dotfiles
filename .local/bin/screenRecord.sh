@@ -8,7 +8,7 @@ function screenRecord() {
   local RES=$1
   local POS=$2
   local DIR=~/Videos
-  local OUT="$DIR/$(date +"%Y_%m_%d_%I_%M_%p").mkv"
+  local OUT="$DIR/$(date +%Y_%m_%d--%H-%M-%S_maim).mkv"
   mkdir -p $DIR
   ffmpeg -f x11grab \
     -framerate 30 \

@@ -114,7 +114,10 @@ alt + {_,shift + }r
 
 # screenshot
 {_,shift + }Print
-  mkdir -p ~/shots && scrot {-s,_} -e 'mv $f ~/shots/'
+  mkdir -p ~/shots && maim -o {-s,_} ~/shots/$(date +%Y_%m_%d--%H-%M-%S_maim).png
+
+ctrl + shift + Print
+  OUT=~/shots/$(date +%Y_%m_%d--%H-%M-%S_maim).png && mkdir -p ~/shots && maim -o -s $OUT && gimp --no-splash $OUT
 
 # audio controls (1 is native, 2 is hdmi)
 XF86Audio{Raise,Lower}Volume
