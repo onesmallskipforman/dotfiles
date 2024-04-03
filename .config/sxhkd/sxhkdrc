@@ -112,6 +112,10 @@ alt + {_,shift + }r
 # OTHER CONTROLS
 #===============================================================================
 
+# screenshot
+{_,shift + }Print
+  mkdir -p ~/shots && scrot {-s,_} -e 'mv $f ~/shots/'
+
 # audio controls (1 is native, 2 is hdmi)
 XF86Audio{Raise,Lower}Volume
   pactl set-sink-volume @DEFAULT_SINK@ {+,-}5%
