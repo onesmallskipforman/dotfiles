@@ -21,7 +21,7 @@ export PATH="/Users/skipper/Library/Python/3.11/bin:$PATH"
 # paths for coreutils
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
-export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$HOME/.local/share/man:$MANPATH"
 
 # ~/ Clean-up:
 export BUNDLE_USER_CONFIG=$XDG_CONFIG_HOME/bundle         # ruby bundling

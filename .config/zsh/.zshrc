@@ -107,7 +107,8 @@ source $DATADIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
 [ -f "$XDG_CONFIG_HOME/shell/aliasrc"     ] && source $XDG_CONFIG_HOME/shell/aliasrc
-[ -f /opt/ros/$ROS_DISTRO/setup.zsh ] && source /opt/ros/$ROS_DISTRO/setup.zsh
+# [ -f /opt/ros/$ROS_DISTRO/setup.zsh ] && source /opt/ros/$ROS_DISTRO/setup.zsh
+[ -f /opt/ros/foxy/setup.zsh ] && source /opt/ros/foxy/setup.zsh
 
 #===============================================================================
 # PROCESS INITIAL COMMANDS
@@ -137,3 +138,9 @@ export PATH="/home/skipper/.local/share/nvim/mason/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 
 export PATH=$PATH:/home/skipper/.spicetify
+
+
+GUIX_PROFILE="/home/skipper/.guix-profile"
+source "$GUIX_PROFILE/etc/profile"
+
+# jira completion zsh | sudo tee "/usr/local/share/zsh/site-functions/_jira"

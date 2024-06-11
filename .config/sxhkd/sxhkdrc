@@ -108,6 +108,10 @@ alt + {_,shift + }r
 # bspc wm -d | jq '.focusHistory[].nodeId' | grep -vx 0 | tac | sed "1q;d"
 # bspc wm -d | jq '.focusHistory[].nodeId' | tail -n1
 
+# TODO: needs work to be toggle-able
+# alt + b
+#   bspc config border_width 0
+
 #===============================================================================
 # OTHER CONTROLS
 #===============================================================================
@@ -118,6 +122,8 @@ alt + {_,shift + }r
 
 ctrl + shift + Print
   OUT=~/shots/$(date +%Y_%m_%d--%H-%M-%S_maim).png && mkdir -p ~/shots && maim -o -s $OUT && gimp --no-splash $OUT
+
+# maim -o -s | xclip -selection clipboard -t image/png
 
 # audio controls (1 is native, 2 is hdmi)
 XF86Audio{Raise,Lower}Volume
