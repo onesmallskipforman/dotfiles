@@ -21,3 +21,4 @@ user_pref("browser.startup.homepage", "about:newtab");
 
 
 user_pref("browser.newtabpage.enabled", false);
+user_pref("browser.tabs.insertAfterCurrent", true);
