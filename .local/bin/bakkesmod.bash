@@ -22,7 +22,7 @@ WINEESYNC=1 WINEPREFIX="$COMPATDATA" "$PROTON"/bin/wine64 "$COMPATDATA/drive_c/P
 # WINEFSYNC=1 WINEESYNC=1 WINEPREFIX="$COMPATDATA" "$PROTON"/bin/wine64 "$COMPATDATA/drive_c/Program Files/BakkesMod/BakkesMod.exe"
 
 # Kill BakkesMod process when RL is closed
-while killall -0 RocketLeague.ex 2> /dev/null; do
-    sleep 1
-done
-killall BakkesMod.exe
+# while killall -0 RocketLeague.ex 2> /dev/null; do
+#     sleep 1
+# done
+# killall BakkesMod.exe
