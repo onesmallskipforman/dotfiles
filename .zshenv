@@ -214,4 +214,7 @@ ex=:\
 "
 
 # . "/Users/skipper/.local/share/cargo/env"
-[ -f ~/.workrc ] && source ~/.workrc
+
+# NOTE: this is to sxhkd can see work aliases.
+# might want to see if there's another way
+[ -f ~/.config/work/workrc ] && source ~/.config/work/workrc

@@ -171,12 +171,9 @@ super + shift + t
 
 ctrl + shift + o
   vpndown || vpn
-  # bspc rule -a \* -o state=floating && $TERMINAL -e $SHELL -c 'vpnToken'
-
 
 ctrl + shift + a
   autorandr --change
-
 
 ctrl + shift + b
     ~/.config/polybar/launch.sh
