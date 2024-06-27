@@ -16,7 +16,7 @@ xrandr --auto
 . /etc/X11/Xsession.d/20dbus_xdg-runtime
 
 # set up monitor
-xrandr --output HDMI-2 --mode 3440x1440 --right-of eDP-1
+# xrandr --output HDMI-2 --mode 3440x1440 --right-of eDP-1
 
 # set natural scrolling
 xinput list --id-only | xargs -n1 -I{} xinput --set-prop {} "libinput Natural Scrolling Enabled" 1 &>/dev/null
