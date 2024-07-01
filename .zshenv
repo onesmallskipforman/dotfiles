@@ -11,6 +11,15 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 
+# TODO: split up env and rc files to add and remove with pkg installation
+# TeXLive
+export TEXMFHOME=$XDG_DATA_HOME/texmf
+export TEXMFVAR=$XDG_CACHE_HOME/texlive/texmf-var
+export TEXMFCONFIG=$XDG_CONFIG_HOME/texlive/texmf-config
+export MANPATH=$MANPATH:/home/skipper/.local/texlive/texmf-dist/doc/man
+export INFOPATH=$INFOPATH:/home/skipper/.local/texlive/texmf-dist/doc/info
+export PATH=$PATH:/home/skipper/.local/texlive/bin/x86_64-linux
+
 # Set Path Variables
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$PATH:/usr/local/sbin"

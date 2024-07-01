@@ -11,3 +11,5 @@ alias simulink='matlab -r simulink' # start_simulink slLibraryBrowser
 alias ncdu='ncdu --exclude-firmlinks --si --color dark -x'
 alias wal='wal -c && wal --cols16 lighten --backend wal' # --backend haishoku always clear cache or 'lighten' vs 'darken' won't be used
 alias diff='diff -bur --color'
+# https://docs.docker.com/reference/cli/docker/container/ls/#format
+alias dps='docker ps --format "table {{.ID}},{{.Names}},{{.Networks}}" | column -t -s","'
