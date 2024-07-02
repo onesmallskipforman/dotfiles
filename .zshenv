@@ -16,9 +16,10 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export TEXMFHOME=$XDG_DATA_HOME/texmf
 export TEXMFVAR=$XDG_CACHE_HOME/texlive/texmf-var
 export TEXMFCONFIG=$XDG_CONFIG_HOME/texlive/texmf-config
-export MANPATH=$MANPATH:/home/skipper/.local/texlive/texmf-dist/doc/man
-export INFOPATH=$INFOPATH:/home/skipper/.local/texlive/texmf-dist/doc/info
-export PATH=$PATH:/home/skipper/.local/texlive/bin/x86_64-linux
+export MANPATH=$MANPATH:$HOME/.local/texlive/texmf-dist/doc/man
+export INFOPATH=$INFOPATH:$HOME/.local/texlive/texmf-dist/doc/info
+export PATH=$PATH:$HOME/.local/texlive/bin/x86_64-linux
+export PATH=$PATH:$HOME/.local/texlive/bin/universal-darwin
 
 # Set Path Variables
 export PATH="$HOME/.local/bin:$PATH"
@@ -26,15 +27,14 @@ export PATH="$PATH:/usr/local/sbin"
 export PATH="/Users/skipper/.local/share/cargo/bin:$PATH"
 export PATH="/Users/skipper/Library/Python/3.11/bin:$PATH"
 
-# paths for coreutils
+# paths for coreutils on macos
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$HOME/.local/share/man:$MANPATH"
 
 # ~/ Clean-up:
-export BUNDLE_USER_CONFIG=$XDG_CONFIG_HOME/bundle         # ruby bundling
-export BUNDLE_USER_CACHE=$XDG_CACHE_HOME/bundle           #
-export BUNDLE_USER_PLUGIN=$XDG_DATA_HOME/bundle           #
 export CARGO_HOME=$XDG_DATA_HOME/cargo                    # Rust Cargo
 export DOCKER_CONFIG=$XDG_CONFIG_HOME/docker              # docker
 export GNUPGHOME=$XDG_DATA_HOME/gnupg                     # gnupg
