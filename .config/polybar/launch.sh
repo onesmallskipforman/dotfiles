@@ -6,12 +6,12 @@
 killall -q polybar
 
 # Wait until the processes have been shut down
-while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+# using $USER as $UID is not defined in dash
+while pgrep -u $USER -x polybar >/dev/null; do sleep 1; done
 
 polybar --list-monitors | cut -d":" -f1 | while IFS=$'\n' read m; do
     MONITOR=$m polybar --quiet --reload mybar &
 done
-
 
 # TODO: there's something here if we can id which monitor existing bars run on
 # TODO: use || and &&
@@ -24,7 +24,5 @@ done
 # else
 #     polybar-msg cmd restart
 # fi
-
-
 
 echo "Polybar launched..."

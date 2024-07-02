@@ -23,7 +23,6 @@ export PATH=$PATH:/home/skipper/.local/texlive/bin/x86_64-linux
 # Set Path Variables
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$PATH:/usr/local/sbin"
-export PATH="$PATH:/Library/TeX/Root/bin/universal-darwin" # alterntively run eval "$(/usr/libexec/path_helper)" to update PATH
 export PATH="/Users/skipper/.local/share/cargo/bin:$PATH"
 export PATH="/Users/skipper/Library/Python/3.11/bin:$PATH"
 
