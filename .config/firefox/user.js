@@ -16,3 +16,7 @@ user_pref("browser.startup.homepage", "about:newtab"); // NOTE: using about:blan
 user_pref("browser.newtabpage.enabled", false); // make new tab page blank
 user_pref("browser.tabs.insertAfterCurrent", true);
 user_pref("browser.tabs.tabmanager.enabled", false); // remove tab manager button
+
+// user_pref("extensions.activeThemeID", "firefox-compact-dark@mozilla.org");
+// user_pref("browser.theme.content-theme", 0);
+// user_pref("browser.theme.toolbar-theme", 0);

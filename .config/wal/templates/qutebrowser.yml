@@ -37,17 +37,17 @@ colors:
             bg: "{background}"
         even:
             fg: "{foreground}"
-            bg: "{background}"
+            bg: "#{background.lighten(15%)}"
         odd:
             fg: "{foreground}"
-            bg: "{background}"
+            bg: "#{background.lighten(15%)}"
         selected:
             even:
-                fg: "{background}"
-                bg: "{foreground}"
+                fg: "{foreground}"
+                bg: "{background}"
             odd:
-                fg: "{background}"
-                bg: "{foreground}"
+                fg: "{foreground}"
+                bg: "{background}"
     completion:
         category:
             bg: "{color6}"

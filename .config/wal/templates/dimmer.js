@@ -25,14 +25,14 @@ use a plain character '●'.
 btn.style.color = 'black' */
 
 
-if (document.doctype == null) { return; }
+if (document.doctype == null) {{ return; }}
 
 const
   namespace = 'org-openuserjs-sjehuda-dimmer',
   btn = document.createElement(namespace);
 
 // create button
-(function createButton() {
+(function createButton() {{
   // create element
   document.body.append(btn);
   // set content
@@ -50,16 +50,16 @@ const
   btn.style.fontSize = '20px';
   btn.style.zIndex = 10000;
   btn.style.opacity = 0.5;
-  btn.onmouseover = () => {
+  btn.onmouseover = () => {{
     document
       .getElementById(namespace)
       .style.opacity = 0.9;
-  };
-  btn.onmouseout = () => {
+  }};
+  btn.onmouseout = () => {{
     document
       .getElementById(namespace)
       .style.opacity = 0.3;
-  };
+  }};
   // center character
   btn.style.justifyContent = 'center';
   btn.style.alignItems = 'center';
@@ -69,80 +69,82 @@ const
   btn.style.userSelect = 'none';
   btn.style.cursor = 'default';
   // set button behaviour
-  btn.onclick = () => {
-    try {
+  btn.onclick = () => {{
+    try {{
       toggle();
-    } catch (err) {
+    }} catch (err) {{
       toggleByShape();
       console.warn('No support for API localStorage');
       console.error(err);
-    }
-  };
-  try {
-    if (getPreference('dimmer') > 0) {
+    }}
+  }};
+  try {{
+    if (getPreference('dimmer') > 0) {{
       enable()
-    } else {
+    }} else {{
       disable();
-    }
-  } catch (err) {
+    }}
+  }} catch (err) {{
     console.warn('No support for API localStorage');
     console.error(err);
-  }
-})();
+  }}
+}})();
 
 // set hotkey
-document.onkeyup = function(e) {
-  //if (e.ctrlKey && e.shiftKey && e.which == 190) { // Ctrl + Shift + <
-  if (e.metaKey && e.shiftKey && e.which == 68) { // Command + Shift + D
+document.onkeyup = function(e) {{
+  //if (e.ctrlKey && e.shiftKey && e.which == 190) {{ // Ctrl + Shift + <
+  if (e.metaKey && e.shiftKey && e.which == 68) {{ // Command + Shift + D
     toggle();
-  }
-};
+  }}
+}};
 
 // toggle mode
-function toggle() {
-  if (getPreference('dimmer') < 1) { // TODO Add random to avoid abuse by 3rd party
+function toggle() {{
+  if (getPreference('dimmer') < 1) {{ // TODO Add random to avoid abuse by 3rd party
     setPreference('dimmer', 1);
     enable();
-  } else {
+  }} else {{
     setPreference('dimmer', 0);
     disable();
-  }
-}
+  }}
+}}
 
 // toggle mode
-function toggleByShape() {
-  if (btn.textContent == '🔆') {
+function toggleByShape() {{
+  if (btn.textContent == '🔆') {{
     enable()
-  } else {
+  }} else {{
     disable();
-  }
-}
+  }}
+}}
 
-function disable() {
-  DarkReader.disable({
+function disable() {{
+  DarkReader.disable({{
     brightness: 100,
     contrast: 90,
     sepia: 10
-  });
+  }});
   btn.textContent = '🔆';
   //return '🔆';
-}
+}}
 
-function enable() {
+function enable() {{
   DarkReader.setFetchMethod(window.fetch); // https://eligrey.com/
-  DarkReader.enable({
+  DarkReader.enable({{
     brightness: 100,
-    contrast: 90,
-    sepia: 10
-  });
+    contrast: 100,
+    sepia: 0,
+    darkSchemeBackgroundColor: "{color0}",
+    darkSchemeTextColor: "{color15}"
+  }});
   btn.textContent = '🔅';
   //return '🔅';
-}
+}}
 
-function getPreference(key) {
+function getPreference(key) {{
   return window.localStorage.getItem(key);
-}
+}}
 
-function setPreference(key, value) {
+function setPreference(key, value) {{
   return window.localStorage.setItem(key, value);
-}
+}}

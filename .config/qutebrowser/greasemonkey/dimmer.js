@@ -1,0 +1,1 @@
+/home/skipper/.cache/wal/dimmer.js

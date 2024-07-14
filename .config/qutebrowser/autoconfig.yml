@@ -8,8 +8,10 @@ config_version: 2
 settings:
   colors.webpage.darkmode.algorithm:
     global: lightness-cielab
+  colors.webpage.darkmode.contrast:
+    global: 1.0
   colors.webpage.darkmode.enabled:
-    global: false
+    global: true
   colors.webpage.darkmode.policy.images:
     global: never
   colors.webpage.darkmode.policy.page:
