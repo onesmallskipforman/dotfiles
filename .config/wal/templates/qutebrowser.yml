@@ -113,6 +113,6 @@ colors:
         selected:
             bg: "{color3}"
     webpage:
-        bg: "{foreground}"
+        bg: "{background}"
 hints:
     border: "1px solid {foreground}"

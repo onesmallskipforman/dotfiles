@@ -14,7 +14,15 @@ element-text, element-icon {
     text-color:       inherit;
 }
 
+#window {
+    // location: center;
+    // anchor:   center;
+    border:  2px;
+    border-color: #8c9696;
+}
+
 // configuration {
+//
 //     theme: "/usr/share/rofi/themes/Arc-Dark-Punch.rasi";
 //     modi: "window,drun,ssh,combi";
 //     icon-theme: "Papirus";
