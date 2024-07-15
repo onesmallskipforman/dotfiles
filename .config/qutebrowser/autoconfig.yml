@@ -22,7 +22,9 @@ settings:
     global: top
   hints.border:
     global: '1px solid #ebdbb2'
+  statusbar.show:
+    global: in-mode
   tabs.show:
-    global: multiple
+    global: switching
   window.hide_decoration:
     global: false

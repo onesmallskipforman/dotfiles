@@ -4,10 +4,14 @@
 
 
 @-moz-document url("about:home"),url("about:blank"),url("about:newtab"),url("about:privatebrowsing"){
-    body{
+    body,
+    html,
+    .browserContainer,
+    #mainPopupSet,
+    #main-window,
+    #tabbrowser-tabbox,
+    #tabbrowser-tabpanels {
         background-color: var(--background) !important;
-        /* background-color: rgba(46,54,69,1.0) !important; */
-        /* --newtab-background-color: red !important; */
     }
     #newtab-customize-overlay {
         background: red !important;
