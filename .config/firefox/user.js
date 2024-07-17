@@ -22,3 +22,5 @@ user_pref("browser.tabs.tabmanager.enabled", false); // remove tab manager butto
 // to override this value for about:blank when opening a new ff window
 user_pref("browser.display.background_color"     , '#282828');
 user_pref("browser.display.background_color.dark", '#282828');
+
+user_pref("browser.tabs.tabMinWidth", '0');

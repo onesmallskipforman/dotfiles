@@ -1,0 +1,140 @@
+@import url('file:///home/skipper/.cache/wal/colors.css');
+
+/* CONVENIENCE VARIABLES */
+:root {
+    --dark-bg: color-mix(in srgb, var(--background) 60%, black) !important;
+    --lite-bg: color-mix(in srgb, var(--background) 80%, white) !important;
+    --dark-fg: color-mix(in srgb, var(--foreground) 60%, black) !important;
+    --lite-fg: color-mix(in srgb, var(--foreground) 10%, white) !important;
+    --border-radius: 0px
+}
+
+/* SETTINGS DISCOVERED USING LIVE EDITOR */
+:root{
+    --toolbarbutton-icon-fill          : var(--foreground)                  !important; /* Toolbar Icon Color */
+    /* --toolbar-bgcolor                  : var(--background) !important; /* toolbar background color */
+    --toolbar-bgcolor: color-mix(in srgb, white 10%, var(--background)) !important; /* focused tab background color */
+    /* --toolbar-bgcolor: color-mix(in srgb, var(--foreground) 10%, transparent) !important; */
+    --toolbar-color                    : var(--foreground)                  !important; /* Toolbar Text Color */
+    --tabs-navbar-shadow-color         : var(--dark-fg)                  !important; /* Toolbar top border */
+    --chrome-content-separator-color   : var(--dark-fg)                  !important; /* Toolbar bottom border */
+
+
+
+    --toolbarbutton-border-radius      : var(--border-radius)                                !important; /* Border of hover-highlighted area */
+    --urlbarView-separator-color       : var(--foreground)                  !important; /* Separator between suggestion groups when typing in urlbar */
+    /* --urlbarView-hover-background: */ /* urlbar hover highlight over suggestions */
+    /* --urlbarView-highlight-background: rgb(28, 0, 253) !important; */ /* urlbar highlight over currently selected suggestion */
+
+    --arrowpanel-background            : var(--background)                  !important; /* Dropdown background */
+    --arrowpanel-color                 : var(--foreground)                  !important; /* Dropdown foreground */
+    --arrowpanel-border-radius         : var(--border-radius) !important; /* Dropdown border radius */
+    --panel-separator-color            : var(--foreground)                  !important; /* Dropdown separator color */
+    --panel-disabled-color             : var(--color8)                      !important; /* dropdown faded text (disabled options and hints) */
+    --arrowpanel-border-color          : var(--foreground)                  !important; /* Dropdown border */
+    --arrowpanel-menuitem-border-radius: var(--border-radius) !important; /* Dropdown hover-lighlighted area radius */
+
+    --sidebar-text-color               : var(--foreground)                  !important; /* Title Text of Sidebar */
+    --sidebar-background-color         : var(--background)                  !important; /* Title Background of Sidebar */
+    --sidebar-border-color             : var(--foreground)                  !important; /* Sidebar Border between title and list */
+    --lwt-sidebar-background-color     : var(--background)                  !important; /* Sidebar list background */
+    --lwt-sidebar-text-color           : var(--foreground)                  !important; /* Sidebar list text */
+
+    /* --urlbar-icon-border-radius: calc(var(--toolbarbutton-border-radius) - 1px) !important; */
+
+    --toolbar-field-border-color       : var(--dark-fg) !important; /* urlbar border when unfocused */
+    --toolbar-field-focus-border-color : var(--cursor)     !important; /* urlbar border when focused */
+
+
+    --toolbar-field-background-color      : var(--background) !important; /* urlbar background when unfocused */
+    --toolbar-field-focus-background-color: var(--background) !important; /* urlbar background when focused   */
+    --toolbar-field-color                 : var(--foreground) !important; /* urlbar text when unfocused */
+    --toolbar-field-focus-color           : var(--cursor)     !important; /* urlbar text when focused */
+
+    /* --button-bgcolor                : var() !important;   */
+    /* --button-hover-bgcolor          : var() !important;  */
+    /* TODO: check out color-mix to try to alter alpha of existing colors */
+
+
+    --lwt-accent-color: var(--background) !important; /* unfocused tab background color
+    --lwt-text-color: var(--foreground) !important; /* unfocused tab text color */
+    --tab-selected-bgcolor  : var(--lite-bg) !important; /* focused tab background color */
+    --tab-selected-textcolor: var(--cursor)  !important; /* focused tab text color */
+    /* --arrowpanel-menuitem-margin-block: 0px !important; */ /* dropdown entry left-right margin */
+
+    /* --inline-tab-padding: 7px; left-right padding between tab text and tab border */
+    /* --tab-shadow-max-size: 10px; */
+    --tab-border-radius: 0px 0px 0px 0px !important; /* tab radius */
+    /* --tab-block-margin: 4px !important; */ /* top-bottom padding between tab and toolbar and top of window */
+}
+
+
+/* --- CLEAN NAVBAR ----------------------------------- */
+
+/* buttons that cannot be removed in customization menu */
+#back-button { display: none; }
+#forward-button { display: none; }
+#unified-extensions-button { display: none; }
+
+/* buttons that can be removed in customization menu */
+/* #firefox-view-button { display: none; } */
+/* #reload-button { display: none; } */
+/* #stop-button { display: none; } */
+/* #home-button { display: none; } */
+/* #library-button { display: none; } */
+/* #fxa-toolbar-menu-button { display: none; } */
+/* empty space before and after the url bar */
+/* #customizableui-special-spring1, #customizableui-special-spring2 { display: none; } */
+/* #pocket-button { display: none; } */
+
+/* keep pop-up menus from overlapping with navbar */
+#widget-overflow { margin: 0 !important; }
+#appMenu-popup { margin: 0 !important; }
+#customizationui-widget-panel { margin: 0 !important; }
+#unified-extensions-panel { margin: 0 !important; }
+
+/* add padding to the right of the last button so that it doesn't touch the edge of the window */
+#PanelUI-menu-button {
+    /* padding: 0px 4px 0px 0px !important; */
+    display:none;
+}
+
+/* --- CLEAN URLBAR ----------------------------------- */
+
+#identity-box { display: none; }
+#pageActionButton { display: none; }
+#urlbar-zoom-button { display: none; }
+#tracking-protection-icon-container { display: none !important; }
+#reader-mode-button{ display: none !important; }
+#star-button { display: none; }
+#star-button-box:hover { background: inherit !important; }
+
+/* Go to arrow button at the end of the urlbar when searching */
+#urlbar-go-button { display: none !important; }
+
+/* remove container indicator from urlbar */
+/* TODO: doesn't seem to be working */
+/* #userContext-label, #userContext-indicator { display: none !important;} */
+
+
+
+#urlbar-input {
+    margin-left: 0.8em !important;
+    margin-right: 0.4em !important;
+}
+
+/* --- CLEAN TABBAR -------------------------------- */
+
+/* remove overflow scroll buttons */
+#scrollbutton-up, #scrollbutton-down { display: none !important; }
+
+/* remove dropdown menu button which displays all tabs on overflow */
+#alltabs-button { display: none !important }
+
+/* Hide close button on tabs */
+#tabbrowser-tabs .tabbrowser-tab .tab-close-button { display: none !important; }
+.tab-icon-image {
+    height: auto !important;
+    width: calc(var(--tab-min-height) / 1.5) !important;
+    margin-right: 4px !important;
+}
