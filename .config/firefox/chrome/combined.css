@@ -1,4 +1,4 @@
-@import url('file:///home/skipper/.cache/wal/colors.css');
+@import '/Users/skipper/.cache/wal/colors.css';
 
 /* CONVENIENCE VARIABLES */
 :root {
@@ -6,7 +6,9 @@
     --lite-bg: color-mix(in srgb, var(--background) 80%, white) !important;
     --dark-fg: color-mix(in srgb, var(--foreground) 60%, black) !important;
     --lite-fg: color-mix(in srgb, var(--foreground) 10%, white) !important;
-    --border-radius: 0px
+    --border-radius: 0px;
+    --urlbar-height: 30px;
+    --tab-min-height: 16px !important;
 }
 
 /* SETTINGS DISCOVERED USING LIVE EDITOR */
@@ -56,18 +58,29 @@
     /* TODO: check out color-mix to try to alter alpha of existing colors */
 
 
-    --lwt-accent-color: var(--background) !important; /* unfocused tab background color
+    /* --lwt-accent-color: var(--background) !important; */ /* unfocused tab background color */
     --lwt-text-color: var(--foreground) !important; /* unfocused tab text color */
-    --tab-selected-bgcolor  : var(--lite-bg) !important; /* focused tab background color */
+    --tab-selected-bgcolor  : var(--background) !important; /* focused tab background color */
     --tab-selected-textcolor: var(--cursor)  !important; /* focused tab text color */
     /* --arrowpanel-menuitem-margin-block: 0px !important; */ /* dropdown entry left-right margin */
 
     /* --inline-tab-padding: 7px; left-right padding between tab text and tab border */
     /* --tab-shadow-max-size: 10px; */
     --tab-border-radius: 0px 0px 0px 0px !important; /* tab radius */
-    /* --tab-block-margin: 4px !important; */ /* top-bottom padding between tab and toolbar and top of window */
+    --tab-block-margin: 0px !important; /* top-bottom padding between tab and toolbar and top of window */
 }
 
+/* Tab: non-selected colors */
+/* #tabbrowser-tabs .tabbrowser-tab:not([selected]) .tab-content { */
+/*     background: var(--lite-bg) !important; */
+/*     color: var(--identity-icon-color, var(--tab-active-fg-fallback-color)) !important; */
+/* } */
+
+/* Tab: selected colors */
+/* #tabbrowser-tabs .tabbrowser-tab[selected] .tab-content { */
+/*     background: var(--background) !important; */
+/*     color: var(--identity-icon-color, var(--tab-active-fg-fallback-color)) !important; */
+/* } */
 
 /* --- CLEAN NAVBAR ----------------------------------- */
 
@@ -99,6 +112,13 @@
     display:none;
 }
 
+#nav-bar {
+    /* max-height: var(--urlbar-height-setting) !important; */
+    height: var(--urlbar-height) !important;
+    min-height: var(--urlbar-height) !important;
+    /* min-height: var(--urlbar-height-setting) !important; */
+}
+
 /* --- CLEAN URLBAR ----------------------------------- */
 
 #identity-box { display: none; }
@@ -117,10 +137,30 @@
 /* #userContext-label, #userContext-indicator { display: none !important;} */
 
 
-
+/* add gap between url text and container borders */
 #urlbar-input {
     margin-left: 0.8em !important;
     margin-right: 0.4em !important;
+}
+
+
+
+#urlbar {
+    --urlbar-height: var(--urlbar-height) !important;
+    min-height     : var(--urlbar-height) !important;
+    max-height     : var(--urlbar-height) !important;
+}
+
+#urlbar-container {
+    --urlbar-container-height: var(--urlbar-height) !important;
+    margin-left   : 0.3em !important;
+    margin-right  : 0.3em !important;
+    /* margin-top   : 0.3em !important; */
+    /* margin-bottom  : 0.3em !important; */
+    /* padding-top   : 0.3em !important; */
+    /* padding-bottom: 0.3em !important; */
+    /* font-family: var(--urlbar-font, 'monospace'); */
+    font-size: var(--urlbar-height)/2;
 }
 
 /* --- CLEAN TABBAR -------------------------------- */
@@ -135,6 +175,42 @@
 #tabbrowser-tabs .tabbrowser-tab .tab-close-button { display: none !important; }
 .tab-icon-image {
     height: auto !important;
-    width: calc(var(--tab-min-height) / 1.5) !important;
+    width: calc(var(--tab-min-height) / 2.0) !important;
     margin-right: 4px !important;
+}
+
+/* hide window controls */
+.titlebar-buttonbox-container { display: none; }
+
+/* remove titlebar spacers */
+.titlebar-spacer { display: none !important; }
+
+
+#TabsToolbar, .tabbrowser-tab {
+    max-height: var(--tab-min-height) !important;
+    font-size: 11px !important;
+}
+
+
+/* #titlebar { */
+/*     --proton-tab-block-margin: 0px !important; */
+/*     --tab-block-margin: 0px !important; */
+/* } */
+
+
+.tabbrowser-tab {
+    /* remove border between tabs */
+    padding-inline: 0px !important;
+    /* reduce fade effect of tab text */
+    --tab-label-mask-size: 1em !important;
+    /* fix pinned tab behaviour on overflow */
+    overflow-clip-margin: 0px !important;
+}
+
+
+ /* Tab - Connect to window */
+.tab-background,.tab-content,.tab-stack {
+    border-radius: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
 }
