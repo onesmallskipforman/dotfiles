@@ -7,8 +7,8 @@
     --dark-fg: color-mix(in srgb, var(--foreground) 60%, black) !important;
     --lite-fg: color-mix(in srgb, var(--foreground) 10%, white) !important;
     --border-radius: 0px;
-    --urlbar-height: 30px;
-    --tab-min-height: 16px !important;
+    --urlbar-height: 20px;
+    --tab-min-height: 22px !important; /* TODO: not sure why i cant rename this */
 }
 
 /* SETTINGS DISCOVERED USING LIVE EDITOR */
@@ -44,7 +44,7 @@
 
     /* --urlbar-icon-border-radius: calc(var(--toolbarbutton-border-radius) - 1px) !important; */
 
-    --toolbar-field-border-color       : var(--dark-fg) !important; /* urlbar border when unfocused */
+    --toolbar-field-border-color       : var(--background) /* var(--dark-fg) */ !important; /* urlbar border when unfocused */
     --toolbar-field-focus-border-color : var(--cursor)     !important; /* urlbar border when focused */
 
 
@@ -116,6 +116,7 @@
     /* max-height: var(--urlbar-height-setting) !important; */
     height: var(--urlbar-height) !important;
     min-height: var(--urlbar-height) !important;
+    max-height: var(--urlbar-height) !important;
     /* min-height: var(--urlbar-height-setting) !important; */
 }
 
@@ -147,20 +148,28 @@
 
 #urlbar {
     --urlbar-height: var(--urlbar-height) !important;
+    /* --urlbar-toolbar-height: var(--urlbar-height) !important; */
     min-height     : var(--urlbar-height) !important;
     max-height     : var(--urlbar-height) !important;
+    /* border-color: #FFFFFF !important; */
 }
 
 #urlbar-container {
     --urlbar-container-height: var(--urlbar-height) !important;
-    margin-left   : 0.3em !important;
-    margin-right  : 0.3em !important;
-    /* margin-top   : 0.3em !important; */
-    /* margin-bottom  : 0.3em !important; */
-    /* padding-top   : 0.3em !important; */
-    /* padding-bottom: 0.3em !important; */
+    /* --urlbar-container-max-height: 10px !important; */
+    /* --urlbar-container-min-height: 10px !important; */
+    /* max-height: 1px !important; */
+    /* min-height: 1px !important; */
+    /* padding-block: 10px !important; */
+
+    margin-left   : 0em !important;
+    margin-right  : 0em !important;
+    /* padding-top   : 1em !important; */
+    /* padding-bottom: 1em !important; */
     /* font-family: var(--urlbar-font, 'monospace'); */
-    font-size: var(--urlbar-height)/2;
+    font-size: calc(var(--urlbar-height)-2) !important;
+    /* min-height     : var(--urlbar-height)/2 !important; */
+    /* max-height     : var(--urlbar-height)/2 !important; */
 }
 
 /* --- CLEAN TABBAR -------------------------------- */
@@ -189,6 +198,7 @@
 #TabsToolbar, .tabbrowser-tab {
     max-height: var(--tab-min-height) !important;
     font-size: 11px !important;
+    min-height: var(--tab-min-height) !important
 }
 
 
