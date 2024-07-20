@@ -1,4 +1,4 @@
-@import '/Users/skipper/.cache/wal/colors.css';
+@import '/home/skipper/.cache/wal/colors.css';
 
 /* CONVENIENCE VARIABLES */
 :root {
@@ -13,7 +13,7 @@
 
 /* SETTINGS DISCOVERED USING LIVE EDITOR */
 :root{
-    --toolbarbutton-icon-fill          : var(--foreground)                  !important; /* Toolbar Icon Color */
+    --toolbarbutton-icon-fill          : var(--color7)                  !important; /* Toolbar Icon Color */
     /* --toolbar-bgcolor                  : var(--background) !important; /* toolbar background color */
     --toolbar-bgcolor: color-mix(in srgb, white 10%, var(--background)) !important; /* focused tab background color */
     /* --toolbar-bgcolor: color-mix(in srgb, var(--foreground) 10%, transparent) !important; */
@@ -57,11 +57,17 @@
     /* --button-hover-bgcolor          : var() !important;  */
     /* TODO: check out color-mix to try to alter alpha of existing colors */
 
+    /* unfocused tab background color */
+    /* --lwt-accent-color: var(--background) !important; */
 
-    /* --lwt-accent-color: var(--background) !important; */ /* unfocused tab background color */
-    --lwt-text-color: var(--foreground) !important; /* unfocused tab text color */
-    --tab-selected-bgcolor  : var(--background) !important; /* focused tab background color */
-    --tab-selected-textcolor: var(--cursor)  !important; /* focused tab text color */
+    /* unfocused tab text color */
+    /* --lwt-text-color: var(--foreground) !important; */
+
+    /* focused tab background color */
+    /* --tab-selected-bgcolor  : var(--background) !important; */
+
+    /* focused tab text color */
+    /* --tab-selected-textcolor: var(--cursor)  !important; */
     /* --arrowpanel-menuitem-margin-block: 0px !important; */ /* dropdown entry left-right margin */
 
     /* --inline-tab-padding: 7px; left-right padding between tab text and tab border */
@@ -71,16 +77,16 @@
 }
 
 /* Tab: non-selected colors */
-/* #tabbrowser-tabs .tabbrowser-tab:not([selected]) .tab-content { */
-/*     background: var(--lite-bg) !important; */
-/*     color: var(--identity-icon-color, var(--tab-active-fg-fallback-color)) !important; */
-/* } */
+#tabbrowser-tabs .tabbrowser-tab:not([selected]) .tab-content {
+    background: var(--dark-bg) !important;
+    color: var(--color7) !important;
+}
 
 /* Tab: selected colors */
-/* #tabbrowser-tabs .tabbrowser-tab[selected] .tab-content { */
-/*     background: var(--background) !important; */
-/*     color: var(--identity-icon-color, var(--tab-active-fg-fallback-color)) !important; */
-/* } */
+#tabbrowser-tabs .tabbrowser-tab[selected] .tab-content {
+    background: var(--background) !important;
+    color: var(--color7) !important;
+}
 
 /* --- CLEAN NAVBAR ----------------------------------- */
 
@@ -108,13 +114,13 @@
 
 /* add padding to the right of the last button so that it doesn't touch the edge of the window */
 #PanelUI-menu-button {
-    /* padding: 0px 4px 0px 0px !important; */
-    display:none;
+    padding: 0px 4px 0px 0px !important;
+    /* display:none; */
 }
 
 #nav-bar {
     /* max-height: var(--urlbar-height-setting) !important; */
-    height: var(--urlbar-height) !important;
+    height    : var(--urlbar-height) !important;
     min-height: var(--urlbar-height) !important;
     max-height: var(--urlbar-height) !important;
     /* min-height: var(--urlbar-height-setting) !important; */
@@ -186,7 +192,8 @@
 #alltabs-button { display: none !important }
 
 /* Hide close button on tabs */
-#tabbrowser-tabs .tabbrowser-tab .tab-close-button { display: none !important; }
+/* #tabbrowser-tabs .tabbrowser-tab .tab-close-button { display: none !important; } */
+
 .tab-icon-image {
     height: auto !important;
     width: calc(var(--tab-min-height) / 2.0) !important;
@@ -204,6 +211,16 @@
     max-height: var(--tab-min-height) !important;
     font-size: 11px !important;
     min-height: var(--tab-min-height) !important
+}
+
+/* toolbar */
+.browser-toolbar {
+  /* &:not(.titlebar-color) { */
+    background-color: var(--background) !important;
+    color: var(--toolbar-color);
+    border-style: none;
+    border-top-style: none;
+  /* } */
 }
 
 
