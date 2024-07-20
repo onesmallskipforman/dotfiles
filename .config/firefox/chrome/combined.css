@@ -19,7 +19,7 @@
     /* --toolbar-bgcolor: color-mix(in srgb, var(--foreground) 10%, transparent) !important; */
     --toolbar-color                    : var(--foreground)                  !important; /* Toolbar Text Color */
     --tabs-navbar-shadow-color         : var(--dark-fg)                  !important; /* Toolbar top border */
-    --chrome-content-separator-color   : var(--dark-fg)                  !important; /* Toolbar bottom border */
+    --chrome-content-separator-color   : var(--background)                  !important; /* Toolbar bottom border */
 
 
 
@@ -87,7 +87,7 @@
 /* buttons that cannot be removed in customization menu */
 #back-button { display: none; }
 #forward-button { display: none; }
-#unified-extensions-button { display: none; }
+/* #unified-extensions-button { display: none; } */
 
 /* buttons that can be removed in customization menu */
 /* #firefox-view-button { display: none; } */
@@ -118,6 +118,11 @@
     min-height: var(--urlbar-height) !important;
     max-height: var(--urlbar-height) !important;
     /* min-height: var(--urlbar-height-setting) !important; */
+}
+
+#navigator-toolbox {
+    border: none !important;
+    /* border-bottom: 40px solid var(--chrome-content-separator-color) !important; */
 }
 
 /* --- CLEAN URLBAR ----------------------------------- */
