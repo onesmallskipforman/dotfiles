@@ -1,0 +1,101 @@
+@import '/home/skipper/.cache/wal/colors.css';
+
+/* CONVENIENCE VARIABLES */
+:root {
+    --dark-bg: color-mix(in srgb, var(--background) 60%, black) !important;
+    --lite-bg: color-mix(in srgb, var(--background) 80%, white) !important;
+    --dark-fg: color-mix(in srgb, var(--foreground) 60%, black) !important;
+    --lite-fg: color-mix(in srgb, var(--foreground) 10%, white) !important;
+    --nav-bar-height: 20px;
+    --tab-height: 20px;
+    /* --border-radius: 0px; */
+    /* --urlbar-height: 20px; */
+    /* --tab-min-height: 22px !important; */ /* TODO: not sure why i cant rename this */
+}
+
+/* toolbar */
+.browser-toolbar {
+    background-color: var(--background) !important;
+    color: var(--foreground) !important;
+    /* border-style: none; */
+    /* border-top-style: none; */
+}
+
+/* the entire box including menubar, urlbar, toolbar, tabs, etc */
+#navigator-toolbox {
+    border: none !important;
+    /* border-bottom: 0.01px solid var(--color7) !important; */
+    /* background: var(--dark-bg) !important; */
+}
+
+#toolbar-menubar {
+    background-color: var(--dark-bg) !important;
+}
+
+/* TABS -------------------------------------------------------------------- */
+
+#TabsToolbar, .tabbrowser-tab {
+    height: var(--tab-min-height) !important;
+    max-height: var(--tab-min-height) !important;
+    min-height: var(--tab-min-height) !important
+    /* font-size: 11px !important; */
+}
+
+/* non-selected */
+#tabbrowser-tabs .tabbrowser-tab:not([visuallyselected],[selected],[multiselected]) .tab-content {
+    background: var(--dark-bg) !important;
+    color: var(--color7) !important;
+}
+
+/* selected */
+#tabbrowser-tabs .tabbrowser-tab:is([visuallyselected],[selected],[multiselected]) .tab-content {
+    background-color: var(--background) !important;
+    color: var(--foreground) !important;
+}
+
+
+/* NAVBAR ------------------------------------------------------------------ */
+
+#nav-bar {
+    height    : var(--nav-bar-height) !important;
+    min-height: var(--nav-bar-height) !important;
+    max-height: var(--nav-bar-height) !important;
+}
+
+/* buttons that cannot be removed in customization menu */
+/* #back-button { display: none; } */
+/* #forward-button { display: none; } */
+/* #unified-extensions-button { display: none; } */
+
+/* buttons that can be removed in customization menu */
+/* #firefox-view-button { display: none; } */
+/* #reload-button { display: none; } */
+/* #stop-button { display: none; } */
+/* #home-button { display: none; } */
+/* #library-button { display: none; } */
+/* #fxa-toolbar-menu-button { display: none; } */
+/* empty space before and after the url bar */
+/* #customizableui-special-spring1, #customizableui-special-spring2 { display: none; } */
+/* #pocket-button { display: none; } */
+
+/* keep pop-up menus from overlapping with navbar */
+#widget-overflow { margin: 0 !important; }
+#appMenu-popup { margin: 0 !important; }
+#customizationui-widget-panel { margin: 0 !important; }
+#unified-extensions-panel { margin: 0 !important; }
+
+/* add padding to the right of the last button so that it doesn't touch the edge of the window */
+/* #PanelUI-menu-button { */
+    /* padding: 0px 4px 0px 0px !important; */
+    /* display:none; */
+/* } */
+
+/* BROWSER ----------------------------------------------------------------- */
+/* FIX FOR WHITE FLASHING */
+#tabbrowser-tabpanels {
+  background: var(--background) !important;
+}
+/* not sure we need this part */
+.dialogOverlay[hideContent="true"][topmost="true"] {
+  background-color: var(--background) !important;
+}

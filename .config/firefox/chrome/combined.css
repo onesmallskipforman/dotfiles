@@ -1,5 +1,32 @@
 @import '/home/skipper/.cache/wal/colors.css';
 
+/* TODO: booksmarks on toolbar are missing. might be user.js */
+
+/* Some terminology:
+    Navigator Toolbox: everything combined: urlbar, tabs, toolbar, etc.
+
+    key IDs. non-exhaustive list:
+
+    #navigator-toolbox: everything ui
+        #titlebar:
+            #toolbar-menubar:
+            #TabsToolBar:
+        #nav-bar:
+            #PanelUI-button: firefox menu button with settings, themes, etc.
+            #back-button:
+            #forward-button:
+            #stop-reload-button: TODO: wondering if i can manage these together
+                #stop-button:
+                #reload-button:
+            #urlbar-container: the horizontal region of the nav-bar that holds the urlbar
+                #urlbar: the urlbar itself
+                    #urlbar-background: background when urlbar is not expanded
+                    #urlbar-input-container
+                    #urlbarView: the urlbar when fully expanded with suggestions
+        #PersonalToolbar: bottom bar
+    #browser: browser content
+*/
+
 /* CONVENIENCE VARIABLES */
 :root {
     --dark-bg: color-mix(in srgb, var(--background) 60%, black) !important;
@@ -14,7 +41,7 @@
 /* SETTINGS DISCOVERED USING LIVE EDITOR */
 :root{
     --toolbarbutton-icon-fill          : var(--color7)                  !important; /* Toolbar Icon Color */
-    /* --toolbar-bgcolor                  : var(--background) !important; /* toolbar background color */
+    /* --toolbar-bgcolor                  : var(--background) !important; */ /* toolbar background color */
     --toolbar-bgcolor: color-mix(in srgb, white 10%, var(--background)) !important; /* focused tab background color */
     /* --toolbar-bgcolor: color-mix(in srgb, var(--foreground) 10%, transparent) !important; */
     --toolbar-color                    : var(--foreground)                  !important; /* Toolbar Text Color */
@@ -118,6 +145,7 @@
     /* display:none; */
 }
 
+/* The bar containing the urlbar and any tools next to it */
 #nav-bar {
     /* max-height: var(--urlbar-height-setting) !important; */
     height    : var(--urlbar-height) !important;
@@ -126,9 +154,10 @@
     /* min-height: var(--urlbar-height-setting) !important; */
 }
 
+/* the entire box including menubar, urlbar, toolbar, tabs, etc */
 #navigator-toolbox {
-    border: none !important;
-    /* border-bottom: 40px solid var(--chrome-content-separator-color) !important; */
+    /* border: none !important; */
+    border-bottom: 0.01px solid var(--color7) !important;
 }
 
 /* --- CLEAN URLBAR ----------------------------------- */
