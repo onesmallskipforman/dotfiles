@@ -16,6 +16,12 @@ user_pref("browser.startup.homepage", "about:newtab");
 user_pref("browser.newtabpage.enabled", false); // make new tab page blank
 user_pref("browser.tabs.insertAfterCurrent", true);
 
+// options: 'always', 'never', 'newtab'
+user_pref("browser.toolbars.bookmarks.visibility", "never");
+
+
+// user_pref("layout.css.devPixelsPerPx", -1.0);
+
 // TODO: doesn't seem to work
 // https://www.reddit.com/r/firefox/comments/z2gz9u/saving_the_customized_toolbar_layout/
 // user_pref("browser.uiCustomization.state", {"placements": {

@@ -1,4 +1,5 @@
-@import '/home/skipper/.cache/wal/colors.css';
+@import '/home/skipper/.cache/wal/colors.css'  screen and (-moz-platform: linux);
+@import '/Users/skipper/.cache/wal/colors.css' screen and (-moz-platform: macos);
 
 /* CONVENIENCE VARIABLES */
 :root {
@@ -6,8 +7,8 @@
     --lite-bg: color-mix(in srgb, var(--background) 80%, white) !important;
     --dark-fg: color-mix(in srgb, var(--foreground) 60%, black) !important;
     --lite-fg: color-mix(in srgb, var(--foreground) 10%, white) !important;
-    --nav-bar-height: 20px;
-    --tab-height: 20px;
+    --tab-font-size: 15px;
+    --nav-font-size: 15px;
     /* --border-radius: 0px; */
     /* --urlbar-height: 20px; */
     /* --tab-min-height: 22px !important; */ /* TODO: not sure why i cant rename this */
@@ -20,6 +21,7 @@
     /* border-style: none; */
     /* border-top-style: none; */
 }
+
 
 /* the entire box including menubar, urlbar, toolbar, tabs, etc */
 #navigator-toolbox {
@@ -34,11 +36,59 @@
 
 /* TABS -------------------------------------------------------------------- */
 
+/* TODO: i think i want everything to scale with ui font size */
+/* seems then the goal is to set all min-heights */
+#titlebar {
+    min-height: 0px !important;
+}
+
+/* NOTE: carefule with em as you may not have the font you're looking for in your element */
+
+/* TODO: don't know why i need .tab-icon-image instead of html:img element type */
+.tab-icon-image {
+    height: 1em  !important;
+    width: 1em  !important;
+}
+.toolbarbutton-icon {
+    height: 1em  !important;
+    width: 1em  !important;
+    padding: 0px !important;
+}
+
+.tab-label-container {
+    height: 1em !important;
+}
+
+.tab-background {
+    min-height: 0px !important;
+}
+
 #TabsToolbar, .tabbrowser-tab {
-    height: var(--tab-min-height) !important;
-    max-height: var(--tab-min-height) !important;
-    min-height: var(--tab-min-height) !important
+    height: 1.5em !important;
+    /* max-height: var(--tab-min-height) !important; */
+    min-height: 0px !important;
+    /* max-height: var(--tab-font-size) !important; */
     /* font-size: 11px !important; */
+}
+
+#TabsToolbar {
+    font-size: var(--tab-font-size) !important;
+    background-color: #000000 !important;
+}
+
+
+.tabbrowser-tab {
+    margin: 0px !important;
+    padding: 0px !important;
+    /* allow tabs to take up full bar */
+    max-width: none !important;
+
+    /* keep tabs just big enough to show the icon, a space, and the close button */
+    min-width: 3em !important;
+}
+
+.toolbarbutton-badge-stack {
+    padding: 0px !important;
 }
 
 /* non-selected */
@@ -53,13 +103,20 @@
     color: var(--foreground) !important;
 }
 
+/* remove dropdown menu button which displays all tabs on overflow */
+#alltabs-button { display: none !important }
+
 
 /* NAVBAR ------------------------------------------------------------------ */
 
 #nav-bar {
-    height    : var(--nav-bar-height) !important;
-    min-height: var(--nav-bar-height) !important;
-    max-height: var(--nav-bar-height) !important;
+    font-size: var(--nav-font-size) !important;
+}
+
+#nav-bar {
+    height    : 1.5em !important;
+    min-height: 1.5em !important;
+    max-height: 1.5em !important;
 }
 
 /* buttons that cannot be removed in customization menu */
@@ -96,6 +153,6 @@
   background: var(--background) !important;
 }
 /* not sure we need this part */
-.dialogOverlay[hideContent="true"][topmost="true"] {
-  background-color: var(--background) !important;
-}
+/* .dialogOverlay[hideContent="true"][topmost="true"] { */
+/*   background-color: var(--background) !important; */
+/* } */
