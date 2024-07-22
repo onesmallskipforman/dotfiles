@@ -43,6 +43,12 @@
     min-height: 0px !important;
 }
 
+/* hide window controls */
+.titlebar-buttonbox-container { display: none; }
+
+/* remove titlebar spacers */
+.titlebar-spacer { display: none !important; }
+
 /* remove overflow scroll buttons */
 #scrollbutton-up, #scrollbutton-down { display: none !important; }
 
