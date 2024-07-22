@@ -36,13 +36,17 @@
 
 /* TABS -------------------------------------------------------------------- */
 
+
 /* TODO: i think i want everything to scale with ui font size */
 /* seems then the goal is to set all min-heights */
 #titlebar {
     min-height: 0px !important;
 }
 
-/* NOTE: carefule with em as you may not have the font you're looking for in your element */
+/* remove overflow scroll buttons */
+#scrollbutton-up, #scrollbutton-down { display: none !important; }
+
+/* NOTE: carefull with em as you may not have the font you're looking for in your element */
 
 /* TODO: don't know why i need .tab-icon-image instead of html:img element type */
 .tab-icon-image {
@@ -80,12 +84,24 @@
 .tabbrowser-tab {
     margin: 0px !important;
     padding: 0px !important;
-    /* allow tabs to take up full bar */
-    max-width: none !important;
 
     /* keep tabs just big enough to show the icon, a space, and the close button */
     min-width: 3em !important;
 }
+
+/* NOTE: extra specifiers required to allow tabs to go back to normal size when others are closed */
+/* not really sure why this works */
+/* https://www.google.com/search?client=ubuntu&channel=fs&q=firefox+css+tab+max+width+gap */
+/* https://www.reddit.com/r/FirefoxCSS/comments/brklu0/the_right_way_to_change_your_tab_max_width/ */
+/* https://www.reddit.com/r/FirefoxCSS/comments/vth819/maximum_tab_width_makes_tabs_not_move_anymore/ */
+/* https://www.reddit.com/r/FirefoxCSS/comments/zoh7ry/tabs_max_width_limit_stopped_working_after_last/ */
+.tabbrowser-tab[fadein]:not([pinned]):not([style*="max-width"])
+{
+    /* allow tabs to take up full bar */
+    max-width: none !important;
+}
+
+
 
 .toolbarbutton-badge-stack {
     padding: 0px !important;
@@ -114,9 +130,9 @@
 }
 
 #nav-bar {
-    height    : 1.5em !important;
-    min-height: 1.5em !important;
-    max-height: 1.5em !important;
+    height    : 2em !important;
+    min-height: 2em !important;
+    max-height: 2em !important;
 }
 
 /* buttons that cannot be removed in customization menu */
@@ -146,6 +162,15 @@
     /* padding: 0px 4px 0px 0px !important; */
     /* display:none; */
 /* } */
+
+/* URLBAR ------------------------------------------------------------------ */
+
+#urlbar-background {
+    /* border: 1px solid var(--color8) !important; */
+    border: none !important;
+    /* default 4px */
+    border-radius: 4px !important;
+}
 
 /* BROWSER ----------------------------------------------------------------- */
 /* FIX FOR WHITE FLASHING */
