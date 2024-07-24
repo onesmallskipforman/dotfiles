@@ -63,6 +63,7 @@
     height: 1em  !important;
     width: 1em  !important;
     padding: 0px !important;
+    fill: var(--color7) !important;
 }
 
 .tab-label-container {
@@ -83,6 +84,7 @@
 
 #TabsToolbar {
     font-size: var(--tab-font-size) !important;
+    /* font-family: "Hack Nerd Font" !important; */
     background-color: #000000 !important;
 }
 
@@ -93,6 +95,7 @@
 
     /* keep tabs just big enough to show the icon, a space, and the close button */
     min-width: 3em !important;
+
 }
 
 /* NOTE: extra specifiers required to allow tabs to go back to normal size when others are closed */
@@ -117,12 +120,14 @@
 #tabbrowser-tabs .tabbrowser-tab:not([visuallyselected],[selected],[multiselected]) .tab-content {
     background: var(--dark-bg) !important;
     color: var(--color7) !important;
+    border-left: 2px solid var(--dark-bg) !important;
 }
 
 /* selected */
 #tabbrowser-tabs .tabbrowser-tab:is([visuallyselected],[selected],[multiselected]) .tab-content {
     background-color: var(--background) !important;
     color: var(--foreground) !important;
+    border-left: 2px solid var(--color7) !important;
 }
 
 /* remove dropdown menu button which displays all tabs on overflow */
@@ -176,6 +181,13 @@
     border: none !important;
     /* default 4px */
     border-radius: 4px !important;
+}
+
+.urlbar-icon {
+    height: 1em  !important;
+    width: 1em  !important;
+    padding: 0px !important;
+    fill: var(--color7) !important;
 }
 
 /* BROWSER ----------------------------------------------------------------- */
