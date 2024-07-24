@@ -120,7 +120,6 @@
 #tabbrowser-tabs .tabbrowser-tab:not([visuallyselected],[selected],[multiselected]) .tab-content {
     background: var(--dark-bg) !important;
     color: var(--color7) !important;
-    border-left: 2px solid var(--dark-bg) !important;
 }
 
 /* selected */
@@ -197,5 +196,32 @@
 }
 /* not sure we need this part */
 /* .dialogOverlay[hideContent="true"][topmost="true"] { */
+/*   background-color: var(--background) !important; */
+/* } */
+
+
+/* PANELS ------------------------------------------------------------------ */
+
+/* panel[type="arrow"] { */
+/*     &:not([animate="false"]) { */
+/*       transition-duration: 0s; */
+/*     } */
+/* } */
+
+
+/* menupopup::part(content), panel::part(content) { */
+/*     background-color: var(--background) !important; */
+/*     background: var(--background) !important; */
+/* } */
+
+panel, menupopup, panelmultiview, panelview {
+    background-color: var(--background) !important;
+    /* background: var(--background) !important; */
+    /* border-radius: 8px !important; */
+    /* border: 10px solid var(--color7) !important; */
+}
+
+/* panel:where([type="arrow"]) { */
+/*   appearance: none; */
 /*   background-color: var(--background) !important; */
 /* } */
