@@ -13,3 +13,4 @@ alias wal='wal -c && wal --cols16 lighten --backend wal' # --backend haishoku al
 alias diff='diff -bur --color'
 # https://docs.docker.com/reference/cli/docker/container/ls/#format
 alias dps='docker ps --format "table {{.ID}},{{.Names}},{{.Networks}}" | column -t -s","'
+alias wine='WINEDEBUG="fixme-all" WINEARCH=win64 WINEPREFIX=~/.config/wine wine'
