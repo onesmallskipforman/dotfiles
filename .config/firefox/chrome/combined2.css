@@ -180,8 +180,21 @@
     border: none !important;
     /* default 4px */
     border-radius: 4px !important;
+    background: var(--background) !important;
+    color: var(--foreground) !important;
 }
 
+#urlbar-container {
+    color: var(--foreground) !important;
+}
+.urlbar-input-container {
+    color: var(--foreground) !important;
+    /* TODO: non-extended border persists when extended */
+    /* border: 1px solid var(--color7) !important; */
+}
+.urlbarView {
+    color: var(--foreground) !important;
+}
 .urlbar-icon {
     height: 1em  !important;
     width: 1em  !important;
@@ -214,11 +227,25 @@
 /*     background: var(--background) !important; */
 /* } */
 
-panel, menupopup, panelmultiview, panelview {
+panelmultiview, arrowscrollbox, panelview {
     background-color: var(--background) !important;
+    color: var(--foreground) !important;
     /* background: var(--background) !important; */
     /* border-radius: 8px !important; */
     /* border: 10px solid var(--color7) !important; */
+}
+
+/* background layer on popup menus */
+panel, menupopup {
+    background: transparent !important;
+    /* border-radius: 10px !important; */
+    /* border-width: 0px !important; */
+}
+
+/* conent area on popup menus */
+arrowscrollbox {
+    border-color: var(--color7) !important;
+    border-radius: 10px !important;
 }
 
 /* panel:where([type="arrow"]) { */
