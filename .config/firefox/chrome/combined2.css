@@ -66,6 +66,12 @@
     fill: var(--color7) !important;
 }
 
+.toolbarbutton-1 {
+    /* height: 1em  !important; */
+    /* width: 1em  !important; */
+    /* padding: 0px !important; */
+    fill: var(--color7) !important;
+}
 .tab-label-container {
     height: 1em !important;
 }
@@ -273,7 +279,19 @@ arrowscrollbox {
     border-radius: 10px !important;
 }
 
+/* undo arrowscrollbox setting on tabs */
+/* TODO: there's a more proper way to do this */
+#tabbrowser-arrowscrollbox {
+    background-color: var(--dark-bg) !important;
+    border-radius: 0px !important;
+}
+
 /* panel:where([type="arrow"]) { */
 /*   appearance: none; */
 /*   background-color: var(--background) !important; */
 /* } */
+
+/* toolbarbutton */
+#tabs-newtab-button {
+    background-color: transparent !important;
+}
