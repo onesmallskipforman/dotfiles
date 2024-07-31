@@ -8,7 +8,7 @@
     --dark-fg: color-mix(in srgb, var(--foreground) 60%, black) !important;
     --lite-fg: color-mix(in srgb, var(--foreground) 10%, white) !important;
     --tab-font-size: 15px;
-    --nav-font-size: 14px;
+    --nav-font-size: 15px;
     /* --border-radius: 0px; */
     /* --urlbar-height: 20px; */
     /* --tab-min-height: 22px !important; */ /* TODO: not sure why i cant rename this */
@@ -94,6 +94,11 @@
     background-color: #000000 !important;
 }
 
+.tab-content, .tabbrowser-tab, tabs {
+    /* could also use inherit */
+    font: var(--tab-font-size) !important;
+}
+
 
 .tabbrowser-tab {
     margin: 0px !important;
@@ -141,14 +146,14 @@
 
 /* NAVBAR ------------------------------------------------------------------ */
 
-#nav-bar {
+#nav-bar, #urlbar{
     font-size: var(--nav-font-size) !important;
 }
 
 #nav-bar {
-    height    : 2em !important;
+    /* height    : 2em !important; */
     min-height: 2em !important;
-    max-height: 2em !important;
+    /* max-height: 2em !important; */
 }
 
 /* buttons that cannot be removed in customization menu */
@@ -181,6 +186,10 @@
 
 /* URLBAR ------------------------------------------------------------------ */
 
+#urlbar {
+    min-height: 1em !important;
+}
+
 #urlbar-background {
     /* border: 1px solid var(--color8) !important; */
     border: none !important;
@@ -192,9 +201,14 @@
 
 #urlbar-container {
     color: var(--foreground) !important;
+    min-height: 1em !important;
 }
 .urlbar-input-container {
     color: var(--foreground) !important;
+    height: inherit !important;
+    padding-block: 0px !important;
+    padding-inline: 0px !important;
+
     /* TODO: non-extended border persists when extended */
     /* border: 1px solid var(--color7) !important; */
 }
@@ -207,6 +221,30 @@
     padding: 0px !important;
     fill: var(--color7) !important;
 }
+
+/* #downloads-indicator-anchor { */
+/*     min-width: 1em !important; */
+/*     min-height: 1em !important; */
+/* } */
+
+/* i think we want to use width:100% in some places */
+#navigator-toolbox box, #navigator-toolbox hbox  {
+    min-width: 1em !important;
+    min-height: 1em !important;
+}
+#nav-bar image  {
+    width: 1em !important;
+    height: 1em !important;
+    min-width: 1em !important;
+    min-height: 1em !important;
+}
+
+/* TODO: not working */
+/* #nav-bar box, #nav-bar hbox { */
+/*     width: 1em; */
+/*     height: 1em; */
+/* } */
+
 
 /* BROWSER ----------------------------------------------------------------- */
 /* FIX FOR WHITE FLASHING */
