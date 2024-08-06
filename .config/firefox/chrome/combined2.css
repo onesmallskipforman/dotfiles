@@ -245,6 +245,12 @@
 /*     height: 1em; */
 /* } */
 
+#urlbar-zoom-button {
+  background-color: var(--dark-bg) !important;
+  color: var(--dark-fg) !important;
+  /* TODO: figure out how to get border outline */
+}
+
 
 /* BROWSER ----------------------------------------------------------------- */
 /* FIX FOR WHITE FLASHING */

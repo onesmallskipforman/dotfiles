@@ -3,7 +3,7 @@
 MSG=${1:-"Test"}
 DIR=$HOME/.local/src/figlet-fonts
 
-ls $DIR/*.flf | sed 's!.*/!!' | sed 's/\.[^.]*$//' \
+ls $DIR/{*.flf,*.tlf} | sed 's!.*/!!' | sed 's/\.[^.]*$//' \
   | fzf --preview "figlet -d $DIR -w 100 -f {} $MSG"
 
 # /usr/local/share/figlet/fonts/**/*.flf | fzf --with-nth -1 -d / --preview 'figlet -f {} abc'
