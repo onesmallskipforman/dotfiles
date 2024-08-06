@@ -141,6 +141,6 @@ export PATH=$PATH:/home/skipper/.spicetify
 
 
 GUIX_PROFILE="/home/skipper/.guix-profile"
-source "$GUIX_PROFILE/etc/profile"
+[ -f "$GUIX_PROFILE/etc/profile" ] && source "$GUIX_PROFILE/etc/profile"
 
 # jira completion zsh | sudo tee "/usr/local/share/zsh/site-functions/_jira"
