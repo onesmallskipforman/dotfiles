@@ -143,4 +143,11 @@ export PATH=$PATH:/home/skipper/.spicetify
 GUIX_PROFILE="/home/skipper/.guix-profile"
 [ -f "$GUIX_PROFILE/etc/profile" ] && source "$GUIX_PROFILE/etc/profile"
 
+
+fcd () {
+    local DIR=$(find ~/ -wholename '*.git' | xargs dirname | xargs realpath | sed "s;$HOME;~;g" | fzf --cycle --delimiter=" " --with-nth=1 --bind 'esc:abort,enter:execute(echo {1})+abort')
+    cd $DIR
+}
+
+
 # jira completion zsh | sudo tee "/usr/local/share/zsh/site-functions/_jira"

@@ -18,8 +18,8 @@ export TEXMFVAR=$XDG_CACHE_HOME/texlive/texmf-var
 export TEXMFCONFIG=$XDG_CONFIG_HOME/texlive/texmf-config
 export MANPATH=$MANPATH:$HOME/.local/texlive/texmf-dist/doc/man
 export INFOPATH=$INFOPATH:$HOME/.local/texlive/texmf-dist/doc/info
-export PATH=$PATH:$HOME/.local/texlive/bin/x86_64-linux
-export PATH=$PATH:$HOME/.local/texlive/bin/universal-darwin
+export PATH=$HOME/.local/texlive/bin/x86_64-linux:$PATH
+export PATH=$HOME/.local/texlive/bin/universal-darwin:$PATH
 
 # Set Path Variables
 export PATH="$HOME/.local/bin:$PATH"
