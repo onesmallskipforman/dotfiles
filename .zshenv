@@ -58,6 +58,8 @@ export FZF_DEFAULT_COMMAND='rg -uu -g "!*.{git,DS_Store}" --files'
 # configure path for rust
 export PATH="$CARGO_HOME/bin:$PATH"
 
+export PATH="$PATH:$XDG_CONFIG_HOME/work"
+
 export LF_ICONS="\
 tw=:\
 st=:\

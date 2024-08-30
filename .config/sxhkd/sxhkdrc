@@ -40,8 +40,9 @@ alt + m
 alt + t
     bspc rule -a \* -o state=floating && $TERMINAL -e $SHELL -c 'source select_repo.sh && searchCache'
 
-alt + shift + t
-    bspc rule -a \* -o state=floating && $TERMINAL -e $SHELL -c 'source select_local_repo.sh && selectRepo | xargs -n1 -I{} $TERMINAL --working-directory={}'
+# TODO: rework with gd function to open floating terminal and then move it to tiled once directory is found
+# alt + shift + t
+#     bspc rule -a \* -o state=floating && $TERMINAL -e $SHELL -c 'source select_local_repo.sh && selectRepo | xargs -n1 -I{} $TERMINAL --working-directory={}'
 
 #===============================================================================
 # FOCUS AND SWAP CONTROLS

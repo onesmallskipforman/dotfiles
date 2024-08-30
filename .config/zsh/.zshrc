@@ -127,6 +127,16 @@ if [[ $1 == eval ]]; then "$@"; set --; fi # [[ $1 == eval ]] && ("$@"; set --)
 WORKRC=~/.config/work/workrc
 [ -f $WORKRC ] && source $WORKRC
 
+function gd() {
+    local DIR=$(
+        {find ~/work/git -maxdepth 3 -type d -name ".git"
+         find ~/Projects -maxdepth 5 -name ".git"} \
+            | xargs -n1 dirname \
+            | fzf --cycle --height ${FZF_TMUX_HEIGHT:-40%} --layout reverse
+    )
+    cd $DIR
+}
+
 export PYTHONDONTWRITEBYTECODE=1
 # TODO: only add this on OSX
 export PATH="/usr/local/opt/node@20/bin:$PATH"
