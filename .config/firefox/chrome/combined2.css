@@ -127,6 +127,7 @@
     padding: 0px !important;
 }
 
+/* check https://stackoverflow.com/questions/78206548/firefox-124-how-to-change-background-color-of-active-tab-in-userchrome-css */
 /* non-selected */
 #tabbrowser-tabs .tabbrowser-tab:not([visuallyselected],[selected],[multiselected]) .tab-content {
     background: var(--dark-bg) !important;

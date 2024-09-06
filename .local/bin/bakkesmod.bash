@@ -3,7 +3,7 @@
 # Set RL launch options to `"/path/to/this/script.sh" & %command%`
 
 # rocket league wine paths and injector script
-COMPATDATA=$HOME/.steam/debian-installation/steamapps/compatdata/252950
+COMPATDATA=$HOME/.steam/steam/steamapps/compatdata/252950
 PROTON="$(sed -n 4p "$COMPATDATA"/config_info | xargs -d '\n' dirname)"
 WINEPREFIX=$COMPATDATA/pfx; C=$WINEPREFIX/drive_c
 BAKKESMOD="$C/Program Files/BakkesMod/BakkesMod.exe"

@@ -19,60 +19,12 @@ user_pref("browser.tabs.insertAfterCurrent", true);
 // options: 'always', 'never', 'newtab'
 user_pref("browser.toolbars.bookmarks.visibility", "never");
 
+// needed to change about:newtab background. flashing is handled in userchrome
+// TODO: replace with usercontent css
+user_pref("browser.display.background_color", "#282828");
+user_pref("browser.display.background_color.dark", "#282828");
 
 // user_pref("layout.css.devPixelsPerPx", -1.0);
-
-// TODO: doesn't seem to work
-// https://www.reddit.com/r/firefox/comments/z2gz9u/saving_the_customized_toolbar_layout/
-// user_pref("browser.uiCustomization.state", {"placements": {
-//     "widget-overflow-fixed-list":[],
-//     "nav-bar":[
-//         "back-button",
-//         "forward-button",
-//         "stop-reload-button",
-//         "customizableui-special-spring1",
-//         "urlbar-container",
-//         "customizableui-special-spring2",
-//         "save-to-pocket-button",
-//         "downloads-button",
-//         "fxa-toolbar-menu-button",
-//         "unified-extensions-button"
-//     ],
-//     "TabsToolbar":[
-//         // "firefox-view-button",
-//         "tabbrowser-tabs",
-//         "new-tab-button",
-//         "alltabs-button"
-//     ],
-//     "PersonalToolbar":["personal-bookmarks"],
-//     "unified-extensions-area":[
-//         "_news-feed-eradicator-browser-action",
-//         "myallychou_gmail_com-browser-action",
-//         "_contain-facebook-browser-action",
-//         "addon_darkreader_org-browser-action",
-//         "extension_one-tab_com-browser-action",
-//         "ublock0_raymondhill_net-browser-action",
-//         "_88ebde3a-4581-4c6b-8019-2a05a9e3e938_-browser-action",
-//         "_d7742d87-e61d-4b78-b8a1-b469842139fa_-browser-action"]
-//     },
-//     "seen":[
-//         "save-to-pocket-button",
-//         "_news-feed-eradicator-browser-action",
-//         "myallychou_gmail_com-browser-action",
-//         "_contain-facebook-browser-action",
-//         "addon_darkreader_org-browser-action",
-//         "extension_one-tab_com-browser-action",
-//         "ublock0_raymondhill_net-browser-action",
-//         "_88ebde3a-4581-4c6b-8019-2a05a9e3e938_-browser-action",
-//         "_d7742d87-e61d-4b78-b8a1-b469842139fa_-browser-action",
-//         "developer-button"
-//     ],
-//     "dirtyAreaCache":["unified-extensions-area"],
-//     "currentVersion":20,
-//     "newElementCount":2
-// });
-
-
 
 // TODO: doesn't seem to work
 // user_pref("browser.newtabpage.activity-stream.showRecentSaves", false);
