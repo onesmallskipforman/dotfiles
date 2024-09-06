@@ -19,6 +19,14 @@ HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.cache/zsh/history
 
+# search history matching up to cursor
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search # Up
+bindkey "^[[B" down-line-or-beginning-search # Down
+
 # set cache directory
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.cache/zsh/.zcompcache
@@ -56,11 +64,13 @@ function zle-keymap-select () {
 # Fix backspace bug when switching modes
 bindkey "^?" backward-delete-char
 
-#
-setopt append_history
+# append session history list to the history file, rather than replace it
+setopt APPEND_HISTORY
 
 function zle-line-init() {
-    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+    # initiate `vi insert` as keymap
+    # (can be removed if `bindkey -v` has been set elsewhere)
+    zle -K viins
     echo -ne "\e[5 q"
 }; zle -N zle-line-init
 
@@ -68,17 +78,14 @@ echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 function vi-yank-xclip {
-    # NOTE: we can't use flags in a string variable that's treated as one whole command
-    # need to use 'eval' or just put the whole clip command inside the if-else logic
-    # local CLIP=$( [ $(uname) = "Darwin" ] && echo "pbcopy -i" || echo "xclip -i -selection 'clipboard'" )
     zle vi-yank
-    [ $(uname) = "Darwin" ] \
-        && print -rn -- "$CUTBUFFER" | pbcopy -i \
-        || print -rn -- "$CUTBUFFER" | xclip -i -selection 'clipboard'
+    print -rn -- "$CUTBUFFER" |
+        { [ $(uname) = "Darwin" ] \
+        && pbcopy -i \
+        || xclip -i -selection 'clipboard'
+    }
 }; zle -N vi-yank-xclip
 bindkey -M vicmd 'y' vi-yank-xclip
-
-
 
 # # Use lf to switch directories and bind it to ctrl-o
 # lfcd () {
@@ -96,33 +103,37 @@ bindkey -M vicmd 'y' vi-yank-xclip
 # SOURCING FEATURES
 #===============================================================================
 
+function checkEx(){{ command -v $1 || echo /dev/null } | xargs -I{} [ -x {} ];}
+function sourceSrc() { [ -f "$1" ] && source "$1"; }
+function setupRos() { source /opt/ros/$1/setup.zsh }
+
 # Load zsh-syntax-highlighting, zsh-autosuggestions; should be last.
-[ "$OSTYPE" = "linux-gnu" ] && DATADIR="/usr/share" || DATADIR="/usr/local/share"
+[ $(uname) = "Darwin" ] && DATADIR="/usr/local/share" || DATADIR="/usr/share"
 source $DATADIR/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $DATADIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # source $DATADIR/autojump/autojump.zsh
 
-function checkEx(){{ command -v $1 || echo /dev/null } | xargs -I{} [ -x {} ];}
-eval "$(register-python-argcomplete pipx)" # pipx
-checkEx fzf && source <(fzf --zsh)
+source $XDG_CONFIG_HOME/shell/aliasrc
 
-[ -f "$XDG_CONFIG_HOME/shell/aliasrc"     ] && source $XDG_CONFIG_HOME/shell/aliasrc
-# [ -f /opt/ros/$ROS_DISTRO/setup.zsh ] && source /opt/ros/$ROS_DISTRO/setup.zsh
-[ -f /opt/ros/foxy/setup.zsh ] && source /opt/ros/foxy/setup.zsh
+# completions
+eval "$(register-python-argcomplete pipx)"
+source <(fzf --zsh)
 
 #===============================================================================
 # PROCESS INITIAL COMMANDS
 #===============================================================================
 
 # showoff
-{
+# {
     # clear;
-    # [ -x "$(command -v fastfetch)" ] && fastfetch;
-    # [ -x "$(command -v figlet)" ] && figlet -d $HOME/.local/src/figlet-fonts -w 150 -f Roman 'Z-shell' && echo -e '\e[2A\e[K'
-}
+    # checkEx fastfetch && fastfetch;
+    # checkEx figlet \
+    #     && figlet -d $HOME/.local/src/figlet-fonts -w 150 -f Roman 'Z-shell' \
+    #     && echo -e '\e[2A\e[K'
+# }
 
 # run provided command
-# if [[ $1 == eval ]]; then "$@"; set --; fi # [[ $1 == eval ]] && ("$@"; set --)
+# [[ $1 == eval ]] && {"$@"; set --}
 
 WORKRC=~/.config/work/workrc
 [ -f $WORKRC ] && source $WORKRC
@@ -134,11 +145,6 @@ function gd() {
             | xargs -n1 dirname \
             | fzf --cycle --height ${FZF_TMUX_HEIGHT:-40%} --layout reverse
     )
-    cd $DIR
-}
-
-fcd () {
-    local DIR=$(find ~/ -wholename '*.git' | xargs dirname | xargs realpath | sed "s;$HOME;~;g" | fzf --cycle --delimiter=" " --with-nth=1 --bind 'esc:abort,enter:execute(echo {1})+abort')
     cd $DIR
 }
 
