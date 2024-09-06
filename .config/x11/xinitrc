@@ -11,6 +11,7 @@ xrandr --auto
 # set configurations for native display
 #[ -f ~/.local/bin/xrandr.py   ] && ~/.local/bin/xrandr.py 1 &>/dev/null
 
+# TODO: replace with what is getting sourced
 # invoke global X session script
 # . /etc/X11/Xsession
 . /etc/X11/Xsession.d/20dbus_xdg-runtime

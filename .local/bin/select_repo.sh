@@ -1,1 +1,0 @@
-../../.config/work/select_repo.sh

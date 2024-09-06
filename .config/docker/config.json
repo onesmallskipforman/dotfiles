@@ -1,7 +1,10 @@
 {
-	"auths": {
-		"https://index.docker.io/v1/": {}
-	},
-	"credsStore": "pass",
-	"experimental": "disabled"
+    "auths": {
+        "https://index.docker.io/v1/": {}
+    },
+    "credsStore": "pass",
+    "currentContext": "colima",
+    "cliPluginsExtraDirs": [
+        "/usr/local/lib/docker/cli-plugins"
+    ]
 }

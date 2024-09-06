@@ -33,13 +33,6 @@ _comp_options+=(globdots)   # Include hidden files.
 # Auto complete with case insenstivity
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
-# bash completions (maybe required for pipx?)
-# autoload -U bashcompinit
-# bashcompinit
-
-# pipx completions
-eval "$(register-python-argcomplete pipx)"
-
 #===============================================================================
 # KEYMAPPINGS
 #===============================================================================
@@ -53,32 +46,36 @@ autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
 # Change cursor shape for different vi modes.
-function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]] ||
-     [[ $1 = 'block' ]]; then
-    echo -ne '\e[1 q'
-  elif [[ ${KEYMAP} == main ]] ||
-       [[ ${KEYMAP} == viins ]] ||
-       [[ ${KEYMAP} = '' ]] ||
-       [[ $1 = 'beam' ]]; then
-    echo -ne '\e[5 q'
-  fi
-}
-zle -N zle-keymap-select
-echo -ne '\e[5 q' # Use beam shape cursor on startup.
-preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+function zle-keymap-select () {
+    case $KEYMAP in
+        vicmd) echo -ne '\e[1 q';;      # block
+        viins|main) echo -ne '\e[5 q';; # beam
+    esac
+}; zle -N zle-keymap-select
 
 # Fix backspace bug when switching modes
 bindkey "^?" backward-delete-char
 
+#
+setopt append_history
+
+function zle-line-init() {
+    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+    echo -ne "\e[5 q"
+}; zle -N zle-line-init
+
+echo -ne '\e[5 q' # Use beam shape cursor on startup.
+preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+
 function vi-yank-xclip {
-    # TODO: we can't fun flags in a string variable that's treated as one whole command
+    # NOTE: we can't use flags in a string variable that's treated as one whole command
     # need to use 'eval' or just put the whole clip command inside the if-else logic
     # local CLIP=$( [ $(uname) = "Darwin" ] && echo "pbcopy -i" || echo "xclip -i -selection 'clipboard'" )
     zle vi-yank
-    print -rn -- "$CUTBUFFER" | xclip -i -selection 'clipboard'
-}
-zle -N vi-yank-xclip
+    [ $(uname) = "Darwin" ] \
+        && print -rn -- "$CUTBUFFER" | pbcopy -i \
+        || print -rn -- "$CUTBUFFER" | xclip -i -selection 'clipboard'
+}; zle -N vi-yank-xclip
 bindkey -M vicmd 'y' vi-yank-xclip
 
 
@@ -105,7 +102,10 @@ source $DATADIR/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $DATADIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # source $DATADIR/autojump/autojump.zsh
 
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
+function checkEx(){{ command -v $1 || echo /dev/null } | xargs -I{} [ -x {} ];}
+eval "$(register-python-argcomplete pipx)" # pipx
+checkEx fzf && source <(fzf --zsh)
+
 [ -f "$XDG_CONFIG_HOME/shell/aliasrc"     ] && source $XDG_CONFIG_HOME/shell/aliasrc
 # [ -f /opt/ros/$ROS_DISTRO/setup.zsh ] && source /opt/ros/$ROS_DISTRO/setup.zsh
 [ -f /opt/ros/foxy/setup.zsh ] && source /opt/ros/foxy/setup.zsh
@@ -122,7 +122,7 @@ source $DATADIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 }
 
 # run provided command
-if [[ $1 == eval ]]; then "$@"; set --; fi # [[ $1 == eval ]] && ("$@"; set --)
+# if [[ $1 == eval ]]; then "$@"; set --; fi # [[ $1 == eval ]] && ("$@"; set --)
 
 WORKRC=~/.config/work/workrc
 [ -f $WORKRC ] && source $WORKRC
@@ -137,27 +137,9 @@ function gd() {
     cd $DIR
 }
 
-export PYTHONDONTWRITEBYTECODE=1
-# TODO: only add this on OSX
-export PATH="/usr/local/opt/node@20/bin:$PATH"
-
-# Add path for using LSPs installed by mason
-export PATH="/home/skipper/.local/share/nvim/mason/bin:$PATH"
-
-
-export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
-
-export PATH=$PATH:/home/skipper/.spicetify
-
-
-GUIX_PROFILE="/home/skipper/.guix-profile"
-[ -f "$GUIX_PROFILE/etc/profile" ] && source "$GUIX_PROFILE/etc/profile"
-
-
 fcd () {
     local DIR=$(find ~/ -wholename '*.git' | xargs dirname | xargs realpath | sed "s;$HOME;~;g" | fzf --cycle --delimiter=" " --with-nth=1 --bind 'esc:abort,enter:execute(echo {1})+abort')
     cd $DIR
 }
-
 
 # jira completion zsh | sudo tee "/usr/local/share/zsh/site-functions/_jira"
