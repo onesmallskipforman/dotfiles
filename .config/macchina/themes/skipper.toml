@@ -1,0 +1,6 @@
+[custom_ascii]
+path = "~/.config/macchina/themes/tmp_ascii.txt"
+
+
+# ascii-image-converter -b --threshold 10 ~/Downloads/wp3163686-joy-division-unknown-pleasures-wallpaper.png
+# ascii-image-converter -C -b --threshold 127 -W 50 .local/share/wallpapers/fuji.jpg
