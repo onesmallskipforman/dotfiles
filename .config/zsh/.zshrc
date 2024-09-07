@@ -135,7 +135,11 @@ source <(fzf --zsh)
 # run provided command
 # [[ $1 == eval ]] && {"$@"; set --}
 
-WORKRC=~/.config/work/workrc
+# TODO: move work functions to a scripts folder
+# i suspect you lose a lot more time up front having zsh load all your functions.
+# if you use scripts instead, i think exploring the search path and not loading every script would be faster,
+# even if you need a subshell to execute the script
+WORKRC=$HOME/.config/work/workrc
 [ -f $WORKRC ] && source $WORKRC
 
 function gd() {
