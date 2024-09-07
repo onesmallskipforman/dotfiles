@@ -116,8 +116,15 @@ source $DATADIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $XDG_CONFIG_HOME/shell/aliasrc
 
 # completions
-eval "$(register-python-argcomplete pipx)"
-source <(fzf --zsh)
+# i thought of this and i cant believe this works lmao
+PIPX_COMPLETIONS=$(mktemp -u); mkfifo $PIPX_COMPLETIONS
+FZFZ_COMPLETIONS=$(mktemp -u); mkfifo $FZFZ_COMPLETIONS
+(register-python-argcomplete pipx > pipx_completions &)
+(fzf --zsh                        > fzfz_completions &)
+source <(cat pipx_completions)
+source <(cat fzfz_completions)
+# eval "$(register-python-argcomplete pipx)"
+# source <(fzf --zsh)
 
 #===============================================================================
 # PROCESS INITIAL COMMANDS
