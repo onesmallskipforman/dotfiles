@@ -150,12 +150,12 @@ multiplier = 1
 save_to_clipboard = false
 semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
-# [shell]
-# program = "/bin/zsh"
-
+# TODO: ls <DIRNAME> -la (as opposed to ls -la <DIRNAME>) does not work in login shells
+# TODO: when shell is not configured, a login shell is used by default, but new terminals
+# print a message 'Last login: <date> on <tty>'
 [shell]
 program = "/bin/zsh"
-args = ["-l"]
+# args = ["-l"]
 
 [window]
 decorations = "none"
