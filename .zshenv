@@ -9,6 +9,7 @@ export EDITOR="nvim"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_STATE_HOME="$HOME/.local/state"
 
 # set other directories
 # ~/ Clean-up:
@@ -20,6 +21,7 @@ export DOCKER_CONFIG=$XDG_CONFIG_HOME/docker
 export IPYTHONDIR=$XDG_CONFIG_HOME/jupyter
 export JUPYTER_CONFIG_DIR=$XDG_CONFIG_HOME/jupyter
 export LESSHISTFILE="-"
+export CALCHISTFILE="$XDG_CACHE_HOME"/calc_history
 export PARALLEL_HOME=$XDG_CONFIG_HOME/parallel
 export GNUPGHOME=$XDG_DATA_HOME/gnupg
 export PASSWORD_STORE_DIR=$XDG_DATA_HOME/pass
@@ -29,8 +31,16 @@ export CARGO_HOME=$XDG_DATA_HOME/cargo
 export RUSTUP_HOME=$XDG_DATA_HOME/rustup
 export PATH="$CARGO_HOME/bin:$PATH"
 export XINITRC=$XDG_CONFIG_HOME/x11/xinitrc
-export XAUTHORITY=$XDG_RUNTIME_DIR/Xauthority
+[ $(uname) = "Darwin" ] \
+    && export XAUTHORITY=$XDG_CACHE_HOME/Xauthority \
+    || export XAUTHORITY=$XDG_RUNTIME_DIR/Xauthority
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh
+export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
+export NVM_DIR="$XDG_DATA_HOME"/nvm
+
+# ncurses
+export TERMINFO="$XDG_DATA_HOME"/terminfo
+export TERMINFO_DIRS="$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
 
 # Set Path Variables
 # export PATH="/usr/local/bin:$PATH"
@@ -71,8 +81,10 @@ export PATH="$PATH:$XDG_CONFIG_HOME/work"
 [ -f ~/.config/work/workrc ] && source ~/.config/work/workrc
 
 
-
 export PYTHONDONTWRITEBYTECODE=1
+export PYTHON_HISTORY=$XDG_STATE_HOME/python/history
+export PYTHONPYCACHEPREFIX=$XDG_CACHE_HOME/python
+export PYTHONUSERBASE=$XDG_DATA_HOME/python
 
 
 
