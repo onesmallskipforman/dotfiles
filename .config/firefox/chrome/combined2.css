@@ -7,8 +7,8 @@
     --lite-bg: color-mix(in srgb, var(--background) 80%, white) !important;
     --dark-fg: color-mix(in srgb, var(--foreground) 60%, black) !important;
     --lite-fg: color-mix(in srgb, var(--foreground) 10%, white) !important;
-    --tab-font-size: 15px;
-    --nav-font-size: 15px;
+    --tab-font-size: 12pt;
+    --nav-font-size: 12pt;
     /* --border-radius: 0px; */
     /* --urlbar-height: 20px; */
     /* --tab-min-height: 22px !important; */ /* TODO: not sure why i cant rename this */

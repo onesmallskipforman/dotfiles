@@ -87,11 +87,11 @@ persistent_logging = false
 print_events = false
 render_timer = false
 
-[env]
-WINIT_X11_SCALE_FACTOR = "1.0"
+# [env]
+# WINIT_X11_SCALE_FACTOR = "2.0"
 
 [font]
-size = 15.0
+size = 12.0
 
 [font.glyph_offset]
 x = 0

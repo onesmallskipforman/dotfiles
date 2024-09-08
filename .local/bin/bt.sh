@@ -1,5 +1,7 @@
 #!/bin/sh
 
-
 # TODO: add option to turn on/off bluetooth in this menu
-bluetoothctl devices | fzf --cycle --reverse --bind 'esc:abort,enter:execute(echo {})+abort' | awk '{print $2}' | xargs bluetoothctl connect
+bluetoothctl devices \
+  | fzf --cycle --reverse \
+  | awk '{print $2}' \
+  | xargs -r bluetoothctl connect

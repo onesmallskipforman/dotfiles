@@ -4,6 +4,7 @@ Xft.hintstyle: hintfull
 Xft.hinting: 1
 Xft:antialias: 1
 Xft.rgba: rgb
+Xft.dpi: 192
 ! Base16 Gruvbox dark, soft
 ! Scheme: Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
 

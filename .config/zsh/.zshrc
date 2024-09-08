@@ -18,6 +18,7 @@ export PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.cache/zsh/history
+mkdir -p ~/.cache/zsh
 
 # search history matching up to cursor
 autoload -U up-line-or-beginning-search
@@ -108,7 +109,7 @@ function sourceSrc() { [ -f "$1" ] && source "$1"; }
 function setupRos() { source /opt/ros/$1/setup.zsh }
 
 # Load zsh-syntax-highlighting, zsh-autosuggestions; should be last.
-[ $(uname) = "Darwin" ] && DATADIR="/usr/local/share" || DATADIR="/usr/share"
+[ $(uname) = "Darwin" ] && DATADIR="/usr/share/zsh/plugins" || DATADIR="/usr/share"
 source $DATADIR/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $DATADIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # source $DATADIR/autojump/autojump.zsh
