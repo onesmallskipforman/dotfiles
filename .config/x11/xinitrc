@@ -1,13 +1,9 @@
 #!/bin/sh
 
-# TODO: find out if we even need these
-xrandr --setprovideroutputsource modesetting NVIDIA-0
-# xrandr --auto
-
 # set xrandr/xdpyinfo dpi based on xrandr dimensions
 # TODO: determine if this is needed or if xrandr will figure out dpi on its own
 # i suspect it won't for HiDPI
-# xrandr | grep -w connected | grep -o '[0-9]\+mm' | sed 's/mm//g' |  paste -sd 'x' - | xargs xrandr --fbmm
+xrandr | grep -w connected | grep -o '[0-9]\+mm' | sed 's/mm//g' |  paste -sd 'x' - | xargs xrandr --fbmm
 
 # load X resources
 [ -f $XDG_CONFIG_HOME/x11/Xresources ] \
@@ -18,31 +14,27 @@ xdpyinfo \
   | grep resolution \
   | grep -o '[0-9]\+x' \
   | sed 's/x//g;s/^/Xft.dpi: /g' \
-  | xrdb -merge
+  | xrdb -merge -;
 
 xrdb -merge ~/.cache/wal/colors.Xresources
 
-# set configurations for native display
-#[ -f ~/.local/bin/xrandr.py   ] && ~/.local/bin/xrandr.py 1 &>/dev/null
-
-# TODO: replace with what is getting sourced
-# invoke global X session script
-# . /etc/X11/Xsession
-# . /etc/X11/Xsession.d/20dbus_xdg-runtime
-
-# set up monitor
-# xrandr --output HDMI-2 --mode 3440x1440 --right-of eDP-1
+# based on /etc/X11/Xsession.d/20dbus_xdg-runtime in ubuntu desktop
+DBUS_SESSION_BUS_ADDRESS="unix:path=$XDG_RUNTIME_DIR/bus"
+dbus-update-activation-environment --verbose --systemd \
+  DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 
 # set natural scrolling
 xinput list --id-only | xargs -n1 -I{} xinput --set-prop {} "libinput Natural Scrolling Enabled" 1 &>/dev/null
 
 # set mouse speed and acceleration
+# TODO: fix
 xinput set-prop 'Logitech M510' "libinput Accel Speed" -0.2
 #xinput list --id-only | xargs -n1 -I{} xinput --set-prop {} "libinput Accel Speed" -0.60 &>/dev/null
 #xinput list --id-only | xargs -n1 -I{} xinput --set-prop {} "libinput Accel Profile Enabled" 1,0 &>/dev/null
 #xset m 3/1 0
 
 # set key repeat relay (225 ms) and repeat time (30 ms -> ~33/s)
+# TODO: adjust
 xset r rate 225 33
 
 # start redshift
