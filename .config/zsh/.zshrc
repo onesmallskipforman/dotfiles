@@ -80,10 +80,10 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 function vi-yank-xclip {
     zle vi-yank
-    print -rn -- "$CUTBUFFER" |
-        { [ $(uname) = "Darwin" ] \
-        && pbcopy -i \
-        || xclip -i -selection 'clipboard'
+    print -rn -- "$CUTBUFFER" | {
+        [ $(uname) = "Darwin" ] \
+            && pbcopy -i \
+            || xclip -i -selection 'clipboard'
     }
 }; zle -N vi-yank-xclip
 bindkey -M vicmd 'y' vi-yank-xclip
