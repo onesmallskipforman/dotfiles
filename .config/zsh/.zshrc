@@ -109,7 +109,10 @@ function sourceSrc() { [ -f "$1" ] && source "$1"; }
 function setupRos() { source /opt/ros/$1/setup.zsh }
 
 # Load zsh-syntax-highlighting, zsh-autosuggestions; should be last.
-[ $(uname) = "Darwin" ] && DATADIR="/usr/local/share" || DATADIR="/usr/share/zsh/plugins"
+[ $(uname) = "Darwin" ] && DATADIR="/usr/local/share" || {
+    [ $(lsb_release -i | awk -F ':[[:space:]]' '{print $2}') = "Ubuntu" ] \
+        && DATADIR="/usr/share" || DATADIR="/usr/share/zsh/plugins"
+}
 source $DATADIR/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $DATADIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # source $DATADIR/autojump/autojump.zsh

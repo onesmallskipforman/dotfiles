@@ -47,6 +47,7 @@ export TERMINFO_DIRS="$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export MANPATH="$HOME/.local/share/man:$MANPATH"
+export PATH="$PATH:$HOME/.local/share/python/bin"
 
 # paths for coreutils on macos
 [ $(uname) = "Darwin" ] && {
