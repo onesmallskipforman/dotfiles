@@ -1,6 +1,6 @@
 # restart
 ctrl + shift + r
-  ~/.config/bspwm/bspwmrc; pkill -USR1 -x sxhkd
+  ~/.config/bspwm/bspwmrc; pkill -USR1 -x sxhkd; ~/.config/polybar/launch.sh
 
 #===============================================================================
 # MONITORS

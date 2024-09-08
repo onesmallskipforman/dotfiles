@@ -123,10 +123,10 @@ source $XDG_CONFIG_HOME/shell/aliasrc
 # i thought of this and i cant believe this works lmao
 PIPX_COMPLETIONS=$(mktemp -u); mkfifo $PIPX_COMPLETIONS
 FZFZ_COMPLETIONS=$(mktemp -u); mkfifo $FZFZ_COMPLETIONS
-(register-python-argcomplete pipx > pipx_completions &)
-(fzf --zsh                        > fzfz_completions &)
-source <(cat pipx_completions)
-source <(cat fzfz_completions)
+(register-python-argcomplete pipx > $PIPX_COMPLETIONs &)
+(fzf --zsh                        > $FZFZ_COMPLETIONs &)
+source <(cat $PIPX_COMPLETIONS)
+source <(cat $FZFZ_COMPLETIONS)
 # eval "$(register-python-argcomplete pipx)"
 # source <(fzf --zsh)
 
