@@ -1,10 +1,4 @@
-// TODO: goal is to move as much as possible to userchrome css
-
-user_pref("browser.uidensity", 1);
-user_pref("browser.compactmode.show", true);
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
-user_pref("extensions.webextensions.ExtensionStorageIDB.migrated.addon@darkreader.org", true);
-user_pref("extensions.webextensions.ExtensionStorageIDB.migrated.uBlock0@raymondhill.net", true);
 // user_pref("xpinstall.signatures.required", false); // don't think this works unless i get ffx dev edition or nightly
 
 // 0: Start with a blank page (about:blank).
@@ -18,13 +12,6 @@ user_pref("browser.tabs.insertAfterCurrent", true);
 
 // options: 'always', 'never', 'newtab'
 user_pref("browser.toolbars.bookmarks.visibility", "never");
-
-// needed to change about:newtab background. flashing is handled in userchrome
-// TODO: replace with usercontent css
-user_pref("browser.display.background_color", "#282828");
-user_pref("browser.display.background_color.dark", "#282828");
-
-// user_pref("layout.css.devPixelsPerPx", -1.0);
 
 // TODO: doesn't seem to work
 // user_pref("browser.newtabpage.activity-stream.showRecentSaves", false);

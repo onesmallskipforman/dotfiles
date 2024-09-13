@@ -7,8 +7,8 @@
     --lite-bg: color-mix(in srgb, var(--background) 80%, white) !important;
     --dark-fg: color-mix(in srgb, var(--foreground) 60%, black) !important;
     --lite-fg: color-mix(in srgb, var(--foreground) 10%, white) !important;
-    --tab-font-size: 12pt;
-    --nav-font-size: 12pt;
+    --tab-font-size: 15pt;
+    --nav-font-size: 15pt;
     /* --border-radius: 0px; */
     /* --urlbar-height: 20px; */
     /* --tab-min-height: 22px !important; */ /* TODO: not sure why i cant rename this */
@@ -50,7 +50,7 @@
 .titlebar-spacer { display: none !important; }
 
 /* remove overflow scroll buttons */
-#scrollbutton-up, #scrollbutton-down { display: none !important; }
+/* #scrollbutton-up, #scrollbutton-down { display: none !important; } */
 
 /* NOTE: carefull with em as you may not have the font you're looking for in your element */
 
@@ -90,13 +90,14 @@
 
 #TabsToolbar {
     font-size: var(--tab-font-size) !important;
-    /* font-family: "Hack Nerd Font" !important; */
+    font-family: "Hack Nerd Font" !important;
     background-color: #000000 !important;
 }
 
 .tab-content, .tabbrowser-tab, tabs {
     /* could also use inherit */
     font: var(--tab-font-size) !important;
+    font-family: "Hack Nerd Font" !important;
 }
 
 
@@ -149,6 +150,7 @@
 
 #nav-bar, #urlbar{
     font-size: var(--nav-font-size) !important;
+    font-family: "Hack Nerd Font" !important;
 }
 
 #nav-bar {

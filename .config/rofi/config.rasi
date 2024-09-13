@@ -21,6 +21,16 @@ element-text, element-icon {
     border-color: #8c9696;
 }
 
+element-icon {
+    size: 1.0em ;
+    margin: 0 10px 0 0;
+}
+
+configuration {
+    dpi: 0;
+    font: "Hack Nerd Font Mono 15";
+}
+
 // configuration {
 //
 //     theme: "/usr/share/rofi/themes/Arc-Dark-Punch.rasi";

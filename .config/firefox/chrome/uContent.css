@@ -1,0 +1,37 @@
+@import "./colors.css"; /* NOTE: have to use relative path without 'url' here */
+
+/* needed to change about:newtab background. part of flashing problem */
+/* Alternatively specify the following in user.js: */
+/*   user_pref("browser.display.background_color"     , "<color>"); */
+/*   user_pref("browser.display.background_color.dark", "<color>"); */
+@-moz-document
+    url("about:addons"),
+    url("about:preferences"),
+    url("about:config"),
+    url("about:home"),
+    url("about:blank"),
+    url("about:newtab"),
+    url("about:privatebrowsing")
+{
+    body
+    {
+        background-color: var(--background) !important;
+    }
+}
+
+/* * { */
+    /* NOTE: custom font styles don't work */
+    /* font-size: 15pt !important; */
+/* } */
+
+/* @-moz-document url("about:newtab"), url("about:home"), url("about:blank"){ */
+/*   body{ */
+/*     /* This will load image.jpg stored in the same folder as this file */ */
+/*     background-image: url("flowers.png"); */
+/*     background-size: cover; */
+/*     background-repeat: no-repeat; */
+/*     background-attachment: fixed; */
+/*     background-position-x: center; */
+/*     background-position-y: bottom; */
+/*   } */
+/* } */

@@ -29,7 +29,7 @@ alt + c
 
 # rofi
 alt + d
-    rofi -font "Hack Nerd Font 12" -show-icons -show drun -display-drun ""
+    rofi -show-icons -show drun -display-drun ""
 
 alt + p
     pkill picom || picom
@@ -38,11 +38,13 @@ alt + m
     thunderbird
 
 alt + t
-    bspc rule -a \* -o state=floating && $TERMINAL -e $SHELL -c 'source select_repo.sh && searchCache'
+    bspc rule -a \* -o state=floating \
+        && $TERMINAL -e $SHELL -c 'source select_repo.sh && searchCache'
 
-# TODO: rework with gd function to open floating terminal and then move it to tiled once directory is found
+# TODO: rework to open floating terminal and then move it to tiled
 # alt + shift + t
-#     bspc rule -a \* -o state=floating && $TERMINAL -e $SHELL -c 'source select_local_repo.sh && selectRepo | xargs -n1 -I{} $TERMINAL --working-directory={}'
+#     bspc rule -a \* -o state=floating \
+#         && $TERMINAL -e $SHELL -ic 'gd 2>/dev/null; $TERMINAL'
 
 #===============================================================================
 # FOCUS AND SWAP CONTROLS
@@ -62,7 +64,8 @@ alt + ctrl + {_,shift + }{1-3}
 
 # focus desktop directional
 alt + {g,semicolon}
-    bspc desktop {prev,next} --focus # bspc desktop {prev,next}.occupied --focus
+    bspc desktop {prev,next} --focus
+    # bspc desktop {prev,next}.occupied --focus
 
 # make new space
 alt + n
@@ -119,10 +122,13 @@ alt + {_,shift + }r
 
 # screenshot
 {_,shift + }Print
-  mkdir -p ~/shots && maim -o {-s,_} ~/shots/$(date +%Y_%m_%d--%H-%M-%S_maim).png
+  mkdir -p ~/shots \
+    && maim -o {-s,_} ~/shots/$(date +%Y_%m_%d--%H-%M-%S_maim).png
 
 ctrl + shift + Print
-  OUT=~/shots/$(date +%Y_%m_%d--%H-%M-%S_maim).png && mkdir -p ~/shots && maim -o -s $OUT && gimp --no-splash $OUT
+  OUT=~/shots/$(date +%Y_%m_%d--%H-%M-%S_maim).png \
+    && mkdir -p ~/shots && maim -o -s $OUT \
+    && gimp --no-splash $OUT
 
 # maim -o -s | xclip -selection clipboard -t image/png
 
@@ -135,36 +141,17 @@ XF86AudioMute
   pactl set-sink-mute @DEFAULT_SINK@ toggle
   # wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
+XF86Audio{Play,Next,Prev}
+  playerctl {play-pause,next,previous}
+
 # screen and keyboard backlight brightness
 XF86MonBrightness{Up,Down}
   brightnessctl set {+5%,5%-}
 
-# XF86KbdBrightness{Up,Down}
-#   brightnessctl set {+5%,5%-}
-
-# Workaround for immutable firefox keybindings
-#super + {f,c,v,a,t,w}
-#  key={f,c,v,a,t,w}; \
-#  $HOME/.config/sxhkd/cmd.sh $key
-
-
-# Workaround for immutable firefox keybindings
-# super + {f,c,v,a,t,w}
-#   key={f,c,v,a,t,w}; \
-#   W=$(xdotool getactivewindow); \
-#   S1=$(xprop -id ${W} | awk '/WM_CLASS/\{ print $4 \}'); \
-#   if [ $S1 = '"Firefox"' ]; then \
-#     xte "keyup ${key}" "keyup Super_L" "keydown Control_L" \
-#         "key ${key}"                   "keyup Control_L" "keydown Super_L"; \
-#   else \
-#     xte "keyup ${key}" "keyup Super_L" "keydown Control_L" "keydown Shift_L" \
-#         "key ${key}"   "keyup Shift_L" "keyup Control_L" "keydown Super_L"; \
-#   fi
-
-super + shift + t
-  key={t}; \
-  xte "keyup ${key}" "keyup Super_L" "keydown Control_L" "key ${key}" \
-      "keyup Control_L" "keydown Super_L"
+XF86KbdBrightness{Up,Down}
+  brightnessctl \
+    --device="$(ls /sys/class/leds | grep 'kbd_backlight' | head -n1)" \
+    set {+5%,5%-}
 
 #===============================================================================
 # VPN

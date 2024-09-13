@@ -81,9 +81,10 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 function vi-yank-xclip {
     zle vi-yank
     print -rn -- "$CUTBUFFER" | {
-        [ $(uname) = "Darwin" ] \
-            && pbcopy -i \
-            || xclip -i -selection 'clipboard'
+        [ $(uname) = "Darwin" ] && pbcopy -i || {
+            [ ! -z $WAYLAND_DISPLAY ] && wl-copy \
+                || xclip -i -selection 'clipboard'
+        }
     }
 }; zle -N vi-yank-xclip
 bindkey -M vicmd 'y' vi-yank-xclip
@@ -121,14 +122,17 @@ source $XDG_CONFIG_HOME/shell/aliasrc
 
 # completions
 # i thought of this and i cant believe this works lmao
-PIPX_COMPLETIONS=$(mktemp -u); mkfifo $PIPX_COMPLETIONS
-FZFZ_COMPLETIONS=$(mktemp -u); mkfifo $FZFZ_COMPLETIONS
-(register-python-argcomplete pipx > $PIPX_COMPLETIONS &)
-(fzf --zsh                        > $FZFZ_COMPLETIONS &)
-source <(cat $PIPX_COMPLETIONS)
-source <(cat $FZFZ_COMPLETIONS)
-# eval "$(register-python-argcomplete pipx)"
-# source <(fzf --zsh)
+# TODO:seems to reduce time command result but feels like
+# the same speed. i suspect the background processes don't
+# go into the final time calculation
+# PIPX_COMPLETIONS=$(mktemp -u); mkfifo $PIPX_COMPLETIONS
+# FZFZ_COMPLETIONS=$(mktemp -u); mkfifo $FZFZ_COMPLETIONS
+# (register-python-argcomplete pipx > $PIPX_COMPLETIONS &)
+# (fzf --zsh                        > $FZFZ_COMPLETIONS &)
+# source <(cat $PIPX_COMPLETIONS)
+# source <(cat $FZFZ_COMPLETIONS)
+eval "$(register-python-argcomplete pipx)"
+source <(fzf --zsh)
 
 #===============================================================================
 # PROCESS INITIAL COMMANDS
