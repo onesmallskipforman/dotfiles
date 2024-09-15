@@ -19,14 +19,14 @@
     }
 }
 
-/* * { */
+/*  * { */
     /* NOTE: custom font styles don't work */
     /* font-size: 15pt !important; */
 /* } */
 
 /* @-moz-document url("about:newtab"), url("about:home"), url("about:blank"){ */
 /*   body{ */
-/*     /* This will load image.jpg stored in the same folder as this file */ */
+     /* This will load image.jpg stored in the same folder as this file */
 /*     background-image: url("flowers.png"); */
 /*     background-size: cover; */
 /*     background-repeat: no-repeat; */

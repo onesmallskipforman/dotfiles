@@ -30,6 +30,8 @@ export PYLINTHOME=$XDG_CACHE_HOME/pylint
 export CARGO_HOME=$XDG_DATA_HOME/cargo
 export RUSTUP_HOME=$XDG_DATA_HOME/rustup
 export PATH="$CARGO_HOME/bin:$PATH"
+export GOPATH=$XDG_DATA_HOME/go
+export PATH=$PATH:/usr/local/go/bin
 export XINITRC=$XDG_CONFIG_HOME/x11/xinitrc
 [ $(uname) = "Darwin" ] \
     && export XAUTHORITY=$XDG_CACHE_HOME/Xauthority \
@@ -37,6 +39,7 @@ export XINITRC=$XDG_CONFIG_HOME/x11/xinitrc
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
 export NVM_DIR="$XDG_DATA_HOME"/nvm
+export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 
 # ncurses
 export TERMINFO="$XDG_DATA_HOME"/terminfo
@@ -93,7 +96,6 @@ export PYTHONUSERBASE=$XDG_DATA_HOME/python
 
 # Add path for using LSPs installed by mason
 export PATH="$XDG_DATA_HOME/nvim/mason/bin:$PATH"
-export PATH=$PATH:/usr/local/go/bin
 
 
 GUIX_PROFILE="$HOME/.guix-profile"
