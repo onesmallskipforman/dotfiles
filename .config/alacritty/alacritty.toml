@@ -105,20 +105,20 @@ style = "Regular"
 x = 0
 y = 0
 
-[[keyboard.bindings]]
-action = "SpawnNewInstance"
-key = "N"
-mods = "Command"
+# [[keyboard.bindings]]
+# action = "SpawnNewInstance"
+# key = "N"
+# mods = "Command"
 
-[[keyboard.bindings]]
-action = "Paste"
-key = "V"
-mods = "Command"
-
-[[keyboard.bindings]]
-action = "Copy"
-key = "C"
-mods = "Command"
+# [[keyboard.bindings]]
+# action = "Paste"
+# key = "V"
+# mods = "Command"
+#
+# [[keyboard.bindings]]
+# action = "Copy"
+# key = "C"
+# mods = "Command"
 
 [[keyboard.bindings]]
 action = "ResetFontSize"

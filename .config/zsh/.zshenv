@@ -101,3 +101,5 @@ export PATH="$XDG_DATA_HOME/nvim/mason/bin:$PATH"
 
 GUIX_PROFILE="$HOME/.guix-profile"
 [ -f "$GUIX_PROFILE/etc/profile" ] && source "$GUIX_PROFILE/etc/profile"
+
+export PATH=$PATH:$XDG_STATE_HOME/nix/profile/bin
