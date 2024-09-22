@@ -133,6 +133,7 @@ source $XDG_CONFIG_HOME/shell/aliasrc
 # source <(cat $FZFZ_COMPLETIONS)
 eval "$(register-python-argcomplete pipx)"
 source <(fzf --zsh)
+source /etc/profile.d/nix-daemon.sh
 
 #===============================================================================
 # PROCESS INITIAL COMMANDS

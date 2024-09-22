@@ -3,11 +3,10 @@
     email = skipper.gonzalez@icloud.com
 [pull]
     rebase = false
-[credential]
-    helper = store --file=$HOME/.local/share/git/git-credentials
-    ; username = onesmallskipforman
 [url "https://onesmallskipforman@github.com"]
     insteadOf = https://github.com
+[credential "https://onesmallskipforman@github.com"]
+    helper = !pass github
 [push]
     autoSetupRemote = true
 [includeIf "gitdir:~/work/"]

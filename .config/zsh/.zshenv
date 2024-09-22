@@ -31,6 +31,7 @@ export CARGO_HOME=$XDG_DATA_HOME/cargo
 export RUSTUP_HOME=$XDG_DATA_HOME/rustup
 export PATH="$CARGO_HOME/bin:$PATH"
 export GOPATH=$XDG_DATA_HOME/go
+export GOMODCACHE=$XDG_CACHE_HOME/go/mod
 export PATH=$PATH:/usr/local/go/bin
 export XINITRC=$XDG_CONFIG_HOME/x11/xinitrc
 [ $(uname) = "Darwin" ] \
