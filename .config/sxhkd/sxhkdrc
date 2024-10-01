@@ -121,9 +121,10 @@ alt + {_,shift + }r
 #===============================================================================
 
 # screenshot
+# see https://github.com/baskerville/sxhkd/issues/255 wrt flag quirks
 {_,shift + }Print
   mkdir -p ~/shots \
-    && maim -o {-s,_} ~/shots/$(date +%Y_%m_%d--%H-%M-%S_maim).png
+    && maim -o -{s,u} ~/shots/$(date +%Y_%m_%d--%H-%M-%S_maim).png
 
 ctrl + shift + Print
   OUT=~/shots/$(date +%Y_%m_%d--%H-%M-%S_maim).png \
