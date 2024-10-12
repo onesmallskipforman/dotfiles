@@ -218,6 +218,15 @@
 .urlbarView {
     color: var(--foreground) !important;
 }
+
+.urlbarView-row {
+  &[row-selectable]:not([selected]):hover {
+    background-color: var(--lite-bg) !important;
+  }
+}
+
+
+
 .urlbar-icon {
     height: 1em  !important;
     width: 1em  !important;
@@ -266,26 +275,26 @@
 /* } */
 
 .browserContainer > findbar {
-  background-color: var(--background) !important;
+  background: var(--background) !important;
   color: var(--foreground) !important;
   /* color-scheme: var(--toolbar-color-scheme); */
   border-top-color: var(--color7) !important;
 }
 
 .findbar-textbox {
-  background-color: var(--dark-bg) !important;
+  background: var(--dark-bg) !important;
   color: var(--foreground) !important;
   /* border: 1px solid var(--foreground) !important; */
   border-radius: 4px !important;
 
 
   &:focus {
-    background-color: var(--dark-bg) !important;
-    color: var(--foreground);
+    background: var(--dark-bg) !important;
+    color: var(--foreground) !important;
     /* border-color: transparent; */
     /* outline: var(--focus-outline); */
     /* outline-offset: var(--focus-outline-inset); */
-    outline-color: var(--foreground);
+    outline: 2px solid var(--foreground) !important;
     /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.23); */
   }
 }
