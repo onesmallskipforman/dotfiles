@@ -1,11 +1,3 @@
-live_config_reload = true
-working_directory = "None"
-
-import = [
-    # "~/.config/alacritty/themes/gruvbox_dark.toml"
-    # "~/.cache/wal/colors.toml"
-    "~/.cache/wal/colors-alacritty.toml"
-]
 
 [cursor]
 style = {shape = "Beam", blinking = "Never"}
@@ -153,7 +145,7 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 # TODO: ls <DIRNAME> -la (as opposed to ls -la <DIRNAME>) does not work in login shells
 # TODO: when shell is not configured, a login shell is used by default, but new terminals
 # print a message 'Last login: <date> on <tty>'
-[shell]
+[terminal.shell]
 program = "/bin/zsh"
 # args = ["-l"]
 
@@ -170,3 +162,15 @@ y = 4
 [window.position]
 x = 0
 y = 0
+
+[general]
+live_config_reload = true
+working_directory = "None"
+
+import = [
+    # "~/.config/alacritty/themes/gruvbox_dark.toml"
+    "~/.cache/wal/colors.toml"
+    # "~/.cache/wal/colors-alacritty.toml"
+]
+
+[terminal]

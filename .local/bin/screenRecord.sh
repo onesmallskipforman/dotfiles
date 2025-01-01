@@ -15,7 +15,7 @@ function screenRecord() {
   local OUT="$DIR/$(date +%Y_%m_%d--%H-%M-%S_maim).mkv"
   mkdir -p $DIR
   ffmpeg -f x11grab \
-    -framerate 60 \
+    -framerate 25 \
     -s $RES -probesize 42M -thread_queue_size 4096 -i $POS \
     -f pulse -thread_queue_size 4096 -i $current_sink \
     $OUT

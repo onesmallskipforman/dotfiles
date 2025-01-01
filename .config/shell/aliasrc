@@ -9,7 +9,7 @@ alias modelsim='/opt/altera/15.0/modelsim_ase/linuxaloem/vsim &>/dev/null & diso
 alias matlab='matlab -nosplash -nodesktop'
 alias simulink='matlab -r simulink' # start_simulink slLibraryBrowser
 alias ncdu='ncdu --exclude-firmlinks --si --color dark -x'
-alias wal='wal --cols16 lighten --backend wal && xrdb -merge ~/.cache/wal/colors.Xresources' # --backend haishoku always clear cache or 'lighten' vs 'darken' won't be used
+# alias wal='wal --cols16 lighten --backend wal && xrdb -merge ~/.cache/wal/colors.Xresources' # --backend haishoku always clear cache or 'lighten' vs 'darken' won't be used
 alias diff='diff -bur --color'
 # https://docs.docker.com/reference/cli/docker/container/ls/#format
 alias dps='docker ps --format "table {{.ID}},{{.Names}},{{.Networks}}" | column -t -s","'

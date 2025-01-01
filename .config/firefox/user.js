@@ -9,6 +9,8 @@ user_pref("browser.startup.page", 3);
 user_pref("browser.startup.homepage", "about:newtab");
 user_pref("browser.newtabpage.enabled", false); // make new tab page blank
 user_pref("browser.tabs.insertAfterCurrent", true);
+user_pref("browser.tabs.hoverPreview.enabled", false);
+user_pref("browser.tabs.hoverPreview.showThumbnails", false);
 
 // options: 'always', 'never', 'newtab'
 user_pref("browser.toolbars.bookmarks.visibility", "never");
