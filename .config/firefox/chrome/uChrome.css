@@ -149,6 +149,10 @@ menupopup, panel {
     border-left: 2px solid var(--color7) !important;
 }
 
+#tabbrowser-tabs {
+    min-height: 1em !important;
+}
+
 /* remove dropdown menu button which displays all tabs on overflow */
 #alltabs-button { display: none !important }
 
