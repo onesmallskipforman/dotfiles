@@ -123,12 +123,12 @@ alt + {_,shift + }r
 # screenshot
 # see https://github.com/baskerville/sxhkd/issues/255 wrt flag quirks
 {_,shift + }Print
-  mkdir -p ~/shots \
+  mkdir -p ~/.local/share/screenshots \
     && maim -o -{s,u} ~/shots/$(date +%Y_%m_%d--%H-%M-%S_maim).png
 
 ctrl + shift + Print
   OUT=~/shots/$(date +%Y_%m_%d--%H-%M-%S_maim).png \
-    && mkdir -p ~/shots && maim -o -s $OUT \
+    && mkdir -p ~/.local/share/screenshots && maim -o -s $OUT \
     && gimp --no-splash $OUT
 
 # maim -o -s | xclip -selection clipboard -t image/png
