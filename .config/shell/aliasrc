@@ -16,3 +16,4 @@ alias dps='docker ps --format "table {{.ID}},{{.Names}},{{.Networks}}" | column 
 alias wine='sudo sysctl dev.i915.perf_stream_paranoid=0 && WINEDEBUG="fixme-all" WINEARCH=win64 WINEPREFIX=~/.config/wine wine'
 alias feh='feh --no-fehbg'
 # alias rofi='rofi -dpi 0'
+alias ls='ls -v' # shows dotfiles first
