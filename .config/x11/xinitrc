@@ -55,7 +55,7 @@ redshift &
 xsetroot -cursor_name left_ptr
 
 # set wallpaper
-feh --bg-fill $HOME/.local/share/wallpapers/beams.jpeg
+cat $XDG_CACHE_HOME/wal/wal | xargs feh --no-fehbg --bg-fill
 
 # start window compositor
 picom --config ~/.config/picom/picom.conf &

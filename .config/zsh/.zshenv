@@ -103,3 +103,8 @@ GUIX_PROFILE="$HOME/.guix-profile"
 [ -f "$GUIX_PROFILE/etc/profile" ] && source "$GUIX_PROFILE/etc/profile"
 
 export PATH=$PATH:$XDG_STATE_HOME/nix/profile/bin
+
+# home directory cleanup
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
+export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java

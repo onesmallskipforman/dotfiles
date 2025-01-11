@@ -1,7 +1,7 @@
 #!/bin/sh
 
 alias icat="kitty +kitten icat"
-alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
+alias wget="wget --hsts-file=\"$XDG_CACHE_HOME/wget-hsts\""
 alias ssh='kssh() {[ "$TERM" = "xterm-kitty" ] && kitty +kitten ssh $@ || ssh $@}; kssh'
 # alias docker='docker info &> /dev/null || {docker_setup && eval $(docker-machine env default)} && docker'
 alias quartus='/opt/altera/15.0/quartus/bin/quartus --64bin &>/dev/null & disown'
@@ -14,4 +14,5 @@ alias diff='diff -bur --color'
 # https://docs.docker.com/reference/cli/docker/container/ls/#format
 alias dps='docker ps --format "table {{.ID}},{{.Names}},{{.Networks}}" | column -t -s","'
 alias wine='sudo sysctl dev.i915.perf_stream_paranoid=0 && WINEDEBUG="fixme-all" WINEARCH=win64 WINEPREFIX=~/.config/wine wine'
+alias feh='feh --no-fehbg'
 # alias rofi='rofi -dpi 0'

@@ -17,8 +17,8 @@ export PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg
 # History in cache directory:
 HISTSIZE=10000
 SAVEHIST=10000
-HISTFILE=~/.cache/zsh/history
-mkdir -p ~/.cache/zsh
+HISTFILE="$XDG_STATE_HOME"/zsh/history
+echo $HISTFILE | xargs dirname | xargs mkdir -p
 
 # search history matching up to cursor
 autoload -U up-line-or-beginning-search
@@ -28,15 +28,17 @@ zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
 
+[ -d "$XDG_CACHE_HOME"/zsh ] || mkdir -p "$XDG_CACHE_HOME"/zsh
+
 # set cache directory
 zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.cache/zsh/.zcompcache
+zstyle ':completion:*' cache-path "$XDG_CACHE_HOME"/zsh/zcompcache
 
 # Basic auto/tab complete:
 autoload -Uz compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
-compinit -d ~/.cache/zsh/.zcompdump
+compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-$ZSH_VERSION
 _comp_options+=(globdots)   # Include hidden files.
 
 # Auto complete with case insenstivity
