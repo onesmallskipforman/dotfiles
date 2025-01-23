@@ -1,0 +1,5 @@
+#!/bin/sh
+
+find ./ -name "*.pdf" \
+  | fzf \
+  | xargs -I{} zathura --fork "{}" >/dev/null 2>&1
