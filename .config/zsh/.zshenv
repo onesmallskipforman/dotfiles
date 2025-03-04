@@ -111,3 +111,6 @@ export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 export SCREENRC="$XDG_CONFIG_HOME"/screen/screenrc
 export SCREENDIR="${XDG_RUNTIME_DIR}/screen"
 export PYTHON_HISTORY=$XDG_DATA_HOME/python_history
+
+
+export SCREENSHOTS=$XDG_DATA_HOME/screenshots
