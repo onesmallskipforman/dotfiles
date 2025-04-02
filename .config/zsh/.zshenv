@@ -99,7 +99,7 @@ export PYTHONUSERBASE=$XDG_DATA_HOME/python
 export PATH="$XDG_DATA_HOME/nvim/mason/bin:$PATH"
 
 
-GUIX_PROFILE="$HOME/.guix-profile"
+export GUIX_PROFILE="/home/skipper/.config/guix/current"
 [ -f "$GUIX_PROFILE/etc/profile" ] && source "$GUIX_PROFILE/etc/profile"
 
 export PATH=$XDG_STATE_HOME/nix/profile/bin:$PATH
@@ -111,6 +111,9 @@ export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 export SCREENRC="$XDG_CONFIG_HOME"/screen/screenrc
 export SCREENDIR="${XDG_RUNTIME_DIR}/screen"
 export PYTHON_HISTORY=$XDG_DATA_HOME/python_history
-
-
 export SCREENSHOTS=$XDG_DATA_HOME/screenshots
+export MPLAYER_HOME="$XDG_CONFIG_HOME"/mplayer
+export CALCHISTFILE="$XDG_CACHE_HOME"/calc_history
+export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME"/aws/credentials
+export AWS_CONFIG_FILE="$XDG_CONFIG_HOME"/aws/config
+export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
