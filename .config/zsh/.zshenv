@@ -108,6 +108,8 @@ export PATH=$XDG_STATE_HOME/nix/profile/bin:$PATH
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+# prevents rendering issue with WMs: https://unix.stackexchange.com/a/585694
+export _JAVA_AWT_WM_NONREPARENTING=1
 export SCREENRC="$XDG_CONFIG_HOME"/screen/screenrc
 export SCREENDIR="${XDG_RUNTIME_DIR}/screen"
 export PYTHON_HISTORY=$XDG_DATA_HOME/python_history
