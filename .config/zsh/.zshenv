@@ -117,6 +117,10 @@ export PYTHON_HISTORY=$XDG_DATA_HOME/python_history
 export SCREENSHOTS=$XDG_DATA_HOME/screenshots
 export MPLAYER_HOME="$XDG_CONFIG_HOME"/mplayer
 export CALCHISTFILE="$XDG_CACHE_HOME"/calc_history
-export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME"/aws/credentials
-export AWS_CONFIG_FILE="$XDG_CONFIG_HOME"/aws/config
+# TODO: need to fix how docker images are mounting to this
+# export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME"/aws/credentials
+# export AWS_CONFIG_FILE="$XDG_CONFIG_HOME"/aws/config
 export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
+
+# NOTE: needed for ubuntu apt-installed zsh
+skip_global_compinit=1
