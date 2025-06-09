@@ -6,71 +6,77 @@ set zoom-max 5000
 # Allow recolor
 set recolor 'true'
 
+# TODO: mess with this to see if it will keep pictures in color
+# it is 'true' in the colors-zathura template
 # Don't allow original hue when recoloring
 set recolor-keephue 'false'
 
 # Don't keep original image colors while recoloring
 set recolor-reverse-video 'false'
 
-# Command line completion entries
-set completion-fg '#8d9497'
-set completion-bg '#0B0F12'
+# TODO: this is not dynamic to different usernames
+include /home/skipper/.cache/wal/colors-zathura
 
-# Command line completion group elements
-set completion-group-fg '#62555D'
-set completion-group-bg '#0B0F12'
-
-# Current command line completion element
-set completion-highlight-fg '#0B0F12'
-set completion-highlight-bg '#8d9497'
-
-# Default foreground/background color
-set default-bg rgba(11,15,18,1)
-
-# Input bar
-set inputbar-fg '#8d9497'
-set inputbar-bg '#0B0F12'
-
-# Notification
-set notification-fg '#8d9497'
-set notification-bg '#0B0F12'
-
-# Error notification
-set notification-error-fg '#8d9497'
-set notification-error-bg '#3A6363'
-
-# Warning notification
-set notification-warning-fg '#8d9497'
-set notification-warning-bg '#3A6363'
-
-# Tab - TODO
-# set tabbar-fg
-# set tabbar-bg
-
-# Focused tab - TODO
-# set tabbar-focus-fg
-# set tabbar-focus-bg
-
-# Status bar
-set statusbar-fg '#8d9497'
-set statusbar-bg '#0B0F12'
-
-# Highlighting parts of the document (e.g. show search results)
-set highlight-color '#62555D'
-set highlight-active-color '#62555D'
-
-# Represent light/dark colors in recoloring mode
-set recolor-lightcolor rgba(0,0,0,0)
-set recolor-darkcolor '#8d9497'
-
-# 'Loading...' text
-set render-loading-fg '#8d9497'
-set render-loading-bg '#0B0F12'
-
-# Index mode
-set index-fg '#8d9497'
-set index-bg '#0B0F12'
-
-# Selected element in index mode
-set index-active-fg '#0B0F12'
-set index-active-bg '#8d9497'
+# TODO: determine if any of these should be moved to a custom zathura pywal template
+# # Command line completion entries
+# set completion-fg '#8d9497'
+# set completion-bg '#0B0F12'
+#
+# # Command line completion group elements
+# set completion-group-fg '#62555D'
+# set completion-group-bg '#0B0F12'
+#
+# # Current command line completion element
+# set completion-highlight-fg '#0B0F12'
+# set completion-highlight-bg '#8d9497'
+#
+# # Default foreground/background color
+# set default-bg rgba(11,15,18,1)
+#
+# # Input bar
+# set inputbar-fg '#8d9497'
+# set inputbar-bg '#0B0F12'
+#
+# # Notification
+# set notification-fg '#8d9497'
+# set notification-bg '#0B0F12'
+#
+# # Error notification
+# set notification-error-fg '#8d9497'
+# set notification-error-bg '#3A6363'
+#
+# # Warning notification
+# set notification-warning-fg '#8d9497'
+# set notification-warning-bg '#3A6363'
+#
+# # Tab - TODO
+# # set tabbar-fg
+# # set tabbar-bg
+#
+# # Focused tab - TODO
+# # set tabbar-focus-fg
+# # set tabbar-focus-bg
+#
+# # Status bar
+# set statusbar-fg '#8d9497'
+# set statusbar-bg '#0B0F12'
+#
+# # Highlighting parts of the document (e.g. show search results)
+# set highlight-color '#62555D'
+# set highlight-active-color '#62555D'
+#
+# # Represent light/dark colors in recoloring mode
+# set recolor-lightcolor rgba(0,0,0,0)
+# set recolor-darkcolor '#8d9497'
+#
+# # 'Loading...' text
+# set render-loading-fg '#8d9497'
+# set render-loading-bg '#0B0F12'
+#
+# # Index mode
+# set index-fg '#8d9497'
+# set index-bg '#0B0F12'
+#
+# # Selected element in index mode
+# set index-active-fg '#0B0F12'
+# set index-active-bg '#8d9497'
