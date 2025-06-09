@@ -1,1 +1,2 @@
-set viminfofile=$XDG_CACHE_HOME/vim/viminfo
+set viminfofile=$XDG_STATE_HOME/vim/viminfo
+let g:netrw_home=$XDG_STATE_HOME/vim
