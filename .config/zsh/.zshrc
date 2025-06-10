@@ -35,6 +35,8 @@ zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path "$XDG_CACHE_HOME"/zsh/zcompcache
 
 # Basic auto/tab complete:
+# TODO: consider order of nix completions relative to the rest of fpath
+fpath+=($XDG_STATE_HOME/nix/profile/share/zsh/site-functions)
 autoload -Uz compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
