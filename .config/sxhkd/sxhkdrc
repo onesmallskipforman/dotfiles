@@ -123,14 +123,19 @@ alt + {_,shift + }r
 # screenshot
 # see https://github.com/baskerville/sxhkd/issues/255 wrt flag quirks
 {_,shift + }Print
-  mkdir -p ~/.local/share/screenshots \
-    && maim -o -{s,u} ~/shots/$(date +%Y_%m_%d--%H-%M-%S_maim).png
+  OUT=$SCREENSHOTS/$(date +%Y_%m_%d--%H-%M-%S_maim).png \
+    && mkdir -p $SCREENSHOTS && maim -o -s $OUT
 
 ctrl + shift + Print
-  OUT=~/shots/$(date +%Y_%m_%d--%H-%M-%S_maim).png \
-    && mkdir -p ~/.local/share/screenshots && maim -o -s $OUT \
+  OUT=$SCREENSHOTS/$(date +%Y_%m_%d--%H-%M-%S_maim).png \
+    && mkdir -p $SCREENSHOTS && maim -o -s $OUT \
     && gimp --no-splash $OUT
 
+alt + shift + s
+    browseScreenshots.sh
+
+# idea: fzf menu either before/after taking screenshot to copy or save or edit
+# could auto-save on escape
 # maim -o -s | xclip -selection clipboard -t image/png
 
 # audio controls (1 is native, 2 is hdmi)
