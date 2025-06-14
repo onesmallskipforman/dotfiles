@@ -104,6 +104,7 @@ export GUIX_PROFILE="/home/skipper/.config/guix/current"
 [ -f "$GUIX_PROFILE/etc/profile" ] && source "$GUIX_PROFILE/etc/profile"
 
 export PATH=$XDG_STATE_HOME/nix/profile/bin:$PATH
+export MANPATH=$XDG_STATE_HOME/nix/profile/share/man:$MANPATH
 
 # home directory cleanup
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
