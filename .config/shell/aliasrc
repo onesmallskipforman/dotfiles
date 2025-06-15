@@ -17,6 +17,8 @@ alias zathura='zathura --fork'
 alias gsub="git submodule"
 alias gsubu="git submodule update --init --recursive --remote"
 
+alias sudo='sudo env PATH=$PATH'
+
 
 # from old aliasrc
 # alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
