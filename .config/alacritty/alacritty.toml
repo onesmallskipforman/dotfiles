@@ -168,9 +168,7 @@ live_config_reload = true
 working_directory = "None"
 
 import = [
-    # "~/.config/alacritty/themes/gruvbox_dark.toml"
-    "~/.cache/wal/colors.toml"
-    # "~/.cache/wal/colors-alacritty.toml"
+    "~/.cache/wal/colors-alacritty.toml"
 ]
 
 [terminal]
