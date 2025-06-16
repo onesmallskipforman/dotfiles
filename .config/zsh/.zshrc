@@ -36,6 +36,10 @@ zstyle ':completion:*' cache-path "$XDG_CACHE_HOME"/zsh/zcompcache
 
 # Basic auto/tab complete:
 # TODO: consider order of nix completions relative to the rest of fpath
+# TODO: asynchonously wite fzf and pipx completions to temp files and add them to fpath
+# to avoid duplicate files with each shell use an explicit filename under tmp
+# OR make an env var like FZF_COMPLETIONS
+# you could also put them in like ~/.local/state
 fpath+=($XDG_STATE_HOME/nix/profile/share/zsh/site-functions)
 autoload -Uz compinit
 zstyle ':completion:*' menu select
