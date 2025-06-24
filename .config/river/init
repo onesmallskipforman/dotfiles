@@ -11,10 +11,10 @@
 # Note: the "Super" modifier is also known as Logo, GUI, Windows, Mod4, etc.
 
 # Super+Shift+Return to start an instance of foot (https://codeberg.org/dnkl/foot)
-riverctl map normal Super+Shift Return spawn alacritty
+riverctl map -repeat normal Super+Shift Return spawn alacritty
 
 # Super+Q to close the focused view
-riverctl map normal Super Q close
+riverctl map -repeat normal Super Q close
 
 # Super+Shift+E to exit river
 riverctl map normal Super+Shift E exit
@@ -160,3 +160,6 @@ riverctl rule-add -app-id "bar" csd
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivertile
 rivertile -view-padding 6 -outer-padding 6 &
+
+
+riverctl focus-follows-cursor always

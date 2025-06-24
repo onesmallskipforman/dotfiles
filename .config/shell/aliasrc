@@ -19,6 +19,8 @@ alias gsubu="git submodule update --init --recursive --remote"
 
 alias sudo='sudo env PATH=$PATH'
 
+alias nixdevgui='nix develop -k DISPLAY -k XAUTHORITY -k XDG_CACHE_HOME -i'
+
 
 # from old aliasrc
 # alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'

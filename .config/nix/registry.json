@@ -1,0 +1,17 @@
+{
+  "flakes": [
+    {
+      "from": {
+        "id": "ros",
+        "type": "indirect"
+      },
+      "to": {
+        "owner": "lopsided98",
+        "ref": "develop",
+        "repo": "nix-ros-overlay",
+        "type": "github"
+      }
+    }
+  ],
+  "version": 2
+}
