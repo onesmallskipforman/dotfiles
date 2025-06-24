@@ -3,7 +3,8 @@
 # per https://github.com/polybar/polybar/issues/763
 
 # Terminate already running bar instances
-killall -q polybar
+# killall -q polybar
+polybar-msg cmd quit
 
 # Wait until the processes have been shut down
 # using $USER as $UID is not defined in dash
@@ -16,17 +17,5 @@ export DPIY=$(echo $DPI | awk '{print $2}')
 polybar --list-monitors | cut -d":" -f1 | while IFS=$'\n' read m; do
     MONITOR=$m polybar --quiet --reload mybar &
 done
-
-# TODO: there's something here if we can id which monitor existing bars run on
-# TODO: use || and &&
-# if [ -z "$(pgrep -x polybar)" ]; then
-#     polybar --list-monitors | cut -d":" -f1 | while IFS=$'\n' read m; do
-#         MONITOR=$m polybar --reload mybar &
-#         polybar --reload main </dev/null >/var/tmp/polybar-$m.log 2>&1 &
-#         disown
-#     done
-# else
-#     polybar-msg cmd restart
-# fi
 
 echo "Polybar launched..."
