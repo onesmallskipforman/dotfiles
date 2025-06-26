@@ -178,3 +178,5 @@ function gd() {
 export GPG_TTY=$(tty) # to ensure terminal pinentry works
 
 # jira completion zsh | sudo tee "/usr/local/share/zsh/site-functions/_jira"
+
+eval "$(direnv hook zsh)"
