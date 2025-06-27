@@ -182,7 +182,7 @@ ctrl + shift + o
   vpndown || vpn
 
 ctrl + shift + a
-  autorandr --change
+  autorandr --change --force
 
 ctrl + shift + b
     ~/.config/polybar/launch.sh
