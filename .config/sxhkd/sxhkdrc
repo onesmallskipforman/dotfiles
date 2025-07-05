@@ -27,16 +27,14 @@ alt + s
 alt + c
   pkill redshift || redshift
 
-# TODO: needs work
-# alt + shift + i
-#   pkill -f '^spotify_player -d$' || spotify_player -d
-
 # NOTE: use exact regex match to ensure current dispatched process doesn't get
 # counted in pgrep's search
 alt + i
-  pgrep -f '^spotify_player -d$' \
-    || spotify_player -d \
-    && $TERMINAL -e spotify_player
+    $TERMINAL -e spotify_player
+    # TODO: needs work
+    # pgrep -f '^spotify_player -d$' \
+    #     || spotify_player -d \
+    #     && $TERMINAL -e spotify_player
 
 # rofi
 alt + d
