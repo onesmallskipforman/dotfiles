@@ -6,7 +6,7 @@
         "type": "indirect"
       },
       "to": {
-        "path": "/home/skipper/Projects/bootstrap",
+        "path": "/home/skipper/Projects/bootstrap/flake",
         "type": "path"
       }
     }
