@@ -163,3 +163,52 @@ rivertile -view-padding 6 -outer-padding 6 &
 
 
 riverctl focus-follows-cursor always
+
+riverctl rule-add ssd
+
+# WIDERIVER
+
+# set layout manager
+riverctl default-layout wideriver
+
+# start layout manager
+wideriver \
+    --layout                       left        \
+    --layout-alt                   monocle     \
+    --stack                        dwindle     \
+    --count-master                 1           \
+    --ratio-master                 0.50        \
+    --count-wide-left              0           \
+    --ratio-wide                   0.35        \
+    --no-smart-gaps                            \
+    --inner-gaps                   0           \
+    --outer-gaps                   0           \
+    --border-width                 2           \
+    --border-width-monocle         0           \
+    --border-width-smart-gaps      0           \
+    --border-color-focused         "0x93a1a1"  \
+    --border-color-focused-monocle "0x586e75"  \
+    --border-color-unfocused       "0x586e75"  \
+    --log-threshold                info        \
+   > "/tmp/wideriver.${XDG_VTNR}.${USER}.log" 2>&1 &
+
+# example layout: riverctl send-layout-cmd wideriver "--layout left --stack dwindle --count 1 --ratio 0.5"
+
+# riverctl map normal $mod1 up    send-layout-cmd wideriver "--layout monocle"
+# riverctl map normal $mod1 down  send-layout-cmd wideriver "--layout wide"
+# riverctl map normal $mod1 left  send-layout-cmd wideriver "--layout left"
+# riverctl map normal $mod1 right send-layout-cmd wideriver "--layout right"
+#
+# riverctl map normal $mod1 Space send-layout-cmd wideriver "--layout-toggle"
+#
+# riverctl map normal $mod1 plus  send-layout-cmd wideriver "--ratio +0.025"
+# riverctl map normal $mod1 equal send-layout-cmd wideriver "--ratio 0.35"
+# riverctl map normal $mod1 minus send-layout-cmd wideriver "--ratio -0.025"
+#
+# riverctl map normal $mod2 plus  send-layout-cmd wideriver "--count +1"
+# riverctl map normal $mod2 equal send-layout-cmd wideriver "--count 1"
+# riverctl map normal $mod2 minus send-layout-cmd wideriver "--count -1"
+#
+# riverctl map normal $mod2 e     send-layout-cmd wideriver "--stack even"
+# riverctl map normal $mod2 w     send-layout-cmd wideriver "--stack dwindle"
+# riverctl map normal $mod2 i     send-layout-cmd wideriver "--stack diminish"
