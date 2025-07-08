@@ -1,0 +1,6 @@
+#!/bin/sh
+
+ls $SCREENSHOTS \
+  | fzf --cycle --reverse --height ${FZF_TMUX_HEIGHT:-40%} --preview "chafa -s 50x50 $SCREENSHOTS/{}" \
+  | xargs -r -I{} cat $SCREENSHOTS/{} \
+  | xclip -selection clipboard -target image/png -i
