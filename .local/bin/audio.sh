@@ -5,5 +5,5 @@
 
 pactl list short sinks \
   | awk '{print $2}' \
-  | fzf --cycle --reverse \
+  | fzf --cycle --reverse --height=~100% \
   | xargs pactl set-default-sink

@@ -48,7 +48,7 @@ alt + m
 
 alt + {a, b}
     bspc rule -a \* -o state=floating \
-        && $TERMINAL -e $SHELL -c {'audio.sh', 'bt.sh'}
+        && $TERMINAL -e {audio.sh, bt.sh}
 
 alt + t
     bspc rule -a \* -o state=floating \
