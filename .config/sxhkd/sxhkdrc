@@ -1,6 +1,12 @@
 # restart
 ctrl + shift + r
-  ~/.config/bspwm/bspwmrc; pkill -USR1 -x sxhkd; ~/.config/polybar/launch.sh
+    ~/.config/bspwm/bspwmrc; pkill -USR1 -x sxhkd; ~/.config/polybar/launch.sh
+
+ctrl + shift + k;
+    pkill -USR1 -x sxhkd && notify-send "restarted sxhkd"
+
+ctrl + shift + w;
+    ~/.config/bspwm/bspwmrc
 
 #===============================================================================
 # MONITORS
@@ -27,14 +33,12 @@ alt + s
 alt + c
   pkill redshift || redshift
 
-# NOTE: use exact regex match to ensure current dispatched process doesn't get
-# counted in pgrep's search
+# use exact regex match to ensure current dispatched process doesn't get
+alt + shift + i
+    pkill -fx 'spotify_player -d' || spotify_player -d
+
 alt + i
     $TERMINAL -e spotify_player
-    # TODO: needs work
-    # pgrep -f '^spotify_player -d$' \
-    #     || spotify_player -d \
-    #     && $TERMINAL -e spotify_player
 
 # rofi
 alt + d
