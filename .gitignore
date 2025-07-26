@@ -1,2 +1,3 @@
 .config/vesktop/*
 !.config/vesktop/themes/colors-discord.css
+.config/docker/buildx
