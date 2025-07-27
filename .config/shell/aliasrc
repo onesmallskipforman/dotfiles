@@ -22,6 +22,7 @@ alias sudo='sudo -E -s'
 alias nixdevgui='nix develop -k DISPLAY -k XAUTHORITY -k XDG_CACHE_HOME -i'
 
 alias bash="bash --init-file $XDG_CONFIG_HOME/bash/.bashrc"
+alias nyxt='WEBKIT_DISABLE_DMABUF_RENDERER=1 nyxt'
 
 # from old aliasrc
 # alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
