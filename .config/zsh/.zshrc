@@ -8,7 +8,10 @@
 autoload -U colors && colors
 # export PS1="[ %n %1~ ] ❯ "
 # export PS1="%B%{$fg[red]%}$PS1 %{$reset_color%}"
-export PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%1~%{$fg[red]%}]%{$reset_color%}$%b "
+PS1_DEFAULT="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%1~%{$fg[red]%}]%{$reset_color%}$%b "
+setopt prompt_subst
+# NOTE: DIRENVPS1 is set in direnvrc
+PS1='${DIRENVPS1:+($DIRENVPS1) }$PS1_DEFAULT'
 
 #===============================================================================
 # COMPLETIONS

@@ -1,1 +1,2 @@
 source $XDG_STATE_HOME/nix/profile/share/nix-direnv/direnvrc
+export DIRENVPS1=$(pwd | xargs basename)
