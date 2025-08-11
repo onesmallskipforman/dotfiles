@@ -1,13 +1,9 @@
-[user]
-    name = onesmallskipforman
-    email = skipper.gonzalez@icloud.com
 [pull]
     rebase = false
-[url "https://onesmallskipforman@github.com"]
-    insteadOf = https://github.com
-[credential "https://onesmallskipforman@github.com"]
-    helper = !pass github
 [push]
     autoSetupRemote = true
+; NOTE: order matters. The first credential helper applied is used
 [includeIf "gitdir:~/work/"]
     path = ~/work/.gitconfig
+[includeIf "gitdir:~/"]
+    path = ~/.local/share/git/.gitconfig
