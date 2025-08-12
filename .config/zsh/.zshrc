@@ -173,7 +173,7 @@ function gd() {
         {find ~/work/git -maxdepth 3 -type d -name ".git"
          find ~/Projects -maxdepth 5 -name ".git"} \
             | xargs -n1 dirname \
-            | fzf --cycle --height ${FZF_TMUX_HEIGHT:-40%} --layout reverse
+            | fzf --cycle --height=~40% --layout reverse
     )
     cd $DIR
 }
