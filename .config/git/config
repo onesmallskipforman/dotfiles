@@ -1,3 +1,6 @@
+[user]
+    name = onesmallskipforman
+    email = skipper.gonzalez@icloud.com
 [pull]
     rebase = false
 [push]
