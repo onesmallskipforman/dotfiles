@@ -1,0 +1,9 @@
+#!/bin/sh
+
+sudo service docker restart
+docker container prune
+docker image prune
+docker rmi $(docker images -a -q)
+docker image prune -a
+docker system prune -a
+docker container ls && docker images
