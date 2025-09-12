@@ -56,7 +56,7 @@ alt + {a, b}
 
 alt + t
     bspc rule -a \* -o state=floating \
-        && $TERMINAL -e $SHELL -c 'source select_repo.sh && searchCache'
+        && $TERMINAL -e $SHELL -c 'select_repo open'
 
 # TODO: rework to open floating terminal and then move it to tiled
 # alt + shift + t

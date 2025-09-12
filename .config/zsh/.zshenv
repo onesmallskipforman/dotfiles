@@ -1,4 +1,5 @@
 # Skipper's .zshenv
+typeset -aU path # https://stackoverflow.com/a/68631155
 
 # Designate Tools
 export TERMINAL="alacritty"
@@ -63,24 +64,13 @@ export PATH="$PATH:$HOME/.local/share/python/bin"
     export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 }
 
-# TODO: split up env and rc files to add and remove with pkg installation
-# TeXLive
-export TEXMFHOME=$XDG_DATA_HOME/texmf
-export TEXMFVAR=$XDG_CACHE_HOME/texlive/texmf-var
-export TEXMFCONFIG=$XDG_CONFIG_HOME/texlive/texmf-config
-export MANPATH=$MANPATH:$HOME/.local/texlive/texmf-dist/doc/man
-export INFOPATH=$INFOPATH:$HOME/.local/texlive/texmf-dist/doc/info
-[ $(uname) = "Darwin" ] \
-    && export PATH=$PATH:$HOME/.local/texlive/bin/universal-darwin \
-    || export PATH=$PATH:$HOME/.local/texlive/bin/x86_64-linux
-
 # configure fzf
 export FZF_DEFAULT_COMMAND='rg -uu -g "!*.{git,DS_Store}" --files'
 
 
 # TODO: create workbin folder and add to $PATH
 # this should be all sxhkd needs
-export PATH="$PATH:$XDG_CONFIG_HOME/work"
+export PATH="$PATH:$XDG_CONFIG_HOME/work/bin"
 
 # NOTE: this is to sxhkd can see work aliases.
 # might want to see if there's another way
