@@ -10,9 +10,13 @@ WINHGT_IN=$(xrandr | grep -w connected | awk '{print $NF}' | sed 's/mm//g' \
                    | xargs -I{} echo '0.0393701*{}' | bc)
 DPI=$(calc "ceil($BARPCT/100*$WINHGT_IN*$TRUDPI/$BARHGT_IN)//24 * 24")
 DPI=$(calc "max($DPI, 96)")
+OUTPUT=$(xrandr | grep -w connected | awk '{print $1}')
+PREFERRED_MODE=$(xrandr | grep ' +' )
+MAX_RATE_HZ=$(echo $PREFERRED_MODE | awk '{print $4}' | sed 's/\*//g')
+MODE=$(echo $PREFERRED_MODE | awk '{print $1}')
 
-# set DPI
-xrandr --dpi $DPI
+# set DPI, resolution, and refresh rate
+xrandr --output $OUTPUT --mode $MODE --rate $RATE_HZ --dpi $DPI
 
 # load X resources
 [ -f $XDG_CONFIG_HOME/x11/Xresources ] \

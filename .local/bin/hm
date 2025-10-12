@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# script to turn home manager on and off
+
+function on() {
+  nix run home-manager/master -- init
+  nix-env --switch-profile $XDG_STATE_HOME/nix/profiles/home-manager
+  nix run home-manager/master -- switch
+}
+
+function off() {
+  nix-env --switch-profile $XDG_STATE_HOME/nix/profiles/profile
+}
+
+case $1 in
+  on ) on;;
+  off) off;;
+  *  ) echo 'hm (on|off)'; exit 1 ;;
+esac
