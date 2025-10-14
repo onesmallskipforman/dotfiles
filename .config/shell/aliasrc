@@ -33,3 +33,8 @@ alias nyxt='WEBKIT_DISABLE_DMABUF_RENDERER=1 nyxt'
 # alias matlab='matlab -nosplash -nodesktop'
 # alias simulink='matlab -r simulink' # start_simulink slLibraryBrowser
 # alias ncdu='ncdu --exclude-firmlinks --si --color dark -x'
+
+alias gsub="git submodule"
+alias gsubu="git submodule update --init --recursive"
+# alias gsubr="git submodule update --remote"
+# alias gsubs="git submodule status"
