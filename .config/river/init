@@ -10,11 +10,13 @@
 
 # Note: the "Super" modifier is also known as Logo, GUI, Windows, Mod4, etc.
 
+MOD=Alt
+
 # Super+Shift+Return to start an instance of foot (https://codeberg.org/dnkl/foot)
-riverctl map -repeat normal Super+Shift Return spawn alacritty
+riverctl map -repeat normal $MOD Return spawn alacritty
 
 # Super+Q to close the focused view
-riverctl map -repeat normal Super Q close
+riverctl map -repeat normal $MOD Q close
 
 # Super+Shift+E to exit river
 riverctl map normal Super+Shift E exit

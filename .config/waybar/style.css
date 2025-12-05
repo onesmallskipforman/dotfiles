@@ -5,6 +5,7 @@
     /* font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif; */
     font-family: Hack Nerd Font;
     font-size: 12px;
+    min-height: 15pt;
 }
 
 window#waybar {
@@ -100,14 +101,43 @@ button:hover {
 #power-profiles-daemon,
 #systemd-failed-units,
 #mpd {
-    padding: 1 20px;
-    margin: 0 0px;
+}
+.modules-right > widget .module {
+    /* content: " | "; */
+    margin: 0 5px;
+    padding: 0 15px;
+    /* border-bottom: 1px solid @foreground; */
     background-color: @background;
-    color: @foreground;
+    color: @color7;
 }
-.modules-right {
-    border-bottom: 1px solid @foreground;
+
+.modules-right > widget:nth-child(1) {
+    color: @color9;
 }
+.modules-right > widget:nth-child(2) {
+    color: @color10;
+}
+.modules-right > widget:nth-child(3) {
+    color: @color11;
+}
+.modules-right > widget:nth-child(4) {
+    color: @color12;
+}
+.modules-right > widget:nth-child(5) {
+    color: @color13;
+}
+.modules-right > widget:nth-child(6) {
+    color: @color14;
+}
+/* .modules-right widget:not(:last-child) { */
+    /* content: " | "; */
+    /* border-right: 1px solid @foreground; */
+/* } */
+
+/* .modules-right:before { */
+    /* content: "a"; */
+    /* border-right: 1px solid @foreground; */
+/* } */
 
 #window,
 #workspaces {
@@ -125,18 +155,21 @@ button:hover {
     margin-right: 0;
 }
 
+/* #custom-arrow1 { */
+    /* background-color: #ffffff; */
+    /* margin-top: -2px; */
+/* } */
+
 #clock {
-    background-color: #64727D;
+    border-bottom: 1px solid #64727D;
 }
 
 #battery {
-    background-color: #ffffff;
-    color: #000000;
+    border-bottom: 1px solid #FFFFFF;
 }
 
 #battery.charging, #battery.plugged {
-    color: #ffffff;
-    background-color: #26A65B;
+    border-bottom: 1px solid #26A65B;
 }
 
 @keyframes blink {
@@ -181,24 +214,30 @@ label:focus {
 }
 
 #cpu {
-    background-color: #2ecc71;
-    color: #000000;
+    border-bottom: 1px solid #2ecc71;
 }
+
 
 #memory {
-    color: #9b59b6;
+    /* color: color of text */
+    /* background-color: color of background: */
+    border-bottom: 1px solid #9b59b6;
 }
 
-/* #disk { */
-/*     background-color: #964B00; */
-/* } */
+#disk {
+    border-bottom: 1px solid #964B00;
+}
+
+#bluetooth {
+    border-bottom: 1px solid #0082FC ;
+}
 
 #backlight {
     background-color: #90b1b1;
 }
 
 #network {
-    background-color: #2980b9;
+    border-bottom: 1px solid #2980b9;
 }
 
 #network.disconnected {
@@ -239,7 +278,7 @@ label:focus {
 }
 
 #temperature {
-    background-color: #f0932b;
+    border-bottom: 1px solid #f0932b;
 }
 
 #temperature.critical {

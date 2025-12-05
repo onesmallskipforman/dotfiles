@@ -9,15 +9,25 @@
     "modules-center": ["hyprland/window"],
     "modules-right": [
         "wireplumber",
+        // "custom/arrow1",
         "disk",
+        // "custom/arrow1",
         "memory",
+        // "custom/arrow1",
         "cpu",
+        // "custom/arrow1",
         "temperature",
+        // "custom/arrow1",
         "battery",
+        // "custom/arrow1",
         "clock",
+        // "custom/arrow1",
         "tray",
+        // "custom/arrow1",
         "bluetooth",
+        // "custom/arrow1",
         "network",
+        // "custom/arrow1",
         "systemd-failed-units",
     ],
     "sway/window": {
@@ -40,6 +50,11 @@
         "format-muted": "{volume}% 󰖁",
         // "on-click": "helvum",
         "format-icons": ["", "", ""]
+    },
+    "custom/arrow1": {
+        // "format": "|",
+        "format": "│",
+        "tooltip": false
     }
 }
 // {
