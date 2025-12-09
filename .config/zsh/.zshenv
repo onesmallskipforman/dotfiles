@@ -107,7 +107,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 export SCREENRC="$XDG_CONFIG_HOME"/screen/screenrc
 export SCREENDIR="${XDG_RUNTIME_DIR}/screen"
 export PYTHON_HISTORY=$XDG_DATA_HOME/python_history
-export SCREENSHOTS=$XDG_DATA_HOME/screenshots
+export SCREENSHOTS=$HOME/Pictures/screenshots
 export MPLAYER_HOME="$XDG_CONFIG_HOME"/mplayer
 export CALCHISTFILE="$XDG_CACHE_HOME"/calc_history
 # TODO: need to fix how docker images are mounting to this
