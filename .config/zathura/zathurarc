@@ -14,8 +14,8 @@ set recolor-keephue 'false'
 # Don't keep original image colors while recoloring
 set recolor-reverse-video 'false'
 
-# TODO: this is not dynamic to different usernames
-include /home/skipper/.cache/wal/colors-zathura
+# TODO: this is relative to the absolute location of this confg
+include ../../../../../.cache/wal/colors-zathura
 
 # TODO: determine if any of these should be moved to a custom zathura pywal template
 # # Command line completion entries

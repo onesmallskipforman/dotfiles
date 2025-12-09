@@ -16,7 +16,7 @@ MAX_RATE_HZ=$(echo $PREFERRED_MODE | awk '{print $4}' | sed 's/\*//g')
 MODE=$(echo $PREFERRED_MODE | awk '{print $1}')
 
 # set DPI, resolution, and refresh rate
-xrandr --dpi 144
+xrandr --dpi $DPI
 xrandr --output $OUTPUT --mode $MODE --rate $MAX_RATE_HZ
 
 # load X resources

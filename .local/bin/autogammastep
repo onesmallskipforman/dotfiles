@@ -1,0 +1,9 @@
+#!/bin/sh
+
+METHOD=$(tty | grep '/dev/tty' && echo drm \
+  || { [ -n "$WAYLAND_DISPLAY" ] && echo wayland; } \
+  || { [ -n "$DISPLAY" ] && echo randr; })
+
+echo $METHOD
+pkill -f "$(which gammastep)|$(which redshift)"
+gammastep -m $METHOD $@
