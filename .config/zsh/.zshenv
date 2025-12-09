@@ -67,7 +67,7 @@ export PATH="$PATH:$HOME/.local/share/python/bin"
 }
 
 # configure fzf
-export FZF_DEFAULT_COMMAND='rg -uu -g "!*.{git,DS_Store}" --files'
+export FZF_DEFAULT_COMMAND='fd --type f'
 
 
 # TODO: create workbin folder and add to $PATH
