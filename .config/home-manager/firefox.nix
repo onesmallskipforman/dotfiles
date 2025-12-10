@@ -55,6 +55,12 @@
         "browser.tabs.hoverPreview.showThumbnails" = false;
         "browser.toolbars.bookmarks.visibility" = "never";
         "browser.theme.content-theme" = 0;
+        "browser.newtabpage.activity-stream.showRecentSaves" = false;
+        "browser.newtabpage.activity-stream.showSearch" = false;
+        "browser.newtabpage.activity-stream.showSponsored" = false;
+        "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
+        "browser.newtabpage.activity-stream.showWeather" = false;
+
       };
     };
   };
