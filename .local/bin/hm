@@ -5,13 +5,15 @@
 function on() {
   nix run --show-trace home-manager/master -- init
   nix-env --switch-profile $XDG_STATE_HOME/nix/profiles/home-manager
-  nix run --show-trace home-manager/master -- switch -b backup
+  nix run --show-trace home-manager/master -- init --switch -b backup
 }
 
 function off() {
-  nix run --show-trace home-manager/master -- switch --rollback -b backup
+  nix run --show-trace home-manager/master -- switch -b backup
   nix-env --switch-profile $XDG_STATE_HOME/nix/profiles/profile
   mv -fT ~/.mozilla/firefox/profiles.ini.backup ~/.mozilla/firefox/profiles.ini
+  nix store gc
+  nix store optimise
 }
 
 case $1 in

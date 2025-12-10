@@ -22,12 +22,12 @@
   # home.packages = with pkgs; with nur_pkgs; with mic92_pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
-    lolcat
-    firefox
-    sxhkd
-    bspwm
-    polybar
-    fd
+    # lolcat
+    # firefox
+    # sxhkd
+    # bspwm
+    # polybar
+    # fd
 
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
