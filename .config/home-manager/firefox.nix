@@ -60,6 +60,9 @@
         "browser.newtabpage.activity-stream.showSponsored" = false;
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
         "browser.newtabpage.activity-stream.showWeather" = false;
+        "browser.newtabpage.activity-stream.showSponsoredCheckboxes" = false;
+        "services.sync.prefs.sync.browser.newtabpage.activity-stream.showSponsored" = false;
+        "services.sync.prefs.sync.browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
 
       };
     };
