@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
-
+# { config, pkgs, nur_pkgs, mic92_pkgs, ... }:
 {
+  imports = [./firefox.nix];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "skipper";
@@ -13,14 +14,17 @@
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
-  home.stateVersion = "25.11"; # Please read the comment before changing.
+  home.stateVersion = "24.05"; # Please read the comment before changing.
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
+  home.packages = with pkgs; [
+  # home.packages = with pkgs; with nur_pkgs; with mic92_pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
-    # pkgs.hello
+    lolcat
+    firefox
+
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -34,6 +38,11 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+    # hello-nur # mic92 version
+    # repos.mic92.hello-nur # nur version
+
+
+    # repos.rycee.firefox-addons.ublock-origin
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -72,5 +81,20 @@
   };
 
   # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+  # programs.home-manager.enable = true;
+  # programs.firefox = {
+  #   enable = true;
+  #   profiles.testprofile = {
+  #     name = "testprofilename";
+  #     settings = {
+  #       "browser.startup.homepage" = "www.stackoverflow.com";
+  #     };
+  #     # extensions = with pkgs.repos.rycee.firefox-addons; [
+  #     #   ublock-origin
+  #     #   bitwarden
+  #     #   darkreader
+  #     #   vimium
+  #     # ];
+  #   };
+  # };
 }

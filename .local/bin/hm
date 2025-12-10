@@ -3,13 +3,15 @@
 # script to turn home manager on and off
 
 function on() {
-  nix run home-manager/master -- init
+  nix run --show-trace home-manager/master -- init
   nix-env --switch-profile $XDG_STATE_HOME/nix/profiles/home-manager
-  nix run home-manager/master -- switch
+  nix run --show-trace home-manager/master -- switch -b backup
 }
 
 function off() {
+  nix run --show-trace home-manager/master -- switch --rollback -b backup
   nix-env --switch-profile $XDG_STATE_HOME/nix/profiles/profile
+  mv -fT ~/.mozilla/firefox/profiles.ini.backup ~/.mozilla/firefox/profiles.ini
 }
 
 case $1 in
