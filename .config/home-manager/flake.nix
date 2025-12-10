@@ -1,3 +1,4 @@
+# https://www.reddit.com/r/NixOS/comments/1felrey/keeping_separate_home_manager_configurations/
 {
   description = "Home Manager configuration of skipper";
 
