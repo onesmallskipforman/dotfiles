@@ -55,6 +55,7 @@
         "browser.tabs.hoverPreview.showThumbnails" = false;
         "browser.toolbars.bookmarks.visibility" = "never";
         "browser.theme.content-theme" = 0;
+        # TODO: figure out which of these are actually needed
         "browser.newtabpage.activity-stream.showRecentSaves" = false;
         "browser.newtabpage.activity-stream.showSearch" = false;
         "browser.newtabpage.activity-stream.showSponsored" = false;
@@ -65,7 +66,19 @@
         "services.sync.prefs.sync.browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
         "browser.newtabpage.activity-stream.system.showSponsored" = false;
         "browser.newtabpage.activity-stream.system.showSponsoredCheckboxes" = false;
-
+        "browser.newtabpage.activity-stream.feeds.recommendationprovider" = false;
+        "extensions.htmlaboutaddons.recommendations.enabled" = false;
+        "services.sync.prefs.sync.browser.newtabpage.activity-stream.feeds.section.topstories" = false;
+        "browser.newtabpage.activity-stream.feeds.smartshortcutsfeed" = false;
+        "browser.newtabpage.activity-stream.discoverystream.enabled" = false;
+        "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts" = false;
+        "services.sync.prefs.sync.browser.newtabpage.activity-stream.feeds.section.highlights" = false;
+        "browser.newtabpage.activity-stream.feeds.sections" = false;
+        # i think this got rid of top sites (on/off switch is still present though)
+        "browser.newtabpage.activity-stream.feeds.system.topsites" = false;
+        # i think this got rid of top stories
+        "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
+        "browser.newtabpage.activity-stream.feeds.system.topstories" = false;
       };
     };
   };
