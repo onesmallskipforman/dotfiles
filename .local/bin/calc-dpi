@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# set true DPI based on screen dimensions
+xrandr | grep -w connected | grep -o '[0-9]\+mm' | sed 's/mm//g' \
+       | paste -sd 'x' - | xargs xrandr --fbmm;
+TRUDPI=$(xdpyinfo | grep resolution | grep -o '[0-9]\+x' | sed 's/x//g')
+
+# adjust dpi based on how much space you want the bar to take ip
+# we want a bar BARHGT true-dpi-inches tall to take up BARPCT % of the screen
+BARPCT=2.25; BARHGT_IN=0.25
+WINHGT_IN=$(xrandr | grep -w connected | awk '{print $NF}' | sed 's/mm//g' \
+                   | xargs -I{} echo '0.0393701*{}' | bc)
+DPI=$(calc "ceil($BARPCT/100*$WINHGT_IN*$TRUDPI/$BARHGT_IN)//24 * 24")
+DPI=$(calc "max($DPI, 96)")
+echo $DPI

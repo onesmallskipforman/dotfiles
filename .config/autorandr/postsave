@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# ensure xresources is aligned with xrandr/xdpyinfo
+xdpyinfo \
+  | grep resolution \
+  | grep -o '[0-9]\+x' \
+  | sed 's/x//g' \
+  > $AUTORANDR_PROFILE_FOLDER/dpi

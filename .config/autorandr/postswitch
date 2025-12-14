@@ -1,5 +1,11 @@
 #!/bin/sh
 
+# apply dpi
+cat $AUTORANDR_PROFILE_FOLDER/dpi | xargs set-dpi
+
+# reset cursor size
+xsetroot -cursor_name left_ptr
+
 # note the following is required when built on ubuntu
 # https://github.com/phillipberndt/autorandr/issues/111#issuecomment-1301187045
 ~/.config/polybar/launch.sh
