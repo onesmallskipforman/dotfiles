@@ -5,7 +5,7 @@
 function on() {
   nix run --show-trace home-manager/master -- init
   nix-env --switch-profile $XDG_STATE_HOME/nix/profiles/home-manager
-  nix run --show-trace home-manager/master -- init --switch -b backup
+  nix run --show-trace home-manager/master -- switch -b backup
 }
 
 function off() {
