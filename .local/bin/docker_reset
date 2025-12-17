@@ -6,4 +6,8 @@ docker image prune -f
 docker images -a -q | xargs -r docker rmi -f
 docker image prune -af
 docker system prune -af
+docker system prune -af --volumes
+docker builder prune -af
+docker buildx prune -af
+sudo rm -rf /var/lib/docker
 docker container ls && docker images
