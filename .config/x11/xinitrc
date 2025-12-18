@@ -25,6 +25,7 @@ xinput list --id-only \
 # xinput list --id-only \
 #   | xargs -I{} xinput set-prop {} "libinput Accel Profile Enabled" 1,0 &>/dev/null
 
+# TODO: this does not seem to be getting set
 # set key repeat relay (225 ms) and repeat time (30 ms -> ~33 reapeats/s)
 xset r rate 225 33 # TODO: adjust
 

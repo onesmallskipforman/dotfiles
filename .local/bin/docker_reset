@@ -9,5 +9,7 @@ docker system prune -af
 docker system prune -af --volumes
 docker builder prune -af
 docker buildx prune -af
+sudo systemctl stop docker
 sudo rm -rf /var/lib/docker
+sudo systemctl start docker
 docker container ls && docker images

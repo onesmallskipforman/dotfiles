@@ -185,3 +185,6 @@ export GPG_TTY=$(tty) # to ensure terminal pinentry works
 eval "$(direnv hook zsh)"
 
 typeset -aU path # https://stackoverflow.com/a/68631155
+
+# TODO: https://ejmastnak.com/tutorials/arch/typematic-rate/
+# (sudo kbdrate -d 225 -r 33 >/dev/null 2>&1 &)
