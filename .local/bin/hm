@@ -12,8 +12,10 @@ function off() {
   nix run --show-trace home-manager/master -- switch -b backup
   nix-env --switch-profile $XDG_STATE_HOME/nix/profiles/profile
   mv -fT ~/.mozilla/firefox/profiles.ini.backup ~/.mozilla/firefox/profiles.ini
-  nix store gc
-  nix store optimise
+  # TODO: this cleanup is overkill for tuning off HM. Move this to cleanup script
+  # Also these commands are clearing out devenvs which I don't want
+  # nix store gc
+  # nix store optimise
 }
 
 case $1 in

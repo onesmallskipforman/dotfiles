@@ -181,7 +181,7 @@ XF86KbdBrightness{Up,Down}
 #===============================================================================
 
 ctrl + shift + o
-  vpndown || vpn
+  vpndown || vpnup
 
 ctrl + shift + a
   autorandr --change --force

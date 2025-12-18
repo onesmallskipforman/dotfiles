@@ -1,0 +1,15 @@
+#!/bin/sh
+
+up() {
+  sudo -E gpclient connect --browser default $1
+}
+
+down() {
+  sudo pkill -2 gpclient
+}
+
+case $1 in
+  up) up $2;;
+  down) down ;;
+  *) echo 'vpn (up|down)'; exit 1 ;;
+esac
