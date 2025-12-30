@@ -148,6 +148,11 @@ ctrl + shift + Print
     && mkdir -p $SCREENSHOTS && maim -o -s $OUT \
     && gimp --no-splash $OUT
 
+
+super + shift + {3,4}
+  OUT=$SCREENSHOTS/$(date +%Y_%m_%d--%H-%M-%S_maim).png \
+    && mkdir -p $SCREENSHOTS && maim -o -s $OUT
+
 alt + shift + s
     browseScreenshots.sh
 
