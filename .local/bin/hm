@@ -2,8 +2,11 @@
 
 # script to turn home manager on and off
 
-function on() {
+function init() {
   nix run --show-trace home-manager/master -- init
+}
+
+function on() {
   nix-env --switch-profile $XDG_STATE_HOME/nix/profiles/home-manager
   nix run --show-trace home-manager/master -- switch -b backup
 }
@@ -19,7 +22,8 @@ function off() {
 }
 
 case $1 in
-  on ) on;;
-  off) off;;
-  *  ) echo 'hm (on|off)'; exit 1 ;;
+  on  ) on  ;;
+  off ) off ;;
+  init) init;;
+  *  ) echo 'hm (on|off|init)'; exit 1 ;;
 esac
