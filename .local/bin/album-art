@@ -1,0 +1,2 @@
+#!/bin/sh
+playerctl metadata mpris:artUrl | xargs curl | feh --scale-down -Z -B black -

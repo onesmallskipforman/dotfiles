@@ -1,0 +1,2 @@
+#!/bin/sh
+playerctl --follow metadata --format '"{{ title }} - {{ artist }}" -i {{ mpris:artUrl }}' | xargs -L1 notify-send
