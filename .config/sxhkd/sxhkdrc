@@ -181,6 +181,9 @@ XF86KbdBrightness{Up,Down}
     --device="$(ls /sys/class/leds | grep 'kbd_backlight' | head -n1)" \
     set {+5%,5%-}
 
+F{5,6}
+  ddcutil --noverify --skip-ddc-checks --bus 6 setvcp 10 {-,+} 10
+
 #===============================================================================
 # VPN
 #===============================================================================
