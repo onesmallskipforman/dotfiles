@@ -191,6 +191,9 @@ F{5,6}
 ctrl + shift + o
   vpndown || vpnup
 
+ctrl + shift + e
+  everything
+
 ctrl + shift + a
   autorandr --change --force
 
