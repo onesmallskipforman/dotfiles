@@ -10,12 +10,16 @@ polybar-msg cmd quit
 # using $USER as $UID is not defined in dash
 while pgrep -u $USER -x polybar >/dev/null; do sleep 1; done
 
-DPI=$(xdpyinfo | grep resolution | grep -o '[0-9]\+x[0-9]\+' | tr 'x' ' ')
-export DPIX=$(echo $DPI | awk '{print $1}')
-export DPIY=$(echo $DPI | awk '{print $2}')
-
 polybar --list-monitors | cut -d":" -f1 | while IFS=$'\n' read m; do
     MONITOR=$m polybar --quiet --reload mybar &
+done
+
+# until pgrep -u $USER -x polybar >/dev/null; do pgrep -u $USER -x polybar; done
+# pgrep -u $USER -x polybar
+
+# block script until bars are actually running
+until polybar-msg cmd show; do
+  sleep 0.1
 done
 
 echo "Polybar launched..."

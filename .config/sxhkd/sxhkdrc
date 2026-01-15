@@ -195,4 +195,4 @@ ctrl + shift + a
   autorandr --change --force
 
 ctrl + shift + b
-    ~/.config/polybar/launch.sh
+    polybar-msg cmd restart || ~/.config/polybar/launch.sh
