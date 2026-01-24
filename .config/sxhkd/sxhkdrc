@@ -31,7 +31,7 @@ alt + s
 
 # program toggles
 alt + c
-  pkill redshift || redshift
+  pkill -USR1 redshift || redshift &
 
 # use exact regex match to ensure current dispatched process doesn't get
 alt + shift + i

@@ -6,8 +6,8 @@ user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 // 2: Load the last visited page.
 // 3: Resume the previous browser session
 user_pref("browser.startup.page", 3);
-user_pref("browser.startup.homepage", "about:newtab");
-user_pref("browser.newtabpage.enabled", false); // make new tab page blank
+// user_pref("browser.startup.homepage", "moz-extension://5b014a50-119d-4ace-a947-f54e6a097985/static/newtab.html");
+user_pref("browser.newtabpage.enabled", true); // make new tab page blank
 user_pref("browser.tabs.insertAfterCurrent", true);
 user_pref("browser.tabs.hoverPreview.enabled", false);
 user_pref("browser.tabs.hoverPreview.showThumbnails", false);

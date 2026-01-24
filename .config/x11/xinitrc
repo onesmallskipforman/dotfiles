@@ -1,53 +1,18 @@
+# set display configuration
+autorandr --change --force || xrandr --auto
+
+# load X resources
+xrdb -merge $XDG_CONFIG_HOME/x11/Xresources
+xrdb -merge $XDG_CACHE_HOME/wal/colors.Xresources
+
+# pass environment to dbus
+dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY &
+
 # start redshift
 redshift &
 
-# set display configuration
-autorandr --change --force
-
-# set wallpaper
-# cat $XDG_CACHE_HOME/wal/wal | xargs feh --no-fehbg --bg-fill &
-
-# load X resources
-[ -f $XDG_CONFIG_HOME/x11/Xresources ] \
-  && { xrdb -merge -I$HOME $XDG_CONFIG_HOME/x11/Xresources; }
-
-xrdb -merge ~/.cache/wal/colors.Xresources
-
-# based on /etc/X11/Xsession.d/20dbus_xdg-runtime in ubuntu desktop
-DBUS_SESSION_BUS_ADDRESS="unix:path=$XDG_RUNTIME_DIR/bus"
-export DBUS_SESSION_BUS_ADDRESS
-dbus-update-activation-environment --verbose --systemd \
-  DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY &
-
-# set natural scrolling
-xinput list --id-only \
-  | xargs -I{} \
-      xinput set-prop {} "libinput Natural Scrolling Enabled" 1 &>/dev/null &
-
-# set mouse speed and acceleration
-# TODO: fix
-# xinput list --id-only \
-#   | xargs -I{} xinput set-prop {} "libinput Accel Speed" -0.60 &>/dev/null
-# xinput list --id-only \
-#   | xargs -I{} xinput set-prop {} "libinput Accel Profile Enabled" 1,0 &>/dev/null
-
-# TODO: this does not seem to be getting set
-# set key repeat relay (225 ms) and repeat time (30 ms -> ~33 reapeats/s)
-xset r rate 225 33 & # TODO: adjust
-
-
-# set cursor
-# xsetroot -cursor_name left_ptr
-
-# start polybar
-# ~/.config/polybar/launch.sh
-
-
 # start window compositor
 picom --config ~/.config/picom/picom.conf &
-
-# start dunst
-dunst &
 
 # start window manager
 sxhkd &

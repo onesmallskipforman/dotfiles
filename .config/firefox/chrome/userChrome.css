@@ -1,1 +1,401 @@
-uChrome.css
+@import '/home/skipper/.cache/wal/colors.css'  screen and (-moz-platform: linux);
+@import '/Users/skipper/.cache/wal/colors.css' screen and (-moz-platform: macos);
+
+/* CONVENIENCE VARIABLES */
+:root {
+    --dark-bg: color-mix(in srgb, var(--background) 60%, black) !important;
+    --lite-bg: color-mix(in srgb, var(--background) 80%, white) !important;
+    --dark-fg: color-mix(in srgb, var(--foreground) 60%, black) !important;
+    --lite-fg: color-mix(in srgb, var(--foreground) 10%, white) !important;
+    --tab-font-size: 15pt;
+    --nav-font-size: 15pt;
+    /* --border-radius: 0px; */
+    /* --urlbar-height: 20px; */
+    /* --tab-min-height: 22px !important; */ /* TODO: not sure why i cant rename this */
+}
+
+menupopup, panel {
+    &::part(content) {
+        border-radius: 0 !important;
+        border: 1px solid var(--color1) !important;
+    }
+}
+
+/* toolbar */
+.browser-toolbar {
+    background-color: var(--background) !important;
+    color: var(--foreground) !important;
+    /* border-style: none; */
+    /* border-top-style: none; */
+}
+
+
+/* the entire box including menubar, urlbar, toolbar, tabs, etc */
+#navigator-toolbox {
+    border: none !important;
+    /* border-bottom: 0.01px solid var(--color7) !important; */
+    /* background: var(--dark-bg) !important; */
+}
+
+#toolbar-menubar {
+    background-color: var(--dark-bg) !important;
+}
+
+/* TABS -------------------------------------------------------------------- */
+
+
+/* TODO: i think i want everything to scale with ui font size */
+/* seems then the goal is to set all min-heights */
+#titlebar {
+    min-height: 0px !important;
+}
+
+/* hide window controls */
+.titlebar-buttonbox-container { display: none; }
+
+/* remove titlebar spacers */
+.titlebar-spacer { display: none !important; }
+
+/* remove overflow scroll buttons */
+/* #scrollbutton-up, #scrollbutton-down { display: none !important; } */
+
+/* NOTE: carefull with em as you may not have the font you're looking for in your element */
+
+/* TODO: don't know why i need .tab-icon-image instead of html:img element type */
+.tab-icon-image {
+    height: 1em  !important;
+    width: 1em  !important;
+}
+.toolbarbutton-icon {
+    height: 1em  !important;
+    width: 1em  !important;
+    padding: 0px !important;
+    fill: var(--color7) !important;
+}
+
+.toolbarbutton-1 {
+    /* height: 1em  !important; */
+    /* width: 1em  !important; */
+    /* padding: 0px !important; */
+    fill: var(--color7) !important;
+}
+.tab-label-container {
+    height: 1em !important;
+}
+
+.tab-background {
+    min-height: 0px !important;
+}
+
+#TabsToolbar, .tabbrowser-tab {
+    height: 1.5em !important;
+    /* max-height: var(--tab-min-height) !important; */
+    min-height: 0px !important;
+    /* max-height: var(--tab-font-size) !important; */
+    /* font-size: 11px !important; */
+}
+
+#TabsToolbar {
+    font-size: var(--tab-font-size) !important;
+    font-family: "Hack Nerd Font" !important;
+    background-color: #000000 !important;
+}
+
+/* #TabsToolbar { */
+/*   visibility: collapse !important; */
+/* } */
+/**/
+/* #navigator-toolbox:hover #TabsToolbar { */
+/*   visibility: visible !important; */
+/* } */
+
+
+/* #navigator-toolbox { */
+/* #TabsToolbar { */
+  /* max-height: 0 !important; /* Start hidden */
+  /* overflow: hidden !important; */
+  /* transition: max-height 0s ease-out !important; /* Smooth transition */
+/* } */
+
+/* Show when hovering over the main window or the toolbox itself */
+/* #main-window:hover #navigator-toolbox, */
+/* #navigator-toolbox:hover { */
+/* #navigator-toolbox:hover #TabsToolbar { */
+  /* max-height: 100vh !important; /* Show fully */
+  /* overflow: unset !important; /* Allow menus/dropdowns */
+  /* transition-delay: 0s !important;
+/* } */
+
+.tab-content, .tabbrowser-tab, tabs {
+    /* could also use inherit */
+    font: var(--tab-font-size) !important;
+    font-family: "Hack Nerd Font" !important;
+}
+
+
+.tabbrowser-tab {
+    margin: 0px !important;
+    padding: 0px !important;
+
+    /* keep tabs just big enough to show the icon, a space, and the close button */
+    min-width: 3em !important;
+
+}
+
+/* NOTE: extra specifiers required to allow tabs to go back to normal size when others are closed */
+/* not really sure why this works */
+/* https://www.google.com/search?client=ubuntu&channel=fs&q=firefox+css+tab+max+width+gap */
+/* https://www.reddit.com/r/FirefoxCSS/comments/brklu0/the_right_way_to_change_your_tab_max_width/ */
+/* https://www.reddit.com/r/FirefoxCSS/comments/vth819/maximum_tab_width_makes_tabs_not_move_anymore/ */
+/* https://www.reddit.com/r/FirefoxCSS/comments/zoh7ry/tabs_max_width_limit_stopped_working_after_last/ */
+.tabbrowser-tab[fadein]:not([pinned]):not([style*="max-width"])
+{
+    /* allow tabs to take up full bar */
+    max-width: none !important;
+}
+
+
+
+.toolbarbutton-badge-stack {
+    padding: 0px !important;
+}
+
+/* check https://stackoverflow.com/questions/78206548/firefox-124-how-to-change-background-color-of-active-tab-in-userchrome-css */
+/* non-selected */
+#tabbrowser-tabs .tabbrowser-tab:not([visuallyselected],[selected],[multiselected]) .tab-content {
+    background: var(--dark-bg) !important;
+    color: var(--color7) !important;
+}
+
+/* selected */
+#tabbrowser-tabs .tabbrowser-tab:is([visuallyselected],[selected],[multiselected]) .tab-content {
+    background-color: var(--background) !important;
+    color: var(--foreground) !important;
+    border-left: 2px solid var(--color7) !important;
+}
+
+#tabbrowser-tabs {
+    min-height: 1em !important;
+}
+
+/* remove dropdown menu button which displays all tabs on overflow */
+#alltabs-button { display: none !important }
+
+
+/* NAVBAR ------------------------------------------------------------------ */
+
+#nav-bar, #urlbar{
+    font-size: var(--nav-font-size) !important;
+    font-family: "Hack Nerd Font" !important;
+}
+
+#nav-bar {
+    /* height    : 2em !important; */
+    min-height: 2em !important;
+    /* max-height: 2em !important; */
+}
+
+/* buttons that cannot be removed in customization menu */
+/* #back-button { display: none; } */
+/* #forward-button { display: none; } */
+/* #unified-extensions-button { display: none; } */
+
+/* buttons that can be removed in customization menu */
+/* #firefox-view-button { display: none; } */
+/* #reload-button { display: none; } */
+/* #stop-button { display: none; } */
+/* #home-button { display: none; } */
+/* #library-button { display: none; } */
+/* #fxa-toolbar-menu-button { display: none; } */
+/* empty space before and after the url bar */
+/* #customizableui-special-spring1, #customizableui-special-spring2 { display: none; } */
+/* #pocket-button { display: none; } */
+
+/* keep pop-up menus from overlapping with navbar */
+#widget-overflow { margin: 0 !important; }
+#appMenu-popup { margin: 0 !important; }
+#customizationui-widget-panel { margin: 0 !important; }
+#unified-extensions-panel { margin: 0 !important; }
+
+/* add padding to the right of the last button so that it doesn't touch the edge of the window */
+/* #PanelUI-menu-button { */
+    /* padding: 0px 4px 0px 0px !important; */
+    /* display:none; */
+/* } */
+
+/* URLBAR ------------------------------------------------------------------ */
+
+#urlbar {
+    min-height: 1em !important;
+}
+#urlbar[breakout-extend] .urlbar-background {
+    background: var(--lite-bg) !important;
+}
+
+.urlbar-background {
+    /* border: 1px solid var(--color8) !important; */
+    border: none !important;
+    /* default 4px */
+    border-radius: 4px !important;
+    background: var(--background) !important;
+    color: var(--foreground) !important;
+}
+
+.urlbar-background {
+    /* border: 1px solid var(--color8) !important; */
+    border: none !important;
+    /* default 4px */
+    border-radius: 4px !important;
+    /* background: var(--lite-bg) !important; */
+    color: var(--foreground) !important;
+}
+
+#urlbar-container {
+    color: var(--foreground) !important;
+    min-height: 1em !important;
+}
+.urlbar-input-container {
+    color: var(--foreground) !important;
+    height: inherit !important;
+    padding-block: 0px !important;
+    padding-inline: 0px !important;
+
+    /* TODO: non-extended border persists when extended */
+    /* border: 1px solid var(--color7) !important; */
+}
+.urlbarView {
+    color: var(--foreground) !important;
+}
+
+.urlbarView-row {
+  &[row-selectable]:not([selected]):hover {
+    background-color: var(--lite-bg) !important;
+  }
+}
+
+
+
+.urlbar-icon {
+    height: 1em  !important;
+    width: 1em  !important;
+    padding: 0px !important;
+    fill: var(--color7) !important;
+}
+
+/* #downloads-indicator-anchor { */
+/*     min-width: 1em !important; */
+/*     min-height: 1em !important; */
+/* } */
+
+/* i think we want to use width:100% in some places */
+#navigator-toolbox box, #navigator-toolbox hbox  {
+    min-width: 1em !important;
+    min-height: 1em !important;
+}
+#nav-bar image  {
+    width: 1em !important;
+    height: 1em !important;
+    min-width: 1em !important;
+    min-height: 1em !important;
+}
+
+/* TODO: not working */
+/* #nav-bar box, #nav-bar hbox { */
+/*     width: 1em; */
+/*     height: 1em; */
+/* } */
+
+#urlbar-zoom-button {
+  background-color: var(--dark-bg) !important;
+  color: var(--dark-fg) !important;
+  /* TODO: figure out how to get border outline */
+}
+
+
+/* BROWSER ----------------------------------------------------------------- */
+/* FIX FOR WHITE FLASHING */
+#tabbrowser-tabpanels {
+  background: var(--background) !important;
+}
+/* not sure we need this part */
+/* .dialogOverlay[hideContent="true"][topmost="true"] { */
+/*   background-color: var(--background) !important; */
+/* } */
+
+.browserContainer > findbar {
+  background: var(--background) !important;
+  color: var(--foreground) !important;
+  /* color-scheme: var(--toolbar-color-scheme); */
+  border-top-color: var(--color7) !important;
+}
+
+.findbar-textbox {
+  background: var(--dark-bg) !important;
+  color: var(--foreground) !important;
+  /* border: 1px solid var(--foreground) !important; */
+  border-radius: 4px !important;
+
+
+  &:focus {
+    background: var(--dark-bg) !important;
+    color: var(--foreground) !important;
+    /* border-color: transparent; */
+    /* outline: var(--focus-outline); */
+    /* outline-offset: var(--focus-outline-inset); */
+    outline: 2px solid var(--foreground) !important;
+    /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.23); */
+  }
+}
+
+
+/* PANELS ------------------------------------------------------------------ */
+
+/* panel[type="arrow"] { */
+/*     &:not([animate="false"]) { */
+/*       transition-duration: 0s; */
+/*     } */
+/* } */
+
+
+/* menupopup::part(content), panel::part(content) { */
+/*     background-color: var(--background) !important; */
+/*     background: var(--background) !important; */
+/* } */
+
+panelmultiview, arrowscrollbox, panelview {
+    background-color: var(--background) !important;
+    color: var(--foreground) !important;
+    /* background: var(--background) !important; */
+    /* border-radius: 8px !important; */
+    /* border: 10px solid var(--color7) !important; */
+}
+
+/* background layer on popup menus */
+panel, menupopup {
+    background: transparent !important;
+    /* border-radius: 10px !important; */
+    /* border-width: 0px !important; */
+}
+
+/* conent area on popup menus */
+arrowscrollbox {
+    border-color: var(--color7) !important;
+    border-radius: 10px !important;
+}
+
+/* undo arrowscrollbox setting on tabs */
+/* TODO: there's a more proper way to do this */
+#tabbrowser-arrowscrollbox {
+    background-color: var(--dark-bg) !important;
+    border-radius: 0px !important;
+}
+
+/* panel:where([type="arrow"]) { */
+/*   appearance: none; */
+/*   background-color: var(--background) !important; */
+/* } */
+
+/* toolbarbutton */
+#tabs-newtab-button {
+    background-color: transparent !important;
+}

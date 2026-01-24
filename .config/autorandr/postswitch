@@ -3,11 +3,11 @@
 # apply dpi
 cat $AUTORANDR_PROFILE_FOLDER/dpi | xargs set-dpi
 
-# reset cursor size
-xsetroot -cursor_name left_ptr &
-
 # set wallpaper
 cat $XDG_CACHE_HOME/wal/wal | xargs feh --no-fehbg --bg-fill &
+
+# reset cursor size
+xsetroot -cursor_name left_ptr &
 
 # note the following is required when built on ubuntu
 # https://github.com/phillipberndt/autorandr/issues/111#issuecomment-1301187045
