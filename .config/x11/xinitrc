@@ -1,9 +1,9 @@
-# set display configuration
-autorandr --change --force || xrandr --auto
-
 # load X resources
 xrdb -merge $XDG_CONFIG_HOME/x11/Xresources
 xrdb -merge $XDG_CACHE_HOME/wal/colors.Xresources
+
+# set display configuration
+autorandr --change --force || xrandr --auto
 
 # pass environment to dbus
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY &

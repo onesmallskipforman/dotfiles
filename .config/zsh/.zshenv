@@ -1,6 +1,21 @@
 # Skipper's .zshenv
 typeset -aU path # https://stackoverflow.com/a/68631155
 
+# set dbus
+# NOTE: this seems to be required to get nix-installed packages to open links
+# correctly on a non-nixos system
+export DBUS_SESSION_BUS_ADDRESS="unix:path=$XDG_RUNTIME_DIR/bus"
+
+# required to get nix-installed zoom to not crash due to glx errors
+# see: https://github.com/NixOS/nixpkgs/issues/82959#issuecomment-657306112
+# see also: https://superuser.com/questions/1343020/how-to-configure-firefox-open-zoom-urls-using-zoom-application
+# TODO: nix-installed zoom required nix-installed firefox to be installed for
+# zoom to be able to open links if non-nix-installed firefox is running, zoom
+# will only open links in firefox if the nix-installed version is also installed
+# export QT_XCB_GL_INTEGRATION=none
+# alias zoom='QT_XCB_GL_INTEGRATION=none zoom'
+# alias zoom-us='QT_XCB_GL_INTEGRATION=none zoom-us'
+
 # Designate Tools
 export TERMINAL="alacritty"
 export BROWSER="firefox"
@@ -12,6 +27,12 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_DATA_DIRS="$XDG_STATE_HOME/nix/profile/share:/usr/local/share:/usr/share:$XDG_DATA_DIRS"
+
+# set xcursor paths
+# need to set XCURSOR_PATH for cursors to work with nix-installed tools. even
+# using just /usr/share/icons is sufficient
+# see: https://wiki.archlinux.org/title/Cursor_themes#Environment_variable
+export XCURSOR_PATH=/usr/share/icons:${XDG_DATA_HOME}/icons:${XDG_STATE_HOME}/nix/profile/share/icons
 
 
 # set other directories
