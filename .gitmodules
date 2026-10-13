@@ -6,7 +6,3 @@
     path = .local/share
     url = https://github.com/onesmallskipforman/userdata.git
     branch = master
-[submodule ".config/work"]
-    path = .config/work
-    url = https://github.com/onesmallskipforman/workconfig.git
-    branch = master

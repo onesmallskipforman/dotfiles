@@ -38,3 +38,5 @@ alias gsub="git submodule"
 alias gsubu="git submodule update --init --recursive"
 # alias gsubr="git submodule update --remote"
 # alias gsubs="git submodule status"
+
+alias cl="clear"
