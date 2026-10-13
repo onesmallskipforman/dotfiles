@@ -7,6 +7,6 @@
     autoSetupRemote = true
 ; NOTE: order matters. The first credential helper applied is used
 [includeIf "gitdir:~/work/"]
-    path = ~/work/.gitconfig
+    path = ~/.config/work/.gitconfig
 [includeIf "gitdir:~/"]
     path = ~/.local/share/git/.gitconfig
